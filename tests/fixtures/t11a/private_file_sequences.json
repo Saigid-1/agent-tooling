@@ -1,0 +1,2291 @@
+{
+ "helpers": {
+  "desk_catalog_setup._private_parent": {
+   "0755 parent": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: output requires an existing private host-owned directory (0700)"
+    },
+    "tree": [
+     [
+      "<case>/open",
+      "dir",
+      "0o755"
+     ]
+    ]
+   },
+   "private parent": {
+    "events": [],
+    "outcome": {
+     "value": {
+      "path": "<case>/private/desk.json"
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ]
+    ]
+   }
+  },
+  "desk_catalog_setup._write_private_json": {
+   "existing, different document": {
+    "events": [
+     [
+      "open",
+      "<case>/private/desk.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "FileExistsError: operator file already exists with different contents"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/desk.json",
+      "file",
+      "0o600",
+      8,
+      "24f572600e150d3230138385aa0006ca1b993b46bb427f746cc690c98d932413"
+     ]
+    ]
+   },
+   "existing, same document": {
+    "events": [
+     [
+      "open",
+      "<case>/private/desk.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "idempotent": true,
+      "path": "<case>/private/desk.json"
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/desk.json",
+      "file",
+      "0o600",
+      84,
+      "044a8e15288bbc9b0c675044bfa9a4933f83c73d48ad073627b88eadf7f09102"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private",
+      "w+",
+      "O_RDWR|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.link",
+      "<case>/private/<tmp1>",
+      "<case>/private/desk.json"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.remove",
+      "<case>/private/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "idempotent": false,
+      "path": "<case>/private/desk.json"
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/desk.json",
+      "file",
+      "0o600",
+      84,
+      "044a8e15288bbc9b0c675044bfa9a4933f83c73d48ad073627b88eadf7f09102"
+     ]
+    ]
+   },
+   "parent not private": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: output requires an existing private host-owned directory (0700)"
+    },
+    "tree": [
+     [
+      "<case>/open",
+      "dir",
+      "0o755"
+     ]
+    ]
+   }
+  },
+  "desk_memory_runtime.private_json": {
+   "0644 file": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: operator file must not be accessible to group or others; use mode 0600"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/operator.json",
+      "file",
+      "0o644",
+      2,
+      "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+     ]
+    ]
+   },
+   "private file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/operator.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "a": [
+       "\u00e9",
+       null,
+       {
+        "nested": true
+       }
+      ],
+      "b": 1
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/operator.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "relative path": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: existing absolute operator file required"
+    },
+    "tree": []
+   }
+  },
+  "desk_registry.RoleRoster._locked": {
+   "roster directory": {
+    "events": [
+     [
+      "open",
+      "<case>/roster",
+      null,
+      "O_RDONLY|O_CLOEXEC"
+     ],
+     [
+      "fcntl.flock",
+      "LOCK_EX"
+     ]
+    ],
+    "outcome": {
+     "value": "entered"
+    },
+    "tree": [
+     [
+      "<case>/roster",
+      "dir",
+      "0o700"
+     ]
+    ]
+   }
+  },
+  "desk_registry.RoleRoster._write": {
+   "new roster": {
+    "events": [
+     [
+      "open",
+      "<case>/roster/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/roster/<tmp1>",
+      "<case>/roster/roles.json"
+     ],
+     [
+      "open",
+      "<case>/roster",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.remove",
+      "<case>/roster/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "roles": [
+       {
+        "label": "General",
+        "purpose": "A general-purpose desk. Describe its focus in the desk description.",
+        "role_id": "general"
+       }
+      ],
+      "schema_version": "agent-tooling.role-roster.v1",
+      "source": "configured",
+      "version": 7
+     }
+    },
+    "tree": [
+     [
+      "<case>/roster",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/roster/roles.json",
+      "file",
+      "0o600",
+      333,
+      "032092036f7525a0793e5556a5caabe2c0cef6dcaafc3439fcd078f07da2eab3"
+     ]
+    ]
+   },
+   "replace existing": {
+    "events": [
+     [
+      "open",
+      "<case>/roster/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/roster/<tmp1>",
+      "<case>/roster/roles.json"
+     ],
+     [
+      "open",
+      "<case>/roster",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.remove",
+      "<case>/roster/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "roles": [
+       {
+        "label": "General",
+        "purpose": "A general-purpose desk. Describe its focus in the desk description.",
+        "role_id": "general"
+       }
+      ],
+      "schema_version": "agent-tooling.role-roster.v1",
+      "source": "configured",
+      "version": 8
+     }
+    },
+    "tree": [
+     [
+      "<case>/roster",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/roster/roles.json",
+      "file",
+      "0o600",
+      333,
+      "bda0e3d883822f7987dbf2cb3693a8224bcdf2b68eff91d291afcb240c0c5a79"
+     ]
+    ]
+   }
+  },
+  "desk_registry._private_json": {
+   "0644 file": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: operator file must not be accessible to group or others; use mode 0600"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/operator.json",
+      "file",
+      "0o644",
+      2,
+      "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+     ]
+    ]
+   },
+   "private file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/operator.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "a": [
+       "\u00e9",
+       null,
+       {
+        "nested": true
+       }
+      ],
+      "b": 1
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/operator.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "relative path": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: existing absolute operator file required"
+    },
+    "tree": []
+   }
+  },
+  "host_adapter._owned": {
+   "file": {
+    "events": [],
+    "outcome": {
+     "value": 2
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/hooks.json",
+      "file",
+      "0o600",
+      2,
+      "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+     ]
+    ]
+   },
+   "group-writable file": {
+    "events": [],
+    "outcome": {
+     "error": "HostRefused: <case>/private/hooks.json must be a regular file owned by the running user, not a symlink, and not writable by group or others"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/hooks.json",
+      "file",
+      "0o620",
+      2,
+      "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+     ]
+    ]
+   }
+  },
+  "host_adapter._private_dir": {
+   "0755": {
+    "events": [],
+    "outcome": {
+     "error": "HostRefused: <case>/open must be private (0700)"
+    },
+    "tree": [
+     [
+      "<case>/open",
+      "dir",
+      "0o755"
+     ]
+    ]
+   },
+   "private": {
+    "events": [],
+    "outcome": {
+     "value": {
+      "path": "<case>/private"
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ]
+    ]
+   }
+  },
+  "host_adapter._read_json": {
+   "over bound": {
+    "events": [
+     [
+      "open",
+      "<case>/private/hooks.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "HostRefused: <case>/private/hooks.json exceeds 4 bytes"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/hooks.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "within bound": {
+    "events": [
+     [
+      "open",
+      "<case>/private/hooks.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "a": [
+       "\u00e9",
+       null,
+       {
+        "nested": true
+       }
+      ],
+      "b": 1
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/hooks.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   }
+  },
+  "host_adapter._replace": {
+   "existing file at 0o600": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/config.toml"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/config.toml",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "existing file at 0o644": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/config.toml"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/config.toml",
+      "file",
+      "0o644",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "new file at 0o600": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/config.toml"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/config.toml",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "new file at 0o644": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/config.toml"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/config.toml",
+      "file",
+      "0o644",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   }
+  },
+  "host_adapter._write_new": {
+   "existing file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "FileExistsError: [Errno 17] File exists: '<case>/private/record.json'"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      70,
+      "2f8ee554c29ea8392c07154fb6958a08f842bffa4efbf0e6bcdf603984eff7af"
+     ]
+    ]
+   }
+  },
+  "launch_binding._locked": {
+   "existing lock file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/launch.lock",
+      null,
+      "O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "fcntl.flock",
+      "LOCK_EX"
+     ]
+    ],
+    "outcome": {
+     "value": "entered"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/launch.lock",
+      "file",
+      "0o600",
+      0,
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+     ]
+    ]
+   },
+   "new lock file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/launch.lock",
+      null,
+      "O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "fcntl.flock",
+      "LOCK_EX"
+     ]
+    ],
+    "outcome": {
+     "value": "entered"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/launch.lock",
+      "file",
+      "0o600",
+      0,
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+     ]
+    ]
+   }
+  },
+  "launch_binding._write_once": {
+   "existing file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<case>/private/record.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "existing, different value": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<case>/private/record.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "LaunchRefused: launch state already recorded with different values"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      12,
+      "ba15681d40dc8af3bc3f71358ce39913dbaa9d6f5b6cea01bcff96858e985a1d"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   }
+  },
+  "launch_binding.private_dir": {
+   "existing 0755": {
+    "events": [
+     [
+      "os.mkdir",
+      "<case>/launches",
+      "0o700"
+     ]
+    ],
+    "outcome": {
+     "error": "ValueError: private launch directory required (0700, owned by the running user)"
+    },
+    "tree": [
+     [
+      "<case>/launches",
+      "dir",
+      "0o755"
+     ]
+    ]
+   },
+   "existing private": {
+    "events": [
+     [
+      "os.mkdir",
+      "<case>/launches",
+      "0o700"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "path": "<case>/launches"
+     }
+    },
+    "tree": [
+     [
+      "<case>/launches",
+      "dir",
+      "0o700"
+     ]
+    ]
+   },
+   "new directory": {
+    "events": [
+     [
+      "os.mkdir",
+      "<case>/launches",
+      "0o700"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "path": "<case>/launches"
+     }
+    },
+    "tree": [
+     [
+      "<case>/launches",
+      "dir",
+      "0o700"
+     ]
+    ]
+   }
+  },
+  "launch_binding.write_private": {
+   "existing file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "FileExistsError: [Errno 17] File exists: '<case>/private/record.json'"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   }
+  },
+  "model_gateway._write_private": {
+   "existing file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/output.bin",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "FileExistsError: [Errno 17] File exists: '<case>/private/output.bin'"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/output.bin",
+      "file",
+      "0o600",
+      3,
+      "cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/output.bin",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/output.bin",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   }
+  },
+  "model_gateway.read_api_key": {
+   "0644 key file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/key",
+      null,
+      "O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_NONBLOCK"
+     ]
+    ],
+    "outcome": {
+     "error": "SecretRefused: permissions_too_open"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/key",
+      "file",
+      "0o644",
+      8,
+      "fe256ee188907c1f5009b617f8af15295470d8f8dafc8b7f680ca88613ee68ea"
+     ]
+    ]
+   },
+   "missing": {
+    "events": [
+     [
+      "open",
+      "<case>/private/key",
+      null,
+      "O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_NONBLOCK"
+     ]
+    ],
+    "outcome": {
+     "error": "SecretRefused: missing"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ]
+    ]
+   },
+   "private key file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/key",
+      null,
+      "O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_NONBLOCK"
+     ]
+    ],
+    "outcome": {
+     "value": 20
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/key",
+      "file",
+      "0o600",
+      21,
+      "6718ce69aaee9a212d7e54ca8f72ba341b04ab3fc6a1f2d6d4c80176d2216863"
+     ]
+    ]
+   }
+  },
+  "native_history_import._regular": {
+   "jsonl file": {
+    "events": [],
+    "outcome": {
+     "value": "rollout.jsonl"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/rollout.jsonl",
+      "file",
+      "0o600",
+      3,
+      "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+     ]
+    ]
+   },
+   "not jsonl": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: absolute regular JSONL file required; symlinks refused"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/rollout.txt",
+      "file",
+      "0o600",
+      3,
+      "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+     ]
+    ]
+   }
+  },
+  "navigation_search_pages._save": {
+   "existing cursor": {
+    "events": [
+     [
+      "open",
+      "<case>/private/search-019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231.json",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": "navigation-search:sha256:019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/search-019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231.json",
+      "file",
+      "0o600",
+      29,
+      "019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231"
+     ]
+    ]
+   },
+   "new cursor": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.link",
+      "<case>/private/<tmp1>",
+      "<case>/private/search-019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231.json"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.remove",
+      "<case>/private/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": "navigation-search:sha256:019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/search-019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231.json",
+      "file",
+      "0o600",
+      29,
+      "019f2cdc5955a377af6b0e314a23f5a69d03b0549b36b6449173ab39266d8231"
+     ]
+    ]
+   }
+  },
+  "navigation_search_pages._store_manifest": {
+   "existing manifest": {
+    "events": [],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/manifest-1f7075da7ce037e72d29f7be13985804ad4c286a275e1edb911ad8f14db69baa.json",
+      "file",
+      "0o600",
+      107,
+      "3234796f53bc220d54495fefae56036a360e0e92c8b4b72be30f8cfa4c40173f"
+     ]
+    ]
+   },
+   "new manifest": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.link",
+      "<case>/private/<tmp1>",
+      "<case>/private/manifest-1f7075da7ce037e72d29f7be13985804ad4c286a275e1edb911ad8f14db69baa.json"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.remove",
+      "<case>/private/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/manifest-1f7075da7ce037e72d29f7be13985804ad4c286a275e1edb911ad8f14db69baa.json",
+      "file",
+      "0o600",
+      107,
+      "3234796f53bc220d54495fefae56036a360e0e92c8b4b72be30f8cfa4c40173f"
+     ]
+    ]
+   }
+  },
+  "navigation_snapshot._read_regular": {
+   "over limit": {
+    "events": [
+     [
+      "open",
+      "<case>/private/snap",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "ValueError: snapshot registry byte budget exceeded"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/snap",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "regular file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/snap",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": {
+      "bytes_hex": "7061796c6f616420c3a920e298830a"
+     }
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/snap",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   }
+  },
+  "navigation_snapshot._write_once": {
+   "existing, different bytes": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "open",
+      "<case>/private/blob",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ],
+     [
+      "os.remove",
+      "<case>/private/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "error": "ValueError: snapshot registry identity collision"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "file",
+      "0o600",
+      5,
+      "d9298a10d1b0735837dc4bd85dac641b0f3cef27a47e5d53a54f2f3f5b2fcffa"
+     ]
+    ]
+   },
+   "existing, same bytes": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "open",
+      "<case>/private/blob",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ],
+     [
+      "os.remove",
+      "<case>/private/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.link",
+      "<case>/private/<tmp1>",
+      "<case>/private/blob"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.remove",
+      "<case>/private/<tmp1>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "symlink target": {
+    "events": [],
+    "outcome": {
+     "error": "ValueError: snapshot registry symlink refused"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "link",
+      "<case>/private/elsewhere"
+     ]
+    ]
+   }
+  },
+  "refresh_cli.atomic": {
+   "new file, parent created": {
+    "events": [
+     [
+      "os.mkdir",
+      "<case>/state",
+      "0o777"
+     ],
+     [
+      "open",
+      "<case>/state/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/state/<tmp1>",
+      "<case>/state/status.json"
+     ],
+     [
+      "open",
+      "<case>/state",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/state",
+      "dir",
+      "0o755"
+     ],
+     [
+      "<case>/state/status.json",
+      "file",
+      "0o600",
+      84,
+      "9f4942d6259d24ad2512f95f65c78f246b788a1f799bcee8d3be08533f465fb1"
+     ]
+    ]
+   },
+   "replace existing": {
+    "events": [
+     [
+      "os.mkdir",
+      "<case>/private",
+      "0o777"
+     ],
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/status.json"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/status.json",
+      "file",
+      "0o600",
+      84,
+      "9f4942d6259d24ad2512f95f65c78f246b788a1f799bcee8d3be08533f465fb1"
+     ]
+    ]
+   }
+  },
+  "runtime_install._placeholder": {
+   "existing file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/empty",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "FileExistsError: [Errno 17] File exists: '<case>/private/empty'"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/empty",
+      "file",
+      "0o600",
+      1,
+      "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/empty",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/empty",
+      "file",
+      "0o600",
+      0,
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+     ]
+    ]
+   }
+  },
+  "runtime_install._write": {
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/compose.yaml"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/compose.yaml",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "replace existing": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/compose.yaml"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/compose.yaml",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   }
+  },
+  "scip_navigation._atomic": {
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/index.json"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/index.json",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "replace existing": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/index.json"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/index.json",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   }
+  },
+  "semantic_index._write_once": {
+   "existing, different bytes": {
+    "events": [
+     [
+      "open",
+      "<case>/private/blob",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ],
+     [
+      "os.remove",
+      "<case>/private/blob"
+     ],
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/blob"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "existing, same bytes": {
+    "events": [
+     [
+      "open",
+      "<case>/private/blob",
+      "r",
+      "O_RDONLY|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/<tmp1>",
+      null,
+      "O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ],
+     [
+      "os.rename",
+      "<case>/private/<tmp1>",
+      "<case>/private/blob"
+     ],
+     [
+      "open",
+      "<case>/private",
+      null,
+      "O_RDONLY|O_CLOEXEC|O_DIRECTORY"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": null
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/blob",
+      "file",
+      "0o600",
+      15,
+      "33aa894e02de60b7a5d0f1e4246c0a449e89fe40a0975c16e0134589e20c2afc"
+     ]
+    ]
+   }
+  },
+  "spool_ingest.Cursors.locked": {
+   "new lock": {
+    "events": [
+     [
+      "open",
+      "<case>/state/spool-ingest.sqlite3.lock",
+      null,
+      "O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "fcntl.flock",
+      "LOCK_EX"
+     ]
+    ],
+    "outcome": {
+     "value": "entered"
+    },
+    "tree": [
+     [
+      "<case>/state",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/state/spool-ingest.sqlite3.lock",
+      "file",
+      "0o600",
+      0,
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+     ]
+    ]
+   }
+  }
+ }
+}

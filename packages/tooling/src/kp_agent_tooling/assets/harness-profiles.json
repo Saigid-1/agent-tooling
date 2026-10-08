@@ -1,0 +1,35 @@
+{
+  "schema_version": "agent-tooling.harness-profiles.v1",
+  "profiles": [
+    {
+      "harness": "claude",
+      "enabled": true,
+      "executable": "claude",
+      "session_id": {"strategy": "mint", "flag": "--session-id"},
+      "mcp": {"strategy": "config_file_flag", "flag": "--mcp-config"},
+      "hooks": {"strategy": "settings_file_flag", "flag": "--settings", "events": ["Stop", "PreCompact", "SessionEnd"]},
+      "capture": {"mode": "transcript", "parser": "claude-jsonl", "root": "~/.claude/projects"},
+      "receipt_env": "KP_AGENT_LAUNCH_RECEIPT"
+    },
+    {
+      "harness": "codex",
+      "enabled": true,
+      "executable": "codex",
+      "session_id": {"strategy": "hook", "field": "session_id"},
+      "mcp": {"strategy": "config_override", "key": "mcp_servers"},
+      "hooks": {"strategy": "config_override", "events": ["UserPromptSubmit", "Stop"]},
+      "capture": {"mode": "transcript", "parser": "codex-rollout", "root": "~/.codex/sessions"},
+      "receipt_env": "KP_AGENT_LAUNCH_RECEIPT"
+    },
+    {
+      "harness": "opencode",
+      "enabled": true,
+      "executable": "opencode",
+      "session_id": {"strategy": "hook", "field": "session_id"},
+      "mcp": {"strategy": "config_content_env", "env": "OPENCODE_CONFIG_CONTENT", "key": "mcp"},
+      "hooks": {"strategy": "plugin_env", "env": "KP_AGENT_LAUNCH_HOOK_COMMAND", "events": ["Stop", "PreCompact", "SessionEnd"]},
+      "capture": {"mode": "export", "parser": "opencode-export"},
+      "receipt_env": "KP_AGENT_LAUNCH_RECEIPT"
+    }
+  ]
+}

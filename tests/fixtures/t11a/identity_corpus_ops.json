@@ -1,0 +1,1949 @@
+{
+ "census_missed_schemes": {
+  "host_transcript_capture record ids (extract_host_transcript_file)": {
+   "escaped lone surrogates": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "missing result": {
+    "cause": null,
+    "error": "CaptureError: selected calls missing use or result: a",
+    "suppress_context": false
+   },
+   "one call": {
+    "value": {
+     "calls": [
+      {
+       "call_id": "host-transcript-call:sha256:5fd1b1d5cb14bbf19c495a35e0609f3f8e2c7ee1d48d0d175ca1fbd7955603a2",
+       "host_call_id": "a",
+       "summary": {
+        "delivery_complete": true,
+        "delivery_pages": 0,
+        "evidence_source": "host_transcript",
+        "is_error": null,
+        "omission_count": 0,
+        "operation": "tooling.identity",
+        "original_result_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c",
+        "persisted_result_bytes": 101,
+        "persisted_result_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c",
+        "result_key_count": 3,
+        "result_keys": [
+         "revision",
+         "server",
+         "status"
+        ],
+        "status": "ok",
+        "text_mirror": "omitted_duplicate",
+        "transport": "native_mcp"
+       }
+      }
+     ],
+     "captures": [
+      {
+       "arguments": {},
+       "delivery": {
+        "complete": true,
+        "continued": false,
+        "page_count": 0,
+        "pages": [],
+        "wire_integrity_verified": false,
+        "wire_sha256": null,
+        "wire_total_bytes": null
+       },
+       "evidence_source": {
+        "kind": "host_transcript",
+        "note": "Extracted host transcript evidence; transcript observation and wire attestation are separate proof scopes.",
+        "wire_attestation": false
+       },
+       "host_transcript_provenance": {
+        "call_id": "host-transcript-call:sha256:5fd1b1d5cb14bbf19c495a35e0609f3f8e2c7ee1d48d0d175ca1fbd7955603a2",
+        "delivery_page_call_ids": [],
+        "delivery_page_host_call_ids": [],
+        "host_call_id": "a",
+        "result_record_id": "host-transcript-record:sha256:73faca93a88564d467cf91953fbde2c0301c4744d3a659706d092caf6acf8013",
+        "use_record_id": "host-transcript-record:sha256:ea030f12823952e87ac29e447defb1f0a9e1761a2960513bdba344c039af5706"
+       },
+       "is_error": null,
+       "omissions": [],
+       "operation": "tooling.identity",
+       "result": {
+        "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "server": "agent-tooling \u2603",
+        "status": "ok"
+       },
+       "result_integrity": {
+        "original_canonical_bytes": 101,
+        "original_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c",
+        "persisted_sanitized_canonical_bytes": 101,
+        "persisted_sanitized_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c"
+       },
+       "schema": "ops.trial-response-capture.v1",
+       "text_mirror": {
+        "sha256": "1036400d04f05f4201a1772dfd44be621870ec1160878b0eab2ca5ea9c3fa722",
+        "status": "omitted_duplicate",
+        "utf8_bytes": 98
+       },
+       "transport": "native_mcp",
+       "transport_provenance": {
+        "capture_attests_transport": false,
+        "declared_by_operator": true,
+        "note": "A native export remains native evidence; facade replay is a separate call and cannot prove native pagination."
+       }
+      }
+     ],
+     "evidence_class": "host_transcript_derived",
+     "extraction_sha256": "fbb5bbe9ab9e76b0e0c0696ba2c9152a94643948c2c8180b02a06850b0653d5b",
+     "failures": [],
+     "omissions": {
+      "duplicate_delivery_pages": 0,
+      "malformed_records": [],
+      "other_session_records": 0,
+      "raw_transcript": "not_persisted",
+      "unbound_session_records": 0,
+      "unselected_tool_calls": 0
+     },
+     "proof_scope": {
+      "establishes": "Selected host transcript records were deterministically extracted and sanitized.",
+      "excludes": [
+       "wire-level transport attestation",
+       "unselected transcript content",
+       "claim that model visibility before capture invalidates the transcript record"
+      ]
+     },
+     "schema": "ops.host-transcript-extraction.v1",
+     "session": {
+      "id": "s",
+      "selected_record_count": 2
+     },
+     "transcript": {
+      "bytes": 363,
+      "line_count": 2,
+      "raw_persisted": false,
+      "sha256": "79d4b37fe478301753dfa27cab447599966e6d426f540ede2a332ad20c90f217"
+     },
+     "wire_attestation": false
+    }
+   },
+   "two calls, malformed and foreign rows": {
+    "value": {
+     "calls": [
+      {
+       "call_id": "host-transcript-call:sha256:ed8a2eb0db04f8d912ce5ea6304d013c06d404e6dabdc4f75b2204a077586ce2",
+       "host_call_id": "a",
+       "summary": {
+        "delivery_complete": true,
+        "delivery_pages": 0,
+        "evidence_source": "host_transcript",
+        "is_error": null,
+        "omission_count": 0,
+        "operation": "tooling.identity",
+        "original_result_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c",
+        "persisted_result_bytes": 101,
+        "persisted_result_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c",
+        "result_key_count": 3,
+        "result_keys": [
+         "revision",
+         "server",
+         "status"
+        ],
+        "status": "ok",
+        "text_mirror": "omitted_duplicate",
+        "transport": "native_mcp"
+       }
+      },
+      {
+       "call_id": "host-transcript-call:sha256:e128cd3209c8121bedc670c6df3f7101e0f5d17fdb0cb967c481ac986f3a9cc7",
+       "host_call_id": "b",
+       "summary": {
+        "delivery_complete": true,
+        "delivery_pages": 0,
+        "evidence_source": "host_transcript",
+        "is_error": null,
+        "omission_count": 1,
+        "operation": "knowledge.context",
+        "original_result_sha256": "003c3bb6d70da26bcdb6296d120a0ac30ee1de4f07f799d471f06d1f5da2c9fa",
+        "persisted_result_bytes": 63,
+        "persisted_result_sha256": "186f291e351dac866fe4d6bc1ddbc6d4aeca34ad3c44f168afd76671d11bec26",
+        "result_key_count": 3,
+        "result_keys": [
+         "empty",
+         "items",
+         "status"
+        ],
+        "status": "ok",
+        "text_mirror": "omitted_duplicate",
+        "transport": "native_mcp"
+       }
+      }
+     ],
+     "captures": [
+      {
+       "arguments": {},
+       "delivery": {
+        "complete": true,
+        "continued": false,
+        "page_count": 0,
+        "pages": [],
+        "wire_integrity_verified": false,
+        "wire_sha256": null,
+        "wire_total_bytes": null
+       },
+       "evidence_source": {
+        "kind": "host_transcript",
+        "note": "Extracted host transcript evidence; transcript observation and wire attestation are separate proof scopes.",
+        "wire_attestation": false
+       },
+       "host_transcript_provenance": {
+        "call_id": "host-transcript-call:sha256:ed8a2eb0db04f8d912ce5ea6304d013c06d404e6dabdc4f75b2204a077586ce2",
+        "delivery_page_call_ids": [],
+        "delivery_page_host_call_ids": [],
+        "host_call_id": "a",
+        "result_record_id": "host-transcript-record:sha256:5217ed250b0a6111f8e7f4cfe6f6ad6145fad01ce6b5d3345766585d947d679c",
+        "use_record_id": "host-transcript-record:sha256:ea030f12823952e87ac29e447defb1f0a9e1761a2960513bdba344c039af5706"
+       },
+       "is_error": null,
+       "omissions": [],
+       "operation": "tooling.identity",
+       "result": {
+        "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "server": "agent-tooling \u2603",
+        "status": "ok"
+       },
+       "result_integrity": {
+        "original_canonical_bytes": 101,
+        "original_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c",
+        "persisted_sanitized_canonical_bytes": 101,
+        "persisted_sanitized_sha256": "469e30512404d26f6229a1e76c06c9e2fad7df7123a90e7069f8c82aa320558c"
+       },
+       "schema": "ops.trial-response-capture.v1",
+       "text_mirror": {
+        "sha256": "1036400d04f05f4201a1772dfd44be621870ec1160878b0eab2ca5ea9c3fa722",
+        "status": "omitted_duplicate",
+        "utf8_bytes": 98
+       },
+       "transport": "native_mcp",
+       "transport_provenance": {
+        "capture_attests_transport": false,
+        "declared_by_operator": true,
+        "note": "A native export remains native evidence; facade replay is a separate call and cannot prove native pagination."
+       }
+      },
+      {
+       "arguments": {
+        "query": "\u00e9"
+       },
+       "delivery": {
+        "complete": true,
+        "continued": false,
+        "page_count": 0,
+        "pages": [],
+        "wire_integrity_verified": false,
+        "wire_sha256": null,
+        "wire_total_bytes": null
+       },
+       "evidence_source": {
+        "kind": "host_transcript",
+        "note": "Extracted host transcript evidence; transcript observation and wire attestation are separate proof scopes.",
+        "wire_attestation": false
+       },
+       "host_transcript_provenance": {
+        "call_id": "host-transcript-call:sha256:e128cd3209c8121bedc670c6df3f7101e0f5d17fdb0cb967c481ac986f3a9cc7",
+        "delivery_page_call_ids": [],
+        "delivery_page_host_call_ids": [],
+        "host_call_id": "b",
+        "result_record_id": "host-transcript-record:sha256:80a04b6832f7064e304f6cd0a9edc76a787c4c423348cb957f4490250e2444ff",
+        "use_record_id": "host-transcript-record:sha256:8efc79d85c69f91a810f2ebbb1083c29cfaffc12d1db409c31a8bc111dbb350e"
+       },
+       "is_error": null,
+       "omissions": [
+        {
+         "path": "/result/items/0/text",
+         "reason": "bulk_source_or_transcript_omitted",
+         "utf8_bytes": 8
+        }
+       ],
+       "operation": "knowledge.context",
+       "result": {
+        "empty": {},
+        "items": [
+         {
+          "n": 1,
+          "text": "[OMITTED]"
+         }
+        ],
+        "status": "ok"
+       },
+       "result_integrity": {
+        "original_canonical_bytes": 66,
+        "original_sha256": "003c3bb6d70da26bcdb6296d120a0ac30ee1de4f07f799d471f06d1f5da2c9fa",
+        "persisted_sanitized_canonical_bytes": 63,
+        "persisted_sanitized_sha256": "186f291e351dac866fe4d6bc1ddbc6d4aeca34ad3c44f168afd76671d11bec26"
+       },
+       "schema": "ops.trial-response-capture.v1",
+       "text_mirror": {
+        "sha256": "99fbe66d5da379bee2567069fa06e622fffaea7e3676e2f2095a1b2b31c93fb8",
+        "status": "omitted_duplicate",
+        "utf8_bytes": 62
+       },
+       "transport": "native_mcp",
+       "transport_provenance": {
+        "capture_attests_transport": false,
+        "declared_by_operator": true,
+        "note": "A native export remains native evidence; facade replay is a separate call and cannot prove native pagination."
+       }
+      }
+     ],
+     "evidence_class": "host_transcript_derived",
+     "extraction_sha256": "c98d2d7765e884c44f803ac108fe450ba33f72acfbc2b016e3143a83e2757c6d",
+     "failures": [],
+     "omissions": {
+      "duplicate_delivery_pages": 0,
+      "malformed_records": [
+       {
+        "line": 2,
+        "reason": "invalid_json",
+        "record_id": "host-transcript-record:sha256:23790cf84da5ce5aa8d3f1334fd03b9f55f822513916071a7b2c38e78a2cacef"
+       },
+       {
+        "line": 3,
+        "reason": "non_object",
+        "record_id": "host-transcript-record:sha256:ef1b43b03f157111fb3d6da19d12bec1b7b3e2de4897c1c60b440e67fa89ce96"
+       }
+      ],
+      "other_session_records": 1,
+      "raw_transcript": "not_persisted",
+      "unbound_session_records": 0,
+      "unselected_tool_calls": 0
+     },
+     "proof_scope": {
+      "establishes": "Selected host transcript records were deterministically extracted and sanitized.",
+      "excludes": [
+       "wire-level transport attestation",
+       "unselected transcript content",
+       "claim that model visibility before capture invalidates the transcript record"
+      ]
+     },
+     "schema": "ops.host-transcript-extraction.v1",
+     "session": {
+      "id": "s",
+      "selected_record_count": 4
+     },
+     "transcript": {
+      "bytes": 990,
+      "line_count": 7,
+      "raw_persisted": false,
+      "sha256": "312f99ed9b7477526ca2c525c98691a7c968733fdab6d486fa6b771406d599a6"
+     },
+     "wire_attestation": false
+    }
+   }
+  }
+ },
+ "content_address_sites": {
+  "knowledge_publish_cli._write (:31)": {
+   "ascii_nested": {
+    "value": "3cc342ffdd8c8d138bd6b70dfe8a443d3b25f9d5df3160092c60dc061ab4d909"
+   },
+   "deep": {
+    "value": "ea720ea83b5cd3d4dd892b01f79c4144a0d22cbe4ea15d56d9d1b47c083a2a5f"
+   },
+   "empty_list": {
+    "value": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+   },
+   "empty_object": {
+    "value": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+   },
+   "empty_string": {
+    "value": "bd85bcdb8d4e613a79cb62d0903946ad10c83e63dc75f67614c159c0dbf4d184"
+   },
+   "escapes": {
+    "value": "f1c46a8038d8cfef6396023b9c3b334088853572d251106ef95b6419447e638d"
+   },
+   "float": {
+    "value": "03c76d47c407b24353b3121bd96490373bd6c5de05f6b3d32bd420c4810f1160"
+   },
+   "infinity": {
+    "value": "fdad2f29068ebb0c933499d47bc072d31bcae62158b7956b6f51a3f7d5ca5a37"
+   },
+   "key_order": {
+    "value": "b9b0fe537823592af4e2f5a60c4348c64dbc3a7b81d2fe7c1810f7823580e83c"
+   },
+   "large_float": {
+    "value": "de44be041f263cc89d5f38a42b7e6fd5a6c117d6b437aa86be5cd4cf0f6a9afa"
+   },
+   "large_int": {
+    "value": "676074816d7a67904c85f75652f578c7c3f73895ffeaf1a87106db10a9c320af"
+   },
+   "list_of_mixed": {
+    "value": "c12e74841076fdd1865f824cbcdc0a7fc065d842c0f4dbecddfac76a2bfc6458"
+   },
+   "lone_surrogate_high": {
+    "value": "b16af5d32e117e1e4a4132716a6dfb0621bb990d1bfcce97a9df73774d0984f3"
+   },
+   "lone_surrogate_low": {
+    "value": "5f8738c3267b74485fe0731eb85f658fdc6d83d7321fd02befbba2e890dea850"
+   },
+   "lone_surrogates_nested": {
+    "value": "98e2bacc71debb40b1a130099cb0203d49034c3295ee9efc91a5a1a24cf585b7"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "3f3ea8a1afc0f5a6ce7ace3152abfdaa52ea3726c4f66e728790f42cbc005901"
+   },
+   "nan_nested": {
+    "value": "5aa0e11b294d8a099174eda4cb49b8263256d8b63aa103c0619581a819e06e53"
+   },
+   "negative_zero": {
+    "value": "8c64e3f449e2b457b1c47e9e2864d25e03e9f4bd6cd0883819d67b45c584a73d"
+   },
+   "non_ascii": {
+    "value": "2529d69b28e08dffcdbfb0f7f3036f18ae549c26f3ca135716e8ff83cd09fae0"
+   },
+   "null": {
+    "value": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed"
+   },
+   "true": {
+    "value": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+   },
+   "zero": {
+    "value": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+   }
+  }
+ },
+ "inputs": {
+  "ascii_nested": "{'b': 1, 'a': [1, 2, {'d': None, 'c': True}], 'e': {'g': [], 'f': {}}}",
+  "deep": "{'z': {'y': {'x': [[], {}, [{'w': ''}], [[[]]]]}}}",
+  "empty_list": "[]",
+  "empty_object": "{}",
+  "empty_string": "''",
+  "escapes": "{'s': 'tab\\tnl\\nnul\\x00quote\"bs\\\\ sep\\u2028\\u2029 del\\x7f'}",
+  "float": "1.5",
+  "infinity": "inf",
+  "key_order": "{'b': 1, 'B': 2, '\u00e1': 3, 'a': 4, '_': 5, '10': 6, '9': 7}",
+  "large_float": "1e+300",
+  "large_int": "1180591620717411303424",
+  "list_of_mixed": "[None, 1, 'one', 1.25, [], {}, False]",
+  "lone_surrogate_high": "'\\ud800'",
+  "lone_surrogate_low": "'\\udc00'",
+  "lone_surrogates_nested": "{'a': ['ok', '\\ud800'], 'b': {'\\udc00key': 'x\\udc00y'}}",
+  "mixed_key_types": "{1: 'int key', '1': 'str key'}",
+  "nan": "nan",
+  "nan_nested": "{'v': [nan, -inf]}",
+  "negative_zero": "-0.0",
+  "non_ascii": "{'\u043a\u043b\u044e\u0447': '\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435', 'emoji': '\ud83d\ude00 \ud834\udd1e', '\u00e9': ['\u00fc', '\u00df'], 'cjk': '\u6f22\u5b57'}",
+  "null": "None",
+  "true": "True",
+  "zero": "0"
+ },
+ "schemes": {
+  "artifact_identity.change_lineage_key": {
+   "''|'nul\\x00'": {
+    "cause": null,
+    "error": "ValueError: repo_key must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "''|'src/a.py'": {
+    "cause": null,
+    "error": "ValueError: repo_key must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "''|'x\\udc00.py'": {
+    "cause": null,
+    "error": "ValueError: repo_key must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "''|'\u6f22\u5b57.py'": {
+    "cause": null,
+    "error": "ValueError: repo_key must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'\\ud800'|'nul\\x00'": {
+    "cause": null,
+    "error": "ValueError: file_path must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'\\ud800'|'src/a.py'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'\\ud800'|'x\\udc00.py'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'\\ud800'|'\u6f22\u5b57.py'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'nul\\x00'": {
+    "cause": null,
+    "error": "ValueError: file_path must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'src/a.py'": {
+    "value": "change-key:sha256:98acc4b500e12b89889338071d3c002a5b59f710e045103ec546fe7d7823efd1"
+   },
+   "'agent-tooling'|'x\\udc00.py'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 15: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'\u6f22\u5b57.py'": {
+    "value": "change-key:sha256:553e0372b36c72658e5d8d31d231b60aa4888621c98e9926870203ab0a75c229"
+   },
+   "'r\u00e9po'|'nul\\x00'": {
+    "cause": null,
+    "error": "ValueError: file_path must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'src/a.py'": {
+    "value": "change-key:sha256:eb47eb19af0cd08d48d17da1c18f8cfd68f701afa3ca663e77fcb8dfe580551a"
+   },
+   "'r\u00e9po'|'x\\udc00.py'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 6: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'\u6f22\u5b57.py'": {
+    "value": "change-key:sha256:3a05ed9d5fc6123d545636d69f13afbdd16e51b4efe094afc2b551776eacae34"
+   }
+  },
+  "artifact_identity.change_occurrence_id": {
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'src/a.py'|''": {
+    "cause": null,
+    "error": "ValueError: blob_sha must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'src/a.py'|'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'": {
+    "value": "change:sha256:edc8528f614fe3f887e3231c9eae091a35a9d3aea2f758eda04e9ba3da03db62"
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'src/a.py'|None": {
+    "value": "change:sha256:37df9c9648df1437fad59ca3720604f565355d36e25b9b72a04a5e307a36362b"
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'x\\udc00.py'|''": {
+    "cause": null,
+    "error": "ValueError: blob_sha must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'x\\udc00.py'|'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 56: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'x\\udc00.py'|None": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 56: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'\u6f22\u5b57.py'|''": {
+    "cause": null,
+    "error": "ValueError: blob_sha must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'\u6f22\u5b57.py'|'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'": {
+    "value": "change:sha256:4a79f748b5d24d2d9086808cc92bf41b743d19312045299f0f7ac9fefc20bfc0"
+   },
+   "'agent-tooling'|'cccccccccccccccccccccccccccccccccccccccc'|'\u6f22\u5b57.py'|None": {
+    "value": "change:sha256:d9a79a552560d67f5211af34234ba55fe8a40d6793c4795b2f7d8ea3fca7c6b1"
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'src/a.py'|''": {
+    "cause": null,
+    "error": "ValueError: blob_sha must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'src/a.py'|'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'": {
+    "value": "change:sha256:2a744a95413ddb995af4c46ff46b0902796da026c24133fae3ca78d36243ed32"
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'src/a.py'|None": {
+    "value": "change:sha256:fefeaf09cd343e4bbd0c396c9185bb12071854d70f9be85b192a83b6699a7a34"
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'x\\udc00.py'|''": {
+    "cause": null,
+    "error": "ValueError: blob_sha must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'x\\udc00.py'|'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 47: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'x\\udc00.py'|None": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 47: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'\u6f22\u5b57.py'|''": {
+    "cause": null,
+    "error": "ValueError: blob_sha must be a non-empty NUL-free string",
+    "suppress_context": false
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'\u6f22\u5b57.py'|'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'": {
+    "value": "change:sha256:6d1729bb427887896f70d973e459b57e636796e88f58e4723f59b356294396a4"
+   },
+   "'r\u00e9po'|'cccccccccccccccccccccccccccccccccccccccc'|'\u6f22\u5b57.py'|None": {
+    "value": "change:sha256:c09176b0233c7fbde301e9bbf3cb82813dd82d8c9f8fe693d2d2a2a9d2ebc5db"
+   }
+  },
+  "behavior_model.digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "nan_nested": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "code_references.models.canonical_digest['']": {
+   "ascii_nested": {
+    "value": ":sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": ":sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": ":sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": ":sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": ":sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": ":sha256:7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": ":sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": ":sha256:d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": ":sha256:9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": ":sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": ":sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": ":sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": ":sha256:8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": ":sha256:353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": ":sha256:c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": ":sha256:d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": ":sha256:505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": ":sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": ":sha256:f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": ":sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": ":sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": ":sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "code_references.models.canonical_digest['artifact:x']": {
+   "ascii_nested": {
+    "value": "artifact:x:sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "artifact:x:sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "artifact:x:sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "artifact:x:sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "artifact:x:sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "artifact:x:sha256:7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "artifact:x:sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "artifact:x:sha256:d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "artifact:x:sha256:9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "artifact:x:sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "artifact:x:sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "artifact:x:sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "artifact:x:sha256:8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "artifact:x:sha256:353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "artifact:x:sha256:c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "artifact:x:sha256:d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "artifact:x:sha256:505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "artifact:x:sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "artifact:x:sha256:f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "artifact:x:sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "artifact:x:sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "artifact:x:sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "code_references.models.canonical_digest['reference']": {
+   "ascii_nested": {
+    "value": "reference:sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "reference:sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "reference:sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "reference:sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "reference:sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "reference:sha256:7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "reference:sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "reference:sha256:d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "reference:sha256:9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "reference:sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "reference:sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "reference:sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "reference:sha256:8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "reference:sha256:353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "reference:sha256:c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "reference:sha256:d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "reference:sha256:505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "reference:sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "reference:sha256:f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "reference:sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "reference:sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "reference:sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "deskdoc: document_coordinates._chunk_id": {
+   "('agent-tooling', 'docs/README.md', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0, 512)": {
+    "value": "deskdoc:a9994d6643fae8d05dbc98680a295be8354c4d98994ececd8cd9b593da45f084"
+   },
+   "('k', '', '', 0, 0)": {
+    "value": "deskdoc:e6a35f80a16f9e58a79310196a27b3d5209d5c20e4ca8ad197ad1b0f24eb9944"
+   },
+   "('r\u00e9po', 'docs/\u6f22\u5b57 file.md', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 4096, 1)": {
+    "value": "deskdoc:2371a63b5224043525403dbd5e8122f4d6a349253177da4ca6bf35d2fc08e281"
+   },
+   "('r\u00e9po', 'x\\udc00.md', 'cccccccccccccccccccccccccccccccccccccccc', 7, 9)": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 6: surrogates not allowed",
+    "suppress_context": false
+   }
+  },
+  "deskdoc: retrieval._chunk_id": {
+   "('agent-tooling', 'docs/README.md', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0, 512)": {
+    "value": "deskdoc:a9994d6643fae8d05dbc98680a295be8354c4d98994ececd8cd9b593da45f084"
+   },
+   "('k', '', '', 0, 0)": {
+    "value": "deskdoc:e6a35f80a16f9e58a79310196a27b3d5209d5c20e4ca8ad197ad1b0f24eb9944"
+   },
+   "('r\u00e9po', 'docs/\u6f22\u5b57 file.md', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 4096, 1)": {
+    "value": "deskdoc:2371a63b5224043525403dbd5e8122f4d6a349253177da4ca6bf35d2fc08e281"
+   },
+   "('r\u00e9po', 'x\\udc00.md', 'cccccccccccccccccccccccccccccccccccccccc', 7, 9)": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 6: surrogates not allowed",
+    "suppress_context": false
+   }
+  },
+  "observations.digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "nan_nested": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "review_ledger.canonical_digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "nan_nested": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "verification_finding.finding_digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "nan_nested": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  }
+ },
+ "sorted_json_sites": {
+  "commit_rationale.RationaleCatalog.snapshot (:689 :693 :695)": {
+   "ascii_nested": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "c902eb80818394088c715cfeded5061b8bcc0761b00e8fa1c8a2bffcc0bd6ded",
+     "reviewed-1": "b00d13d365cab60a46fbcc7353eb18178dcaa514034d10b92d6fc138fa618d6a"
+    }
+   },
+   "deep": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "da4fea35074ff3ea5da76ce8bac2c5aa39a3ee9cb1a42748337f736943344f11",
+     "reviewed-1": "77ed0359e0ab7a2c830c90f9012c144fbec8be90844293ff0cf00bd19c93704d"
+    }
+   },
+   "empty_list": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "bca3f2d7e53824f41240c224fe508c57a3a72c909257b2b8e821b93c2d35ed1d",
+     "reviewed-1": "22398c66700f41d995aae4c7e0a826a405959c5096e1513c28627ba653214e8b"
+    }
+   },
+   "empty_object": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "d7745e77bb2f6c066c2007924e0f7728092a04df3b4e50e4dcffb0546e89049d",
+     "reviewed-1": "5f554d7d51a39606eecf49ed3b09fc24e331685eb23a62bdcf69b92dd65daa44"
+    }
+   },
+   "empty_string": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "afd75ee0a1851fc34b56402dd9d53966e5ffa291a5e6448bd428c1c0d863bdcc",
+     "reviewed-1": "d412b4d3e7e8ee01fc452e8741ebe52e9285eeea253ec0744ab886ad7cc004b7"
+    }
+   },
+   "escapes": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "460e4f3c050113f5c75a04385e54f75238ec5e20b0403bfe275de696c7392cc0",
+     "reviewed-1": "39e3a91436dfb5ce97cc71f1232a2b9d640891b89b971503037e01f156550c42"
+    }
+   },
+   "float": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "693b4df9d3975bf7ae7e7f2ec5de8ce57b6eb5ef2ab90fd17616405ffe908f6c",
+     "reviewed-1": "26d8755eef662602b90d9de540f4567dabb105c0e1f3adb7514c5b29e7cce459"
+    }
+   },
+   "infinity": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "4494f49f8d896acb1195a947c7ba99d7cd42bc9e35b009d8eb7690e5b361b2b6",
+     "reviewed-1": "9f1b958c507afb635a719ada77372291fdd87aa3cd71f3f315a8acde25e47a56"
+    }
+   },
+   "key_order": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "e0a0a3b4dd22ba60a10be770be76db144383349fd94462fa7747d53e0b444819",
+     "reviewed-1": "8e49935c12f963af83b7394a9cb0ff66f8f61472803670a4e7ad214f458cf894"
+    }
+   },
+   "large_float": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "f210cbc227bea423c648c995243828cf1f23f7f6c09f8d30ff85b67ae8ed4da3",
+     "reviewed-1": "73d45f363ac82f985b09e99484057c15e51bd3b090a0f6eaf4c31326c307d187"
+    }
+   },
+   "large_int": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "78efa1d2cebe087ae9fcf9c97230acfb6e4f5255ca78b25bc2de2db4eaa10bcb",
+     "reviewed-1": "7196a1265dec0cd23e1a935180045b7284caef254a8cd7c789f4bd750209dd8c"
+    }
+   },
+   "list_of_mixed": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "1dc55c01ac6677fc6e615046b4bf4609fd908a93257d793cb8e70024892c1552",
+     "reviewed-1": "2ef8384181b67bc8529f93b74132ea180abaf58b91c607ed751c69e9b6e2f816"
+    }
+   },
+   "lone_surrogate_high": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "fa2bf825453a9f69dd5567af49eba535d886b2bda207e4f652607b0faf720386",
+     "reviewed-1": "6b96d5793fff2b449d84512125b976854cf956799cfc851d5d36816758af8796"
+    }
+   },
+   "lone_surrogate_low": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "420a235b9de906eb475f637a2958f7623868fcee5d601a695a9f6268a73e22a5",
+     "reviewed-1": "d5a942f5583345e5f25e49340118b09202d66b19314f30ac4728a71e704e76fb"
+    }
+   },
+   "lone_surrogates_nested": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "8c92f2512b4777398b394f1be3a85cecc42d6bf6a8f156b7e1b9f265fc68f5c5",
+     "reviewed-1": "dd4c97c3fb998de803c41addfb1ecb2eddcef90a7e9a6ab444283cad6d0865e2"
+    }
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "eff9a87af62f5cd188a9e5774eba3c5603621169a96f6ef16095f922d86cc92f",
+     "reviewed-1": "a7d570ba44e28a725dbe66076010632c8e6eabe557cf84d30d49e32e3484ce4f"
+    }
+   },
+   "nan_nested": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "a017464c2eca34157d3504b4c86f089bbb6d9fa7e8dee7adbfc649e7c19f23c6",
+     "reviewed-1": "22118e32c8043626666fd66459defd50674f59eb908c53d280a98d4288fa0cee"
+    }
+   },
+   "negative_zero": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "20c258c8b5a17923641abc9de1cce91e5db37f7a13b03d72fe7b4a45b7b5b5fb",
+     "reviewed-1": "26ab57fcd828da1e292a791b42bd33b0e844ef5594430745443da61c742738de"
+    }
+   },
+   "non_ascii": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "6ba369878cc9dd6540d780de332b4925bb2c3fea5be94b738fc278b748d77891",
+     "reviewed-1": "66a520ac1a0c8525c996cde60ed20211b5a8530c67a4e89286ca18b33e82095a"
+    }
+   },
+   "null": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "9e5911e429a7def7f31d85b7f034bf088b4f67d337846959645d69c25259a227",
+     "reviewed-1": "cc24856688864b4f1a7bd2fc630ad0b47540314b56ff48fcba61079b0f413f5f"
+    }
+   },
+   "true": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "7c39450d2cad85574abfbcb1ef569af72d0dc92c828114fc3c8d85a2258cdd72",
+     "reviewed-1": "e6b54315c6c4eb470cf107b305897e34a26a3fae4a99d9454dd4f4165db62db1"
+    }
+   },
+   "zero": {
+    "value": {
+     "compound:3ee7f389d734289f92daf99545f84efb8f65ae9a0b366240338b95e8264020be": "39f6460df11a48334f576a980261d4be03b0cf8d9164a3268985f4597b2e617b",
+     "reviewed-1": "52f10b602cb12e029034853bd9f3d96f4922297c37f2cf25bbac44ee21c9c37a"
+    }
+   }
+  },
+  "verification_adjacency.assemble_adjacent (:80)": {
+   "ascii_nested": {
+    "compared_digest": [
+     "86da607eb57a83c9f49069602c51e46d41caa6b9784740bde9af56fbbbe25e83"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "deep": {
+    "compared_digest": [
+     "770cd7c2892dac51b960ab72b0b61861d983dcfa7e54b383043481e9ca461a65"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "empty_list": {
+    "compared_digest": [
+     "f718009a0c2fe10cd3738acb56c73409e3ca30ac9bede0952a3866e709bf34e7"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "empty_object": {
+    "compared_digest": [
+     "bd0964adc0f46ab5c117999ed6006df71ade3f21eaeaa0d932f534056fce0166"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "empty_string": {
+    "compared_digest": [
+     "81a0999721673cf6287603ce254a4830984f16657aa334ada5e3daffe23c8291"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "escapes": {
+    "compared_digest": [
+     "f30e4b5e58e673c54c3bd4bb91a383101b31127fe773a86c460f9704f16fb1e8"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "float": {
+    "compared_digest": [
+     "a1046a727007f82bb786cc9435ff8a6cacb96753d34af18a9a2ab39d52d2591d"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "infinity": {
+    "compared_digest": [
+     "b8b261b60b8e2cdada6a74637cc565d06fac659895ad02b16b1ecf716edf2174"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "key_order": {
+    "compared_digest": [
+     "96f1f410b82dc1459ef396dc8a4f625b942b1faca2b9bb4bba1385625dc2f521"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "large_float": {
+    "compared_digest": [
+     "81f18b4b25353d28612a8dff3c39a2356755c58d3a13a586e82e299aba8fb0dd"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "large_int": {
+    "compared_digest": [
+     "9d88a8930aeee5116e4ff4944d60d836f571bd948fbd7d56103f578d7311da30"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "list_of_mixed": {
+    "compared_digest": [
+     "2f40a2769c909bb0e36b3ccb4ddf73e1454fc201fd5bbaa5cec8580de67c400b"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "lone_surrogate_high": {
+    "compared_digest": [
+     "e5ba08b69bafe568b0a3bbf3ad46c4635facc31d7e6314dfe32149d21aab385b"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "lone_surrogate_low": {
+    "compared_digest": [
+     "e7128dbe9e434fb1d336ba8e2fac2316d5aeefd83a13e9a9e090e27f3373a7aa"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "lone_surrogates_nested": {
+    "compared_digest": [
+     "4c007ce243eb42e2bc72dffa5378e555a2e19d2e506f2e852bfc7165d0f246f3"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "mixed_key_types": {
+    "compared_digest": [],
+    "result": {
+     "cause": null,
+     "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+     "suppress_context": false
+    }
+   },
+   "nan": {
+    "compared_digest": [
+     "68a1095845938ddbe8fbd577b74ada2155c6f6f516c0eaf0e0157b342a163706"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "nan_nested": {
+    "compared_digest": [
+     "59ea8d0b08470a44692bd4892a87edaa44cb64eadf7db3a9db4e12c7d705cf2f"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "negative_zero": {
+    "compared_digest": [
+     "e9ed7171dcb2015402a1195e38a37cc3aef82b55d3c12f42df2962c094159aad"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "non_ascii": {
+    "compared_digest": [
+     "e062b3a43bd81994fbad34afc5e79af30a4d259bb8ab4d550edc552a911e768f"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "null": {
+    "compared_digest": [
+     "a02607ad1479b535eca7a91bfc114eb8be9b4f0138ed9b18114ed38aeb9a1d87"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "true": {
+    "compared_digest": [
+     "81d5068955dbf2d8a6413ebf72e05d071b45db24c3f7a62fd5197f6b49fe487a"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   },
+   "zero": {
+    "compared_digest": [
+     "edca54f941d5d002dfdcc8e4d1b13fddd1884a6edfd9a1586e891b4cb90e2f1a"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: comparison_dimensions_mismatch",
+     "suppress_context": false
+    }
+   }
+  },
+  "verification_correctness.correctness (:29)": {
+   "ascii_nested": {
+    "compared_digest": [
+     "86da607eb57a83c9f49069602c51e46d41caa6b9784740bde9af56fbbbe25e83"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "deep": {
+    "compared_digest": [
+     "770cd7c2892dac51b960ab72b0b61861d983dcfa7e54b383043481e9ca461a65"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "empty_list": {
+    "compared_digest": [
+     "f718009a0c2fe10cd3738acb56c73409e3ca30ac9bede0952a3866e709bf34e7"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "empty_object": {
+    "compared_digest": [
+     "bd0964adc0f46ab5c117999ed6006df71ade3f21eaeaa0d932f534056fce0166"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "empty_string": {
+    "compared_digest": [
+     "81a0999721673cf6287603ce254a4830984f16657aa334ada5e3daffe23c8291"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "escapes": {
+    "compared_digest": [
+     "f30e4b5e58e673c54c3bd4bb91a383101b31127fe773a86c460f9704f16fb1e8"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "float": {
+    "compared_digest": [
+     "a1046a727007f82bb786cc9435ff8a6cacb96753d34af18a9a2ab39d52d2591d"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "infinity": {
+    "compared_digest": [
+     "b8b261b60b8e2cdada6a74637cc565d06fac659895ad02b16b1ecf716edf2174"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "key_order": {
+    "compared_digest": [
+     "96f1f410b82dc1459ef396dc8a4f625b942b1faca2b9bb4bba1385625dc2f521"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "large_float": {
+    "compared_digest": [
+     "81f18b4b25353d28612a8dff3c39a2356755c58d3a13a586e82e299aba8fb0dd"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "large_int": {
+    "compared_digest": [
+     "9d88a8930aeee5116e4ff4944d60d836f571bd948fbd7d56103f578d7311da30"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "list_of_mixed": {
+    "compared_digest": [
+     "2f40a2769c909bb0e36b3ccb4ddf73e1454fc201fd5bbaa5cec8580de67c400b"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "lone_surrogate_high": {
+    "compared_digest": [
+     "e5ba08b69bafe568b0a3bbf3ad46c4635facc31d7e6314dfe32149d21aab385b"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "lone_surrogate_low": {
+    "compared_digest": [
+     "e7128dbe9e434fb1d336ba8e2fac2316d5aeefd83a13e9a9e090e27f3373a7aa"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "lone_surrogates_nested": {
+    "compared_digest": [
+     "4c007ce243eb42e2bc72dffa5378e555a2e19d2e506f2e852bfc7165d0f246f3"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "mixed_key_types": {
+    "compared_digest": [],
+    "result": {
+     "cause": null,
+     "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+     "suppress_context": false
+    }
+   },
+   "nan": {
+    "compared_digest": [
+     "68a1095845938ddbe8fbd577b74ada2155c6f6f516c0eaf0e0157b342a163706"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "nan_nested": {
+    "compared_digest": [
+     "59ea8d0b08470a44692bd4892a87edaa44cb64eadf7db3a9db4e12c7d705cf2f"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "negative_zero": {
+    "compared_digest": [
+     "e9ed7171dcb2015402a1195e38a37cc3aef82b55d3c12f42df2962c094159aad"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "non_ascii": {
+    "compared_digest": [
+     "e062b3a43bd81994fbad34afc5e79af30a4d259bb8ab4d550edc552a911e768f"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "null": {
+    "compared_digest": [
+     "a02607ad1479b535eca7a91bfc114eb8be9b4f0138ed9b18114ed38aeb9a1d87"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "true": {
+    "compared_digest": [
+     "81d5068955dbf2d8a6413ebf72e05d071b45db24c3f7a62fd5197f6b49fe487a"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   },
+   "zero": {
+    "compared_digest": [
+     "edca54f941d5d002dfdcc8e4d1b13fddd1884a6edfd9a1586e891b4cb90e2f1a"
+    ],
+    "result": {
+     "cause": null,
+     "error": "ValueError: correctness_profile_mismatch",
+     "suppress_context": false
+    }
+   }
+  },
+  "verification_packet.validate_join (:63)": {
+   "ascii_nested": {
+    "compared_digest": [
+     "e7ad025d0bf1631586cf02e3cf43e72c77ce96afe5c388680c08f8519a0eda7c"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "deep": {
+    "compared_digest": [
+     "2c3be3e2a4d8b21c18201cba0e51f4532aea226966f1e58a6d524971a9a7dcaf"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "empty_list": {
+    "compared_digest": [
+     "b0c20b0c65ed8978588bc719cd0b1d1134ca3111b421c2ba16046f21cc5fb197"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "empty_object": {
+    "compared_digest": [
+     "19a9bbd336d3341e8549c2b203d7dac5391c73699f2c79f8228666eaed2f01ce"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "empty_string": {
+    "compared_digest": [
+     "cddab5e6803744887eeff39f44b50bd8e773f0acdd75698310b8d27c423568df"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "escapes": {
+    "compared_digest": [
+     "36efe76a7e80d4d719aee7fe834f8b334a17b3935cbcf23ef34bc8b703cf6437"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "float": {
+    "compared_digest": [
+     "c21c4d6f6b78253d4fb342d61d3051baa44127905d9712cf61a2488aca11c7ca"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "infinity": {
+    "compared_digest": [
+     "9e968b3c8041b3fe9657f367d80a2e3c8efdd2e558b6dc090a74cd9389fec7f5"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "key_order": {
+    "compared_digest": [
+     "a2d5420d605a7e33a7bfa87ee0e4503d57282bc5b810c440b693b2ce9af0578a"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "large_float": {
+    "compared_digest": [
+     "94f68cd5b1845b0a129324e2eb5137230517dd3dcbad0aacca8d93d2a918dffc"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "large_int": {
+    "compared_digest": [
+     "408a19f50af50fca5ef85b8852d28260607b7344ea6fc749a239e795df031e43"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "list_of_mixed": {
+    "compared_digest": [
+     "5e028db27cf31c7ae8aa06f12b742789b14f45d464e813c68225afe0ea67ecbf"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "lone_surrogate_high": {
+    "compared_digest": [
+     "b2a6f9772eb3b9dbd1021389f90a3b038f4ec121e2c084dd11ffa573450e9c5b"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "lone_surrogate_low": {
+    "compared_digest": [
+     "b8c5f89f5a3ed950243d4e6b46520858afa55e69c355f438aa2c097327eb2b28"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "lone_surrogates_nested": {
+    "compared_digest": [
+     "8a77eed12ebb2328449af7630500610bdc18cc8baa11d0c9ad4d9aeb1de74129"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "mixed_key_types": {
+    "compared_digest": [],
+    "result": {
+     "cause": null,
+     "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+     "suppress_context": false
+    }
+   },
+   "nan": {
+    "compared_digest": [
+     "0efd7160b49ee74fe01d8f1de8040bd2990f05ea90b6cd86f0fd44444beb3184"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "nan_nested": {
+    "compared_digest": [
+     "ef9b38b950165f9706e67f1b44b042b3efe21252318e87b952834545a5ee27c8"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "negative_zero": {
+    "compared_digest": [
+     "821469885cc1d3082d6a6a4111adef3ad1d17e3045c2776869a50c0227106290"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "non_ascii": {
+    "compared_digest": [
+     "6ae24b22c75358587a3207c50160257a422a5390bd3ef678694e0daf6a47c952"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "null": {
+    "compared_digest": [
+     "51dcf2021415da92b0d54ad9ff48f7f57754c417cee782ed14cc0c0c94531ebe"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "true": {
+    "compared_digest": [
+     "297bd4138e222f22d1314d1b2278f14e54f81034fabd75d20be10cdcabfc8d10"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   },
+   "zero": {
+    "compared_digest": [
+     "0456d34e83bb796eeb6735b30e22ddda5497f64125de0829ceee8547a2e714ad"
+    ],
+    "result": {
+     "value": "def graph_query(): pass\n"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,6687 @@
+{
+ "aux_templates": {
+  "local_knowledge_catalog": {
+   "platforms": {
+    "product": {
+     "sources": {
+      "product": {
+       "revision": "@REV_PRODUCT@"
+      }
+     }
+    }
+   },
+   "repositories": {
+    "product": {
+     "path": "@REPO_PRODUCT@"
+    }
+   },
+   "scip_indexes": {}
+  },
+  "portable_catalog": {
+   "repositories": {
+    "product": {
+     "artifacts": {
+      "README.md": {
+       "owner": "fixture",
+       "status": "maintained"
+      }
+     },
+     "capabilities": {},
+     "corpus_scope": "product",
+     "default_branch_ref": "refs/heads/main",
+     "path": "@REPO_PRODUCT@",
+     "ref": "@REV_PRODUCT@",
+     "tenant_ids": [
+      "tenant-a"
+     ]
+    }
+   },
+   "schema_version": "ops.knowledge-config.v1"
+  },
+  "portable_corpus": {
+   "chunks": [],
+   "schema_version": "agent-tooling.document-corpus.v1",
+   "vectors": []
+  },
+  "portable_runtime": {
+   "catalog_path": "@PORTABLE_CATALOG@",
+   "documents": {
+    "path": "@PORTABLE_CORPUS@",
+    "repositories": {
+     "product": "@REPO_PRODUCT@"
+    },
+    "sha256": "@PORTABLE_CORPUS_SHA256@"
+   },
+   "embedding": {},
+   "lifecycle_path": "@LIFECYCLE@",
+   "schema_version": "agent-tooling.knowledge-runtime.v1",
+   "tenant_id": "tenant-a"
+  }
+ },
+ "captured_by": "python tests/boundary/t1_harness.py capture",
+ "configs": {
+  "core-explicit": {
+   "template": {
+    "delivery_root": "@DELIVERY@",
+    "enabled_tools": [
+     "knowledge.platform",
+     "knowledge.symbol",
+     "tooling.identity",
+     "serena.inspect",
+     "navigation.imports",
+     "navigation.dependencies",
+     "delivery.read",
+     "navigation.workspace",
+     "navigation.source",
+     "navigation.snapshot",
+     "navigation.paths",
+     "navigation.search",
+     "navigation.semantic",
+     "navigation.batch",
+     "serena.overview",
+     "serena.find",
+     "navigation.manifest",
+     "navigation.search_page"
+    ],
+    "local_knowledge_config": "@LOCAL_KNOWLEDGE@",
+    "navigation_registry_path": "@SEARCH@",
+    "repos": {
+     "product": {
+      "path": "@REPO_PRODUCT@",
+      "revision": "@REV_PRODUCT@"
+     }
+    },
+    "schema_version": "ops.agent-tooling.v1",
+    "snapshot_registry": "@SNAPSHOTS@"
+   },
+   "tools": [
+    {
+     "description": "Inspect explicitly configured platform source pins and selected committed artifacts. Checkout and installed identities are separate from runtime deployment.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.platform"
+    },
+    {
+     "description": "Resolve a pinned path and line through locally published SCIP indexes. Static candidates are not executed calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path",
+       "line"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.symbol"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the serving Git source build revision and raw startup configuration digest. Configured navigation/evidence revisions are separate; executable artifact integrity is not attested. Unversioned or modified source reports unknown.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "tooling.identity"
+    },
+    {
+     "description": "Inspect one symbol and bounded inbound references with live Serena. When references are requested for one resolved symbol, also reports separate bounded textual candidates; these may be comments, strings, declarations, or unrelated names and are never references or proven callers. Paths and exact revisions are operator-configured. Returns import context and exact knowledge.symbol continuations; follow these instead of guessing dependency paths. Static references do not prove runtime calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "include_body": {
+        "type": "boolean"
+       },
+       "include_imports": {
+        "type": "boolean"
+       },
+       "include_info": {
+        "type": "boolean"
+       },
+       "include_references": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact",
+         "overview"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.inspect"
+    },
+    {
+     "description": "Read bounded committed Python/TypeScript imports and re-exports with exact SCIP declaration lookup continuations. Useful before guessing dependency paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "dependency_revisions": {
+        "additionalProperties": {
+         "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+         "type": "string"
+        },
+        "maxProperties": 16,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.imports"
+    },
+    {
+     "description": "Identify ancestor source dependency manifests and selected installed Serena provider packages. Declared, installed and deployed identities remain separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.dependencies"
+    },
+    {
+     "description": "Read one bounded fragment of an immutable large tool response. Reassemble all text pages and verify SHA-256 before treating the original JSON as complete evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 16384,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "token": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "token"
+      ],
+      "type": "object"
+     },
+     "name": "delivery.read"
+    },
+    {
+     "description": "Observe current worktrees and potential file overlaps against the last published default-branch snapshot. Reports exact commits and refresh time. Overlap is not a proven conflict; uncommitted work is not accepted evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "description": "Optional relative file or directory focus to keep comparisons small",
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.workspace"
+    },
+    {
+     "description": "Read bounded committed source at an explicit full revision, including available in-flight branch commits. Reports the selected snapshot revision/identity separately from a timestamped active-profile observation. Use when an index is stale or to compare a workspace head.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line_count": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "start_line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.source"
+    },
+    {
+     "description": "Capture or read a frozen review source and analysis selection. Source defaults may advance independently; use snapshot_id for consistent subsequent navigation. Does not freeze runtime behavior.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "mode": {
+        "enum": [
+         "capture",
+         "read"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.snapshot"
+    },
+    {
+     "description": "Find bounded regular-file paths in an exact committed tree, never the dirty checkout. Use before guessing a symbol file. A glob searches repository-relative paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "pattern": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.paths"
+    },
+    {
+     "description": "Search exact committed UTF-8 source using literal text or a line glob. Reports bounded citations, exclusions and truncation; matches are not semantic references.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "description": "Optional repository-relative fnmatch glob; omitted means all regular committed files, subject to search budgets. *.py includes root and nested Python files; **/*.py requires a directory component.",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search"
+    },
+    {
+     "description": "Rank indexed committed source spans by similarity to a concept query (where is the code that does X). A separately labelled ranking layer: it returns what it found with exact citations and navigation.source continuations, never an absence verdict. Use navigation.search for exhaustive literal coverage. Requires a semantic index published for the selected revision.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "kinds": {
+        "items": {
+         "enum": [
+          "function",
+          "class",
+          "method",
+          "window"
+         ],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "type": "array"
+       },
+       "limit": {
+        "default": 8,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.semantic"
+    },
+    {
+     "description": "Run up to eight independent bounded navigation reads against one frozen snapshot. Per-item failures are explicit. Does not execute tests or invoke Serena; use it for source/discovery/compiler/dependency reads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "requests": {
+        "items": {
+         "additionalProperties": false,
+         "properties": {
+          "arguments": {
+           "type": "object"
+          },
+          "name": {
+           "enum": [
+            "navigation.paths",
+            "navigation.search",
+            "navigation.source",
+            "navigation.imports",
+            "navigation.dependencies",
+            "knowledge.platform",
+            "knowledge.symbol"
+           ],
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "arguments"
+         ],
+         "type": "object"
+        },
+        "maxItems": 8,
+        "minItems": 1,
+        "type": "array"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "snapshot_id",
+       "requests"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.batch"
+    },
+    {
+     "description": "List symbols in a committed file without needing a known symbol name. Provider metadata is not source-body delivery; inspect a chosen symbol for exact coordinates.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "serena.overview"
+    },
+    {
+     "description": "Find bounded exact-name symbol candidates (not fuzzy or semantic search) across the selected repository, optionally within a file. Every returned location is checked against the selected commit. Ambiguity and no results are explicit.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "include_body": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.find"
+    },
+    {
+     "description": "Inventory every tracked artifact at an exact commit. Paged entries have stable identities and explicit classification/eligibility; inventory completeness is not semantic or runtime coverage.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_manifest_id": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.manifest"
+    },
+    {
+     "description": "Resume bounded text search over a revision-pinned manifest. Follow continuation_token with unchanged arguments until traversal completes; inspect coverage and exclusions before claiming no matches. Requires an operator-configured persistent navigation registry.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "continuation_token": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search_page"
+    }
+   ]
+  },
+  "core-implicit": {
+   "template": {
+    "delivery_root": "@DELIVERY@",
+    "local_knowledge_config": "@LOCAL_KNOWLEDGE@",
+    "navigation_registry_path": "@SEARCH@",
+    "repos": {
+     "product": {
+      "path": "@REPO_PRODUCT@",
+      "revision": "@REV_PRODUCT@"
+     }
+    },
+    "schema_version": "ops.agent-tooling.v1",
+    "snapshot_registry": "@SNAPSHOTS@"
+   },
+   "tools": [
+    {
+     "description": "Inspect explicitly configured platform source pins and selected committed artifacts. Checkout and installed identities are separate from runtime deployment.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.platform"
+    },
+    {
+     "description": "Resolve a pinned path and line through locally published SCIP indexes. Static candidates are not executed calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path",
+       "line"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.symbol"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the serving Git source build revision and raw startup configuration digest. Configured navigation/evidence revisions are separate; executable artifact integrity is not attested. Unversioned or modified source reports unknown.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "tooling.identity"
+    },
+    {
+     "description": "Inspect one symbol and bounded inbound references with live Serena. When references are requested for one resolved symbol, also reports separate bounded textual candidates; these may be comments, strings, declarations, or unrelated names and are never references or proven callers. Paths and exact revisions are operator-configured. Returns import context and exact knowledge.symbol continuations; follow these instead of guessing dependency paths. Static references do not prove runtime calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "include_body": {
+        "type": "boolean"
+       },
+       "include_imports": {
+        "type": "boolean"
+       },
+       "include_info": {
+        "type": "boolean"
+       },
+       "include_references": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact",
+         "overview"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.inspect"
+    },
+    {
+     "description": "Read revision-pinned OPS worker-thread execution evidence. Use summary for timings, report for scope, collector for delivery proof. Does not run workloads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "evidence_id": {
+        "enum": [],
+        "type": "string"
+       }
+      },
+      "required": [
+       "evidence_id"
+      ],
+      "type": "object"
+     },
+     "name": "lifecycle.evidence"
+    },
+    {
+     "description": "Read bounded committed Python/TypeScript imports and re-exports with exact SCIP declaration lookup continuations. Useful before guessing dependency paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "dependency_revisions": {
+        "additionalProperties": {
+         "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+         "type": "string"
+        },
+        "maxProperties": 16,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.imports"
+    },
+    {
+     "description": "Identify ancestor source dependency manifests and selected installed Serena provider packages. Declared, installed and deployed identities remain separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.dependencies"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the skill for bounded claim/evidence verification across repositories, including slice selection, context budgets and finding handoffs.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "verification.guide"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan or read registered product evidence slices, including legacy ATS fixtures. Read exact sources and observations before asserting behavior; identity checks do not establish semantic correctness.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "default": 12000,
+        "description": "Serialized byte ceiling: 4000..100000; omit for 12000. Not a token count.",
+        "type": "integer"
+       },
+       "evidence_ids": {
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 20,
+        "type": "array"
+       },
+       "expected_packet_identity": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "mode": {
+        "default": "plan",
+        "enum": [
+         "plan",
+         "read"
+        ],
+        "type": "string"
+       },
+       "slice_id": {
+        "enum": [],
+        "type": "string"
+       }
+      },
+      "required": [
+       "slice_id"
+      ],
+      "type": "object"
+     },
+     "name": "verification.packet"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Get the finding v5 schema (mode=schema), or validate a finding against registered packet identities, evidence references, atomic claim shape, observation compatibility and declared delivery/gap classifications (mode=validate). Does not prove semantic correctness or model receipt. Read-only; no memory promotion.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_finding_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "finding": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "source_profile": {
+        "enum": [
+         "active",
+         "retained-evidence"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.finding"
+    },
+    {
+     "description": "Read one bounded fragment of an immutable large tool response. Reassemble all text pages and verify SHA-256 before treating the original JSON as complete evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 16384,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "token": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "token"
+      ],
+      "type": "object"
+     },
+     "name": "delivery.read"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan registered product questions with configured source identity, supplied references, bounded continuations and recovery reserve. Metadata is not evidence delivery.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "maximum": 12000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "questions": {
+        "items": {
+         "enum": [],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "supplied": {
+        "items": {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "oneOf": [
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "packet"
+            },
+            "packet_identity": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "slice_id": {
+             "minLength": 1,
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "slice_id",
+            "id",
+            "packet_identity"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "observation"
+            }
+           },
+           "required": [
+            "kind",
+            "id"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "evidence_id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "lifecycle"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "evidence_id",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "source"
+            },
+            "path": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "repo_key": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "repo_key",
+            "path",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          }
+         ]
+        },
+        "maxItems": 60,
+        "type": "array"
+       }
+      },
+      "required": [
+       "questions"
+      ],
+      "type": "object"
+     },
+     "name": "verification.plan"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Check complete JSON artifacts in supplied final text against validation receipts from this adapter process. Rejects omitted, changed, unvalidated or invalid findings. Does not prove subsequent publication or prose semantics.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_digests": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 20,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "final_text": {
+        "maxLength": 200000,
+        "type": "string"
+       }
+      },
+      "required": [
+       "final_text",
+       "expected_digests"
+      ],
+      "type": "object"
+     },
+     "name": "verification.handoff"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read immutable observations: list(subject?,after?) returns metadata; read(id,budget?) requires ONE id; assess(ids,expected_scope) requires exact sources and binding_sha256. No behavioral verdict or authority. Imports are operator CLI only.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "description": "Modes: list(subject?,after?,limit?,budget?); read(id,budget?); assess(ids,expected_scope). Server checks mode-specific requirements.",
+      "properties": {
+       "after": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "budget": {
+        "description": "Serialized response byte ceiling, 4000..100000. For read, use original_read_bytes from list metadata or the split_required next_call.",
+        "maximum": 100000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "expected_scope": {
+        "additionalProperties": false,
+        "description": "Exact sources and binding identity to assess; not a subject filter.",
+        "properties": {
+         "binding_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+         },
+         "sources": {
+          "additionalProperties": {
+           "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$",
+           "type": "string"
+          },
+          "minProperties": 1,
+          "type": "object"
+         }
+        },
+        "required": [
+         "sources",
+         "binding_sha256"
+        ],
+        "type": "object"
+       },
+       "id": {
+        "description": "One observation ID; required for read.",
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "ids": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 30,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "list",
+         "read",
+         "assess"
+        ],
+        "type": "string"
+       },
+       "subject": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.observations"
+    },
+    {
+     "description": "Observe current worktrees and potential file overlaps against the last published default-branch snapshot. Reports exact commits and refresh time. Overlap is not a proven conflict; uncommitted work is not accepted evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "description": "Optional relative file or directory focus to keep comparisons small",
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.workspace"
+    },
+    {
+     "description": "Read bounded committed source at an explicit full revision, including available in-flight branch commits. Reports the selected snapshot revision/identity separately from a timestamped active-profile observation. Use when an index is stale or to compare a workspace head.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line_count": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "start_line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.source"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read reviewed commit-body rationale at a full target revision. Exact aliases return attributed testimony; contested claims are disputed, relayed observations remain indirect, and reviewer identity is explicit. Compact mode omits excerpts; lexical candidates remain unverified. Missing means no eligible evidence in this small catalog, not no rationale. Requires an operator-configured rationale_manifest; never scans all history or establishes execution/doctrine.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "default": "full",
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "top_k": {
+        "maximum": 5,
+        "minimum": 1,
+        "type": "integer"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.rationale"
+    },
+    {
+     "description": "Capture or read a frozen review source and analysis selection. Source defaults may advance independently; use snapshot_id for consistent subsequent navigation. Does not freeze runtime behavior.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "mode": {
+        "enum": [
+         "capture",
+         "read"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.snapshot"
+    },
+    {
+     "description": "Find bounded regular-file paths in an exact committed tree, never the dirty checkout. Use before guessing a symbol file. A glob searches repository-relative paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "pattern": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.paths"
+    },
+    {
+     "description": "Search exact committed UTF-8 source using literal text or a line glob. Reports bounded citations, exclusions and truncation; matches are not semantic references.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "description": "Optional repository-relative fnmatch glob; omitted means all regular committed files, subject to search budgets. *.py includes root and nested Python files; **/*.py requires a directory component.",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search"
+    },
+    {
+     "description": "Rank indexed committed source spans by similarity to a concept query (where is the code that does X). A separately labelled ranking layer: it returns what it found with exact citations and navigation.source continuations, never an absence verdict. Use navigation.search for exhaustive literal coverage. Requires a semantic index published for the selected revision.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "kinds": {
+        "items": {
+         "enum": [
+          "function",
+          "class",
+          "method",
+          "window"
+         ],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "type": "array"
+       },
+       "limit": {
+        "default": 8,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.semantic"
+    },
+    {
+     "description": "Run up to eight independent bounded navigation reads against one frozen snapshot. Per-item failures are explicit. Does not execute tests or invoke Serena; use it for source/discovery/compiler/dependency reads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "requests": {
+        "items": {
+         "additionalProperties": false,
+         "properties": {
+          "arguments": {
+           "type": "object"
+          },
+          "name": {
+           "enum": [
+            "navigation.paths",
+            "navigation.search",
+            "navigation.source",
+            "navigation.imports",
+            "navigation.dependencies",
+            "knowledge.platform",
+            "knowledge.symbol"
+           ],
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "arguments"
+         ],
+         "type": "object"
+        },
+        "maxItems": 8,
+        "minItems": 1,
+        "type": "array"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "snapshot_id",
+       "requests"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.batch"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read an operator-registered requirement contract or validate a review ledger against it. Checks unchanged obligations, approved normalization rules and exact evidence references; semantic entailment and authority are not assessed.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "contract_id": {
+        "enum": [],
+        "type": "string"
+       },
+       "ledger": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "contract",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.review"
+    },
+    {
+     "description": "List symbols in a committed file without needing a known symbol name. Provider metadata is not source-body delivery; inspect a chosen symbol for exact coordinates.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "serena.overview"
+    },
+    {
+     "description": "Find bounded exact-name symbol candidates (not fuzzy or semantic search) across the selected repository, optionally within a file. Every returned location is checked against the selected commit. Ambiguity and no results are explicit.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "include_body": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.find"
+    },
+    {
+     "description": "Inventory every tracked artifact at an exact commit. Paged entries have stable identities and explicit classification/eligibility; inventory completeness is not semantic or runtime coverage.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_manifest_id": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.manifest"
+    },
+    {
+     "description": "Resume bounded text search over a revision-pinned manifest. Follow continuation_token with unchanged arguments until traversal completes; inspect coverage and exclusions before claiming no matches. Requires an operator-configured persistent navigation registry.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "continuation_token": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search_page"
+    }
+   ]
+  },
+  "extension-rich": {
+   "template": {
+    "delivery_root": "@DELIVERY@",
+    "evidence": {
+     "worker-report": "evidence/report.md",
+     "worker-summary": "evidence/summary.json"
+    },
+    "evidence_repo": "@REPO_PRODUCT@",
+    "evidence_revision": "@REV_PRODUCT@",
+    "repos": {
+     "ats": {
+      "path": "@REPO_ATS@",
+      "revision": "@REV_ATS@"
+     },
+     "core": {
+      "path": "@REPO_CORE@",
+      "revision": "@REV_CORE@"
+     },
+     "product": {
+      "path": "@REPO_PRODUCT@",
+      "revision": "@REV_PRODUCT@"
+     }
+    },
+    "review_contracts": {
+     "contract-alpha": {
+      "specification": {}
+     },
+     "contract-beta": {
+      "specification": {}
+     }
+    },
+    "schema_version": "ops.agent-tooling.v1",
+    "snapshot_registry": "@SNAPSHOTS@"
+   },
+   "tools": [
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the serving Git source build revision and raw startup configuration digest. Configured navigation/evidence revisions are separate; executable artifact integrity is not attested. Unversioned or modified source reports unknown.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "tooling.identity"
+    },
+    {
+     "description": "Inspect one symbol and bounded inbound references with live Serena. When references are requested for one resolved symbol, also reports separate bounded textual candidates; these may be comments, strings, declarations, or unrelated names and are never references or proven callers. Paths and exact revisions are operator-configured. Returns import context and exact knowledge.symbol continuations; follow these instead of guessing dependency paths. Static references do not prove runtime calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "include_body": {
+        "type": "boolean"
+       },
+       "include_imports": {
+        "type": "boolean"
+       },
+       "include_info": {
+        "type": "boolean"
+       },
+       "include_references": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact",
+         "overview"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.inspect"
+    },
+    {
+     "description": "Read revision-pinned OPS worker-thread execution evidence. Use summary for timings, report for scope, collector for delivery proof. Does not run workloads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "evidence_id": {
+        "enum": [
+         "worker-report",
+         "worker-summary"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "evidence_id"
+      ],
+      "type": "object"
+     },
+     "name": "lifecycle.evidence"
+    },
+    {
+     "description": "Read bounded committed Python/TypeScript imports and re-exports with exact SCIP declaration lookup continuations. Useful before guessing dependency paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "dependency_revisions": {
+        "additionalProperties": {
+         "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+         "type": "string"
+        },
+        "maxProperties": 16,
+        "propertyNames": {
+         "enum": [
+          "ats",
+          "core",
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.imports"
+    },
+    {
+     "description": "Identify ancestor source dependency manifests and selected installed Serena provider packages. Declared, installed and deployed identities remain separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.dependencies"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the skill for bounded claim/evidence verification across repositories, including slice selection, context budgets and finding handoffs.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "verification.guide"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan or read registered product evidence slices, including legacy ATS fixtures. Read exact sources and observations before asserting behavior; identity checks do not establish semantic correctness.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "default": 12000,
+        "description": "Serialized byte ceiling: 4000..100000; omit for 12000. Not a token count.",
+        "type": "integer"
+       },
+       "evidence_ids": {
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 20,
+        "type": "array"
+       },
+       "expected_packet_identity": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "mode": {
+        "default": "plan",
+        "enum": [
+         "plan",
+         "read"
+        ],
+        "type": "string"
+       },
+       "slice_id": {
+        "enum": [
+         "ats-pool-lifecycle",
+         "ats-worker-performance",
+         "ats-pool-failures",
+         "ats-auth-acquisition",
+         "ats-response-correctness",
+         "ats-constrained-pool"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "slice_id"
+      ],
+      "type": "object"
+     },
+     "name": "verification.packet"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Get the finding v5 schema (mode=schema), or validate a finding against registered packet identities, evidence references, atomic claim shape, observation compatibility and declared delivery/gap classifications (mode=validate). Does not prove semantic correctness or model receipt. Read-only; no memory promotion.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_finding_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "finding": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "source_profile": {
+        "enum": [
+         "active",
+         "retained-evidence"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.finding"
+    },
+    {
+     "description": "Read one bounded fragment of an immutable large tool response. Reassemble all text pages and verify SHA-256 before treating the original JSON as complete evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 16384,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "token": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "token"
+      ],
+      "type": "object"
+     },
+     "name": "delivery.read"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan registered product questions with configured source identity, supplied references, bounded continuations and recovery reserve. Metadata is not evidence delivery.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "maximum": 12000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "questions": {
+        "items": {
+         "enum": [
+          "baseline",
+          "lifecycle",
+          "performance",
+          "deployment"
+         ],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "supplied": {
+        "items": {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "oneOf": [
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "packet"
+            },
+            "packet_identity": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "slice_id": {
+             "minLength": 1,
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "slice_id",
+            "id",
+            "packet_identity"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "observation"
+            }
+           },
+           "required": [
+            "kind",
+            "id"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "evidence_id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "lifecycle"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "evidence_id",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "source"
+            },
+            "path": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "repo_key": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "repo_key",
+            "path",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          }
+         ]
+        },
+        "maxItems": 60,
+        "type": "array"
+       }
+      },
+      "required": [
+       "questions"
+      ],
+      "type": "object"
+     },
+     "name": "verification.plan"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Check complete JSON artifacts in supplied final text against validation receipts from this adapter process. Rejects omitted, changed, unvalidated or invalid findings. Does not prove subsequent publication or prose semantics.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_digests": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 20,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "final_text": {
+        "maxLength": 200000,
+        "type": "string"
+       }
+      },
+      "required": [
+       "final_text",
+       "expected_digests"
+      ],
+      "type": "object"
+     },
+     "name": "verification.handoff"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read immutable observations: list(subject?,after?) returns metadata; read(id,budget?) requires ONE id; assess(ids,expected_scope) requires exact sources and binding_sha256. No behavioral verdict or authority. Imports are operator CLI only.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "description": "Modes: list(subject?,after?,limit?,budget?); read(id,budget?); assess(ids,expected_scope). Server checks mode-specific requirements.",
+      "properties": {
+       "after": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "budget": {
+        "description": "Serialized response byte ceiling, 4000..100000. For read, use original_read_bytes from list metadata or the split_required next_call.",
+        "maximum": 100000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "expected_scope": {
+        "additionalProperties": false,
+        "description": "Exact sources and binding identity to assess; not a subject filter.",
+        "properties": {
+         "binding_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+         },
+         "sources": {
+          "additionalProperties": {
+           "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$",
+           "type": "string"
+          },
+          "minProperties": 1,
+          "type": "object"
+         }
+        },
+        "required": [
+         "sources",
+         "binding_sha256"
+        ],
+        "type": "object"
+       },
+       "id": {
+        "description": "One observation ID; required for read.",
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "ids": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 30,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "list",
+         "read",
+         "assess"
+        ],
+        "type": "string"
+       },
+       "subject": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.observations"
+    },
+    {
+     "description": "Observe current worktrees and potential file overlaps against the last published default-branch snapshot. Reports exact commits and refresh time. Overlap is not a proven conflict; uncommitted work is not accepted evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "description": "Optional relative file or directory focus to keep comparisons small",
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.workspace"
+    },
+    {
+     "description": "Read bounded committed source at an explicit full revision, including available in-flight branch commits. Reports the selected snapshot revision/identity separately from a timestamped active-profile observation. Use when an index is stale or to compare a workspace head.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line_count": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "start_line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.source"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read reviewed commit-body rationale at a full target revision. Exact aliases return attributed testimony; contested claims are disputed, relayed observations remain indirect, and reviewer identity is explicit. Compact mode omits excerpts; lexical candidates remain unverified. Missing means no eligible evidence in this small catalog, not no rationale. Requires an operator-configured rationale_manifest; never scans all history or establishes execution/doctrine.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "default": "full",
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "top_k": {
+        "maximum": 5,
+        "minimum": 1,
+        "type": "integer"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.rationale"
+    },
+    {
+     "description": "Capture or read a frozen review source and analysis selection. Source defaults may advance independently; use snapshot_id for consistent subsequent navigation. Does not freeze runtime behavior.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "mode": {
+        "enum": [
+         "capture",
+         "read"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.snapshot"
+    },
+    {
+     "description": "Find bounded regular-file paths in an exact committed tree, never the dirty checkout. Use before guessing a symbol file. A glob searches repository-relative paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "pattern": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.paths"
+    },
+    {
+     "description": "Search exact committed UTF-8 source using literal text or a line glob. Reports bounded citations, exclusions and truncation; matches are not semantic references.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "description": "Optional repository-relative fnmatch glob; omitted means all regular committed files, subject to search budgets. *.py includes root and nested Python files; **/*.py requires a directory component.",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search"
+    },
+    {
+     "description": "Rank indexed committed source spans by similarity to a concept query (where is the code that does X). A separately labelled ranking layer: it returns what it found with exact citations and navigation.source continuations, never an absence verdict. Use navigation.search for exhaustive literal coverage. Requires a semantic index published for the selected revision.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "kinds": {
+        "items": {
+         "enum": [
+          "function",
+          "class",
+          "method",
+          "window"
+         ],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "type": "array"
+       },
+       "limit": {
+        "default": 8,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.semantic"
+    },
+    {
+     "description": "Run up to eight independent bounded navigation reads against one frozen snapshot. Per-item failures are explicit. Does not execute tests or invoke Serena; use it for source/discovery/compiler/dependency reads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "requests": {
+        "items": {
+         "additionalProperties": false,
+         "properties": {
+          "arguments": {
+           "type": "object"
+          },
+          "name": {
+           "enum": [
+            "navigation.paths",
+            "navigation.search",
+            "navigation.source",
+            "navigation.imports",
+            "navigation.dependencies",
+            "knowledge.platform",
+            "knowledge.symbol"
+           ],
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "arguments"
+         ],
+         "type": "object"
+        },
+        "maxItems": 8,
+        "minItems": 1,
+        "type": "array"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "snapshot_id",
+       "requests"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.batch"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read an operator-registered requirement contract or validate a review ledger against it. Checks unchanged obligations, approved normalization rules and exact evidence references; semantic entailment and authority are not assessed.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "contract_id": {
+        "enum": [
+         "contract-alpha",
+         "contract-beta"
+        ],
+        "type": "string"
+       },
+       "ledger": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "contract",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.review"
+    },
+    {
+     "description": "List symbols in a committed file without needing a known symbol name. Provider metadata is not source-body delivery; inspect a chosen symbol for exact coordinates.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "serena.overview"
+    },
+    {
+     "description": "Find bounded exact-name symbol candidates (not fuzzy or semantic search) across the selected repository, optionally within a file. Every returned location is checked against the selected commit. Ambiguity and no results are explicit.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "include_body": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.find"
+    },
+    {
+     "description": "Inventory every tracked artifact at an exact commit. Paged entries have stable identities and explicit classification/eligibility; inventory completeness is not semantic or runtime coverage.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_manifest_id": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.manifest"
+    },
+    {
+     "description": "Resume bounded text search over a revision-pinned manifest. Follow continuation_token with unchanged arguments until traversal completes; inspect coverage and exclusions before claiming no matches. Requires an operator-configured persistent navigation registry.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "continuation_token": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "ats",
+         "core",
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search_page"
+    }
+   ]
+  },
+  "gateway": {
+   "template": {
+    "delivery_root": "@DELIVERY@",
+    "gateway_endpoint": "@GATEWAY_URL@",
+    "repos": {
+     "product": {
+      "path": "@REPO_PRODUCT@",
+      "revision": "@REV_PRODUCT@"
+     }
+    },
+    "schema_version": "ops.agent-tooling.v1",
+    "snapshot_registry": "@SNAPSHOTS@"
+   },
+   "tools": [
+    {
+     "description": "Fake gateway advertisement of knowledge.capabilities for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.capabilities"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.retrieve for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "query": {
+        "maxLength": 512,
+        "type": "string"
+       },
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "top_k": {
+        "maximum": 50,
+        "minimum": 1,
+        "type": "integer"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.retrieve"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.context for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "capability_id": {
+        "type": "string"
+       },
+       "query": {
+        "type": "string"
+       },
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "capability_id",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.context"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.check_references for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "capability_id": {
+        "type": "string"
+       },
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "capability_id"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.check_references"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.reference_recovery for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "blob_sha": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "byte_offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "blob_sha",
+       "byte_offset"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.reference_recovery"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.reference_diagnostics for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "generation_digest": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.reference_diagnostics"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.platform for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.platform"
+    },
+    {
+     "description": "Fake gateway advertisement of knowledge.symbol for the T1 boundary tests. Gateway catalog advertisement only; backend readiness is established by a successful call.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path",
+       "line"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.symbol"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the serving Git source build revision and raw startup configuration digest. Configured navigation/evidence revisions are separate; executable artifact integrity is not attested. Unversioned or modified source reports unknown.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "tooling.identity"
+    },
+    {
+     "description": "Inspect one symbol and bounded inbound references with live Serena. When references are requested for one resolved symbol, also reports separate bounded textual candidates; these may be comments, strings, declarations, or unrelated names and are never references or proven callers. Paths and exact revisions are operator-configured. Returns import context and exact knowledge.symbol continuations; follow these instead of guessing dependency paths. Static references do not prove runtime calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "include_body": {
+        "type": "boolean"
+       },
+       "include_imports": {
+        "type": "boolean"
+       },
+       "include_info": {
+        "type": "boolean"
+       },
+       "include_references": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact",
+         "overview"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.inspect"
+    },
+    {
+     "description": "Read revision-pinned OPS worker-thread execution evidence. Use summary for timings, report for scope, collector for delivery proof. Does not run workloads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "evidence_id": {
+        "enum": [],
+        "type": "string"
+       }
+      },
+      "required": [
+       "evidence_id"
+      ],
+      "type": "object"
+     },
+     "name": "lifecycle.evidence"
+    },
+    {
+     "description": "Read bounded committed Python/TypeScript imports and re-exports with exact SCIP declaration lookup continuations. Useful before guessing dependency paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "dependency_revisions": {
+        "additionalProperties": {
+         "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+         "type": "string"
+        },
+        "maxProperties": 16,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.imports"
+    },
+    {
+     "description": "Identify ancestor source dependency manifests and selected installed Serena provider packages. Declared, installed and deployed identities remain separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.dependencies"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the skill for bounded claim/evidence verification across repositories, including slice selection, context budgets and finding handoffs.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "verification.guide"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan or read registered product evidence slices, including legacy ATS fixtures. Read exact sources and observations before asserting behavior; identity checks do not establish semantic correctness.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "default": 12000,
+        "description": "Serialized byte ceiling: 4000..100000; omit for 12000. Not a token count.",
+        "type": "integer"
+       },
+       "evidence_ids": {
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 20,
+        "type": "array"
+       },
+       "expected_packet_identity": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "mode": {
+        "default": "plan",
+        "enum": [
+         "plan",
+         "read"
+        ],
+        "type": "string"
+       },
+       "slice_id": {
+        "enum": [],
+        "type": "string"
+       }
+      },
+      "required": [
+       "slice_id"
+      ],
+      "type": "object"
+     },
+     "name": "verification.packet"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Get the finding v5 schema (mode=schema), or validate a finding against registered packet identities, evidence references, atomic claim shape, observation compatibility and declared delivery/gap classifications (mode=validate). Does not prove semantic correctness or model receipt. Read-only; no memory promotion.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_finding_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "finding": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "source_profile": {
+        "enum": [
+         "active",
+         "retained-evidence"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.finding"
+    },
+    {
+     "description": "Read one bounded fragment of an immutable large tool response. Reassemble all text pages and verify SHA-256 before treating the original JSON as complete evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 16384,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "token": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "token"
+      ],
+      "type": "object"
+     },
+     "name": "delivery.read"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan registered product questions with configured source identity, supplied references, bounded continuations and recovery reserve. Metadata is not evidence delivery.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "maximum": 12000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "questions": {
+        "items": {
+         "enum": [],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "supplied": {
+        "items": {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "oneOf": [
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "packet"
+            },
+            "packet_identity": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "slice_id": {
+             "minLength": 1,
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "slice_id",
+            "id",
+            "packet_identity"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "observation"
+            }
+           },
+           "required": [
+            "kind",
+            "id"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "evidence_id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "lifecycle"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "evidence_id",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "source"
+            },
+            "path": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "repo_key": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "repo_key",
+            "path",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          }
+         ]
+        },
+        "maxItems": 60,
+        "type": "array"
+       }
+      },
+      "required": [
+       "questions"
+      ],
+      "type": "object"
+     },
+     "name": "verification.plan"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Check complete JSON artifacts in supplied final text against validation receipts from this adapter process. Rejects omitted, changed, unvalidated or invalid findings. Does not prove subsequent publication or prose semantics.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_digests": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 20,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "final_text": {
+        "maxLength": 200000,
+        "type": "string"
+       }
+      },
+      "required": [
+       "final_text",
+       "expected_digests"
+      ],
+      "type": "object"
+     },
+     "name": "verification.handoff"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read immutable observations: list(subject?,after?) returns metadata; read(id,budget?) requires ONE id; assess(ids,expected_scope) requires exact sources and binding_sha256. No behavioral verdict or authority. Imports are operator CLI only.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "description": "Modes: list(subject?,after?,limit?,budget?); read(id,budget?); assess(ids,expected_scope). Server checks mode-specific requirements.",
+      "properties": {
+       "after": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "budget": {
+        "description": "Serialized response byte ceiling, 4000..100000. For read, use original_read_bytes from list metadata or the split_required next_call.",
+        "maximum": 100000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "expected_scope": {
+        "additionalProperties": false,
+        "description": "Exact sources and binding identity to assess; not a subject filter.",
+        "properties": {
+         "binding_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+         },
+         "sources": {
+          "additionalProperties": {
+           "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$",
+           "type": "string"
+          },
+          "minProperties": 1,
+          "type": "object"
+         }
+        },
+        "required": [
+         "sources",
+         "binding_sha256"
+        ],
+        "type": "object"
+       },
+       "id": {
+        "description": "One observation ID; required for read.",
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "ids": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 30,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "list",
+         "read",
+         "assess"
+        ],
+        "type": "string"
+       },
+       "subject": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.observations"
+    },
+    {
+     "description": "Observe current worktrees and potential file overlaps against the last published default-branch snapshot. Reports exact commits and refresh time. Overlap is not a proven conflict; uncommitted work is not accepted evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "description": "Optional relative file or directory focus to keep comparisons small",
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.workspace"
+    },
+    {
+     "description": "Read bounded committed source at an explicit full revision, including available in-flight branch commits. Reports the selected snapshot revision/identity separately from a timestamped active-profile observation. Use when an index is stale or to compare a workspace head.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line_count": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "start_line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.source"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read reviewed commit-body rationale at a full target revision. Exact aliases return attributed testimony; contested claims are disputed, relayed observations remain indirect, and reviewer identity is explicit. Compact mode omits excerpts; lexical candidates remain unverified. Missing means no eligible evidence in this small catalog, not no rationale. Requires an operator-configured rationale_manifest; never scans all history or establishes execution/doctrine.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "default": "full",
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "top_k": {
+        "maximum": 5,
+        "minimum": 1,
+        "type": "integer"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.rationale"
+    },
+    {
+     "description": "Capture or read a frozen review source and analysis selection. Source defaults may advance independently; use snapshot_id for consistent subsequent navigation. Does not freeze runtime behavior.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "mode": {
+        "enum": [
+         "capture",
+         "read"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.snapshot"
+    },
+    {
+     "description": "Find bounded regular-file paths in an exact committed tree, never the dirty checkout. Use before guessing a symbol file. A glob searches repository-relative paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "pattern": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.paths"
+    },
+    {
+     "description": "Search exact committed UTF-8 source using literal text or a line glob. Reports bounded citations, exclusions and truncation; matches are not semantic references.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "description": "Optional repository-relative fnmatch glob; omitted means all regular committed files, subject to search budgets. *.py includes root and nested Python files; **/*.py requires a directory component.",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search"
+    },
+    {
+     "description": "Rank indexed committed source spans by similarity to a concept query (where is the code that does X). A separately labelled ranking layer: it returns what it found with exact citations and navigation.source continuations, never an absence verdict. Use navigation.search for exhaustive literal coverage. Requires a semantic index published for the selected revision.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "kinds": {
+        "items": {
+         "enum": [
+          "function",
+          "class",
+          "method",
+          "window"
+         ],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "type": "array"
+       },
+       "limit": {
+        "default": 8,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.semantic"
+    },
+    {
+     "description": "Run up to eight independent bounded navigation reads against one frozen snapshot. Per-item failures are explicit. Does not execute tests or invoke Serena; use it for source/discovery/compiler/dependency reads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "requests": {
+        "items": {
+         "additionalProperties": false,
+         "properties": {
+          "arguments": {
+           "type": "object"
+          },
+          "name": {
+           "enum": [
+            "navigation.paths",
+            "navigation.search",
+            "navigation.source",
+            "navigation.imports",
+            "navigation.dependencies",
+            "knowledge.platform",
+            "knowledge.symbol"
+           ],
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "arguments"
+         ],
+         "type": "object"
+        },
+        "maxItems": 8,
+        "minItems": 1,
+        "type": "array"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "snapshot_id",
+       "requests"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.batch"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read an operator-registered requirement contract or validate a review ledger against it. Checks unchanged obligations, approved normalization rules and exact evidence references; semantic entailment and authority are not assessed.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "contract_id": {
+        "enum": [],
+        "type": "string"
+       },
+       "ledger": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "contract",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.review"
+    },
+    {
+     "description": "List symbols in a committed file without needing a known symbol name. Provider metadata is not source-body delivery; inspect a chosen symbol for exact coordinates.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "serena.overview"
+    },
+    {
+     "description": "Find bounded exact-name symbol candidates (not fuzzy or semantic search) across the selected repository, optionally within a file. Every returned location is checked against the selected commit. Ambiguity and no results are explicit.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "include_body": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.find"
+    },
+    {
+     "description": "Inventory every tracked artifact at an exact commit. Paged entries have stable identities and explicit classification/eligibility; inventory completeness is not semantic or runtime coverage.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_manifest_id": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.manifest"
+    },
+    {
+     "description": "Resume bounded text search over a revision-pinned manifest. Follow continuation_token with unchanged arguments until traversal completes; inspect coverage and exclusions before claiming no matches. Requires an operator-configured persistent navigation registry.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "continuation_token": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search_page"
+    }
+   ]
+  },
+  "image-example": {
+   "template": {
+    "enabled_tools": [
+     "tooling.identity",
+     "navigation.source",
+     "navigation.paths",
+     "navigation.search",
+     "navigation.manifest",
+     "navigation.search_page",
+     "navigation.imports",
+     "navigation.dependencies",
+     "verification.guide",
+     "delivery.read"
+    ],
+    "navigation_registry_path": "@SEARCH@",
+    "repos": {
+     "product": {
+      "path": "@REPO_PRODUCT@",
+      "revision": "@REV_PRODUCT@"
+     }
+    },
+    "schema_version": "ops.agent-tooling.v1",
+    "snapshot_registry": "@SNAPSHOTS@"
+   },
+   "tools": [
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the serving Git source build revision and raw startup configuration digest. Configured navigation/evidence revisions are separate; executable artifact integrity is not attested. Unversioned or modified source reports unknown.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "tooling.identity"
+    },
+    {
+     "description": "Read bounded committed Python/TypeScript imports and re-exports with exact SCIP declaration lookup continuations. Useful before guessing dependency paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "dependency_revisions": {
+        "additionalProperties": {
+         "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+         "type": "string"
+        },
+        "maxProperties": 16,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.imports"
+    },
+    {
+     "description": "Identify ancestor source dependency manifests and selected installed Serena provider packages. Declared, installed and deployed identities remain separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.dependencies"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the skill for bounded claim/evidence verification across repositories, including slice selection, context budgets and finding handoffs.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "verification.guide"
+    },
+    {
+     "description": "Read one bounded fragment of an immutable large tool response. Reassemble all text pages and verify SHA-256 before treating the original JSON as complete evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 16384,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "token": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "token"
+      ],
+      "type": "object"
+     },
+     "name": "delivery.read"
+    },
+    {
+     "description": "Read bounded committed source at an explicit full revision, including available in-flight branch commits. Reports the selected snapshot revision/identity separately from a timestamped active-profile observation. Use when an index is stale or to compare a workspace head.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line_count": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "start_line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.source"
+    },
+    {
+     "description": "Find bounded regular-file paths in an exact committed tree, never the dirty checkout. Use before guessing a symbol file. A glob searches repository-relative paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "pattern": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.paths"
+    },
+    {
+     "description": "Search exact committed UTF-8 source using literal text or a line glob. Reports bounded citations, exclusions and truncation; matches are not semantic references.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "description": "Optional repository-relative fnmatch glob; omitted means all regular committed files, subject to search budgets. *.py includes root and nested Python files; **/*.py requires a directory component.",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search"
+    },
+    {
+     "description": "Inventory every tracked artifact at an exact commit. Paged entries have stable identities and explicit classification/eligibility; inventory completeness is not semantic or runtime coverage.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_manifest_id": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.manifest"
+    },
+    {
+     "description": "Resume bounded text search over a revision-pinned manifest. Follow continuation_token with unchanged arguments until traversal completes; inspect coverage and exclusions before claiming no matches. Requires an operator-configured persistent navigation registry.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "continuation_token": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search_page"
+    }
+   ]
+  },
+  "portable": {
+   "template": {
+    "delivery_root": "@DELIVERY@",
+    "portable_knowledge_config": "@PORTABLE_KNOWLEDGE@",
+    "repos": {
+     "product": {
+      "path": "@REPO_PRODUCT@",
+      "revision": "@REV_PRODUCT@"
+     }
+    },
+    "schema_version": "ops.agent-tooling.v1",
+    "snapshot_registry": "@SNAPSHOTS@"
+   },
+   "tools": [
+    {
+     "description": "List the bounded capability IDs and map paths declared for one repository. Catalog inventory only.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.capabilities"
+    },
+    {
+     "description": "Recover bounded resolved code references from an exact serving generation, target revision set, and document coordinate without semantic search.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "blob_sha": {
+        "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "byte_length": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "byte_offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "code_revisions": {
+        "additionalProperties": {
+         "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxProperties": 8,
+        "minProperties": 1,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "generation_digest": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "path": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "blob_sha",
+       "byte_offset",
+       "byte_length",
+       "generation_digest",
+       "code_revisions"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.reference_recovery"
+    },
+    {
+     "description": "Recover bounded document-reference diagnostics from an exact serving generation and document coordinate. Generation mismatch requires a fresh parent read.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "blob_sha": {
+        "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "byte_length": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "byte_offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "code_revisions": {
+        "additionalProperties": {
+         "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxProperties": 8,
+        "minProperties": 1,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "generation_digest": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "path": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "blob_sha",
+       "byte_offset",
+       "byte_length",
+       "generation_digest",
+       "code_revisions"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.reference_diagnostics"
+    },
+    {
+     "description": "Resolve revision-pinned SCIP occurrences and definition candidates inside a configured platform. Static evidence only.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path",
+       "line"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.symbol"
+    },
+    {
+     "description": "Inspect configured multi-repository source identity and readiness gaps. Does not establish build or runtime identity.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.platform"
+    },
+    {
+     "description": "Start here: compose maintained guidance, reference freshness and static code navigation for an exact target commit. Gaps and runtime evidence limits remain explicit.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "allOf": [
+       {
+        "if": {
+         "properties": {
+          "include_code_references": {
+           "const": true
+          }
+         },
+         "required": [
+          "include_code_references"
+         ]
+        },
+        "then": {
+         "properties": {
+          "code_revisions": {
+           "additionalProperties": {
+            "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+            "type": "string"
+           },
+           "maxProperties": 8,
+           "propertyNames": {
+            "enum": [
+             "product"
+            ]
+           },
+           "type": "object"
+          },
+          "reference_baseline_revisions": {
+           "additionalProperties": {
+            "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+            "type": "string"
+           },
+           "maxProperties": 8,
+           "propertyNames": {
+            "enum": [
+             "product"
+            ]
+           },
+           "type": "object"
+          }
+         }
+        }
+       }
+      ],
+      "properties": {
+       "capability_id": {
+        "description": "Call knowledge.capabilities with this repo_key for valid capability IDs.",
+        "type": "string"
+       },
+       "code_revisions": {},
+       "include_code_references": {
+        "default": false,
+        "type": "boolean"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "reference_baseline_revisions": {},
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "capability_id",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.context"
+    },
+    {
+     "description": "Find lexical operator entry-point candidates in configured committed source. Not semantic absence proof.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "default": 5,
+        "maximum": 50,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.discover"
+    },
+    {
+     "description": "Retrieve maintained guidance only when indexed blob bytes match the requested commit; default uses the configured default branch. Historical candidates require explicit opt-in and are separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "allOf": [
+       {
+        "if": {
+         "properties": {
+          "include_code_references": {
+           "const": true
+          }
+         },
+         "required": [
+          "include_code_references"
+         ]
+        },
+        "then": {
+         "properties": {
+          "code_revisions": {
+           "additionalProperties": {
+            "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+            "type": "string"
+           },
+           "maxProperties": 8,
+           "propertyNames": {
+            "enum": [
+             "product"
+            ]
+           },
+           "type": "object"
+          },
+          "reference_baseline_revisions": {
+           "additionalProperties": {
+            "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+            "type": "string"
+           },
+           "maxProperties": 8,
+           "propertyNames": {
+            "enum": [
+             "product"
+            ]
+           },
+           "type": "object"
+          }
+         }
+        }
+       }
+      ],
+      "properties": {
+       "code_revisions": {},
+       "include_code_references": {
+        "default": false,
+        "type": "boolean"
+       },
+       "include_historical": {
+        "default": false,
+        "type": "boolean"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "reference_baseline_revisions": {},
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "top_k": {
+        "default": 5,
+        "maximum": 50,
+        "minimum": 1,
+        "type": "integer"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.retrieve"
+    },
+    {
+     "description": "Resolve a named capability map; changed references need review and do not prove architectural violations.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "allOf": [],
+      "properties": {
+       "capability_id": {
+        "description": "Call knowledge.capabilities with this repo_key for valid capability IDs.",
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "capability_id"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.check_references"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the serving Git source build revision and raw startup configuration digest. Configured navigation/evidence revisions are separate; executable artifact integrity is not attested. Unversioned or modified source reports unknown.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "tooling.identity"
+    },
+    {
+     "description": "Inspect one symbol and bounded inbound references with live Serena. When references are requested for one resolved symbol, also reports separate bounded textual candidates; these may be comments, strings, declarations, or unrelated names and are never references or proven callers. Paths and exact revisions are operator-configured. Returns import context and exact knowledge.symbol continuations; follow these instead of guessing dependency paths. Static references do not prove runtime calls.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "include_body": {
+        "type": "boolean"
+       },
+       "include_imports": {
+        "type": "boolean"
+       },
+       "include_info": {
+        "type": "boolean"
+       },
+       "include_references": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact",
+         "overview"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.inspect"
+    },
+    {
+     "description": "Read revision-pinned OPS worker-thread execution evidence. Use summary for timings, report for scope, collector for delivery proof. Does not run workloads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "evidence_id": {
+        "enum": [],
+        "type": "string"
+       }
+      },
+      "required": [
+       "evidence_id"
+      ],
+      "type": "object"
+     },
+     "name": "lifecycle.evidence"
+    },
+    {
+     "description": "Read bounded committed Python/TypeScript imports and re-exports with exact SCIP declaration lookup continuations. Useful before guessing dependency paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "dependency_revisions": {
+        "additionalProperties": {
+         "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+         "type": "string"
+        },
+        "maxProperties": 16,
+        "propertyNames": {
+         "enum": [
+          "product"
+         ]
+        },
+        "type": "object"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.imports"
+    },
+    {
+     "description": "Identify ancestor source dependency manifests and selected installed Serena provider packages. Declared, installed and deployed identities remain separate.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.dependencies"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read the skill for bounded claim/evidence verification across repositories, including slice selection, context budgets and finding handoffs.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "type": "object"
+     },
+     "name": "verification.guide"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan or read registered product evidence slices, including legacy ATS fixtures. Read exact sources and observations before asserting behavior; identity checks do not establish semantic correctness.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "default": 12000,
+        "description": "Serialized byte ceiling: 4000..100000; omit for 12000. Not a token count.",
+        "type": "integer"
+       },
+       "evidence_ids": {
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 20,
+        "type": "array"
+       },
+       "expected_packet_identity": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "mode": {
+        "default": "plan",
+        "enum": [
+         "plan",
+         "read"
+        ],
+        "type": "string"
+       },
+       "slice_id": {
+        "enum": [],
+        "type": "string"
+       }
+      },
+      "required": [
+       "slice_id"
+      ],
+      "type": "object"
+     },
+     "name": "verification.packet"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Get the finding v5 schema (mode=schema), or validate a finding against registered packet identities, evidence references, atomic claim shape, observation compatibility and declared delivery/gap classifications (mode=validate). Does not prove semantic correctness or model receipt. Read-only; no memory promotion.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_finding_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "finding": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "source_profile": {
+        "enum": [
+         "active",
+         "retained-evidence"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.finding"
+    },
+    {
+     "description": "Read one bounded fragment of an immutable large tool response. Reassemble all text pages and verify SHA-256 before treating the original JSON as complete evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 16384,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "token": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "token"
+      ],
+      "type": "object"
+     },
+     "name": "delivery.read"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Plan registered product questions with configured source identity, supplied references, bounded continuations and recovery reserve. Metadata is not evidence delivery.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "budget": {
+        "maximum": 12000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "questions": {
+        "items": {
+         "enum": [],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "supplied": {
+        "items": {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "oneOf": [
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "packet"
+            },
+            "packet_identity": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "slice_id": {
+             "minLength": 1,
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "slice_id",
+            "id",
+            "packet_identity"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "pattern": "^[0-9a-f]{64}$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "observation"
+            }
+           },
+           "required": [
+            "kind",
+            "id"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "evidence_id": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "kind": {
+             "const": "lifecycle"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "evidence_id",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          },
+          {
+           "additionalProperties": false,
+           "properties": {
+            "blob_sha": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            },
+            "kind": {
+             "const": "source"
+            },
+            "path": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "repo_key": {
+             "minLength": 1,
+             "type": "string"
+            },
+            "revision": {
+             "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+             "type": "string"
+            }
+           },
+           "required": [
+            "kind",
+            "repo_key",
+            "path",
+            "revision",
+            "blob_sha"
+           ],
+           "type": "object"
+          }
+         ]
+        },
+        "maxItems": 60,
+        "type": "array"
+       }
+      },
+      "required": [
+       "questions"
+      ],
+      "type": "object"
+     },
+     "name": "verification.plan"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Check complete JSON artifacts in supplied final text against validation receipts from this adapter process. Rejects omitted, changed, unvalidated or invalid findings. Does not prove subsequent publication or prose semantics.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_digests": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 20,
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "final_text": {
+        "maxLength": 200000,
+        "type": "string"
+       }
+      },
+      "required": [
+       "final_text",
+       "expected_digests"
+      ],
+      "type": "object"
+     },
+     "name": "verification.handoff"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read immutable observations: list(subject?,after?) returns metadata; read(id,budget?) requires ONE id; assess(ids,expected_scope) requires exact sources and binding_sha256. No behavioral verdict or authority. Imports are operator CLI only.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "description": "Modes: list(subject?,after?,limit?,budget?); read(id,budget?); assess(ids,expected_scope). Server checks mode-specific requirements.",
+      "properties": {
+       "after": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "budget": {
+        "description": "Serialized response byte ceiling, 4000..100000. For read, use original_read_bytes from list metadata or the split_required next_call.",
+        "maximum": 100000,
+        "minimum": 4000,
+        "type": "integer"
+       },
+       "expected_scope": {
+        "additionalProperties": false,
+        "description": "Exact sources and binding identity to assess; not a subject filter.",
+        "properties": {
+         "binding_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+         },
+         "sources": {
+          "additionalProperties": {
+           "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$",
+           "type": "string"
+          },
+          "minProperties": 1,
+          "type": "object"
+         }
+        },
+        "required": [
+         "sources",
+         "binding_sha256"
+        ],
+        "type": "object"
+       },
+       "id": {
+        "description": "One observation ID; required for read.",
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "ids": {
+        "items": {
+         "pattern": "^[0-9a-f]{64}$",
+         "type": "string"
+        },
+        "maxItems": 30,
+        "type": "array",
+        "uniqueItems": true
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "list",
+         "read",
+         "assess"
+        ],
+        "type": "string"
+       },
+       "subject": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.observations"
+    },
+    {
+     "description": "Observe current worktrees and potential file overlaps against the last published default-branch snapshot. Reports exact commits and refresh time. Overlap is not a proven conflict; uncommitted work is not accepted evidence.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "description": "Optional relative file or directory focus to keep comparisons small",
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.workspace"
+    },
+    {
+     "description": "Read bounded committed source at an explicit full revision, including available in-flight branch commits. Reports the selected snapshot revision/identity separately from a timestamped active-profile observation. Use when an index is stale or to compare a workspace head.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "line_count": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "start_line": {
+        "minimum": 1,
+        "type": "integer"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.source"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read reviewed commit-body rationale at a full target revision. Exact aliases return attributed testimony; contested claims are disputed, relayed observations remain indirect, and reviewer identity is explicit. Compact mode omits excerpts; lexical candidates remain unverified. Missing means no eligible evidence in this small catalog, not no rationale. Requires an operator-configured rationale_manifest; never scans all history or establishes execution/doctrine.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "default": "full",
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       },
+       "top_k": {
+        "maximum": 5,
+        "minimum": 1,
+        "type": "integer"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "knowledge.rationale"
+    },
+    {
+     "description": "Capture or read a frozen review source and analysis selection. Source defaults may advance independently; use snapshot_id for consistent subsequent navigation. Does not freeze runtime behavior.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "mode": {
+        "enum": [
+         "capture",
+         "read"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.snapshot"
+    },
+    {
+     "description": "Find bounded regular-file paths in an exact committed tree, never the dirty checkout. Use before guessing a symbol file. A glob searches repository-relative paths.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "pattern": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.paths"
+    },
+    {
+     "description": "Search exact committed UTF-8 source using literal text or a line glob. Reports bounded citations, exclusions and truncation; matches are not semantic references.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "limit": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "description": "Optional repository-relative fnmatch glob; omitted means all regular committed files, subject to search budgets. *.py includes root and nested Python files; **/*.py requires a directory component.",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search"
+    },
+    {
+     "description": "Rank indexed committed source spans by similarity to a concept query (where is the code that does X). A separately labelled ranking layer: it returns what it found with exact citations and navigation.source continuations, never an absence verdict. Use navigation.search for exhaustive literal coverage. Requires a semantic index published for the selected revision.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "kinds": {
+        "items": {
+         "enum": [
+          "function",
+          "class",
+          "method",
+          "window"
+         ],
+         "type": "string"
+        },
+        "maxItems": 4,
+        "type": "array"
+       },
+       "limit": {
+        "default": 8,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.semantic"
+    },
+    {
+     "description": "Run up to eight independent bounded navigation reads against one frozen snapshot. Per-item failures are explicit. Does not execute tests or invoke Serena; use it for source/discovery/compiler/dependency reads.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "requests": {
+        "items": {
+         "additionalProperties": false,
+         "properties": {
+          "arguments": {
+           "type": "object"
+          },
+          "name": {
+           "enum": [
+            "navigation.paths",
+            "navigation.search",
+            "navigation.source",
+            "navigation.imports",
+            "navigation.dependencies",
+            "knowledge.platform",
+            "knowledge.symbol"
+           ],
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "arguments"
+         ],
+         "type": "object"
+        },
+        "maxItems": 8,
+        "minItems": 1,
+        "type": "array"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "snapshot_id",
+       "requests"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.batch"
+    },
+    {
+     "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+     },
+     "description": "Read an operator-registered requirement contract or validate a review ledger against it. Checks unchanged obligations, approved normalization rules and exact evidence references; semantic entailment and authority are not assessed.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "contract_id": {
+        "enum": [],
+        "type": "string"
+       },
+       "ledger": {
+        "type": "object"
+       },
+       "mode": {
+        "enum": [
+         "schema",
+         "contract",
+         "validate"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "type": "object"
+     },
+     "name": "verification.review"
+    },
+    {
+     "description": "List symbols in a committed file without needing a known symbol name. Provider metadata is not source-body delivery; inspect a chosen symbol for exact coordinates.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "depth": {
+        "maximum": 2,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "path"
+      ],
+      "type": "object"
+     },
+     "name": "serena.overview"
+    },
+    {
+     "description": "Find bounded exact-name symbol candidates (not fuzzy or semantic search) across the selected repository, optionally within a file. Every returned location is checked against the selected commit. Ambiguity and no results are explicit.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "include_body": {
+        "type": "boolean"
+       },
+       "max_answer_chars": {
+        "maximum": 24000,
+        "minimum": 1000,
+        "type": "integer"
+       },
+       "max_matches": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "path": {
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "response_mode": {
+        "enum": [
+         "full",
+         "compact"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "symbol": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "symbol"
+      ],
+      "type": "object"
+     },
+     "name": "serena.find"
+    },
+    {
+     "description": "Inventory every tracked artifact at an exact commit. Paged entries have stable identities and explicit classification/eligibility; inventory completeness is not semantic or runtime coverage.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "expected_manifest_id": {
+        "maxLength": 128,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "offset": {
+        "minimum": 0,
+        "type": "integer"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.manifest"
+    },
+    {
+     "description": "Resume bounded text search over a revision-pinned manifest. Follow continuation_token with unchanged arguments until traversal completes; inspect coverage and exclusions before claiming no matches. Requires an operator-configured persistent navigation registry.",
+     "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+       "continuation_token": {
+        "maxLength": 256,
+        "type": "string"
+       },
+       "limit": {
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+       },
+       "mode": {
+        "enum": [
+         "literal",
+         "glob"
+        ],
+        "type": "string"
+       },
+       "path_pattern": {
+        "default": "*",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "query": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+       },
+       "repo_key": {
+        "enum": [
+         "product"
+        ],
+        "type": "string"
+       },
+       "snapshot_id": {
+        "pattern": "^navigation-snapshot:sha256:[0-9a-f]{64}$",
+        "type": "string"
+       },
+       "target_revision": {
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+        "type": "string"
+       }
+      },
+      "required": [
+       "repo_key",
+       "target_revision",
+       "query"
+      ],
+      "type": "object"
+     },
+     "name": "navigation.search_page"
+    }
+   ]
+  }
+ },
+ "image_example_source": {
+  "path": "deploy/tooling/image/config.example.json",
+  "sha256": "b266e9fed0697c4a39e46eb7b97edb34e35972f6597a18cfee76f7b247ba91f4"
+ },
+ "order": "docs/work/orders/T1-extension-seam.md",
+ "pre_move_product_sha256": "6a005fa36790d8fcbcc60862e01b69a8386bf30c1218b9270b1718e9f07c652f",
+ "protocol_version": "2025-06-18",
+ "schema_version": "t1-boundary.pre-move-tools-list.v1",
+ "server_argv": [
+  "kp-agent-tooling",
+  "--config",
+  "<rendered config>",
+  "serve"
+ ],
+ "versions": {
+  "jsonschema": "4.26.0",
+  "kp-agent-tooling": "0.4.0",
+  "mcp": "1.28.1",
+  "python": "3.12.14"
+ }
+}

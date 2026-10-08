@@ -1,0 +1,25 @@
+import { mkdtemp, writeFile, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterEach, expect, it, vi } from "vitest";
+import { bindAssistantMemory } from "../../../src/terminal/assistant-memory-launch";
+let root: string | undefined;
+afterEach(async () => { vi.unstubAllEnvs(); if (root) await rm(root, { recursive: true, force: true }); });
+it("binds selected sidebar and retains board hooks beside private memory hooks", async () => {
+ root = await mkdtemp(join(tmpdir(), "assistant-launch-"));
+ const settings = join(root,"settings.json"), old = join(root,"old.json");
+ await writeFile(settings,JSON.stringify({hooks:{Stop:[{hooks:[{command:"capture"}]}]}}));
+ await writeFile(old,JSON.stringify({hooks:{Stop:[{hooks:[{command:"board"}]}]}}));
+ const script = join(root,"prepare.cjs");
+ await writeFile(script,`process.stdout.write(${JSON.stringify(JSON.stringify({native_session_id:"718997b3-c15a-4b54-bd74-6a508387434c",settings_path:settings,mcp_path:join(root,"mcp.json"),launch_receipt:join(root,"receipt.json"),binding_key:"assistant"}))});`);
+ vi.stubEnv("KANBAN_ASSISTANT_MEMORY_WORKSPACE",root);
+ vi.stubEnv("KANBAN_ASSISTANT_MEMORY_COMMAND",JSON.stringify([process.execPath,script]));
+ const input = {taskId:"__home_agent__:trial:claude", agentId:"claude" as const,args:[],cwd:root,prompt:""};
+ const launch = {args:["--settings",old],env:{}};
+ const result = await bindAssistantMemory(input,launch);
+ expect(result.args).toContain("--strict-mcp-config");
+ expect(result.args[result.args.indexOf("--setting-sources")+1]).toBe("");
+ expect(JSON.parse(await readFile(settings,"utf8")).hooks.Stop).toHaveLength(2);
+ expect(await bindAssistantMemory({...input,taskId:"card-1"},launch)).toBe(launch);
+ await expect(bindAssistantMemory({...input,agentId:"codex"},launch)).rejects.toThrow("fresh Claude");
+});

@@ -1,0 +1,18 @@
+{
+  "repositories": {
+    "product": {
+      "repository": "/workspaces/product",
+      "python_scope": ["src"],
+      "serena_template": "/config/serena/product.yml",
+      "workspace_observation_roots": ["/workspaces/product"],
+      "analysis_dependencies": [],
+      "semantic_deadline_seconds": 900
+    }
+  },
+  "output_root": "/state/refresh",
+  "publication": "/state/refresh/profile.json",
+  "check_status": "/state/refresh/status.json",
+  "toolchain": "/opt/toolchain",
+  "node": "/usr/local/bin/node",
+  "semantic": false
+}

@@ -1,0 +1,7 @@
+projects: []
+# Image-pinned language servers; no uv/npm installation during a source query.
+ls_specific_settings:
+  python:
+    ls_base_cmd: [/opt/toolchain/node_modules/.bin/pyright-langserver]
+  typescript:
+    ls_base_cmd: [/opt/toolchain/node_modules/.bin/typescript-language-server]

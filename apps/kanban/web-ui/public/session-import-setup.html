@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session history import setup</title>
+<style>
+  body { max-width: 48rem; margin: 3rem auto; padding: 0 1.5rem; background: #1f2428; color: #e6edf3; font: 16px/1.6 system-ui, sans-serif; }
+  h1, h2 { line-height: 1.25; }
+  code { background: #2d3339; padding: .15rem .3rem; border-radius: .3rem; overflow-wrap: anywhere; }
+  a { color: #60a5fa; }
+</style>
+<h1>Set up session history import</h1>
+<p>Kanban imports an exact Codex session into a registered desk through the host's local import service. A new installation needs the portable desk store, reviewed catalog, and exact-session admission prepared before an import can run. History alone never grants a role or desk admission.</p>
+<h2>Host configuration</h2>
+<ol>
+  <li>Install the <code>kp-agent-session-import</code> executable on the Kanban host.</li>
+  <li>Create a private <code>ops.desk-memory.local.v1</code> config with absolute paths to the state store and reviewed catalog. Initialize the desk store and admit the exact host session through the portable desk CLI.</li>
+  <li>Start Kanban with <code>KANBAN_SESSION_IMPORT_EXECUTABLE</code> set to the executable's absolute path and <code>KANBAN_SESSION_IMPORT_CONFIG</code> set to that private config's absolute path.</li>
+</ol>
+<p>Kanban checks those host paths. The chat dialog cannot run a browser-supplied command or create a desk binding. Use the registered desk menu in the dialog to choose the reviewed destination.</p>
+<h2>Choose a source</h2>
+<p>If this Kanban task has an observed Codex native session binding, the dialog fills in its exact session file and ID. Otherwise, supply an absolute native JSONL file path and its session ID. Preview verifies the ID against the file's native metadata; a working directory or transcript text is not an identity.</p>
+<p>Choose <strong>Full session</strong> for the reviewed snapshot or <strong>Current turn onward</strong> for the latest trustworthy native user turn and future turns. The preview shows coverage and counts before you approve. You can stop future capture from the job status panel.</p>
+</html>

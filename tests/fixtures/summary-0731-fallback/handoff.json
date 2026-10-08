@@ -1,0 +1,142 @@
+{
+  "authority": "derived desk handoff; cannot override human instructions or charter",
+  "items": [
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 118,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e2",
+          "quote": "Decision: use pool B for tenant alpha only; retain pool A for rollback. This supersedes the earlier pool A preference.",
+          "start": 0
+        }
+      ],
+      "kind": "decision",
+      "semantic_validation": "not-assessed",
+      "text": "Use pool B for tenant alpha only; retain pool A for rollback. Supersedes earlier pool A preference."
+    },
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 121,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e5",
+          "quote": "Correction: pool size must be 2, not 4. Maya owns the load test. Production enablement is blocked until that test passes.",
+          "start": 0
+        }
+      ],
+      "kind": "decision",
+      "semantic_validation": "not-assessed",
+      "text": "Pool size must be 2, not 4."
+    },
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 121,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e5",
+          "quote": "Correction: pool size must be 2, not 4. Maya owns the load test. Production enablement is blocked until that test passes.",
+          "start": 0
+        }
+      ],
+      "kind": "decision",
+      "semantic_validation": "not-assessed",
+      "text": "Production enablement is blocked until load test passes."
+    },
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 121,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e5",
+          "quote": "Correction: pool size must be 2, not 4. Maya owns the load test. Production enablement is blocked until that test passes.",
+          "start": 0
+        }
+      ],
+      "kind": "commitment",
+      "semantic_validation": "not-assessed",
+      "text": "Maya owns the load test."
+    },
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 131,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e4",
+          "quote": "Fixture test receipt: 3 passed. One separate fault-injection check observed acquisition failure. No production workload was tested.",
+          "start": 0
+        }
+      ],
+      "kind": "observation",
+      "semantic_validation": "not-assessed",
+      "text": "Fixture test receipt: 3 passed, one fault-injection check observed acquisition failure, no production workload tested."
+    },
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 87,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e1",
+          "quote": "Earlier preference: pool A, size 4. This is a proposal, not an approved implementation.",
+          "start": 0
+        },
+        {
+          "end": 118,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e2",
+          "quote": "Decision: use pool B for tenant alpha only; retain pool A for rollback. This supersedes the earlier pool A preference.",
+          "start": 0
+        }
+      ],
+      "kind": "rejected_alternative",
+      "semantic_validation": "not-assessed",
+      "text": "Earlier preference for pool A size 4 was a proposal, not approved; superseded by decision to use pool B."
+    },
+    {
+      "authority": "authored_interpretation",
+      "citations": [
+        {
+          "end": 85,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e3",
+          "quote": "I plan to configure pool B at size 4. I have not implemented or deployed this change.",
+          "start": 0
+        },
+        {
+          "end": 121,
+          "episode_id": "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392",
+          "event_id": "e5",
+          "quote": "Correction: pool size must be 2, not 4. Maya owns the load test. Production enablement is blocked until that test passes.",
+          "start": 0
+        }
+      ],
+      "kind": "rejected_alternative",
+      "semantic_validation": "not-assessed",
+      "text": "Assistant planned to configure pool B at size 4, but that was not implemented and later corrected to size 2."
+    }
+  ],
+  "loss": {
+    "cited_characters": 542,
+    "cited_events": 5,
+    "coordinate_system": "unicode-codepoints",
+    "meaning_preservation": "not-assessed",
+    "source_characters": 659,
+    "source_events": 6,
+    "uncited_characters": 117,
+    "uncited_events": 1,
+    "warning": "Citations preserve selected spans, not all source meaning. Reopen evidence for omitted detail."
+  },
+  "schema_version": "ops.episodic-handoff.v1",
+  "source_episode_ids": [
+    "episode:sha256:fb8d4d88e277586591ed0145d69cd8fb5204fea538da54010ebf3831a5959392"
+  ],
+  "unresolved_questions": [
+    "Acquisition timeout choice (30s vs 60s) unresolved; neither approved."
+  ]
+}

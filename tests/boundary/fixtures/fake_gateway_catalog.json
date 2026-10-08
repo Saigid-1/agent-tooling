@@ -1,0 +1,243 @@
+{
+ "tools": [
+  {
+   "description": "Fake gateway advertisement of knowledge.capabilities for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.capabilities"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.retrieve for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "query": {
+      "maxLength": 512,
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     },
+     "target_revision": {
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+      "type": "string"
+     },
+     "top_k": {
+      "maximum": 50,
+      "minimum": 1,
+      "type": "integer"
+     }
+    },
+    "required": [
+     "repo_key",
+     "query"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.retrieve"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.context for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "capability_id": {
+      "type": "string"
+     },
+     "query": {
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     },
+     "target_revision": {
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key",
+     "capability_id",
+     "target_revision"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.context"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.check_references for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "capability_id": {
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key",
+     "capability_id"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.check_references"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.reference_recovery for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "blob_sha": {
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+      "type": "string"
+     },
+     "byte_offset": {
+      "minimum": 0,
+      "type": "integer"
+     },
+     "path": {
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key",
+     "path",
+     "blob_sha",
+     "byte_offset"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.reference_recovery"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.reference_diagnostics for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "generation_digest": {
+      "maxLength": 128,
+      "type": "string"
+     },
+     "path": {
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key",
+     "path"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.reference_diagnostics"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.platform for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.platform"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.symbol for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "line": {
+      "minimum": 1,
+      "type": "integer"
+     },
+     "path": {
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     },
+     "target_revision": {
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key",
+     "target_revision",
+     "path",
+     "line"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.symbol"
+  },
+  {
+   "description": "Fake gateway advertisement of knowledge.discover for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "query": {
+      "type": "string"
+     },
+     "repo_key": {
+      "minLength": 1,
+      "type": "string"
+     }
+    },
+    "required": [
+     "repo_key",
+     "query"
+    ],
+    "type": "object"
+   },
+   "name": "knowledge.discover"
+  },
+  {
+   "description": "Fake gateway advertisement of board.dispatch for the T1 boundary tests.",
+   "inputSchema": {
+    "additionalProperties": false,
+    "properties": {
+     "card": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "card"
+    ],
+    "type": "object"
+   },
+   "name": "board.dispatch"
+  }
+ ]
+}

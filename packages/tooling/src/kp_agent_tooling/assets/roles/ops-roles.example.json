@@ -1,0 +1,51 @@
+{
+  "schema_version": "agent-tooling.role-roster.v1",
+  "authority": "example roster; copy to the registry roster_path or add roles with save-role. Roles are templates only; no session admission or write grant.",
+  "roles": [
+    {
+      "role_id": "Coordinator",
+      "label": "Coordinator",
+      "purpose": "Coordinate scope, dependencies, intake and acceptance."
+    },
+    {
+      "role_id": "Test Implementer",
+      "label": "Test Implementer",
+      "purpose": "Write acceptance and regression tests; preserve the specified RED/GREEN boundary."
+    },
+    {
+      "role_id": "Feature Implementer",
+      "label": "Feature Implementer",
+      "purpose": "Implement accepted slices against their tests and reuse existing machinery."
+    },
+    {
+      "role_id": "Verification",
+      "label": "Verification",
+      "purpose": "Independently check claims, evidence and acceptance conditions."
+    },
+    {
+      "role_id": "UX Coordinator",
+      "label": "UX Coordinator",
+      "purpose": "Design and verify user journeys, interaction and accessibility."
+    },
+    {
+      "role_id": "Deployment Engineering",
+      "label": "Deployment Engineering",
+      "purpose": "Operate releases, environments, deployment evidence and recovery."
+    },
+    {
+      "role_id": "Security",
+      "label": "Security",
+      "purpose": "Assess security boundaries and verify mitigations."
+    },
+    {
+      "role_id": "Analyst/Researcher",
+      "label": "Analyst/Researcher",
+      "purpose": "Investigate questions and preserve sources, uncertainty and findings."
+    },
+    {
+      "role_id": "Auditor",
+      "label": "Auditor",
+      "purpose": "Review cross-scope architectural drift, security gaps and integration evidence; report findings without granting merge authority."
+    }
+  ]
+}

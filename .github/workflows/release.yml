@@ -1,0 +1,730 @@
+# The release workflow (order D0b). It publishes four targets of deploy/Dockerfile: runtime,
+# product, ops and the optional opencode. Each is built natively on two runners, linux/amd64 on
+# ubuntu-latest and linux/arm64 on ubuntu-24.04-arm, pushed by digest with no tag, pulled back by
+# digest and tested as pushed. Only after both architectures pass does it merge each target's two
+# digests into one manifest list, tag that list <target>-<version>, attest its provenance and write
+# the release page. `agents` (the claude and codex CLIs) and `acceptance` are never pushed: the
+# tests that need `agents`, and the unrevisioned identity case, take images built locally on the
+# runner from the same commit.
+#
+# Two jobs per architecture run the same steps; only the registry differs:
+# - rehearsal (every event): a registry:2 service on the runner, localhost:5000. Build, push by
+#   digest, pull by digest, then the R7 checks and the image, installer and host suites against
+#   the pulled digests. On a tag it also runs first, so nothing reaches ghcr.io from a commit
+#   whose rehearsal failed.
+# - publish-digests: the same against ghcr.io/saigid-1/agent-tooling.
+#
+# Safety. Every publishing job (publish-digests, manifests, release) carries the same job-level
+# guard: a pushed v* tag in the public repository, named by its numeric id, which survives a
+# rename and does not depend on case. A pull request, a dispatch, a branch push, a fork or the
+# private repository runs only the rehearsal. The only token is GITHUB_TOKEN. The rehearsal reads
+# contents only; packages, attestations and contents write are granted to the jobs that need them.
+name: release
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+    paths:
+      - '.github/workflows/release.yml'
+      - '.dockerignore'
+      - 'deploy/**'
+      - 'packages/**'
+      - 'extensions/**'
+      - 'apps/kanban/**'
+      - 'docs/work/adr-backlog-intake-v1.2.schema.json'
+      - 'tests/image/**'
+      - 'tests/install/**'
+      - 'tests/host/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  # P5 of the image contract: product is at most 150 MB larger than the retired `full` image,
+  # measured with P5's own instrument (Engine API /images/json Size) on the runner's architecture
+  # and image store, keyed `docker info --format '{{.Architecture}}/{{.Driver}}'`. One entry per
+  # measured store, written as a shell case arm (`<key>) bytes=<bytes> ;;`); both size steps below
+  # read this one table.
+  #   x86_64/overlay2 (Docker 28, ubuntu-latest) and x86_64/overlayfs (containerd snapshotter):
+  #     images.yml's values, measured 2026-09-30.
+  #   aarch64/overlay2: measured 2026-10-07 on ubuntu-24.04-arm from the retired full image (its
+  #     Engine API size), in D0b's PR rehearsal.
+  SIZE_REFERENCES: >-
+    x86_64/overlay2) bytes=1870430732 ;;
+    x86_64/overlayfs) bytes=2634926252 ;;
+    aarch64/overlay2) bytes=1656405795 ;;
+jobs:
+  rehearsal:
+    name: rehearsal ${{ matrix.arch }} (push and pull by digest on registry:2, then test)
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-latest
+            machine: x86_64
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+            machine: aarch64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 240
+    permissions:
+      contents: read
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    env:
+      REGISTRY_IMAGE: localhost:5000/agent-tooling
+      # Built locally on the runner from the same commit, never pushed (R6, F2).
+      AGENT_TOOLING_TEST_IMAGE_AGENTS: agent-tooling-release:agents
+      AGENT_TOOLING_TEST_IMAGE_UNREVISIONED: agent-tooling-release:product-unrevisioned
+      # The agent CLI versions pinned by deploy/Dockerfile and deploy/image/agents.
+      AGENT_TOOLING_TEST_CLAUDE_VERSION: '2.1.280'
+      AGENT_TOOLING_TEST_CODEX_VERSION: '0.159.2'
+      DOCKER_BUILD_RECORD_UPLOAD: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: The runner is native for ${{ matrix.arch }} (no emulation)
+        run: |
+          echo "runner ${{ matrix.runner }}: uname -m $(uname -m)"
+          docker version --format 'docker {{.Server.Version}} {{.Server.Os}}/{{.Server.Arch}}'
+          test "$(uname -m)" = "${{ matrix.machine }}"
+      - name: Free disk space for the image builds
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # pytest and the kp-agent-install console script for tests/install.
+      - name: Install the test environment
+        run: python -m pip install -e './packages/tooling[test]'
+      # The D0f step: D0f F4's stand-in registry (tests/install/test_d0f_f4_sdk_install_runtime_image.py)
+      # serves the published SDK from npm's cache, which the board's locked install fills on the runner
+      # (use on the runner, not redistribution). The same node_modules bundle O1's and O2's image
+      # runners with apps/kanban's esbuild at test time.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fill npm's cache with the board's locked packages (D0f F4 registry)
+        run: npm --prefix apps/kanban ci --ignore-scripts --no-audit --no-fund
+      - name: Source revision and a physical temporary directory
+        run: |
+          revision="$(git rev-parse HEAD)"
+          echo "SOURCE_REVISION=$revision" >> "$GITHUB_ENV"
+          echo "AGENT_TOOLING_TEST_SOURCE_REVISION=$revision" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/image-tmp"
+          echo "TMPDIR=$(realpath "$RUNNER_TEMP/image-tmp")" >> "$GITHUB_ENV"
+      # The reference for this runner is SIZE_REFERENCES' entry for its key (workflow env). With no
+      # entry, P5 fails here rather than compare with anything else: the step sets a non-integer
+      # value, which P5 refuses, and never leaves it unset, which would select the suite's default
+      # (a Mac's containerd store).
+      - name: Size reference for this runner's architecture and image store
+        id: size
+        run: |
+          platform="$(docker info --format '{{.Architecture}}/{{.Driver}}')"
+          case "$platform" in
+            ${{ env.SIZE_REFERENCES }}
+            *) bytes='' ;;
+          esac
+          if [ -n "$bytes" ]; then
+            echo "size reference for $platform: $bytes bytes"
+            echo "AGENT_TOOLING_TEST_REFERENCE_BYTES=$bytes" >> "$GITHUB_ENV"
+          else
+            echo "::error::no measured size reference for $platform; P5 fails on this runner until SIZE_REFERENCES in release.yml records one"
+            echo "AGENT_TOOLING_TEST_REFERENCE_BYTES=unrecorded-for-$platform" >> "$GITHUB_ENV"
+          fi
+      - uses: docker/setup-buildx-action@v3
+        with:
+          # The builder reaches the registry:2 service on the runner's localhost.
+          driver-opts: network=host
+      # R6 step 1: each pushed target by digest only, no tag.
+      - name: Build and push runtime by digest
+        id: runtime
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: runtime
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Build and push product by digest
+        id: product
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: product
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Build and push ops by digest
+        id: ops
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: ops
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Build and push opencode by digest
+        id: opencode
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: opencode
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      # R6 step 2: the tests take what was pushed, pulled by @sha256.
+      - name: Pull each pushed digest and name it for the tests
+        id: pull
+        env:
+          RUNTIME_DIGEST: ${{ steps.runtime.outputs.digest }}
+          PRODUCT_DIGEST: ${{ steps.product.outputs.digest }}
+          OPS_DIGEST: ${{ steps.ops.outputs.digest }}
+          OPENCODE_DIGEST: ${{ steps.opencode.outputs.digest }}
+        run: |
+          set -euo pipefail
+          [[ "$RUNTIME_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for runtime"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$RUNTIME_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$RUNTIME_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::runtime $REGISTRY_IMAGE@$RUNTIME_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE_RUNTIME=$REGISTRY_IMAGE@$RUNTIME_DIGEST" >> "$GITHUB_ENV"
+          echo "runtime AGENT_TOOLING_TEST_IMAGE_RUNTIME=$REGISTRY_IMAGE@$RUNTIME_DIGEST"
+          [[ "$PRODUCT_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for product"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$PRODUCT_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$PRODUCT_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::product $REGISTRY_IMAGE@$PRODUCT_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE=$REGISTRY_IMAGE@$PRODUCT_DIGEST" >> "$GITHUB_ENV"
+          echo "product AGENT_TOOLING_TEST_IMAGE=$REGISTRY_IMAGE@$PRODUCT_DIGEST"
+          [[ "$OPS_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for ops"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$OPS_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$OPS_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::ops $REGISTRY_IMAGE@$OPS_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE_OPS=$REGISTRY_IMAGE@$OPS_DIGEST" >> "$GITHUB_ENV"
+          echo "ops AGENT_TOOLING_TEST_IMAGE_OPS=$REGISTRY_IMAGE@$OPS_DIGEST"
+          [[ "$OPENCODE_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for opencode"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$OPENCODE_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$OPENCODE_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::opencode $REGISTRY_IMAGE@$OPENCODE_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE_OPENCODE=$REGISTRY_IMAGE@$OPENCODE_DIGEST" >> "$GITHUB_ENV"
+          echo "opencode AGENT_TOOLING_TEST_IMAGE_OPENCODE=$REGISTRY_IMAGE@$OPENCODE_DIGEST"
+          df -h /
+      - name: Build agents locally (never pushed)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: agents
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          load: true
+          tags: ${{ env.AGENT_TOOLING_TEST_IMAGE_AGENTS }}
+      # product without SOURCE_REVISION: the identity test's negative case (T7a P4).
+      - name: Build the unrevisioned product locally (never pushed)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: product
+          platforms: linux/${{ matrix.arch }}
+          provenance: false
+          sbom: false
+          load: true
+          tags: ${{ env.AGENT_TOOLING_TEST_IMAGE_UNREVISIONED }}
+      # R7, on each pulled digest: D0f's reusable check (exit 0 clean, 1 carries the SDK, 2 cannot
+      # state a result), then a file-system listing with its own controls.
+      - name: No agent CLI and no agent SDK in any pushed digest (R7)
+        run: |
+          set -euo pipefail
+          while read -r target variable board; do
+            image="${!variable}"
+            echo "== $target $image"
+            python tests/image/agent_sdk_absence.py $board "$image"
+            listing="$(docker run --rm --network none --user 0:0 --entrypoint sh "$image" -c '
+              command -v sh >/dev/null && echo CONTROL-PATH
+              test -s /usr/local/share/agent-tooling-build-identity.json && echo CONTROL-FILE
+              for n in claude codex; do p=$(command -v "$n" 2>/dev/null) && echo "ONPATH $n $p"; done
+              find / -xdev \( -path "*/node_modules/@anthropic-ai/claude-code" -o -path "*/node_modules/@openai/codex" \) -print 2>/dev/null | sed "s/^/FOUND /"
+              echo LISTING-DONE')"
+            echo "$listing"
+            for control in CONTROL-PATH CONTROL-FILE LISTING-DONE; do
+              grep -qx "$control" <<<"$listing" || { echo "::error::$target: listing control $control failed"; exit 2; }
+            done
+            if grep -E '^(ONPATH|FOUND) ' <<<"$listing"; then
+              echo "::error::$target carries an agent CLI"; exit 1
+            fi
+          done <<'TARGETS'
+          runtime AGENT_TOOLING_TEST_IMAGE_RUNTIME
+          product AGENT_TOOLING_TEST_IMAGE --expect-board
+          ops AGENT_TOOLING_TEST_IMAGE_OPS --expect-board
+          opencode AGENT_TOOLING_TEST_IMAGE_OPENCODE --expect-board
+          TARGETS
+      - name: Image contract (tests/image)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python -m pytest tests/image -m image -q -rfE
+      - name: Installer empty-root contract (tests/install)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python -m pytest tests/install -m image -q -rfE
+      - name: Host adapter in real containers (tests/host)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python -m pytest tests/host -m image -q -rfE
+      - name: ops variant check (product without, ops with the extension)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python deploy/ci/check_ops_variant.py
+      - name: O1 effective launch policy on the opencode digest (vitest)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        working-directory: apps/kanban
+        env:
+          # The image's user writes into the test's bind-mounted scratch, which the runner cannot remove; keep it (the runner is discarded).
+          O1_A1_KEEP: '1'
+        run: npx vitest run test/integration/o1
+
+  publish-digests:
+    name: push ${{ matrix.arch }} to ghcr.io by digest, then test it
+    needs: [rehearsal]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && github.repository_id == '1404822873'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-latest
+            machine: x86_64
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+            machine: aarch64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 240
+    permissions:
+      contents: read
+      packages: write
+    env:
+      REGISTRY_IMAGE: ghcr.io/saigid-1/agent-tooling
+      AGENT_TOOLING_TEST_IMAGE_AGENTS: agent-tooling-release:agents
+      AGENT_TOOLING_TEST_IMAGE_UNREVISIONED: agent-tooling-release:product-unrevisioned
+      AGENT_TOOLING_TEST_CLAUDE_VERSION: '2.1.280'
+      AGENT_TOOLING_TEST_CODEX_VERSION: '0.159.2'
+      DOCKER_BUILD_RECORD_UPLOAD: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: The runner is native for ${{ matrix.arch }} (no emulation)
+        run: |
+          echo "runner ${{ matrix.runner }}: uname -m $(uname -m)"
+          docker version --format 'docker {{.Server.Version}} {{.Server.Os}}/{{.Server.Arch}}'
+          test "$(uname -m)" = "${{ matrix.machine }}"
+      - name: Free disk space for the image builds
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Every tag publishes images of the packaged version: v<version> or v<version>-rc.<n>.
+      - name: The tag names the packaged version
+        run: |
+          version="$(python -c 'import tomllib; print(tomllib.load(open("packages/tooling/pyproject.toml", "rb"))["project"]["version"])')"
+          if [[ ! "$GITHUB_REF_NAME" =~ ^v${version//./\\.}(-rc\.[1-9][0-9]*)?$ ]]; then
+            echo "::error::tag $GITHUB_REF_NAME is neither v$version nor v$version-rc.<n>"; exit 1
+          fi
+      - name: Install the test environment
+        run: python -m pip install -e './packages/tooling[test]'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fill npm's cache with the board's locked packages (D0f F4 registry)
+        run: npm --prefix apps/kanban ci --ignore-scripts --no-audit --no-fund
+      - name: Source revision and a physical temporary directory
+        run: |
+          revision="$(git rev-parse HEAD)"
+          echo "SOURCE_REVISION=$revision" >> "$GITHUB_ENV"
+          echo "AGENT_TOOLING_TEST_SOURCE_REVISION=$revision" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/image-tmp"
+          echo "TMPDIR=$(realpath "$RUNNER_TEMP/image-tmp")" >> "$GITHUB_ENV"
+      # The same size step as the rehearsal's, reading the same SIZE_REFERENCES.
+      - name: Size reference for this runner's architecture and image store
+        id: size
+        run: |
+          platform="$(docker info --format '{{.Architecture}}/{{.Driver}}')"
+          case "$platform" in
+            ${{ env.SIZE_REFERENCES }}
+            *) bytes='' ;;
+          esac
+          if [ -n "$bytes" ]; then
+            echo "size reference for $platform: $bytes bytes"
+            echo "AGENT_TOOLING_TEST_REFERENCE_BYTES=$bytes" >> "$GITHUB_ENV"
+          else
+            echo "::error::no measured size reference for $platform; P5 fails on this runner until SIZE_REFERENCES in release.yml records one"
+            echo "AGENT_TOOLING_TEST_REFERENCE_BYTES=unrecorded-for-$platform" >> "$GITHUB_ENV"
+          fi
+      - uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: network=host
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push runtime by digest
+        id: runtime
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: runtime
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Build and push product by digest
+        id: product
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: product
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Build and push ops by digest
+        id: ops
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: ops
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Build and push opencode by digest
+        id: opencode
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: opencode
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+      - name: Pull each pushed digest and name it for the tests
+        id: pull
+        env:
+          RUNTIME_DIGEST: ${{ steps.runtime.outputs.digest }}
+          PRODUCT_DIGEST: ${{ steps.product.outputs.digest }}
+          OPS_DIGEST: ${{ steps.ops.outputs.digest }}
+          OPENCODE_DIGEST: ${{ steps.opencode.outputs.digest }}
+        run: |
+          set -euo pipefail
+          [[ "$RUNTIME_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for runtime"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$RUNTIME_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$RUNTIME_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::runtime $REGISTRY_IMAGE@$RUNTIME_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE_RUNTIME=$REGISTRY_IMAGE@$RUNTIME_DIGEST" >> "$GITHUB_ENV"
+          echo "runtime AGENT_TOOLING_TEST_IMAGE_RUNTIME=$REGISTRY_IMAGE@$RUNTIME_DIGEST"
+          [[ "$PRODUCT_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for product"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$PRODUCT_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$PRODUCT_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::product $REGISTRY_IMAGE@$PRODUCT_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE=$REGISTRY_IMAGE@$PRODUCT_DIGEST" >> "$GITHUB_ENV"
+          echo "product AGENT_TOOLING_TEST_IMAGE=$REGISTRY_IMAGE@$PRODUCT_DIGEST"
+          [[ "$OPS_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for ops"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$OPS_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$OPS_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::ops $REGISTRY_IMAGE@$OPS_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE_OPS=$REGISTRY_IMAGE@$OPS_DIGEST" >> "$GITHUB_ENV"
+          echo "ops AGENT_TOOLING_TEST_IMAGE_OPS=$REGISTRY_IMAGE@$OPS_DIGEST"
+          [[ "$OPENCODE_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::no pushed digest for opencode"; exit 1; }
+          docker pull "$REGISTRY_IMAGE@$OPENCODE_DIGEST"
+          platform="$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$REGISTRY_IMAGE@$OPENCODE_DIGEST")"
+          [ "$platform" = "linux/${{ matrix.arch }}" ] || { echo "::error::opencode $REGISTRY_IMAGE@$OPENCODE_DIGEST is $platform"; exit 1; }
+          echo "AGENT_TOOLING_TEST_IMAGE_OPENCODE=$REGISTRY_IMAGE@$OPENCODE_DIGEST" >> "$GITHUB_ENV"
+          echo "opencode AGENT_TOOLING_TEST_IMAGE_OPENCODE=$REGISTRY_IMAGE@$OPENCODE_DIGEST"
+          df -h /
+      - name: Build agents locally (never pushed)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: agents
+          platforms: linux/${{ matrix.arch }}
+          build-args: SOURCE_REVISION=${{ env.SOURCE_REVISION }}
+          provenance: false
+          sbom: false
+          load: true
+          tags: ${{ env.AGENT_TOOLING_TEST_IMAGE_AGENTS }}
+      - name: Build the unrevisioned product locally (never pushed)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          target: product
+          platforms: linux/${{ matrix.arch }}
+          provenance: false
+          sbom: false
+          load: true
+          tags: ${{ env.AGENT_TOOLING_TEST_IMAGE_UNREVISIONED }}
+      - name: No agent CLI and no agent SDK in any pushed digest (R7)
+        run: |
+          set -euo pipefail
+          while read -r target variable board; do
+            image="${!variable}"
+            echo "== $target $image"
+            python tests/image/agent_sdk_absence.py $board "$image"
+            listing="$(docker run --rm --network none --user 0:0 --entrypoint sh "$image" -c '
+              command -v sh >/dev/null && echo CONTROL-PATH
+              test -s /usr/local/share/agent-tooling-build-identity.json && echo CONTROL-FILE
+              for n in claude codex; do p=$(command -v "$n" 2>/dev/null) && echo "ONPATH $n $p"; done
+              find / -xdev \( -path "*/node_modules/@anthropic-ai/claude-code" -o -path "*/node_modules/@openai/codex" \) -print 2>/dev/null | sed "s/^/FOUND /"
+              echo LISTING-DONE')"
+            echo "$listing"
+            for control in CONTROL-PATH CONTROL-FILE LISTING-DONE; do
+              grep -qx "$control" <<<"$listing" || { echo "::error::$target: listing control $control failed"; exit 2; }
+            done
+            if grep -E '^(ONPATH|FOUND) ' <<<"$listing"; then
+              echo "::error::$target carries an agent CLI"; exit 1
+            fi
+          done <<'TARGETS'
+          runtime AGENT_TOOLING_TEST_IMAGE_RUNTIME
+          product AGENT_TOOLING_TEST_IMAGE --expect-board
+          ops AGENT_TOOLING_TEST_IMAGE_OPS --expect-board
+          opencode AGENT_TOOLING_TEST_IMAGE_OPENCODE --expect-board
+          TARGETS
+      - name: Image contract (tests/image)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python -m pytest tests/image -m image -q -rfE
+      - name: Installer empty-root contract (tests/install)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python -m pytest tests/install -m image -q -rfE
+      - name: Host adapter in real containers (tests/host)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python -m pytest tests/host -m image -q -rfE
+      - name: ops variant check (product without, ops with the extension)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        run: python deploy/ci/check_ops_variant.py
+      - name: O1 effective launch policy on the opencode digest (vitest)
+        if: ${{ !cancelled() && steps.pull.outcome == 'success' }}
+        working-directory: apps/kanban
+        env:
+          # The image's user writes into the test's bind-mounted scratch, which the runner cannot remove; keep it (the runner is discarded).
+          O1_A1_KEEP: '1'
+        run: npx vitest run test/integration/o1
+      # Only a digest whose every check passed reaches step 3. A failed digest stays untagged on
+      # ghcr.io, pullable only by whoever has its digest; removing it is the Principal's act.
+      - name: Record this architecture's tested digests
+        env:
+          RUNTIME_DIGEST: ${{ steps.runtime.outputs.digest }}
+          PRODUCT_DIGEST: ${{ steps.product.outputs.digest }}
+          OPS_DIGEST: ${{ steps.ops.outputs.digest }}
+          OPENCODE_DIGEST: ${{ steps.opencode.outputs.digest }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/digests"
+          printf '%s\n' "$RUNTIME_DIGEST" > "$RUNNER_TEMP/digests/runtime"
+          printf '%s\n' "$PRODUCT_DIGEST" > "$RUNNER_TEMP/digests/product"
+          printf '%s\n' "$OPS_DIGEST" > "$RUNNER_TEMP/digests/ops"
+          printf '%s\n' "$OPENCODE_DIGEST" > "$RUNNER_TEMP/digests/opencode"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digests-${{ matrix.arch }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 30
+
+  manifests:
+    name: manifest lists, tags and provenance (both architectures passed)
+    needs: [rehearsal, publish-digests]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && github.repository_id == '1404822873'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      packages: write
+      id-token: write
+      attestations: write
+    env:
+      REGISTRY_IMAGE: ghcr.io/saigid-1/agent-tooling
+    outputs:
+      runtime: ${{ steps.lists.outputs.runtime }}
+      product: ${{ steps.lists.outputs.product }}
+      ops: ${{ steps.lists.outputs.ops }}
+      opencode: ${{ steps.lists.outputs.opencode }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: digests-*
+          path: digests
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      # R3 and R4: one manifest list per target from its two tested per-architecture digests, tagged
+      # <target>-<version> (the git tag without its v). No latest, no floating tag; the per-architecture
+      # digests are never tagged.
+      - name: One manifest list per target, tagged <target>-<version>
+        id: lists
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          for target in runtime product ops opencode; do
+            amd64="$(cat "digests/digests-amd64/$target")"
+            arm64="$(cat "digests/digests-arm64/$target")"
+            for digest in "$amd64" "$arm64"; do
+              [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::$target: no tested digest"; exit 1; }
+            done
+            tag="$REGISTRY_IMAGE:$target-$version"
+            docker buildx imagetools create -t "$tag" "$REGISTRY_IMAGE@$amd64" "$REGISTRY_IMAGE@$arm64"
+            list="$(docker buildx imagetools inspect "$tag" --format '{{json .Manifest}}' | jq -r .digest)"
+            [[ "$list" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::$tag resolves to no digest"; exit 1; }
+            # The list holds exactly the two tested digests, one per architecture.
+            docker buildx imagetools inspect "$REGISTRY_IMAGE@$list" --format '{{json .Manifest}}' \
+              | jq -r '.manifests[] | "\(.platform.os)/\(.platform.architecture) \(.digest)"' | sort > members
+            printf 'linux/amd64 %s\nlinux/arm64 %s\n' "$amd64" "$arm64" | sort > expected
+            diff expected members
+            echo "$target=$list" >> "$GITHUB_OUTPUT"
+            echo "$tag -> $list"
+          done
+      # R8's falsifier: every tag still resolves to the list the release page will name.
+      - name: Each tag resolves to its manifest list
+        env:
+          RUNTIME_LIST: ${{ steps.lists.outputs.runtime }}
+          PRODUCT_LIST: ${{ steps.lists.outputs.product }}
+          OPS_LIST: ${{ steps.lists.outputs.ops }}
+          OPENCODE_LIST: ${{ steps.lists.outputs.opencode }}
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          declare -A list=([runtime]="$RUNTIME_LIST" [product]="$PRODUCT_LIST" [ops]="$OPS_LIST" [opencode]="$OPENCODE_LIST")
+          for target in runtime product ops opencode; do
+            resolved="$(docker buildx imagetools inspect "$REGISTRY_IMAGE:$target-$version" --format '{{json .Manifest}}' | jq -r .digest)"
+            [ "$resolved" = "${list[$target]}" ] || { echo "::error::$target-$version resolves to $resolved, not ${list[$target]}"; exit 1; }
+          done
+      - name: Provenance of the runtime manifest list
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY_IMAGE }}
+          subject-digest: ${{ steps.lists.outputs.runtime }}
+          push-to-registry: true
+      - name: Provenance of the product manifest list
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY_IMAGE }}
+          subject-digest: ${{ steps.lists.outputs.product }}
+          push-to-registry: true
+      - name: Provenance of the ops manifest list
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY_IMAGE }}
+          subject-digest: ${{ steps.lists.outputs.ops }}
+          push-to-registry: true
+      - name: Provenance of the opencode manifest list
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY_IMAGE }}
+          subject-digest: ${{ steps.lists.outputs.opencode }}
+          push-to-registry: true
+
+  release:
+    name: release page (every digest, each manifest list)
+    needs: [rehearsal, publish-digests, manifests]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && github.repository_id == '1404822873'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      # The tag's own tree: the release stance is read from docs/RELEASE-STANCE.md as committed there.
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: digests-*
+          path: digests
+      # R8: every per-architecture digest and each manifest list, with the pull command by digest,
+      # NOTICE and the source at the tag (the AGPL source offer); then the release stance, read from
+      # its one committed file (amendment 1), and the cutover gate's procedural fact.
+      - name: Release notes
+        env:
+          RUNTIME_LIST: ${{ needs.manifests.outputs.runtime }}
+          PRODUCT_LIST: ${{ needs.manifests.outputs.product }}
+          OPS_LIST: ${{ needs.manifests.outputs.ops }}
+          OPENCODE_LIST: ${{ needs.manifests.outputs.opencode }}
+          SOURCE: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if [ ! -s docs/RELEASE-STANCE.md ]; then
+            echo "::error::docs/RELEASE-STANCE.md is missing or empty at $GITHUB_REF_NAME"; exit 1
+          fi
+          version="${GITHUB_REF_NAME#v}"
+          image=ghcr.io/saigid-1/agent-tooling
+          declare -A list=([runtime]="$RUNTIME_LIST" [product]="$PRODUCT_LIST" [ops]="$OPS_LIST" [opencode]="$OPENCODE_LIST")
+          declare -A amd64 arm64
+          for target in runtime product ops opencode; do
+            amd64[$target]="$(cat "digests/digests-amd64/$target")"
+            arm64[$target]="$(cat "digests/digests-arm64/$target")"
+            for digest in "${list[$target]}" "${amd64[$target]}" "${arm64[$target]}"; do
+              [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "::error::$target: a digest is missing"; exit 1; }
+            done
+          done
+          {
+            echo "Container images of agent-tooling $version, built from [$GITHUB_REF_NAME]($SOURCE/tree/$GITHUB_REF_NAME) (commit $GITHUB_SHA), for linux/amd64 and linux/arm64."
+            echo
+            echo "Pull by digest, then pass the same reference to \`kp-agent-install plan --image\` ([docs/DOCKER.md]($SOURCE/blob/$GITHUB_REF_NAME/docs/DOCKER.md)); the installer never pulls. \`product\` is the image the installation expects; \`opencode\` is optional (\`product\` plus the OpenCode CLI) for board tasks that run OpenCode. No image contains Claude Code, Codex or the Claude Agent SDK."
+            echo
+            echo "| Target | Tag | Manifest list (both architectures) | linux/amd64 | linux/arm64 |"
+            echo "| --- | --- | --- | --- | --- |"
+            for target in runtime product ops opencode; do
+              echo "| \`$target\` | \`$target-$version\` | \`${list[$target]}\` | \`${amd64[$target]}\` | \`${arm64[$target]}\` |"
+            done
+            echo
+            echo '```sh'
+            for target in runtime product ops opencode; do
+              echo "docker pull $image@${list[$target]}   # $target, either architecture"
+              echo "docker pull $image@${amd64[$target]}   # $target, linux/amd64"
+              echo "docker pull $image@${arm64[$target]}   # $target, linux/arm64"
+            done
+            echo '```'
+            echo
+            echo "Licences: \`runtime\`, \`product\` and \`ops\` are AGPL-3.0-only; \`opencode\` is AGPL-3.0-only AND MIT (the bundled OpenCode CLI). Third-party components: [NOTICE]($SOURCE/blob/$GITHUB_REF_NAME/NOTICE). The corresponding source of every image is this repository at the tag: [$GITHUB_REF_NAME]($SOURCE/tree/$GITHUB_REF_NAME)."
+            echo
+            cat docs/RELEASE-STANCE.md
+            echo
+            echo "The private-content scan in the cutover record read zero on every gate line before this tag was pushed. That scan is the cutover gate; it does not run in CI."
+          } > notes.md
+          cat notes.md
+      - name: Create the release (a -rc. tag is a pre-release)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          flags=(--verify-tag --title "agent-tooling $GITHUB_REF_NAME" --notes-file notes.md)
+          case "$GITHUB_REF_NAME" in
+            *-rc.*) flags+=(--prerelease) ;;
+          esac
+          gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" "${flags[@]}"

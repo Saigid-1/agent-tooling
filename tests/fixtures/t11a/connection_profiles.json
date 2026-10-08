@@ -1,0 +1,2541 @@
+{
+ "steps": {
+  "budget ledger: reserve": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/gateway/.model-gateway/ledger.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS calls ( call_id TEXT PRIMARY KEY, capability TEXT NOT NULL, provider TEXT NOT NULL, model TEXT NOT NULL, started_at REAL NOT NULL, finished_at REAL, status TEXT NOT NULL, estimate_usd TEXT, cost_usd TEXT, request_digest TEXT NOT NULL);",
+    "isolation_level": null,
+    "timeout": 30.0,
+    "uri": true
+   }
+  ],
+  "budget ledger: state": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/gateway/.model-gateway/ledger.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS calls ( call_id TEXT PRIMARY KEY, capability TEXT NOT NULL, provider TEXT NOT NULL, model TEXT NOT NULL, started_at REAL NOT NULL, finished_at REAL, status TEXT NOT NULL, estimate_usd TEXT, cost_usd TEXT, request_digest TEXT NOT NULL);",
+    "isolation_level": null,
+    "timeout": 30.0,
+    "uri": true
+   }
+  ],
+  "budget ledger: state before any call": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": ":memory:"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS calls ( call_id TEXT PRIMARY KEY, capability TEXT NOT NULL, provider TEXT NOT NULL, model TEXT NOT NULL, started_at REAL NOT NULL, finished_at REAL, status TEXT NOT NULL, estimate_usd TEXT, cost_usd TEXT, request_digest TEXT NOT NULL);",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": false
+   }
+  ],
+  "child rollout capture: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/child-capture.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE cursor (session TEXT PRIMARY KEY, binding TEXT NOT NULL, path TEXT NOT NULL, dev INTEGER NOT NULL, ino INTEGER NOT NULL, offset INTEGER NOT NULL, digest TEXT NOT NULL, pending TEXT)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "claude capture: capture": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT (SELECT count(*) FROM scope_marks WHERE written != projected), (SELECT count(*) FROM scope_marks), (SELECT value FROM scope_state WHERE key = ''), (SELECT value FROM scope_state WHERE key = '')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "claude capture: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/capture.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE cursor (session TEXT PRIMARY KEY, binding TEXT NOT NULL, path TEXT NOT NULL, dev INTEGER NOT NULL, ino INTEGER NOT NULL, offset INTEGER NOT NULL, digest TEXT NOT NULL, pending TEXT, verify_offset INTEGER NOT NULL, verify_digest TEXT NOT NULL, verify_size INTEGER, verify_mtime_ns INTEGER, receipt TEXT)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "desk memory: admit": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT context FROM desk_contexts WHERE instance='' AND session=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "desk memory: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE desk_session_launches ( provider_instance TEXT NOT NULL, provider_session_id TEXT NOT NULL, binding_key TEXT NOT NULL, tenant_id TEXT NOT NULL, role TEXT NOT NULL, repo_key TEXT NOT NULL, provider_id TEXT NOT NULL, model_id TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (provider_instance, provider_session_id) )",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE episodes (id TEXT PRIMARY KEY, binding TEXT NOT NULL, session TEXT NOT NULL, source_ref TEXT NOT NULL, payload BLOB NOT NULL, UNIQUE(binding, session, source_ref));",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT name FROM sqlite_master WHERE type IN ('', '') AND name IN (SELECT value FROM json_each(''))",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA table_info('')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT value FROM scope_state WHERE key = ''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT count(*) FROM scope_marks WHERE written != projected",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE desk_contexts (instance TEXT, session TEXT, context TEXT NOT NULL, PRIMARY KEY(instance,session))",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "desk memory: read_context": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT context FROM desk_contexts WHERE instance='' AND session=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "episode store: capture": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "episode store: read_event": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT (SELECT count(*) FROM scope_marks WHERE written != projected), (SELECT count(*) FROM scope_marks), (SELECT value FROM scope_state WHERE key = ''), (SELECT value FROM scope_state WHERE key = '')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "hook telemetry: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/telemetry.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE receipts (id INTEGER PRIMARY KEY,binding TEXT NOT NULL,session TEXT NOT NULL,payload TEXT NOT NULL)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "hook telemetry: record": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/telemetry.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "import jobs: advance": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/session-import-jobs.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 10.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT id FROM source_episodes WHERE session_id='' AND source_ref=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/session-import-jobs.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 10.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding,payload FROM episodes WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT tenant,session_id,payload FROM source_episodes WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episode-search.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT version FROM metadata",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/session-import-jobs.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT * FROM jobs WHERE id='' AND tenant=''",
+    "isolation_level": "",
+    "timeout": 10.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM source_sessions WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT tenant,payload FROM source_sessions WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "import jobs: apply": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/session-import-jobs.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS jobs ( id TEXT PRIMARY KEY, tenant TEXT NOT NULL, plan BLOB NOT NULL, cursor INTEGER NOT NULL, prefix_sha256 TEXT NOT NULL, inode INTEGER NOT NULL, device INTEGER NOT NULL, phase TEXT NOT NULL, follow_requested INTEGER NOT NULL, counts BLOB NOT NULL, errors BLOB NOT NULL, index_pending BLOB NOT NULL, lease_owner TEXT, lease_until REAL, updated_at TEXT NOT NULL );",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM source_sessions WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "import jobs: construct": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "import jobs: preview": [],
+  "import jobs: status": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/session-import-jobs.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT * FROM jobs WHERE id='' AND tenant=''",
+    "isolation_level": "",
+    "timeout": 10.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM source_sessions WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT tenant,payload FROM source_sessions WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "launch: first codex hook": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT context FROM desk_contexts WHERE instance='' AND session=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/rollout-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/rollout-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT (SELECT count(*) FROM scope_marks WHERE written != projected), (SELECT count(*) FROM scope_marks), (SELECT value FROM scope_state WHERE key = ''), (SELECT value FROM scope_state WHERE key = '')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding,payload FROM episodes WHERE id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT payload FROM episodes WHERE id='' AND binding=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episode-search.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE metadata (version INTEGER NOT NULL);",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/rollout-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "launch: prepare claude": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/capture.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE cursor (session TEXT PRIMARY KEY, binding TEXT NOT NULL, path TEXT NOT NULL, dev INTEGER NOT NULL, ino INTEGER NOT NULL, offset INTEGER NOT NULL, digest TEXT NOT NULL, pending TEXT, verify_offset INTEGER NOT NULL, verify_digest TEXT NOT NULL, verify_size INTEGER, verify_mtime_ns INTEGER, receipt TEXT)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/telemetry.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE receipts (id INTEGER PRIMARY KEY,binding TEXT NOT NULL,session TEXT NOT NULL,payload TEXT NOT NULL)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "launch: prepare codex": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/rollout-capture.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE cursor (session TEXT PRIMARY KEY, binding TEXT NOT NULL, path TEXT NOT NULL, dev INTEGER NOT NULL, ino INTEGER NOT NULL, offset INTEGER NOT NULL, digest TEXT NOT NULL, pending TEXT)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/queue.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE jobs ( id TEXT PRIMARY KEY, binding TEXT NOT NULL, episodes TEXT NOT NULL, reason TEXT NOT NULL, state TEXT NOT NULL, worker TEXT, generation INTEGER NOT NULL DEFAULT 0, lease_until REAL, capsule_id TEXT, error TEXT, created REAL NOT NULL);",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "queue: enqueue": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT (SELECT count(*) FROM scope_marks WHERE written != projected), (SELECT count(*) FROM scope_marks), (SELECT value FROM scope_state WHERE key = ''), (SELECT value FROM scope_state WHERE key = '')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "queue: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE jobs ( id TEXT PRIMARY KEY, binding TEXT NOT NULL, episodes TEXT NOT NULL, reason TEXT NOT NULL, state TEXT NOT NULL, worker TEXT, generation INTEGER NOT NULL DEFAULT 0, lease_until REAL, capsule_id TEXT, error TEXT, created REAL NOT NULL);",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "rollout capture: capture": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/rollout-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/rollout-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT (SELECT count(*) FROM scope_marks WHERE written != projected), (SELECT count(*) FROM scope_marks), (SELECT value FROM scope_state WHERE key = ''), (SELECT value FROM scope_state WHERE key = '')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/queue.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA user_version",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/rollout-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "rollout capture: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/rollout-capture.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE cursor (session TEXT PRIMARY KEY, binding TEXT NOT NULL, path TEXT NOT NULL, dev INTEGER NOT NULL, ino INTEGER NOT NULL, offset INTEGER NOT NULL, digest TEXT NOT NULL, pending TEXT)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "search index: rebuild": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT id,binding,payload FROM episodes",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episode-search.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE metadata (version INTEGER NOT NULL);",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT payload FROM episodes WHERE id='' AND binding=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN IMMEDIATE",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "search index: search": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT (SELECT count(*) FROM scope_marks WHERE written != projected), (SELECT count(*) FROM scope_marks), (SELECT value FROM scope_state WHERE key = ''), (SELECT value FROM scope_state WHERE key = '')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "session bindings: list": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<root>/world/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "session sources: upgrade": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT name FROM sqlite_master WHERE type IN ('', '') AND name IN (SELECT value FROM json_each(''))",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA table_info('')",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE type='' AND name=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "spool cursors: get": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/spool-ingest.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS cursors (launch_id TEXT PRIMARY KEY, kind TEXT NOT NULL, offset INTEGER NOT NULL, digest TEXT NOT NULL, attempts INTEGER NOT NULL, updated_at TEXT NOT NULL)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "workspace capture: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/episodes.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT name FROM sqlite_master WHERE type IN ('', '') AND name IN (SELECT value FROM json_each(''))",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/workspace-capture.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS files ( path TEXT PRIMARY KEY, tenant TEXT NOT NULL, runtime TEXT NOT NULL, native_id TEXT NOT NULL, repo_key TEXT NOT NULL, device INTEGER NOT NULL, inode INTEGER NOT NULL, cursor INTEGER NOT NULL, prefix_sha256 TEXT NOT NULL, index_pending BLOB NOT NULL, counts BLOB NOT NULL, error TEXT, lease_until REAL NOT NULL DEFAULT 0, lease_owner TEXT);",
+    "isolation_level": "",
+    "timeout": 10.0,
+    "uri": true
+   }
+  ],
+  "workspace capture: preview": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/workspace-capture.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT value FROM state WHERE key=''",
+    "isolation_level": "",
+    "timeout": 10.0,
+    "uri": true
+   }
+  ],
+  "workspace capture: preview before initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": ":memory:"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS files ( path TEXT PRIMARY KEY, tenant TEXT NOT NULL, runtime TEXT NOT NULL, native_id TEXT NOT NULL, repo_key TEXT NOT NULL, device INTEGER NOT NULL, inode INTEGER NOT NULL, cursor INTEGER NOT NULL, prefix_sha256 TEXT NOT NULL, index_pending BLOB NOT NULL, counts BLOB NOT NULL, error TEXT, lease_until REAL NOT NULL DEFAULT 0, lease_owner TEXT);",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": false
+   }
+  ],
+  "write scope: record and read": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS desk_write_scopes (sequence INTEGER PRIMARY KEY, instance TEXT, session TEXT, payload TEXT, digest TEXT)",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA quick_check",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT binding_key,tenant_id,role,repo_key,provider_id,model_id FROM desk_session_launches WHERE provider_instance='' AND provider_session_id=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/state/sessions.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT 1 FROM sqlite_master WHERE name='' AND type=''",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ]
+ }
+}

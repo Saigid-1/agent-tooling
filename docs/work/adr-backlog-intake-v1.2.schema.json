@@ -1,0 +1,734 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ops:adr-backlog-intake:v1.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "work_id",
+    "initiative_id",
+    "slice_id",
+    "title",
+    "owner",
+    "adr",
+    "entry_point",
+    "requester_outcome",
+    "acceptance_scenarios",
+    "reuse_assessment",
+    "dependencies",
+    "unresolved",
+    "dispatch",
+    "predictions",
+    "prediction_gap"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ops.adr-backlog-intake.v1.2"
+    },
+    "work_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "initiative_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slice_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "role"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "adr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "declared_status",
+        "derived_status",
+        "verification",
+        "reason",
+        "citations",
+        "derivation",
+        "declared_status_text",
+        "status_scope"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "declared_status": {
+          "enum": [
+            "Proposed",
+            "Accepted",
+            "In progress",
+            "Built",
+            "Deployed",
+            "Proven",
+            "Superseded",
+            "Retired"
+          ]
+        },
+        "derived_status": {
+          "enum": [
+            "Proposed",
+            "Accepted",
+            "In progress",
+            "Built",
+            "Deployed",
+            "Proven",
+            "Superseded",
+            "Retired",
+            null
+          ]
+        },
+        "verification": {
+          "enum": [
+            "verified",
+            "unverified",
+            "unchecked",
+            "unresolvable",
+            "missing",
+            "contradicted"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/citation"
+          }
+        },
+        "derivation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/derivation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declared_status_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status_scope": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "description": "Exact environment/qualification being assessed; null when not established. Never silently default to production."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "derived_status": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "derivation": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "derivation": {
+                "$ref": "#/$defs/derivation"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "entry_point": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requester_outcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "given",
+          "when",
+          "then"
+        ],
+        "properties": {
+          "given": {
+            "type": "string",
+            "minLength": 1
+          },
+          "when": {
+            "type": "string",
+            "minLength": 1
+          },
+          "then": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "reuse_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "references",
+        "reuse_targets",
+        "remaining_gap"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "review_required",
+            "complete"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "reuse_targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "remaining_gap": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "work_id",
+          "relationship",
+          "basis",
+          "reason"
+        ],
+        "properties": {
+          "work_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship": {
+            "const": "requires"
+          },
+          "basis": {
+            "enum": [
+              "source_explicit",
+              "proposed"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dispatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "state": {
+          "const": "not_authorized"
+        }
+      }
+    },
+    "predictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prediction"
+      }
+    },
+    "prediction_gap": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "path",
+        "revision",
+        "sha256",
+        "origin"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "origin": {
+          "enum": [
+            "committed",
+            "external_review_package"
+          ]
+        }
+      }
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locator",
+        "kind",
+        "target",
+        "verification",
+        "reason_code",
+        "reason"
+      ],
+      "properties": {
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "ruling",
+            "work_record",
+            "merge_commit",
+            "implementation_receipt",
+            "release_receipt",
+            "execution_receipt",
+            "replacement_adr",
+            "retirement_receipt",
+            "branch",
+            "order",
+            "pull_request",
+            "ci_run",
+            "image_digest",
+            "ledger_entry"
+          ]
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "verification": {
+          "enum": [
+            "verified",
+            "unverified",
+            "unchecked",
+            "unresolvable",
+            "missing",
+            "contradicted"
+          ]
+        },
+        "reason_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "repository",
+        "identifier",
+        "resolved_source"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "file",
+            "commit",
+            "branch",
+            "pull_request",
+            "ci_run",
+            "image_digest",
+            "chat",
+            "desk_note",
+            "ledger_entry",
+            "order"
+          ]
+        },
+        "repository": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "identifier": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolved_source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/source"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "description": "The cited artifact, not the ADR. identifier preserves original spelling, including abbreviated/truncated identifiers. resolved_source is optional evidence materialization, never a fabricated file."
+    },
+    "derivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checker",
+        "checked_at",
+        "configuration_sha256",
+        "reviewed_refs",
+        "inputs",
+        "output"
+      ],
+      "properties": {
+        "checker": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "version",
+            "source_revision"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_revision": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$"
+            }
+          }
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "configuration_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reviewed_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "repository",
+              "role",
+              "requested_ref",
+              "resolved_revision"
+            ],
+            "properties": {
+              "repository": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "adr_source",
+                  "integration",
+                  "artifact"
+                ]
+              },
+              "requested_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "resolved_revision": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              }
+            }
+          },
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "adr_source"
+                  }
+                },
+                "required": [
+                  "role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "integration"
+                  }
+                },
+                "required": [
+                  "role"
+                ]
+              }
+            }
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "output": {
+          "$ref": "#/$defs/source"
+        }
+      },
+      "description": "Pin checker code, configuration, resolved Git refs and retained input/output bytes. Output is the separate checker JSON document, not this enclosing intake record. Inputs include configuration and external lookup snapshots required for offline replay."
+    },
+    "prediction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "claim",
+        "scope",
+        "procedure",
+        "expected_observation",
+        "falsifying_observation",
+        "registered_at",
+        "registration_source",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "procedure": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_observation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "falsifying_observation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registered_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "registration_source": {
+          "$ref": "#/$defs/source"
+        },
+        "result": {
+          "$ref": "#/$defs/prediction_result"
+        }
+      }
+    },
+    "prediction_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "observed_at",
+        "observed",
+        "evidence"
+      ],
+      "properties": {
+        "verdict": {
+          "enum": [
+            "not_run",
+            "supported",
+            "refuted",
+            "inconclusive"
+          ]
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "observed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "const": "not_run"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "observed_at": {
+                "type": "null"
+              },
+              "observed": {
+                "type": "null"
+              },
+              "evidence": {
+                "maxItems": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "observed_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "observed": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "predictions": {
+            "maxItems": 0
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "prediction_gap": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "prediction_gap": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

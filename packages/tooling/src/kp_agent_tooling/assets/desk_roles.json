@@ -1,0 +1,87 @@
+{
+  "schema_version": "agent-tooling.desk-role-roster.v1",
+  "authority": "templates only; no session admission or write grant",
+  "roles": [
+    {
+      "key": "coordinator",
+      "role_id": "Coordinator",
+      "label": "Coordinator",
+      "desk_id": "coordinator-desk",
+      "desk_label": "Coordinator",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Coordinate scope, dependencies, intake and acceptance."
+    },
+    {
+      "key": "test-implementer",
+      "role_id": "Test Implementer",
+      "label": "Test Implementer",
+      "desk_id": "test-implementer-desk",
+      "desk_label": "Test Implementer",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Write acceptance and regression tests; preserve the specified RED/GREEN boundary."
+    },
+    {
+      "key": "feature-implementer",
+      "role_id": "Feature Implementer",
+      "label": "Feature Implementer",
+      "desk_id": "feature-implementer-desk",
+      "desk_label": "Feature Implementer",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Implement accepted slices against their tests and reuse existing machinery."
+    },
+    {
+      "key": "verification",
+      "role_id": "Verification",
+      "label": "Verification",
+      "desk_id": "verification-desk",
+      "desk_label": "Verification",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Independently check claims, evidence and acceptance conditions."
+    },
+    {
+      "key": "ux",
+      "role_id": "UX Coordinator",
+      "label": "UX Coordinator",
+      "desk_id": "ux-desk",
+      "desk_label": "UX Coordinator",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Design and verify user journeys, interaction and accessibility."
+    },
+    {
+      "key": "deployment-engineering",
+      "role_id": "Deployment Engineering",
+      "label": "Deployment Engineering",
+      "desk_id": "deployment-engineering-desk",
+      "desk_label": "Deployment Engineering",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Operate releases, environments, deployment evidence and recovery."
+    },
+    {
+      "key": "security",
+      "role_id": "Security",
+      "label": "Security",
+      "desk_id": "security-desk",
+      "desk_label": "Security",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Assess security boundaries and verify mitigations."
+    },
+    {
+      "key": "analyst-researcher",
+      "role_id": "Analyst/Researcher",
+      "label": "Analyst/Researcher",
+      "desk_id": "analyst-researcher-desk",
+      "desk_label": "Analyst/Researcher",
+      "template_revision": "desk-role-roster:v1",
+      "purpose": "Investigate questions and preserve sources, uncertainty and findings."
+    },
+    {
+      "key": "auditor",
+      "role_id": "Auditor",
+      "label": "Auditor",
+      "desk_id": "auditor-desk",
+      "desk_label": "Auditor",
+      "template_revision": "desk-role-roster:v2",
+      "purpose": "Review cross-scope architectural drift, security gaps and integration evidence; report findings without granting merge authority."
+    }
+  ]
+}

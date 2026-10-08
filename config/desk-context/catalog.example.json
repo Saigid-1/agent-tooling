@@ -1,0 +1,73 @@
+{
+  "schema_version": "workspace-context/v1",
+  "project": {
+    "project_id": "ops-workspace-demo",
+    "tenant_id": "workspace-demo",
+    "repo_key": "example-repo",
+    "source_revision": "a9fbfcf11c4cffa6a583c00df1b2a95bddec91db"
+  },
+  "team": {
+    "selection": "human_approved",
+    "approval_ref": "fixture-team-approval",
+    "roles": [
+      {
+        "role_id": "implementation",
+        "label": "Implementation",
+        "desk_id": "implementation-desk",
+        "template_revision": "role-template:implementation:v1",
+        "approval_ref": "fixture-role-implementation",
+        "selection_basis": "human_approved"
+      },
+      {
+        "role_id": "verification",
+        "label": "Verification",
+        "desk_id": "verification-desk",
+        "template_revision": "role-template:verification:v1",
+        "approval_ref": "fixture-role-verification",
+        "selection_basis": "human_approved"
+      }
+    ]
+  },
+  "desks": [
+    {
+      "desk_id": "implementation-desk",
+      "label": "Implementation Desk",
+      "role_id": "implementation",
+      "binding_id": "binding:5b7bfb3a38922713141a62006fb7b770e436a30eed056e29b6a41d44fe52c296",
+      "memory_binding_id": "binding:5b7bfb3a38922713141a62006fb7b770e436a30eed056e29b6a41d44fe52c296",
+      "doctrine": {
+        "doctrine_id": "ops-demo-doctrine",
+        "revision_id": "doctrine:b8ff29a6584ee43b2d1cb7e7e679db238feaf642cc88a73ca4c1194209751432",
+        "source_ref": "doctrine.md",
+        "content_digest": "b8ff29a6584ee43b2d1cb7e7e679db238feaf642cc88a73ca4c1194209751432",
+        "reviewed_by": "fixture-reviewer",
+        "reviewed_at": "2026-09-21T00:00:00Z",
+        "authority_class": "human_reviewed_policy"
+      }
+    },
+    {
+      "desk_id": "verification-desk",
+      "label": "Verification Desk",
+      "role_id": "verification",
+      "binding_id": "binding:888862c55bd8e8e902828a81a4991f86cf6955ffc3e91dbfc2587b42c6b89415",
+      "memory_binding_id": "binding:888862c55bd8e8e902828a81a4991f86cf6955ffc3e91dbfc2587b42c6b89415",
+      "doctrine": {
+        "doctrine_id": "ops-demo-doctrine",
+        "revision_id": "doctrine:b8ff29a6584ee43b2d1cb7e7e679db238feaf642cc88a73ca4c1194209751432",
+        "source_ref": "doctrine.md",
+        "content_digest": "b8ff29a6584ee43b2d1cb7e7e679db238feaf642cc88a73ca4c1194209751432",
+        "reviewed_by": "fixture-reviewer",
+        "reviewed_at": "2026-09-21T00:00:00Z",
+        "authority_class": "human_reviewed_policy"
+      }
+    }
+  ],
+  "team_suggestions": [
+    {
+      "suggestion_id": "future-team-analysis-1",
+      "role_ids": ["architecture"],
+      "basis": "Algorithmically suggested for later human review; excluded from the approved team.",
+      "status": "unapproved_suggestion"
+    }
+  ]
+}

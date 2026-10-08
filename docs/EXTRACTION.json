@@ -1,0 +1,23 @@
+{
+  "schema_version": "agent-tooling.extraction.v1",
+  "ops": {
+    "repo": "<legacy source repository; not published>",
+    "revision": "<extraction commit; not published>",
+    "boundary": "portable_tooling/setup.py selected modules and assets"
+  },
+  "kanban": {
+    "upstream": "https://github.com/cline/kanban",
+    "fork_point": "abd4912c27ce6b7f18b5a8106c145fd838e90cc4",
+    "license": "Apache-2.0; see apps/kanban/LICENSE"
+  },
+  "excluded": [
+    "legacy graph application",
+    "board/card dispatch runtime",
+    "PostgreSQL data",
+    "credentials",
+    "private transcripts",
+    "provider caches",
+    "node_modules",
+    "old Git worktrees"
+  ]
+}

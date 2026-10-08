@@ -1,0 +1,19 @@
+{
+ "files": {
+  "t10_corpus": {
+   "episode-search.sqlite3": "d705ac868e7e11d3b3f4efde849101e13d9eb725a3068263f3a823606606161c",
+   "episodes.sqlite3": "5d4dd0c08fc78647db891b8d60e2366984889a91442d6ac47289467721aacaa0",
+   "ids.json": "22a117c379c3469d37a8e9334a36ac3efc135e48086ed10c047f494827ddf4fb",
+   "sessions.sqlite3": "56b66dad6fcf984a4b373a11e19aad0bebbb5505ca9aa7d808e510b94c33ad17"
+  },
+  "t10h_upgraded": {
+   "episode-search.sqlite3": "194e993b918246356c7006d152cfc6a2264f831b3ab46f1a9e73571ba72b3988",
+   "episodes.sqlite3": "b6c64266fc515c4a5d6252243f254d4ed0d0a93fb3a4f49d17e4da69d7b93c49",
+   "ids.json": "9359a33e3dcd0dbf23f630ee6338460df7b754ff70ee6615f368f85a18a296b3",
+   "sessions.sqlite3": "56b66dad6fcf984a4b373a11e19aad0bebbb5505ca9aa7d808e510b94c33ad17"
+  }
+ },
+ "product_tree_clean": true,
+ "python": "3.12.14",
+ "sqlite_version": "3.53.4"
+}

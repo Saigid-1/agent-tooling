@@ -1,0 +1,126 @@
+[
+  {
+    "info": {
+      "role": "user",
+      "finish": null,
+      "summary": null,
+      "time": {
+        "created": 1789913560436,
+        "completed": null
+      },
+      "error": null
+    },
+    "parts": [
+      {
+        "type": "compaction",
+        "text": ""
+      }
+    ]
+  },
+  {
+    "info": {
+      "role": "assistant",
+      "finish": "stop",
+      "summary": true,
+      "time": {
+        "created": 1789913560454,
+        "completed": 1789913707697
+      },
+      "error": null
+    },
+    "parts": [
+      {
+        "type": "reasoning",
+        "text": "sanitized reasoning"
+      },
+      {
+        "type": "text",
+        "text": "sanitized text"
+      }
+    ]
+  },
+  {
+    "info": {
+      "role": "user",
+      "finish": null,
+      "summary": null,
+      "time": {
+        "created": 1789913707699,
+        "completed": null
+      },
+      "error": null
+    },
+    "parts": [
+      {
+        "type": "text",
+        "text": "sanitized text"
+      }
+    ]
+  },
+  {
+    "info": {
+      "role": "assistant",
+      "finish": "tool-calls",
+      "summary": null,
+      "time": {
+        "created": 1789913707712,
+        "completed": 1789913744238
+      },
+      "error": null
+    },
+    "parts": [
+      {
+        "type": "reasoning",
+        "text": "sanitized reasoning"
+      },
+      {
+        "type": "text",
+        "text": "sanitized text"
+      }
+    ]
+  },
+  {
+    "info": {
+      "role": "assistant",
+      "finish": "tool-calls",
+      "summary": null,
+      "time": {
+        "created": 1789913744241,
+        "completed": 1789913764015
+      },
+      "error": null
+    },
+    "parts": [
+      {
+        "type": "reasoning",
+        "text": "sanitized reasoning"
+      },
+      {
+        "type": "text",
+        "text": "sanitized text"
+      }
+    ]
+  },
+  {
+    "info": {
+      "role": "assistant",
+      "finish": "stop",
+      "summary": null,
+      "time": {
+        "created": 1789913764018,
+        "completed": 1789913836396
+      },
+      "error": null
+    },
+    "parts": [
+      {
+        "type": "reasoning",
+        "text": "sanitized reasoning"
+      },
+      {
+        "type": "text",
+        "text": "sanitized text"
+      }
+    ]
+  }
+]

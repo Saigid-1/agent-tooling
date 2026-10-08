@@ -1,0 +1,11 @@
+{
+  "schema_version": "agent-tooling.role-roster.v1",
+  "authority": "default roster used until the operator saves a role; templates only, no session admission or write grant.",
+  "roles": [
+    {
+      "role_id": "general",
+      "label": "General",
+      "purpose": "A general-purpose desk. Describe its focus in the desk description."
+    }
+  ]
+}

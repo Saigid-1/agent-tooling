@@ -1,0 +1,4801 @@
+{
+ "census_missed_schemes": {
+  "session_import_job plan token (preview / apply)": {
+   "current-turn-and-forward": {
+    "apply": {
+     "phase": "ready"
+    },
+    "body": "{\"current_turn_anchor\":{\"native_row_kind\":\"response_item\",\"native_session_id\":\"a55869b4-6ab4-4e5c-b028-8d4b31d27b71\",\"timestamp\":\"2026-09-24T12:02:00Z\",\"user_row_offset\":424,\"user_row_sha256\":\"b65e130704ece16882b6691164867519184101a82f1b44d55daff89432629030\"},\"device\":\"<device>\",\"follow\":false,\"import_actor\":\"operator:synthetic\",\"inode\":\"<inode>\",\"max_batch_bytes\":4000000,\"max_batch_events\":1000,\"max_batch_rows\":2000,\"mode\":\"current-turn-and-forward\",\"native_cwd\":\"/synthetic/repo\",\"native_session_id\":\"a55869b4-6ab4-4e5c-b028-8d4b31d27b71\",\"reviewed_complete_end\":576,\"reviewed_prefix_sha256\":\"0e6c475789372e78569c442cdb49b4d1903c7737acecc8babc415b559bb30f6b\",\"reviewed_size\":576,\"runtime\":\"codex\",\"selected_desk_id\":\"binding:5b7bfb3a38922713141a62006fb7b770e436a30eed056e29b6a41d44fe52c296\",\"source_file\":\"<root>/rollout-2026-09-24T12-00-00-a55869b4-6ab4-4e5c-b028-8d4b31d27b71.jsonl\",\"start_offset\":424}",
+    "body_is_unpadded_urlsafe_base64_of_it": true,
+    "digest_is_sha256_of_body": true,
+    "resume_is_the_same_job": true
+   },
+   "full": {
+    "apply": {
+     "phase": "ready"
+    },
+    "body": "{\"current_turn_anchor\":null,\"device\":\"<device>\",\"follow\":false,\"import_actor\":\"operator:synthetic\",\"inode\":\"<inode>\",\"max_batch_bytes\":4000000,\"max_batch_events\":1000,\"max_batch_rows\":2000,\"mode\":\"full\",\"native_cwd\":\"/synthetic/repo\",\"native_session_id\":\"a55869b4-6ab4-4e5c-b028-8d4b31d27b71\",\"reviewed_complete_end\":576,\"reviewed_prefix_sha256\":\"0e6c475789372e78569c442cdb49b4d1903c7737acecc8babc415b559bb30f6b\",\"reviewed_size\":576,\"runtime\":\"codex\",\"selected_desk_id\":\"binding:5b7bfb3a38922713141a62006fb7b770e436a30eed056e29b6a41d44fe52c296\",\"source_file\":\"<root>/rollout-2026-09-24T12-00-00-a55869b4-6ab4-4e5c-b028-8d4b31d27b71.jsonl\",\"start_offset\":0}",
+    "body_is_unpadded_urlsafe_base64_of_it": true,
+    "digest_is_sha256_of_body": true,
+    "resume_is_the_same_job": true
+   },
+   "refusals": {
+    "body altered": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "digest altered": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "empty": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "no consent": {
+     "cause": null,
+     "error": "ImportJobError: Apply requires explicit preview consent.",
+     "suppress_context": false
+    },
+    "not a string": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "not a token": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "not base64": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "not json, framed": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "oversized, framed": {
+     "cause": null,
+     "error": "ImportJobError: Preview token is invalid.",
+     "suppress_context": true
+    },
+    "selection changed, framed": {
+     "accepted_phase": "ready"
+    }
+   }
+  }
+ },
+ "content_address_sites": {
+  "navigation_search_pages._save cursor (:53)": {
+   "ascii_nested": {
+    "value": "navigation-search:sha256:c5b3143da9f43ca763602083227985d8e8dcd0e318d004d58030812c23858acf"
+   },
+   "deep": {
+    "value": "navigation-search:sha256:2f5b18c3bcf9e3a2534623be4db7cd94aa5db1ce69688f413c091cca4614c565"
+   },
+   "empty_list": {
+    "value": "navigation-search:sha256:68de0c2957ec00a8f8725a74700ef5601e1a1fa330d38407f10b0819bad9ae26"
+   },
+   "empty_object": {
+    "value": "navigation-search:sha256:0cab3c85914f3a9ecfd4723950847218512d2b2e6afbb3e87e028ee5942cf590"
+   },
+   "empty_string": {
+    "value": "navigation-search:sha256:8956cd258d0a4ac80e1fad7b70885db6c050484e114661e904c5d31b533aa9c3"
+   },
+   "escapes": {
+    "value": "navigation-search:sha256:cfa59bea06128c8ac6b5baf6cf8262115adc1091653273549618731ad9d2e23c"
+   },
+   "float": {
+    "value": "navigation-search:sha256:b1cb4909af057552a15a871629deb93ddb4f08c06e6fece9f971f64d23cbe242"
+   },
+   "infinity": {
+    "value": "navigation-search:sha256:6007fe596d538b74f840a638fbfdd8173048a414e831fabdab7206a435d0df8a"
+   },
+   "key_order": {
+    "value": "navigation-search:sha256:7762a18f41f8dd9852ed4daac8b072ab4d265638aa921df95cfba9e5cc52739b"
+   },
+   "large_float": {
+    "value": "navigation-search:sha256:bbf0e8ef08f8aae5db17e7a59b2f779c5ba0652cc2787441535557a307bf3615"
+   },
+   "large_int": {
+    "value": "navigation-search:sha256:505a0f4c850b12215a8b77845a4fabfeb834107e934bc23ad20a99e2a504b8b7"
+   },
+   "list_of_mixed": {
+    "value": "navigation-search:sha256:acc2c6e4826ed67e1751e551411aa626f381b73c0742162229609105035c9e0b"
+   },
+   "lone_surrogate_high": {
+    "value": "navigation-search:sha256:a550056ac76e4a7f08774192b6225dc64129738e1a4392888dc6614765cf316f"
+   },
+   "lone_surrogate_low": {
+    "value": "navigation-search:sha256:eacd1b2a9b5b06e9650d8e8563b187ed83995fa15d398bb806a4bfd1f2d8d020"
+   },
+   "lone_surrogates_nested": {
+    "value": "navigation-search:sha256:bb844500574b89ff0fb492392107cc241f27ebbacdf05be09ae9d659f8b7b354"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "navigation-search:sha256:26384e8604a4bf37182708ea8dfa6c67f1bb47ecce1f7ab9615712d8c1c4c355"
+   },
+   "nan_nested": {
+    "value": "navigation-search:sha256:3b9a032eb49b8deff73dbfc8aa2edb4841adf5c50fd66972fbb206d60adcfb3f"
+   },
+   "negative_zero": {
+    "value": "navigation-search:sha256:ae97b9da1849d986a90866fb746fb37629b72b0fc713345d5fd87f64b70f359e"
+   },
+   "non_ascii": {
+    "value": "navigation-search:sha256:36bb93c4821deaf38c935994cd2dd46bbc31da2e1f9835de80d134c40c7a16e4"
+   },
+   "null": {
+    "value": "navigation-search:sha256:a5da95c15893dd01b6338a8d797e776776b93c94980e3f9bc6dbf43512a8931f"
+   },
+   "true": {
+    "value": "navigation-search:sha256:9cbd77158571ffe7ae20236d68b508f476ec7641ed3fe306710717c7183c4a56"
+   },
+   "zero": {
+    "value": "navigation-search:sha256:1280e10a6c3241a5ce49d1c87e9d0d65be94572c8992218d010df4ca0d38f6e2"
+   }
+  },
+  "navigation_snapshot.capture (:92 :104 :108)": {
+   "ascii_nested": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "a": [
+         1,
+         2,
+         {
+          "c": true,
+          "d": null
+         }
+        ],
+        "b": 1,
+        "e": {
+         "f": {},
+         "g": []
+        }
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "07dcfc404e3e1324f51d11a3b21bfe3084404ed04aecffdbf996491a459dfa98",
+     "catalog_file": null,
+     "profile_file": "profile-fa737b74cf7de7790bb4ad18ab54ed28cc5fe7b7eb8addc8ffdd79a4af9b046c.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:9f20687036c7d92543d001d371c0ae52a1c6c23f6feba2580514d088d9a97a13",
+     "source_profile_sha256": "7fbbdc3b2f6fcffcd756ad96bd268ad4707df21da6dbd098d4027ed2432bb3ff"
+    }
+   },
+   "deep": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "z": {
+         "y": {
+          "x": [
+           [],
+           {},
+           [
+            {
+             "w": ""
+            }
+           ],
+           [
+            [
+             []
+            ]
+           ]
+          ]
+         }
+        }
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "644d410f5a8070c4d99fed52c241e4d58a9400a5a381e5658c8c767f091b1d31",
+     "catalog_file": null,
+     "profile_file": "profile-fab4ceef18e338fe84e074e2517164ff844bcbb97b71129bd7e6d74e7e3c9637.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:12dfec84a4fd5e5c5db6c717d1427e3a21a64d518bb31c3a06ae827220311ba1",
+     "source_profile_sha256": "f3734931b0a620185cd894c29d49dd0cf1bcc73c967acf3d6eb6dc8fdea6f771"
+    }
+   },
+   "empty_list": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": []
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "a67538e72d09229956d0d689a1da83ffe21215df59beda1101d860312fee5d98",
+     "catalog_file": null,
+     "profile_file": "profile-3c47fd1b540ce200c78a1108d76d3a6b093b92cdf31a7561ed4efe7f29f2526c.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:130ffa72ea61f6401bce04c17ba549b9c91185dde48e4ed5f10df794c73e2746",
+     "source_profile_sha256": "f1c2cdcca11da52b057fc73ea9d21671f0c17a40804f9438c8ccbe319ffc80d0"
+    }
+   },
+   "empty_object": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {}
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "883fcd358664627e64f54a4208d9369a6249cdf10814887d006fa59db25cef0e",
+     "catalog_file": null,
+     "profile_file": "profile-f7239108f0d1344e308b0743814e0bfae539d2c2d542c3bf489b3b2c8dad571c.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:eecd49eccdcbb046c0720b67f477abf12ce724184c0dccc8bcf389cd2991e361",
+     "source_profile_sha256": "b046a759d583db6cc8ff00590d3c6aa609299f0b71c4dc3470fe4a8164d81b7e"
+    }
+   },
+   "empty_string": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": ""
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "1994e793d18a74de31a05a2d4d9ec1bef379731b1a6b2a56a06d0bebaca89cf0",
+     "catalog_file": null,
+     "profile_file": "profile-06a1a4d38098550eace7d6f27b3a208e1d5cbd9d98984606e3cf9de1db961a45.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:a5b3ce261203ccde6e722ae81e3546f1c09a21036c1681a7e8cfdcf706f831c4",
+     "source_profile_sha256": "4b79eb7bf9b9de84f02328c15712844a77d05d2c8905f44fbac5795b26117226"
+    }
+   },
+   "escapes": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "s": "tab\tnl\nnul\u0000quote\"bs\\ sep\u2028\u2029 del\u007f"
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "979e8b23e584f880e3f2b7d4ca2aba045c3bc2c0db55bdf501dfe69cf3c2d707",
+     "catalog_file": null,
+     "profile_file": "profile-be763fde6b9469ef9892c02620a5facccc741d4a8f8cfac737751e1163706766.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:3042f97376da8f072df0b959002750bc157707c48e8ec2e374dcf1a5be03193d",
+     "source_profile_sha256": "bdef5b11d03b6ea7f68da3df9c606fb331cbd306b183ae818224e03438b738e5"
+    }
+   },
+   "float": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": 1.5
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "c075b6bddf697c98cf1d8dbd95cc156f39c2b67508ac0cb98bcf547138ef3600",
+     "catalog_file": null,
+     "profile_file": "profile-1cb610a45d403b0a58deeaddc75413bd45eb0fe4775945d4c52375344fb3405d.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:a58da6c5eba3333656da3b588b34f8c92cd78c01a7d07dfe656bdb3e1a35830b",
+     "source_profile_sha256": "b64c1453648ca8be68087ee1715fec2871ad9066f2ccdb759bddd0b882a648e8"
+    }
+   },
+   "infinity": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": "float:inf"
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "56690908b932e4be20fba8f4a32fc8a116ab8cd62f12ec24c20d17dcc4db3747",
+     "catalog_file": null,
+     "profile_file": "profile-38b47222e5e9b57696d84548143182c7a1930cce26f37ed249b9ca988d18206b.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:3053dea5896565a3025403a27092f622db09a32e44bfde1009d5687c9f69398b",
+     "source_profile_sha256": "a053b873bac3991087eb05e12ce978bc22fa2f03dc8c504bd62fdee47eca4505"
+    }
+   },
+   "key_order": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "10": 6,
+        "9": 7,
+        "B": 2,
+        "_": 5,
+        "a": 4,
+        "b": 1,
+        "\u00e1": 3
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "ae918c9a3f79361459d580280c4e5125958c5fb1af85d67a9dea3ab6c5ac171f",
+     "catalog_file": null,
+     "profile_file": "profile-147d9bede5969d3e05d9492b60028f270b51081e8563a26dbe981cf494851ee1.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:e1f22af082d2ea926d96a507bef3caeffab1d8114bb893679cc70f671da38cc4",
+     "source_profile_sha256": "2e8f0186391f5e9c0291d2cd1c05d2abc2f491ff1e3517dd95bce73a2e3a6963"
+    }
+   },
+   "large_float": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": 1e+300
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "11cd4ec86729429575f6e5ae2fbf42054802d30ea08bf7d4ddb664d4ad597a0b",
+     "catalog_file": null,
+     "profile_file": "profile-3e886e78eabdfb8789f4d614c9e51dc3ad2c09e733aba21d73ff343b558ad12b.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:43e5857005d2e03687943281f3d6fa3cafcfe64889a7ff58d732da6bce2575d4",
+     "source_profile_sha256": "e26ec9b69fc43e21b7c809a815a59d5fcd468f1df7bc41bd5993d5731e93912a"
+    }
+   },
+   "large_int": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": 1180591620717411303424
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "e6f00725a9c83b236c91f4bee84b34a402d5b62275917f423b8d1fbf52263e52",
+     "catalog_file": null,
+     "profile_file": "profile-0019ad219944c54acd04ef3f158d3c8e7981eada6e839947c2c8a540b26df71d.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:eb37052fa68fa84b2022a22645ea9f755f337319fa30ac119c4151842ec697d8",
+     "source_profile_sha256": "2c240157b74ac838750208d8c47e5f8712cc6622223cb02da9b8175e9eb09e78"
+    }
+   },
+   "list_of_mixed": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": [
+        null,
+        1,
+        "one",
+        1.25,
+        [],
+        {},
+        false
+       ]
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "eee1c14357d3703a55530ad32729e430c4820c15e772e2542eecf084d5317b0e",
+     "catalog_file": null,
+     "profile_file": "profile-63c65c217bc23d51c541ffa6e5d1d83642519a9a4a4950f1317016c24a263892.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:10b37bf88f5c2c12bea165c90f53b409bb8b1de50e84190d8d849b2bb0ce3e63",
+     "source_profile_sha256": "7ba6953a0357ddccb964c5da58bd03422e94580800b1aa33fd115fd2d7edeea9"
+    }
+   },
+   "lone_surrogate_high": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": "\ud800"
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "9ec1dc3ce4e9bcfad967ae6f82c626f95175b016e9fff6446586728214250564",
+     "catalog_file": null,
+     "profile_file": "profile-400883faaa4e867faeadf559d92956835a4ebea41872c670957ab5696ea151b4.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:bddb0efeb72a49896312e90f7af08d4c9c4ee0d48b62ca7d7b1a4212ee601d4d",
+     "source_profile_sha256": "8689acd40be1a1cf65b38c4a0ffaedbf10088f9d3dacd5ab15743603b105bebf"
+    }
+   },
+   "lone_surrogate_low": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": "\udc00"
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "b265dd561ac6b91b9d31b06ac314d518b31057850c47c1e482df04ae6067701a",
+     "catalog_file": null,
+     "profile_file": "profile-7374d178e6acfc02c3694fbb24e6cc85d31a7c98877ac45763d346b3bf3bd7b9.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:a923c395b320a4a528169a7c349196d4d6ee99fe41c59bd0a2a00f5d8f79b601",
+     "source_profile_sha256": "c3e1127ae5ace7125afec3125f6d789e9b5021aaf9063da625a3df23069361b4"
+    }
+   },
+   "lone_surrogates_nested": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "a": [
+         "ok",
+         "\ud800"
+        ],
+        "b": {
+         "\udc00key": "x\udc00y"
+        }
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "0a2d9095ed05819caca3d242e9ccae933e2c2149bf825e172ebdaa51abc55a91",
+     "catalog_file": null,
+     "profile_file": "profile-9091595f4137363005d2cd64a39019bc91f1dbdc6583a9f4715567db1352b0e6.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:def6a0dbe3800aaf1dc687302292adafa18e5bcd26e7c07240b07e165d14e997",
+     "source_profile_sha256": "41d30438e7003cea4597b83351a433ee947532478e435e9a97ea9d36721e5c6f"
+    }
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": "float:nan"
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "5b1be57611e5d59645864066fc07db46a922d018bbd23ef398923135f352aea6",
+     "catalog_file": null,
+     "profile_file": "profile-214f730768b1eec91c8382f2e68d5671c925e0829ad1fc47bd2aec5642c16df1.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:d78fd3421bf0d6bb1e6f187ae81c3034277595042b3a37495fb648f41c6768b5",
+     "source_profile_sha256": "275116db5329551c6e4c6aff3e8e0d368ecff5083b91ccec86353adf706f76c4"
+    }
+   },
+   "nan_nested": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "v": [
+         "float:nan",
+         "float:-inf"
+        ]
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "e29bdbf27ee9cdfa930292cdbc9c08ae20ecd349a88d5c0148274e4b1c134d76",
+     "catalog_file": null,
+     "profile_file": "profile-53db6f5a828a8fe74773f5895cb7ba9fa626d6710bdb9974fc83145f5ad728e3.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:1fe8ab2c1b10073e188cedaba7d07a0ae46161e18141918a3f3b664dbb2b3ef8",
+     "source_profile_sha256": "c268527fa0afc845a12d09bae3951a53091439447d70736239899fd62d13406d"
+    }
+   },
+   "negative_zero": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": -0.0
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "53aa67cac3d4aa8041966a913530464ea66b9eeba89ceff452e456085c41ef4d",
+     "catalog_file": null,
+     "profile_file": "profile-7ddf525ce07ae272758e0dce627e15362fe6592a38d31a30568dce82539cf512.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:a48157330d6dc02e2d3b64610bbce255572e57498e501e15408389ecf5e3ccf4",
+     "source_profile_sha256": "70b2ce4df3ba2e59782e6fbcfc88bf9cc767e694a2fda0c7e430be84a3559d18"
+    }
+   },
+   "non_ascii": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": {
+        "cjk": "\u6f22\u5b57",
+        "emoji": "\ud83d\ude00 \ud834\udd1e",
+        "\u00e9": [
+         "\u00fc",
+         "\u00df"
+        ],
+        "\u043a\u043b\u044e\u0447": "\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435"
+       }
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "685d8212e2dabc17569a4a3ce028b909331c2b2833741114f6ab60ba45bde34c",
+     "catalog_file": null,
+     "profile_file": "profile-79ad83883683f41330867928f702f58caf61c842fa317a9346a33e678f3b4195.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:f7996f95f7c832df5a25147558cebca9775bd35baebf001191cad308301b4620",
+     "source_profile_sha256": "90af177e33909fa0bc8d0dacf1297a81c272a62e9e637d82306e75863711dfb1"
+    }
+   },
+   "null": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": null
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "315252075cde1646801b4e114084486fcffd9c2e320d9a1d44a79ad9b817555e",
+     "catalog_file": null,
+     "profile_file": "profile-74899a1c2239f3a6123ea313d8f2ee85146c9ba8908257392b04bb614dfae747.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:157fe4612ad6f97fa802cdbf9fae315d531868d5fb93a3f9f38a761230a5604d",
+     "source_profile_sha256": "0d0ecdd3520cfb51cc6cf9b99f1321d049c99b3dad9f057eebc5e7b2bbfac023"
+    }
+   },
+   "true": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": true
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "964fbca8aaa32e3f86c0db18767d8704004a611966d0a35ce3244145d84cb2e6",
+     "catalog_file": null,
+     "profile_file": "profile-81ed29c4a41dc70197eb96edd256b06c475bfc7dfccba72556c4132b7c0917a6.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:69438aa13ba5c1f5465691b84b17dfd1494b968e5fa185972a47b3df948b9751",
+     "source_profile_sha256": "e2802afa05149db36f3aec90ba22eeee2c371a8a7ea33287ba9eab01ae5da651"
+    }
+   },
+   "zero": {
+    "value": {
+     "analysis_config": {
+      "import_mappings": {
+       "pkg": {
+        "distribution": "dist-\u00e9",
+        "repo_key": "b"
+       }
+      },
+      "scip": null,
+      "serena": {
+       "command": "/provider/serena",
+       "note": 0
+      },
+      "typescript": null
+     },
+     "analysis_config_sha256": "7e6a01a54097c584a359efe2ec5d181c708989cde30d117c46251e3dc8458cec",
+     "catalog_file": null,
+     "profile_file": "profile-7788e0266eebcd7d1c000d6f0d20a010ff62939851d007f820d66b1303c5fc23.json",
+     "provider_inputs": {},
+     "repos": {
+      "b": {
+       "path": "/t11a/b",
+       "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "r\u00e9po": {
+       "path": "/t11a/r\u00e9po",
+       "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+     },
+     "schema_version": "ops.navigation-snapshot.v1",
+     "snapshot_id": "navigation-snapshot:sha256:84de093128fee7147fd79002385f2c83177e608a4aa014fc7b54cc7e063ba821",
+     "source_profile_sha256": "7a9ba469cd904c13da3449978f965497f06fc0931264b12a8a555afac999afb1"
+    }
+   }
+  }
+ },
+ "inputs": {
+  "ascii_nested": "{'b': 1, 'a': [1, 2, {'d': None, 'c': True}], 'e': {'g': [], 'f': {}}}",
+  "deep": "{'z': {'y': {'x': [[], {}, [{'w': ''}], [[[]]]]}}}",
+  "empty_list": "[]",
+  "empty_object": "{}",
+  "empty_string": "''",
+  "escapes": "{'s': 'tab\\tnl\\nnul\\x00quote\"bs\\\\ sep\\u2028\\u2029 del\\x7f'}",
+  "float": "1.5",
+  "infinity": "inf",
+  "key_order": "{'b': 1, 'B': 2, '\u00e1': 3, 'a': 4, '_': 5, '10': 6, '9': 7}",
+  "large_float": "1e+300",
+  "large_int": "1180591620717411303424",
+  "list_of_mixed": "[None, 1, 'one', 1.25, [], {}, False]",
+  "lone_surrogate_high": "'\\ud800'",
+  "lone_surrogate_low": "'\\udc00'",
+  "lone_surrogates_nested": "{'a': ['ok', '\\ud800'], 'b': {'\\udc00key': 'x\\udc00y'}}",
+  "mixed_key_types": "{1: 'int key', '1': 'str key'}",
+  "nan": "nan",
+  "nan_nested": "{'v': [nan, -inf]}",
+  "negative_zero": "-0.0",
+  "non_ascii": "{'\u043a\u043b\u044e\u0447': '\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435', 'emoji': '\ud83d\ude00 \ud834\udd1e', '\u00e9': ['\u00fc', '\u00df'], 'cjk': '\u6f22\u5b57'}",
+  "null": "None",
+  "true": "True",
+  "zero": "0"
+ },
+ "schemes": {
+  "claude_episode_capture._digest (hash chain)": {
+   "0:7b2274797065223a2275736572227d0a": {
+    "value": "0bd2cc9d3e12218103af5133dac09772201e71eeaab38aa8fb6471e84f2ed87e"
+   },
+   "1:c3a920e298830a": {
+    "value": "c8dc6cdfa1127a94ce6c9f25459603d5766a56c8e82937ef5eddb46f2d2ec693"
+   },
+   "2:": {
+    "value": "bd81e43ff70852aa6f308565e861b34ffc8cd0518d5adecefed4ceefb5d2dd1c"
+   },
+   "3:0a": {
+    "value": "498a4c8719e82ecb924d2ebb5280d9f8cabc32952ba4ebb2545b1432cf1c3e15"
+   },
+   "4:fffe206e6f74207574662d380a": {
+    "value": "f97dc07c694005a47b541fda8cb2ca28f1d929d7ca768b3db3cea419a3c37d05"
+   },
+   "5:6e6f206e65776c696e65": {
+    "value": "e582fe5196403a0ef389f612913aa18c13df17979f35b76a42bde883947c98c7"
+   },
+   "bad_previous": {
+    "cause": null,
+    "error": "ValueError: non-hexadecimal number found in fromhex() arg at position 0",
+    "suppress_context": false
+   }
+  },
+  "desk_identity.binding_key": {
+   "' padded '|'coordinator'|'agent-tooling'": {
+    "value": "binding:c446bfff27f1ab1d7d439d91a937a25aa16533ec269b9bdcb689be34ef9fd9f3"
+   },
+   "' padded '|'coordinator'|'r\u00e9po'": {
+    "value": "binding:25420d18a594fb79cc8bdf82074ef248858ca819d19ae4be6dcd99ce7688efd7"
+   },
+   "' padded '|'v\u00e9rification'|'agent-tooling'": {
+    "value": "binding:b2191a99232d1148e15df0dd9ce1f03784ce7ba3c0a67bda2ea9713f618c39da"
+   },
+   "' padded '|'v\u00e9rification'|'r\u00e9po'": {
+    "value": "binding:0c404403c46a21187fc7fe1071cc9f743ede255cfd79d6260e36aba3002e6dcb"
+   },
+   "''|'coordinator'|'agent-tooling'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "''|'coordinator'|'r\u00e9po'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "''|'v\u00e9rification'|'agent-tooling'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "''|'v\u00e9rification'|'r\u00e9po'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "'\\ud800'|'coordinator'|'agent-tooling'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'\\ud800'|'coordinator'|'r\u00e9po'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'\\ud800'|'v\u00e9rification'|'agent-tooling'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'\\ud800'|'v\u00e9rification'|'r\u00e9po'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'caf\u00e9 \u2603 \ud834\udd1e'|'coordinator'|'agent-tooling'": {
+    "value": "binding:1c9acb9be7e3bcac1202f7a7e816f26eb4b13ed958fbbe32eb824ad810f78e82"
+   },
+   "'caf\u00e9 \u2603 \ud834\udd1e'|'coordinator'|'r\u00e9po'": {
+    "value": "binding:5a63492674e21855f41014b869d8e17c219a5b4cde25ae36b72a3e0722aa823f"
+   },
+   "'caf\u00e9 \u2603 \ud834\udd1e'|'v\u00e9rification'|'agent-tooling'": {
+    "value": "binding:f1de17598169a53ae5491d5d1e0a85f21465c75ff7c08250ef866d8dfa183b69"
+   },
+   "'caf\u00e9 \u2603 \ud834\udd1e'|'v\u00e9rification'|'r\u00e9po'": {
+    "value": "binding:66f0a28481b073b8856b1e35a7a6ab2936368e4e9f1ac1cadb442d152863c2bc"
+   },
+   "'nul\\x00inside'|'coordinator'|'agent-tooling'": {
+    "value": "binding:e49150ae2107dd699263d27dac7dd822a113836d80bfa829909cd6165d6a41c9"
+   },
+   "'nul\\x00inside'|'coordinator'|'r\u00e9po'": {
+    "value": "binding:600c97df6d39609bd3b191b2e5ecb66f1569fd816924fed97722762350d814dd"
+   },
+   "'nul\\x00inside'|'v\u00e9rification'|'agent-tooling'": {
+    "value": "binding:918d9e50ff213a2039155b5eba50917c1c5992c646ca103b76947fdbe3c76a4e"
+   },
+   "'nul\\x00inside'|'v\u00e9rification'|'r\u00e9po'": {
+    "value": "binding:48bf292f657766ca859b679645d28c4571e39cec486a51803d6aa81f2c36b97a"
+   },
+   "'pipe|inside'|'coordinator'|'agent-tooling'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "'pipe|inside'|'coordinator'|'r\u00e9po'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "'pipe|inside'|'v\u00e9rification'|'agent-tooling'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "'pipe|inside'|'v\u00e9rification'|'r\u00e9po'": {
+    "cause": null,
+    "error": "ValueError: nonempty desk coordinates without | required",
+    "suppress_context": false
+   },
+   "'plain'|'coordinator'|'agent-tooling'": {
+    "value": "binding:829c2799873aab3678261a38df66cc195e65f2333a7137e981d41cba6dddeb5d"
+   },
+   "'plain'|'coordinator'|'r\u00e9po'": {
+    "value": "binding:e74f0cd63da70b1855aaaa7972eb1e8a3aed9b9c745da960ffd4de8887c2c6ff"
+   },
+   "'plain'|'v\u00e9rification'|'agent-tooling'": {
+    "value": "binding:5c4ffa30c54246d9ac33d54cb082c3845d9619000cf0d924020e8bc7ef78ec8b"
+   },
+   "'plain'|'v\u00e9rification'|'r\u00e9po'": {
+    "value": "binding:7e16534150de865659bd85f48ae079262756825d8da74659e51e73e60213b21a"
+   },
+   "'x\\udc00y'|'coordinator'|'agent-tooling'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'x\\udc00y'|'coordinator'|'r\u00e9po'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'x\\udc00y'|'v\u00e9rification'|'agent-tooling'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'x\\udc00y'|'v\u00e9rification'|'r\u00e9po'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'\u6f22\u5b57/\u8def\u5f84.py'|'coordinator'|'agent-tooling'": {
+    "value": "binding:3490a7e6c99f26870f7b2bf0ce7a081ce4a36a7bf4aee1f2217bc76384613b68"
+   },
+   "'\u6f22\u5b57/\u8def\u5f84.py'|'coordinator'|'r\u00e9po'": {
+    "value": "binding:dedba209fa19bb89914fd35e34bdeeadd1982848f8fb0dab0755cdc07c07c821"
+   },
+   "'\u6f22\u5b57/\u8def\u5f84.py'|'v\u00e9rification'|'agent-tooling'": {
+    "value": "binding:d291d4ae644c553d87eebc5a35595d0bd70f644bba77da3b7a100632ec3d2c7b"
+   },
+   "'\u6f22\u5b57/\u8def\u5f84.py'|'v\u00e9rification'|'r\u00e9po'": {
+    "value": "binding:f9993396dc0de052f0d5e9a16a58533b4a7824cbc4bb5860a2ff72091b116b43"
+   }
+  },
+  "desk_write_scope._digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "episodic_memory._bytes": {
+   "ascii_nested": {
+    "value": {
+     "bytes_hex": "7b2261223a5b312c322c7b2263223a747275652c2264223a6e756c6c7d5d2c2262223a312c2265223a7b2266223a7b7d2c2267223a5b5d7d7d"
+    }
+   },
+   "deep": {
+    "value": {
+     "bytes_hex": "7b227a223a7b2279223a7b2278223a5b5b5d2c7b7d2c5b7b2277223a22227d5d2c5b5b5b5d5d5d5d7d7d7d"
+    }
+   },
+   "empty_list": {
+    "value": {
+     "bytes_hex": "5b5d"
+    }
+   },
+   "empty_object": {
+    "value": {
+     "bytes_hex": "7b7d"
+    }
+   },
+   "empty_string": {
+    "value": {
+     "bytes_hex": "2222"
+    }
+   },
+   "escapes": {
+    "value": {
+     "bytes_hex": "7b2273223a227461625c746e6c5c6e6e756c5c753030303071756f74655c2262735c5c207365705c75323032385c75323032392064656c5c7530303766227d"
+    }
+   },
+   "float": {
+    "value": {
+     "bytes_hex": "312e35"
+    }
+   },
+   "infinity": {
+    "value": {
+     "bytes_hex": "496e66696e697479"
+    }
+   },
+   "key_order": {
+    "value": {
+     "bytes_hex": "7b223130223a362c2239223a372c2242223a322c225f223a352c2261223a342c2262223a312c225c7530306531223a337d"
+    }
+   },
+   "large_float": {
+    "value": {
+     "bytes_hex": "31652b333030"
+    }
+   },
+   "large_int": {
+    "value": {
+     "bytes_hex": "31313830353931363230373137343131333033343234"
+    }
+   },
+   "list_of_mixed": {
+    "value": {
+     "bytes_hex": "5b6e756c6c2c312c226f6e65222c312e32352c5b5d2c7b7d2c66616c73655d"
+    }
+   },
+   "lone_surrogate_high": {
+    "value": {
+     "bytes_hex": "225c756438303022"
+    }
+   },
+   "lone_surrogate_low": {
+    "value": {
+     "bytes_hex": "225c756463303022"
+    }
+   },
+   "lone_surrogates_nested": {
+    "value": {
+     "bytes_hex": "7b2261223a5b226f6b222c225c7564383030225d2c2262223a7b225c75646330306b6579223a22785c756463303079227d7d"
+    }
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": {
+     "bytes_hex": "4e614e"
+    }
+   },
+   "nan_nested": {
+    "value": {
+     "bytes_hex": "7b2276223a5b4e614e2c2d496e66696e6974795d7d"
+    }
+   },
+   "negative_zero": {
+    "value": {
+     "bytes_hex": "2d302e30"
+    }
+   },
+   "non_ascii": {
+    "value": {
+     "bytes_hex": "7b22636a6b223a225c75366632325c7535623537222c22656d6f6a69223a225c75643833645c7564653030205c75643833345c7564643165222c225c7530306539223a5b225c7530306663222c225c7530306466225d2c225c75303433615c75303433625c75303434655c7530343437223a225c75303433375c75303433645c75303433305c75303434375c75303433355c75303433645c75303433385c7530343335227d"
+    }
+   },
+   "null": {
+    "value": {
+     "bytes_hex": "6e756c6c"
+    }
+   },
+   "true": {
+    "value": {
+     "bytes_hex": "74727565"
+    }
+   },
+   "zero": {
+    "value": {
+     "bytes_hex": "30"
+    }
+   }
+  },
+  "episodic_memory._id['']": {
+   "ascii_nested": {
+    "value": ":sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": ":sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": ":sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": ":sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": ":sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": ":sha256:7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": ":sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": ":sha256:d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": ":sha256:9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": ":sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": ":sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": ":sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": ":sha256:8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": ":sha256:353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": ":sha256:c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": ":sha256:d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": ":sha256:505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": ":sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": ":sha256:f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": ":sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": ":sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": ":sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "episodic_memory._id['claim']": {
+   "ascii_nested": {
+    "value": "claim:sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "claim:sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "claim:sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "claim:sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "claim:sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "claim:sha256:7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "claim:sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "claim:sha256:d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "claim:sha256:9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "claim:sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "claim:sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "claim:sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "claim:sha256:8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "claim:sha256:353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "claim:sha256:c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "claim:sha256:d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "claim:sha256:505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "claim:sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "claim:sha256:f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "claim:sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "claim:sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "claim:sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "episodic_memory._id['episode']": {
+   "ascii_nested": {
+    "value": "episode:sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "episode:sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "episode:sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "episode:sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "episode:sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "episode:sha256:7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "episode:sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "episode:sha256:d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "episode:sha256:9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "episode:sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "episode:sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "episode:sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "episode:sha256:8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "episode:sha256:353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "episode:sha256:c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "episode:sha256:d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "episode:sha256:505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "episode:sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "episode:sha256:f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "episode:sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "episode:sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "episode:sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "episodic_queue._digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "host_adapter.codex_trust_entry (timeout 5, no matcher, given source)": {
+   "'/<session-flags>/config.toml'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'/<session-flags>/config.toml'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'/<session-flags>/config.toml'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'/<session-flags>/config.toml'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'/<session-flags>/config.toml'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'/<session-flags>/config.toml'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'/<session-flags>/config.toml'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'/<session-flags>/config.toml'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'/<session-flags>/config.toml'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'/<session-flags>/config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:pre_tool_use:0:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:pre_tool_use:3:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:pre_tool_use:0:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:pre_tool_use:3:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:pre_tool_use:0:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:pre_tool_use:3:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:session_start:0:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:session_start:3:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:session_start:0:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:session_start:3:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:session_start:0:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:session_start:3:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:stop:0:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:stop:3:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:stop:0:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:stop:3:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:stop:0:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:stop:3:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:user_prompt_submit:0:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:user_prompt_submit:3:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:user_prompt_submit:0:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:user_prompt_submit:3:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/home/user/.codex/config.toml:user_prompt_submit:0:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'/home/user/.codex/config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/home/user/.codex/config.toml:user_prompt_submit:3:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'C:\\\\<session-flags>\\\\config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:pre_tool_use:0:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:pre_tool_use:3:0",
+     "sha256:3214300e317c6049e77c1bc1a4903f0ddecc897917a076b566dd247e30ca6f7a"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:pre_tool_use:0:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:pre_tool_use:3:0",
+     "sha256:c9b910ee2ae04cb01a942e235a2787d84b45a4daa38b13631ada074cf140ec59"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:pre_tool_use:0:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:pre_tool_use:3:0",
+     "sha256:9ba4a4d80d44ca8cd35a5a406d3c551fbbff84e4b94aa8fe71c5306e951c31ce"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:session_start:0:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:session_start:3:0",
+     "sha256:f92181fd090971a22d89f149a56d9cfda1d831791874ffd2f78335faba8adae0"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:session_start:0:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:session_start:3:0",
+     "sha256:2ef241ca631f456fde9220a0ea5dcd6cafd7521e056d90d7947b99e24a126ccd"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:session_start:0:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:session_start:3:0",
+     "sha256:f1512c90938e216c8b49998010876e473629819095f5ca197c278937570b499c"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:stop:0:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:stop:3:0",
+     "sha256:beddb61beba4698cfc05f332d72830fb4404f852ea8b83a70ad21793a1c97fc9"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:stop:0:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:stop:3:0",
+     "sha256:c60546977e8d13ebb79af4f6f3ee1e71e0266d3caf8e002d99250c1e271ef9f9"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:stop:0:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:stop:3:0",
+     "sha256:cd87804854786d710fcf8f95de086803deea751e456cd8afe4eba354d55e30cf"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:user_prompt_submit:0:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:user_prompt_submit:3:0",
+     "sha256:43cf62289e8aa202f8e19def81e49d5de9506f821cacc4c9f88480fc4798d2e4"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:user_prompt_submit:0:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:user_prompt_submit:3:0",
+     "sha256:c56ce031e2d194e164042b9449ca1c624142ad166f6d26d09be386808cd8c5e6"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:user_prompt_submit:0:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   },
+   "'C:\\\\Users\\\\user\\\\.codex\\\\config.toml'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\Users\\user\\.codex\\config.toml:user_prompt_submit:3:0",
+     "sha256:1afd5a5dd9ba96fb71350da50a7477cfb48e61bee115b87f638263ab650c965a"
+    ]
+   }
+  },
+  "launch_binding.codex_trust_entry (timeout 30, matcher, session-flags source)": {
+   "os.name=nt|matcher='*'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:09eebcbddd8ff8e6f570dd981a69ec58a31b5d365366bd822ede576882a93c0b"
+    ]
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:09eebcbddd8ff8e6f570dd981a69ec58a31b5d365366bd822ede576882a93c0b"
+    ]
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:d15c0730c6dbd65bcfb1843cecb27e2cca11b29248fdf4ae3fb6e1ed0e3e5c3f"
+    ]
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:d15c0730c6dbd65bcfb1843cecb27e2cca11b29248fdf4ae3fb6e1ed0e3e5c3f"
+    ]
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:a97bbc227c424567f4909239b6f0fe2e3a3c86e101e9da5fbf0310dc490bf898"
+    ]
+   },
+   "os.name=nt|matcher='*'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:a97bbc227c424567f4909239b6f0fe2e3a3c86e101e9da5fbf0310dc490bf898"
+    ]
+   },
+   "os.name=nt|matcher='*'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:509e6390c1f97f622728979223b39f67388e823fedf3b23f5dce5b2de31d54b2"
+    ]
+   },
+   "os.name=nt|matcher='*'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:509e6390c1f97f622728979223b39f67388e823fedf3b23f5dce5b2de31d54b2"
+    ]
+   },
+   "os.name=nt|matcher='*'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:adb88688a20c41556ae050d1b2ebf190e30156d887c3aad0ba2ba5c022352012"
+    ]
+   },
+   "os.name=nt|matcher='*'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:adb88688a20c41556ae050d1b2ebf190e30156d887c3aad0ba2ba5c022352012"
+    ]
+   },
+   "os.name=nt|matcher='*'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:c896444fe0b3be0b0739d23fea8aeeae4942e15715f03a30cb9de9c980f968dd"
+    ]
+   },
+   "os.name=nt|matcher='*'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:c896444fe0b3be0b0739d23fea8aeeae4942e15715f03a30cb9de9c980f968dd"
+    ]
+   },
+   "os.name=nt|matcher='*'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:1423481a117fc08c7ca11a70cae4ad70706d172952cb08d4a8aaa672a6ac7074"
+    ]
+   },
+   "os.name=nt|matcher='*'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:1423481a117fc08c7ca11a70cae4ad70706d172952cb08d4a8aaa672a6ac7074"
+    ]
+   },
+   "os.name=nt|matcher='*'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:d9d74d07ee6c5b06a1731a625e60e85909e8c8cbc564d19c5e4c72af0267170a"
+    ]
+   },
+   "os.name=nt|matcher='*'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:d9d74d07ee6c5b06a1731a625e60e85909e8c8cbc564d19c5e4c72af0267170a"
+    ]
+   },
+   "os.name=nt|matcher='*'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:f96d098fffb8718cd19833139d3a1378f4a7fc0df46760dd4a3f65920f8bc169"
+    ]
+   },
+   "os.name=nt|matcher='*'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:f96d098fffb8718cd19833139d3a1378f4a7fc0df46760dd4a3f65920f8bc169"
+    ]
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:5617043f21140c7c3fa2421b840068b0277805942b6ceb6dc921f50659b2f6b4"
+    ]
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:5617043f21140c7c3fa2421b840068b0277805942b6ceb6dc921f50659b2f6b4"
+    ]
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:2f0626c14cdc27de812a63b7e897032a4b6a021b05668cbdd037ff8edd8be2a9"
+    ]
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:2f0626c14cdc27de812a63b7e897032a4b6a021b05668cbdd037ff8edd8be2a9"
+    ]
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:2c09545605a03d3960fca002eef5374b3e6e8b52630be9f7c37b1fd8b5d3887c"
+    ]
+   },
+   "os.name=nt|matcher='*'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:2c09545605a03d3960fca002eef5374b3e6e8b52630be9f7c37b1fd8b5d3887c"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:27207bfc47ae9a2a065870a57919a87aa77ea72378bb963ad4a004649a751088"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:27207bfc47ae9a2a065870a57919a87aa77ea72378bb963ad4a004649a751088"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:b6c2e07c1ffbf7a8eb4380a464045e3565ab78d7b0a2fc0e996aa70bf37b50f0"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:b6c2e07c1ffbf7a8eb4380a464045e3565ab78d7b0a2fc0e996aa70bf37b50f0"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:bc9a8f77cc03475c93f26abe0570eb4ef889590b57837a39da026e52bcd68006"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:bc9a8f77cc03475c93f26abe0570eb4ef889590b57837a39da026e52bcd68006"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:51a1addbac0a7ff30f603e09f990a0275254931ff838d770fed0fe49f1072248"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:51a1addbac0a7ff30f603e09f990a0275254931ff838d770fed0fe49f1072248"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:b4831738102101d3b7cd4b7dde173c6a9edf7eb398284c995f4fc2c673bf2223"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:b4831738102101d3b7cd4b7dde173c6a9edf7eb398284c995f4fc2c673bf2223"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:56b5a6368ab5263dedb9d134a7411d5dc5be6ab70777055e13b90b156c5eba96"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:56b5a6368ab5263dedb9d134a7411d5dc5be6ab70777055e13b90b156c5eba96"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:f4074d6dc176733c58f247bddf6a6efd6db9b4fb09b08ccbc915a5e71f511a7b"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:f4074d6dc176733c58f247bddf6a6efd6db9b4fb09b08ccbc915a5e71f511a7b"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:c48264fea75b516c4bd69bf3987d97b504586aaf62cd375a5ddcd832000f1942"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:c48264fea75b516c4bd69bf3987d97b504586aaf62cd375a5ddcd832000f1942"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:83acb76c65cb8eedffcfa56e512db18f2d0dd1dedea18122c568a07ded2db655"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:83acb76c65cb8eedffcfa56e512db18f2d0dd1dedea18122c568a07ded2db655"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:52fe414fd11fde79585358c85b19a1d2a375cf4e095f7939b3275d55c378c40e"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:52fe414fd11fde79585358c85b19a1d2a375cf4e095f7939b3275d55c378c40e"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:f1ac2423d4ecee09349bd53da6714a2fb0fe089e4af61bcb67790001a418d64b"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:f1ac2423d4ecee09349bd53da6714a2fb0fe089e4af61bcb67790001a418d64b"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:3a6d8b2370f7676f356b8b5f07f71e67633997e480db6d557eb85f99c1f6a482"
+    ]
+   },
+   "os.name=nt|matcher='Bash'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:3a6d8b2370f7676f356b8b5f07f71e67633997e480db6d557eb85f99c1f6a482"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:bbe41e1cac8ea8002a2f0aa2fa86b86811a3b6f5b591c6c9a7f6142a990b0e06"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:bbe41e1cac8ea8002a2f0aa2fa86b86811a3b6f5b591c6c9a7f6142a990b0e06"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:819c1e168109ed7767a5a5618506bf0a334e34448a0a94a456f0ac91a4b822c5"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:819c1e168109ed7767a5a5618506bf0a334e34448a0a94a456f0ac91a4b822c5"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:6c8f4e1c9eba6b68a0ccdfd2452a1aa3c1c16c61303e07df7177a6cfff818ed4"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:6c8f4e1c9eba6b68a0ccdfd2452a1aa3c1c16c61303e07df7177a6cfff818ed4"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:ba072ab4db47a67ecfb2ef8642ba3c1f9afb06483b2be53cae27bb3bc9fcecf5"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:ba072ab4db47a67ecfb2ef8642ba3c1f9afb06483b2be53cae27bb3bc9fcecf5"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:058f804e8411fe06a627bbb16ec202c43902424b9a4f163c4ea92bf4ab6081ea"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:058f804e8411fe06a627bbb16ec202c43902424b9a4f163c4ea92bf4ab6081ea"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:531a25d8c9e22144c513b28327bdcc44dd20b642a7bcf6f35d0874b1624bce4d"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:531a25d8c9e22144c513b28327bdcc44dd20b642a7bcf6f35d0874b1624bce4d"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:591a56f7fc102628693b17c199ea01880a25d2c5b72278b7d72c4aea0f63ac46"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:591a56f7fc102628693b17c199ea01880a25d2c5b72278b7d72c4aea0f63ac46"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:22785605c65df68d6b1c4663713193ee6a7f426b8b4bc2d68f8c8735943b3972"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:22785605c65df68d6b1c4663713193ee6a7f426b8b4bc2d68f8c8735943b3972"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:36ec9deac4f68b0b04e4508c6a93aacfdf7efd5fc881ab07ea2d0ccbe6f7b937"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:36ec9deac4f68b0b04e4508c6a93aacfdf7efd5fc881ab07ea2d0ccbe6f7b937"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:0b38b4fd22b8cedfcb972eeb26ed0d574103676d44fa1dc5718b07670f068554"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:0b38b4fd22b8cedfcb972eeb26ed0d574103676d44fa1dc5718b07670f068554"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:7a0d3226cbb6f5c41a6a3641b199c1f043f60671abf08903d10f1fc983c0836c"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:7a0d3226cbb6f5c41a6a3641b199c1f043f60671abf08903d10f1fc983c0836c"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:23461f53b12c6ffb9c31f9775b9f1acdafe263cb0d8f0fa606856ca266028ce0"
+    ]
+   },
+   "os.name=nt|matcher='\u00e9|\u00fc'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:23461f53b12c6ffb9c31f9775b9f1acdafe263cb0d8f0fa606856ca266028ce0"
+    ]
+   },
+   "os.name=nt|matcher=None|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:0aa492c0975eab78b796b00794d85cb2daf3e718dff7471d1c37867c75a89167"
+    ]
+   },
+   "os.name=nt|matcher=None|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:0aa492c0975eab78b796b00794d85cb2daf3e718dff7471d1c37867c75a89167"
+    ]
+   },
+   "os.name=nt|matcher=None|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:a08e06278fcb1e07443b829f82f06031d3503ccca06ed5a089030d9830d06ed9"
+    ]
+   },
+   "os.name=nt|matcher=None|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:a08e06278fcb1e07443b829f82f06031d3503ccca06ed5a089030d9830d06ed9"
+    ]
+   },
+   "os.name=nt|matcher=None|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:0:0",
+     "sha256:352bbe52ac44e8d0476dea5c78457a2a7a68628962dd7180e8ffbfd63917352b"
+    ]
+   },
+   "os.name=nt|matcher=None|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:pre_tool_use:3:0",
+     "sha256:352bbe52ac44e8d0476dea5c78457a2a7a68628962dd7180e8ffbfd63917352b"
+    ]
+   },
+   "os.name=nt|matcher=None|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:2d836998065f19a92c57276b9ab63f98cd49e0b1c831b88a6e031af4520176ad"
+    ]
+   },
+   "os.name=nt|matcher=None|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:2d836998065f19a92c57276b9ab63f98cd49e0b1c831b88a6e031af4520176ad"
+    ]
+   },
+   "os.name=nt|matcher=None|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:cdd6f84fe864d8dee1256d5a7eec4d2fcc71c70405cc68ff681ef8eae6cdbc50"
+    ]
+   },
+   "os.name=nt|matcher=None|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:cdd6f84fe864d8dee1256d5a7eec4d2fcc71c70405cc68ff681ef8eae6cdbc50"
+    ]
+   },
+   "os.name=nt|matcher=None|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:0:0",
+     "sha256:19e61a79bb31710a921fc0eb68d86813ee67fc6b81276653929274f53717b8b0"
+    ]
+   },
+   "os.name=nt|matcher=None|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:session_start:3:0",
+     "sha256:19e61a79bb31710a921fc0eb68d86813ee67fc6b81276653929274f53717b8b0"
+    ]
+   },
+   "os.name=nt|matcher=None|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:c92078e0fcd53285454055b1091d956133799032d3290e3c51db49b8dd2b662f"
+    ]
+   },
+   "os.name=nt|matcher=None|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:c92078e0fcd53285454055b1091d956133799032d3290e3c51db49b8dd2b662f"
+    ]
+   },
+   "os.name=nt|matcher=None|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:eeacc0cabb50c433317a167915536cf01ddd57b366bf04b5ca595a328a6ee8d6"
+    ]
+   },
+   "os.name=nt|matcher=None|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:eeacc0cabb50c433317a167915536cf01ddd57b366bf04b5ca595a328a6ee8d6"
+    ]
+   },
+   "os.name=nt|matcher=None|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:0:0",
+     "sha256:71ac560a638dceca1bacdbd0e0d8787ab2edc47b8ef34a7b3780c478626ae4e8"
+    ]
+   },
+   "os.name=nt|matcher=None|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:stop:3:0",
+     "sha256:71ac560a638dceca1bacdbd0e0d8787ab2edc47b8ef34a7b3780c478626ae4e8"
+    ]
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:d1526b888f60c6b2203ce0eba0e8accd23014637353bbb779b96064fce313c82"
+    ]
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:d1526b888f60c6b2203ce0eba0e8accd23014637353bbb779b96064fce313c82"
+    ]
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:820d5ba2cb1c5cecf105b6f07791feb022fab4ee0202479ce1bb44096fa2e013"
+    ]
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:820d5ba2cb1c5cecf105b6f07791feb022fab4ee0202479ce1bb44096fa2e013"
+    ]
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:0:0",
+     "sha256:10fa0914c5b89782484160f43b0f97a323068d66a530c40064a53797f181aaa1"
+    ]
+   },
+   "os.name=nt|matcher=None|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "C:\\<session-flags>\\config.toml:user_prompt_submit:3:0",
+     "sha256:10fa0914c5b89782484160f43b0f97a323068d66a530c40064a53797f181aaa1"
+    ]
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:09eebcbddd8ff8e6f570dd981a69ec58a31b5d365366bd822ede576882a93c0b"
+    ]
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:09eebcbddd8ff8e6f570dd981a69ec58a31b5d365366bd822ede576882a93c0b"
+    ]
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:d15c0730c6dbd65bcfb1843cecb27e2cca11b29248fdf4ae3fb6e1ed0e3e5c3f"
+    ]
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:d15c0730c6dbd65bcfb1843cecb27e2cca11b29248fdf4ae3fb6e1ed0e3e5c3f"
+    ]
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:a97bbc227c424567f4909239b6f0fe2e3a3c86e101e9da5fbf0310dc490bf898"
+    ]
+   },
+   "os.name=posix|matcher='*'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:a97bbc227c424567f4909239b6f0fe2e3a3c86e101e9da5fbf0310dc490bf898"
+    ]
+   },
+   "os.name=posix|matcher='*'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:509e6390c1f97f622728979223b39f67388e823fedf3b23f5dce5b2de31d54b2"
+    ]
+   },
+   "os.name=posix|matcher='*'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:509e6390c1f97f622728979223b39f67388e823fedf3b23f5dce5b2de31d54b2"
+    ]
+   },
+   "os.name=posix|matcher='*'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:adb88688a20c41556ae050d1b2ebf190e30156d887c3aad0ba2ba5c022352012"
+    ]
+   },
+   "os.name=posix|matcher='*'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:adb88688a20c41556ae050d1b2ebf190e30156d887c3aad0ba2ba5c022352012"
+    ]
+   },
+   "os.name=posix|matcher='*'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:c896444fe0b3be0b0739d23fea8aeeae4942e15715f03a30cb9de9c980f968dd"
+    ]
+   },
+   "os.name=posix|matcher='*'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:c896444fe0b3be0b0739d23fea8aeeae4942e15715f03a30cb9de9c980f968dd"
+    ]
+   },
+   "os.name=posix|matcher='*'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:1423481a117fc08c7ca11a70cae4ad70706d172952cb08d4a8aaa672a6ac7074"
+    ]
+   },
+   "os.name=posix|matcher='*'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:1423481a117fc08c7ca11a70cae4ad70706d172952cb08d4a8aaa672a6ac7074"
+    ]
+   },
+   "os.name=posix|matcher='*'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:d9d74d07ee6c5b06a1731a625e60e85909e8c8cbc564d19c5e4c72af0267170a"
+    ]
+   },
+   "os.name=posix|matcher='*'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:d9d74d07ee6c5b06a1731a625e60e85909e8c8cbc564d19c5e4c72af0267170a"
+    ]
+   },
+   "os.name=posix|matcher='*'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:f96d098fffb8718cd19833139d3a1378f4a7fc0df46760dd4a3f65920f8bc169"
+    ]
+   },
+   "os.name=posix|matcher='*'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:f96d098fffb8718cd19833139d3a1378f4a7fc0df46760dd4a3f65920f8bc169"
+    ]
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:5617043f21140c7c3fa2421b840068b0277805942b6ceb6dc921f50659b2f6b4"
+    ]
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:5617043f21140c7c3fa2421b840068b0277805942b6ceb6dc921f50659b2f6b4"
+    ]
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:2f0626c14cdc27de812a63b7e897032a4b6a021b05668cbdd037ff8edd8be2a9"
+    ]
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:2f0626c14cdc27de812a63b7e897032a4b6a021b05668cbdd037ff8edd8be2a9"
+    ]
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:2c09545605a03d3960fca002eef5374b3e6e8b52630be9f7c37b1fd8b5d3887c"
+    ]
+   },
+   "os.name=posix|matcher='*'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:2c09545605a03d3960fca002eef5374b3e6e8b52630be9f7c37b1fd8b5d3887c"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:27207bfc47ae9a2a065870a57919a87aa77ea72378bb963ad4a004649a751088"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:27207bfc47ae9a2a065870a57919a87aa77ea72378bb963ad4a004649a751088"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:b6c2e07c1ffbf7a8eb4380a464045e3565ab78d7b0a2fc0e996aa70bf37b50f0"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:b6c2e07c1ffbf7a8eb4380a464045e3565ab78d7b0a2fc0e996aa70bf37b50f0"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:bc9a8f77cc03475c93f26abe0570eb4ef889590b57837a39da026e52bcd68006"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:bc9a8f77cc03475c93f26abe0570eb4ef889590b57837a39da026e52bcd68006"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:51a1addbac0a7ff30f603e09f990a0275254931ff838d770fed0fe49f1072248"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:51a1addbac0a7ff30f603e09f990a0275254931ff838d770fed0fe49f1072248"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:b4831738102101d3b7cd4b7dde173c6a9edf7eb398284c995f4fc2c673bf2223"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:b4831738102101d3b7cd4b7dde173c6a9edf7eb398284c995f4fc2c673bf2223"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:56b5a6368ab5263dedb9d134a7411d5dc5be6ab70777055e13b90b156c5eba96"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:56b5a6368ab5263dedb9d134a7411d5dc5be6ab70777055e13b90b156c5eba96"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:f4074d6dc176733c58f247bddf6a6efd6db9b4fb09b08ccbc915a5e71f511a7b"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:f4074d6dc176733c58f247bddf6a6efd6db9b4fb09b08ccbc915a5e71f511a7b"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:c48264fea75b516c4bd69bf3987d97b504586aaf62cd375a5ddcd832000f1942"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:c48264fea75b516c4bd69bf3987d97b504586aaf62cd375a5ddcd832000f1942"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:83acb76c65cb8eedffcfa56e512db18f2d0dd1dedea18122c568a07ded2db655"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:83acb76c65cb8eedffcfa56e512db18f2d0dd1dedea18122c568a07ded2db655"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:52fe414fd11fde79585358c85b19a1d2a375cf4e095f7939b3275d55c378c40e"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:52fe414fd11fde79585358c85b19a1d2a375cf4e095f7939b3275d55c378c40e"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:f1ac2423d4ecee09349bd53da6714a2fb0fe089e4af61bcb67790001a418d64b"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:f1ac2423d4ecee09349bd53da6714a2fb0fe089e4af61bcb67790001a418d64b"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:3a6d8b2370f7676f356b8b5f07f71e67633997e480db6d557eb85f99c1f6a482"
+    ]
+   },
+   "os.name=posix|matcher='Bash'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:3a6d8b2370f7676f356b8b5f07f71e67633997e480db6d557eb85f99c1f6a482"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:bbe41e1cac8ea8002a2f0aa2fa86b86811a3b6f5b591c6c9a7f6142a990b0e06"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:bbe41e1cac8ea8002a2f0aa2fa86b86811a3b6f5b591c6c9a7f6142a990b0e06"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:819c1e168109ed7767a5a5618506bf0a334e34448a0a94a456f0ac91a4b822c5"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:819c1e168109ed7767a5a5618506bf0a334e34448a0a94a456f0ac91a4b822c5"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:6c8f4e1c9eba6b68a0ccdfd2452a1aa3c1c16c61303e07df7177a6cfff818ed4"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:6c8f4e1c9eba6b68a0ccdfd2452a1aa3c1c16c61303e07df7177a6cfff818ed4"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:ba072ab4db47a67ecfb2ef8642ba3c1f9afb06483b2be53cae27bb3bc9fcecf5"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:ba072ab4db47a67ecfb2ef8642ba3c1f9afb06483b2be53cae27bb3bc9fcecf5"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:058f804e8411fe06a627bbb16ec202c43902424b9a4f163c4ea92bf4ab6081ea"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:058f804e8411fe06a627bbb16ec202c43902424b9a4f163c4ea92bf4ab6081ea"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:531a25d8c9e22144c513b28327bdcc44dd20b642a7bcf6f35d0874b1624bce4d"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:531a25d8c9e22144c513b28327bdcc44dd20b642a7bcf6f35d0874b1624bce4d"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:591a56f7fc102628693b17c199ea01880a25d2c5b72278b7d72c4aea0f63ac46"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:591a56f7fc102628693b17c199ea01880a25d2c5b72278b7d72c4aea0f63ac46"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:22785605c65df68d6b1c4663713193ee6a7f426b8b4bc2d68f8c8735943b3972"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:22785605c65df68d6b1c4663713193ee6a7f426b8b4bc2d68f8c8735943b3972"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:36ec9deac4f68b0b04e4508c6a93aacfdf7efd5fc881ab07ea2d0ccbe6f7b937"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:36ec9deac4f68b0b04e4508c6a93aacfdf7efd5fc881ab07ea2d0ccbe6f7b937"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:0b38b4fd22b8cedfcb972eeb26ed0d574103676d44fa1dc5718b07670f068554"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:0b38b4fd22b8cedfcb972eeb26ed0d574103676d44fa1dc5718b07670f068554"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:7a0d3226cbb6f5c41a6a3641b199c1f043f60671abf08903d10f1fc983c0836c"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:7a0d3226cbb6f5c41a6a3641b199c1f043f60671abf08903d10f1fc983c0836c"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:23461f53b12c6ffb9c31f9775b9f1acdafe263cb0d8f0fa606856ca266028ce0"
+    ]
+   },
+   "os.name=posix|matcher='\u00e9|\u00fc'|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:23461f53b12c6ffb9c31f9775b9f1acdafe263cb0d8f0fa606856ca266028ce0"
+    ]
+   },
+   "os.name=posix|matcher=None|PreToolUse|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:0aa492c0975eab78b796b00794d85cb2daf3e718dff7471d1c37867c75a89167"
+    ]
+   },
+   "os.name=posix|matcher=None|PreToolUse|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:0aa492c0975eab78b796b00794d85cb2daf3e718dff7471d1c37867c75a89167"
+    ]
+   },
+   "os.name=posix|matcher=None|PreToolUse|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:a08e06278fcb1e07443b829f82f06031d3503ccca06ed5a089030d9830d06ed9"
+    ]
+   },
+   "os.name=posix|matcher=None|PreToolUse|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:a08e06278fcb1e07443b829f82f06031d3503ccca06ed5a089030d9830d06ed9"
+    ]
+   },
+   "os.name=posix|matcher=None|PreToolUse|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|PreToolUse|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 68: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|PreToolUse|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:0:0",
+     "sha256:352bbe52ac44e8d0476dea5c78457a2a7a68628962dd7180e8ffbfd63917352b"
+    ]
+   },
+   "os.name=posix|matcher=None|PreToolUse|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:pre_tool_use:3:0",
+     "sha256:352bbe52ac44e8d0476dea5c78457a2a7a68628962dd7180e8ffbfd63917352b"
+    ]
+   },
+   "os.name=posix|matcher=None|SessionStart|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:2d836998065f19a92c57276b9ab63f98cd49e0b1c831b88a6e031af4520176ad"
+    ]
+   },
+   "os.name=posix|matcher=None|SessionStart|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:2d836998065f19a92c57276b9ab63f98cd49e0b1c831b88a6e031af4520176ad"
+    ]
+   },
+   "os.name=posix|matcher=None|SessionStart|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:cdd6f84fe864d8dee1256d5a7eec4d2fcc71c70405cc68ff681ef8eae6cdbc50"
+    ]
+   },
+   "os.name=posix|matcher=None|SessionStart|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:cdd6f84fe864d8dee1256d5a7eec4d2fcc71c70405cc68ff681ef8eae6cdbc50"
+    ]
+   },
+   "os.name=posix|matcher=None|SessionStart|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|SessionStart|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 69: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|SessionStart|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:0:0",
+     "sha256:19e61a79bb31710a921fc0eb68d86813ee67fc6b81276653929274f53717b8b0"
+    ]
+   },
+   "os.name=posix|matcher=None|SessionStart|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:session_start:3:0",
+     "sha256:19e61a79bb31710a921fc0eb68d86813ee67fc6b81276653929274f53717b8b0"
+    ]
+   },
+   "os.name=posix|matcher=None|Stop|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:c92078e0fcd53285454055b1091d956133799032d3290e3c51db49b8dd2b662f"
+    ]
+   },
+   "os.name=posix|matcher=None|Stop|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:c92078e0fcd53285454055b1091d956133799032d3290e3c51db49b8dd2b662f"
+    ]
+   },
+   "os.name=posix|matcher=None|Stop|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:eeacc0cabb50c433317a167915536cf01ddd57b366bf04b5ca595a328a6ee8d6"
+    ]
+   },
+   "os.name=posix|matcher=None|Stop|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:eeacc0cabb50c433317a167915536cf01ddd57b366bf04b5ca595a328a6ee8d6"
+    ]
+   },
+   "os.name=posix|matcher=None|Stop|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|Stop|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 60: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|Stop|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:stop:0:0",
+     "sha256:71ac560a638dceca1bacdbd0e0d8787ab2edc47b8ef34a7b3780c478626ae4e8"
+    ]
+   },
+   "os.name=posix|matcher=None|Stop|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:stop:3:0",
+     "sha256:71ac560a638dceca1bacdbd0e0d8787ab2edc47b8ef34a7b3780c478626ae4e8"
+    ]
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'caf\u00e9 \u2603'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:d1526b888f60c6b2203ce0eba0e8accd23014637353bbb779b96064fce313c82"
+    ]
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'caf\u00e9 \u2603'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:d1526b888f60c6b2203ce0eba0e8accd23014637353bbb779b96064fce313c82"
+    ]
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:820d5ba2cb1c5cecf105b6f07791feb022fab4ee0202479ce1bb44096fa2e013"
+    ]
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'cmd \"quoted\" \\\\ back'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:820d5ba2cb1c5cecf105b6f07791feb022fab4ee0202479ce1bb44096fa2e013"
+    ]
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'cmd \\ud800'|0": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'cmd \\ud800'|3": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 74: surrogates not allowed",
+    "suppress_context": false
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'kp-agent-host hook --event x'|0": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:0:0",
+     "sha256:10fa0914c5b89782484160f43b0f97a323068d66a530c40064a53797f181aaa1"
+    ]
+   },
+   "os.name=posix|matcher=None|UserPromptSubmit|'kp-agent-host hook --event x'|3": {
+    "value": [
+     "/<session-flags>/config.toml:user_prompt_submit:3:0",
+     "sha256:10fa0914c5b89782484160f43b0f97a323068d66a530c40064a53797f181aaa1"
+    ]
+   }
+  },
+  "memory_budget._digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "refresh_cli.digest_json": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "revision._sha256_identity['']": {
+   "ascii_nested": {
+    "value": ":sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": ":sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": ":sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": ":sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": ":sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": ":sha256:6a6e8b831287e51bd9f790c75ba621054fd743e51bf867ae6293579c8be5c5f8"
+   },
+   "float": {
+    "value": ":sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "key_order": {
+    "value": ":sha256:ac3ecf1d5fd18f4b901acec65fc0ab381a1f060ad514767019fc1560440d951b"
+   },
+   "large_float": {
+    "value": ":sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": ":sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": ":sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "lone_surrogate_low": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "lone_surrogates_nested": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 12: surrogates not allowed",
+    "suppress_context": false
+   },
+   "mixed_key_types": {
+    "cause": "TypeError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "nan": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "nan_nested": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "negative_zero": {
+    "value": ":sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": ":sha256:472a946e054046a66b3db37f462b092f802a77c8d1e438ac89c176973bf73330"
+   },
+   "null": {
+    "value": ":sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": ":sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": ":sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "revision._sha256_identity['embedding-revision']": {
+   "ascii_nested": {
+    "value": "embedding-revision:sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "embedding-revision:sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "embedding-revision:sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "embedding-revision:sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "embedding-revision:sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "embedding-revision:sha256:6a6e8b831287e51bd9f790c75ba621054fd743e51bf867ae6293579c8be5c5f8"
+   },
+   "float": {
+    "value": "embedding-revision:sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "key_order": {
+    "value": "embedding-revision:sha256:ac3ecf1d5fd18f4b901acec65fc0ab381a1f060ad514767019fc1560440d951b"
+   },
+   "large_float": {
+    "value": "embedding-revision:sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "embedding-revision:sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "embedding-revision:sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "lone_surrogate_low": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "lone_surrogates_nested": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 12: surrogates not allowed",
+    "suppress_context": false
+   },
+   "mixed_key_types": {
+    "cause": "TypeError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "nan": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "nan_nested": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "negative_zero": {
+    "value": "embedding-revision:sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "embedding-revision:sha256:472a946e054046a66b3db37f462b092f802a77c8d1e438ac89c176973bf73330"
+   },
+   "null": {
+    "value": "embedding-revision:sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "embedding-revision:sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "embedding-revision:sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "revision._sha256_identity['\u00fcn\u00efcode']": {
+   "ascii_nested": {
+    "value": "\u00fcn\u00efcode:sha256:b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "\u00fcn\u00efcode:sha256:25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "\u00fcn\u00efcode:sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "\u00fcn\u00efcode:sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "\u00fcn\u00efcode:sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "\u00fcn\u00efcode:sha256:6a6e8b831287e51bd9f790c75ba621054fd743e51bf867ae6293579c8be5c5f8"
+   },
+   "float": {
+    "value": "\u00fcn\u00efcode:sha256:9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "key_order": {
+    "value": "\u00fcn\u00efcode:sha256:ac3ecf1d5fd18f4b901acec65fc0ab381a1f060ad514767019fc1560440d951b"
+   },
+   "large_float": {
+    "value": "\u00fcn\u00efcode:sha256:2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "\u00fcn\u00efcode:sha256:acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "\u00fcn\u00efcode:sha256:286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "lone_surrogate_low": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "lone_surrogates_nested": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 12: surrogates not allowed",
+    "suppress_context": false
+   },
+   "mixed_key_types": {
+    "cause": "TypeError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "nan": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "nan_nested": {
+    "cause": "ValueError",
+    "error": "ValueError: embedding identity fields must be finite JSON values",
+    "suppress_context": true
+   },
+   "negative_zero": {
+    "value": "\u00fcn\u00efcode:sha256:c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "\u00fcn\u00efcode:sha256:472a946e054046a66b3db37f462b092f802a77c8d1e438ac89c176973bf73330"
+   },
+   "null": {
+    "value": "\u00fcn\u00efcode:sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "\u00fcn\u00efcode:sha256:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "\u00fcn\u00efcode:sha256:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "revision.embedding_identity": {
+   "default.revision_id": {
+    "value": "embedding-revision:sha256:89c657a6439c7d267fa3043a6586e5018710d914fabdf90cfc641d989148bcc3"
+   },
+   "default|''": {
+    "cause": null,
+    "error": "ValueError: content_digest must not be empty",
+    "suppress_context": false
+   },
+   "default|'\\ud800'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "default|'sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc'": {
+    "value": "embedding:sha256:d3711c1a1f6e1c38e7ee99e67a35d2a48e7352287ecd1148b999e963bb41abcf"
+   },
+   "default|'x\\udc00y'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "default|'\u00e9'": {
+    "value": "embedding:sha256:734841d252cf299af73aedb21ceaa2cc0a162c1c75205cab00a7e9289526de99"
+   },
+   "params.revision_id": {
+    "value": "embedding-revision:sha256:12f49711da510b82438dbf3069fc0e9857421c819a2730197b8d3e2d64c6d09b"
+   },
+   "params|''": {
+    "cause": null,
+    "error": "ValueError: content_digest must not be empty",
+    "suppress_context": false
+   },
+   "params|'\\ud800'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed",
+    "suppress_context": false
+   },
+   "params|'sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc'": {
+    "value": "embedding:sha256:fe6649dc30c039d9872ef4ffdd9b7ce51958e839353bf46acf6c28e9c16c7d98"
+   },
+   "params|'x\\udc00y'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\udc00' in position 1: surrogates not allowed",
+    "suppress_context": false
+   },
+   "params|'\u00e9'": {
+    "value": "embedding:sha256:b34852631543e10c9cbfb8515fb687ecba2dfb6634b5045b0027e3cf573754bd"
+   },
+   "surrogate.revision_id": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 124: surrogates not allowed",
+    "suppress_context": false
+   },
+   "surrogate|''": {
+    "cause": null,
+    "error": "ValueError: content_digest must not be empty",
+    "suppress_context": false
+   },
+   "surrogate|'\\ud800'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 124: surrogates not allowed",
+    "suppress_context": false
+   },
+   "surrogate|'sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 124: surrogates not allowed",
+    "suppress_context": false
+   },
+   "surrogate|'x\\udc00y'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 124: surrogates not allowed",
+    "suppress_context": false
+   },
+   "surrogate|'\u00e9'": {
+    "cause": null,
+    "error": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 124: surrogates not allowed",
+    "suppress_context": false
+   }
+  },
+  "scip_navigation.digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "session_bindings._digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "value": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+   },
+   "nan_nested": {
+    "value": "505f71e70d90b8e4d59593c8cfd0ac9e3d4226542a53393408f0b6807254213c"
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  },
+  "workspace_setup.digest": {
+   "ascii_nested": {
+    "value": "b8ad35391b45040acc85f3f545283fd260e0a57222a426665ac190bc7978448c"
+   },
+   "deep": {
+    "value": "25dc1210064b94e76b5a2e8aa4012c987356aac6d7d3e53ad845d1c06e20d8c5"
+   },
+   "empty_list": {
+    "value": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "empty_object": {
+    "value": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+   },
+   "empty_string": {
+    "value": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+   },
+   "escapes": {
+    "value": "7cc9fca440d8f404e4940e33030a846c078cde67df619a6554d72c047b65035f"
+   },
+   "float": {
+    "value": "9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725"
+   },
+   "infinity": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "key_order": {
+    "value": "9e1b470843e6a45966223051f08ffc86c14c9b7db9a59aadfad89b5dc29b6b6d"
+   },
+   "large_float": {
+    "value": "2b0de494c41db4c1bf0b41b0a3483db71f2b53a5e37caf5a61abee2d4169a935"
+   },
+   "large_int": {
+    "value": "acd0f1dd559f310ffd1ff6001f395e05cb29cbc008a5b9930d28e6decd29a4bd"
+   },
+   "list_of_mixed": {
+    "value": "286ba43d460c63d71fc970e6fd858c1d740dc4e28890b1812d7ee4e7285186a7"
+   },
+   "lone_surrogate_high": {
+    "value": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+   },
+   "lone_surrogate_low": {
+    "value": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+   },
+   "lone_surrogates_nested": {
+    "value": "c3a58179ccfd2915e35b24a09a381e5f0b39e367c6985468bad4525fe88c1d71"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "nan_nested": {
+    "cause": null,
+    "error": "ValueError: Out of range float values are not JSON compliant",
+    "suppress_context": false
+   },
+   "negative_zero": {
+    "value": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+   },
+   "non_ascii": {
+    "value": "f6f7b51966a189c74823adc67a6c443ad770adf302aafd3664dab7f03e1b9704"
+   },
+   "null": {
+    "value": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   },
+   "true": {
+    "value": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+   },
+   "zero": {
+    "value": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+   }
+  }
+ },
+ "sorted_json_sites": {
+  "agent_tooling.AgentTooling namespace (:66)": {
+   "ascii_nested": {
+    "value": "3e863b42693253dd6e869a2aaf68e926d340bc4c8b310c3a8007de22cdadfd5f"
+   },
+   "deep": {
+    "value": "9f0206ddafb810f92ff64b42878b18935450435471b438a09b54facc32866fed"
+   },
+   "empty_list": {
+    "value": "62dfe5ceb503408500e20fc28a57e9ae730073763b3b85a1a7e6384ff883bc35"
+   },
+   "empty_object": {
+    "value": "f985a6e0e3a0afc1209c2a0e9a2678aedc82b6afb2e981c5a87fd1a58f3815d6"
+   },
+   "empty_string": {
+    "value": "a899fb1f1f291701f871d4fc91ad12a6a7570e86573b2f12e81202864916f389"
+   },
+   "escapes": {
+    "value": "9893b960fd8f34f201be39dd3ad191c3b4545d905b20a1ad94afe72c6c859244"
+   },
+   "float": {
+    "value": "83e2e08af276ce0fec2f71f5389e93feb0384f97940d1f9b4825ae765cb8286f"
+   },
+   "infinity": {
+    "value": "c0a422db68411f88b917789f8e0698f811698659de2eb610a0f02a8768362511"
+   },
+   "key_order": {
+    "value": "eff423960a79951e029517ad5e6c7d8ac1185e8978829c63c273fcda8a68890c"
+   },
+   "large_float": {
+    "value": "e16c947c62c77f96dcf3bf6ac9bce77511ffcd5f46e422d0e19eae06c9511f78"
+   },
+   "large_int": {
+    "value": "7bfb4204f5fb7a91a60c0808a9c3485e9ea939d93fba2dc6c8a8aea07775b5d3"
+   },
+   "list_of_mixed": {
+    "value": "569502c39cafbc009dc8a172d1e0d0eb476224eb571de3327dfec2434a80a801"
+   },
+   "lone_surrogate_high": {
+    "value": "11ef2a10c01ef0fe6f5995fb3d133045a3cc5865c906f80af9c3bec9655d7a3c"
+   },
+   "lone_surrogate_low": {
+    "value": "95cbaf325a86c31e577ac21a17d6a3601e7e831e95a4cef658b7f3d3e890f221"
+   },
+   "lone_surrogates_nested": {
+    "value": "2502aaf8c674ac74bc7c7bd34aee09d1388d7a56d2282a26b5b3efbf0b824c76"
+   },
+   "mixed_key_types": {
+    "value": "cdf2d2660e185923d6f69c897788cda50b83fafb982d4e81addd6f72b99282fe"
+   },
+   "nan": {
+    "value": "b995a1c08bd4c06edadae79bd1b5876a45efc3d5dbcc31220186e3dbb50bdd56"
+   },
+   "nan_nested": {
+    "value": "394dbc563fe73fa04355ff8edc5d7ec01c1c58b154a12a591ff80ed3e8da57bd"
+   },
+   "negative_zero": {
+    "value": "6c6026ccd3f13d58fddcd952a7d27f68488cc8090ea181777eb6d72a1cddeaba"
+   },
+   "non_ascii": {
+    "value": "8e639eefa99097c33372527a64a8c6689f888c57ad7df9ff6233801920e48e8c"
+   },
+   "null": {
+    "value": "d0ef7cefb69cd765886cac6752d75dc2f2e03f793d4372b653e997466c6e09fd"
+   },
+   "true": {
+    "value": "7f89f53f3f4413bdb27d51a752d19e8b2a492089958a0accfa37a9f5cd6a3c3a"
+   },
+   "zero": {
+    "value": "856781a84c248f55ba5a67666e37138a65db7be5a1b9d091e0e918418667bf28"
+   }
+  },
+  "workspace_capture.WorkspaceCapture.initialize policy_sha256 (:269)": {
+   "ascii_nested": {
+    "value": "fac080d03b11538fe917e23330c38727a82355c993c26876a780cddfd7d08edd"
+   },
+   "deep": {
+    "value": "c6a51f928784834a96ab44930f80e3b19a2b35070e37d1f0712756fbc06c84fc"
+   },
+   "empty_list": {
+    "value": "a5dce8e58657d93a685a40517d9307ef626a650b8b846e98ff8f53a6857a0fec"
+   },
+   "empty_object": {
+    "value": "f82be5bf1699660d7211f4164f0f61e2a7a9a4c925a2402049bc181f958283ec"
+   },
+   "empty_string": {
+    "value": "a904482debc21a35fc81980d5143b0a8bfee22e8575c6857f8e19c8f8f465479"
+   },
+   "escapes": {
+    "value": "5b64f5a037c6887a4727397a6a06d1bdc9b38df287a799c3022c33274de8d862"
+   },
+   "float": {
+    "value": "24d16bf3a87cd4900fad6fab704e0d6680612ef48ac14f7ca271d1d9deb3ce12"
+   },
+   "infinity": {
+    "value": "97ce4f3ea38692cf5b6b21d60b20c76ac541271e2953880d4e4583492fe04be9"
+   },
+   "key_order": {
+    "value": "bf1227f1eee7b1e0ada4d36e93cee21f713e407b706ca839cc8b002af4772da6"
+   },
+   "large_float": {
+    "value": "c5bbbcfa1f189334d4c298ed6944606a088ffee53ed060d56b4b915da3aca9e4"
+   },
+   "large_int": {
+    "value": "b06af377af4c949b62f6a6c6fdb1d100d9f61f9c225f1c2eff95dbb2dc62e38f"
+   },
+   "list_of_mixed": {
+    "value": "196a63359a82805b5b79b543a777ec0ae79442b2bafe06e80745ee7092218e6a"
+   },
+   "lone_surrogate_high": {
+    "value": "b8512e92507e4fd08262c6c3c82b566792fedb2a0b9d8d4c4965a3d0efb00588"
+   },
+   "lone_surrogate_low": {
+    "value": "ee82fce86074869f7680bb5402e778330abdb32c8727e04471c6df13df73735c"
+   },
+   "lone_surrogates_nested": {
+    "value": "b10c68cde91074c86d53e7d829c3c9daaeb605c733103b54863750af039a6830"
+   },
+   "mixed_key_types": {
+    "cause": null,
+    "error": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "suppress_context": false
+   },
+   "nan": {
+    "value": "fbd9cfee913ed86c3abf68e8bbf27de2e83873e1678008639fe6f5aa0a2e2126"
+   },
+   "nan_nested": {
+    "value": "27fa27d1664632d7f2b432a54b23ee0085c6ccb1239c7f2449a18234b7f6c145"
+   },
+   "negative_zero": {
+    "value": "afef40311c5ae23e01fefb2372641e3aa21f340fd84caf98bc4025294ad6cc16"
+   },
+   "non_ascii": {
+    "value": "ab0b05dc1ac9d665347e015c8741edba4a42a54782348e9b292fdca4fe73b472"
+   },
+   "null": {
+    "value": "38ac98e419f35422fc558c86ce1d64a016635140921458de0f31345c59470990"
+   },
+   "true": {
+    "value": "5089a71bec177be39754e5af611edbf1ad14c6c3ada48da7b0cff48fce5b52b1"
+   },
+   "zero": {
+    "value": "23995050f118a4ccb101418d83f0c40e36dc73222d846b5ed60b3892f0b56589"
+   }
+  }
+ },
+ "wire_hash_sites": {
+  "scip_entry.symbol_report paths_sha256 (:41)": {
+   "ascii": {
+    "indexed_scope": [
+     {
+      "covers_requested_path": true,
+      "indexed_paths": 3,
+      "paths_sha256": "64d9a1fbd30ea3ab35c53a6de41c60b0e07b56798a14a478442309bf467132bd",
+      "repo_key": "repo",
+      "revision": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+      "top_level_dirs": [
+       "a.py",
+       "b.py",
+       "src"
+      ]
+     }
+    ]
+   },
+   "empty": {
+    "indexed_scope": [
+     {
+      "covers_requested_path": false,
+      "indexed_paths": 0,
+      "paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "repo_key": "repo",
+      "revision": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+      "top_level_dirs": []
+     }
+    ]
+   },
+   "escapes": {
+    "indexed_scope": [
+     {
+      "covers_requested_path": true,
+      "indexed_paths": 2,
+      "paths_sha256": "4f057f8afa1843448281689cc481dfc82ee4894cf45f8c9583a7276ea43a7c2f",
+      "repo_key": "repo",
+      "revision": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+      "top_level_dirs": [
+       "back\\slash.py",
+       "q\"uote.py"
+      ]
+     }
+    ]
+   },
+   "non_ascii": {
+    "indexed_scope": [
+     {
+      "covers_requested_path": true,
+      "indexed_paths": 3,
+      "paths_sha256": "75a82573b2d98e79e0a033c47da1b93be272c8306a0e107bcdd0bcd1ceffbb54",
+      "repo_key": "repo",
+      "revision": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+      "top_level_dirs": [
+       "a b.py",
+       "caf\u00e9",
+       "\u6f22\u5b57.py"
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

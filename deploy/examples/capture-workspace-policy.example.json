@@ -1,0 +1,16 @@
+{
+  "schema_version": "ops.workspace-capture.v1",
+  "approval_record": "/config/capture/workspace-approval.json",
+  "approval_sha256": "REPLACE_WITH_SHA256_OF_THE_APPROVAL_RECORD_BYTES",
+  "tenant_id": "REPLACE_WITH_CATALOG_TENANT",
+  "approved_repo_keys": ["product"],
+  "repos": {"product": ["/ABSOLUTE/HOST/PATH/TO/product"]},
+  "native_roots": {
+    "claude": "/ABSOLUTE/HOST/PATH/TO/.claude/projects",
+    "codex": "/ABSOLUTE/HOST/PATH/TO/.codex/sessions"
+  },
+  "excluded_sessions": {"claude": [], "codex": []},
+  "max_candidates": 64,
+  "max_batch_bytes": 2000000,
+  "max_batch_rows": 500
+}

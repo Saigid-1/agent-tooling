@@ -1,0 +1,77 @@
+{
+ "steps": {
+  "lifecycle ledger: initialize": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/lifecycle/withdrawals.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "CREATE TABLE IF NOT EXISTS withdrawals (repo_key TEXT NOT NULL, path TEXT NOT NULL, blob_sha TEXT NOT NULL, reason TEXT NOT NULL, recorded_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(repo_key,path,blob_sha))",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "lifecycle ledger: permits": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/lifecycle/withdrawals.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT repo_key,path,blob_sha,reason FROM withdrawals ORDER BY repo_key,path,blob_sha",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "lifecycle ledger: withdraw": [
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/lifecycle/withdrawals.sqlite3?mode=ro"
+    },
+    "detect_types": 0,
+    "first_statement": "SELECT repo_key,path,blob_sha,reason FROM withdrawals ORDER BY repo_key,path,blob_sha",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   },
+   {
+    "autocommit": -1,
+    "check_same_thread": true,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/lifecycle/withdrawals.sqlite3?mode=rw"
+    },
+    "detect_types": 0,
+    "first_statement": "BEGIN",
+    "isolation_level": "",
+    "timeout": 5.0,
+    "uri": true
+   }
+  ],
+  "reference manifest: open": [
+   {
+    "autocommit": -1,
+    "check_same_thread": false,
+    "database": {
+     "type": "str",
+     "value": "file://<real>/references.sqlite3?mode=rwc"
+    },
+    "detect_types": 0,
+    "first_statement": "PRAGMA foreign_keys = ON",
+    "isolation_level": "",
+    "timeout": 30.0,
+    "uri": true
+   }
+  ]
+ }
+}

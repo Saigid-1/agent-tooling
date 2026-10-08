@@ -1,0 +1,128 @@
+# Source checks on every pull request and every push to main: the core package on
+# both supported Pythons with the core alone installed, the OPS extension with the
+# core plus extension installed, and the Kanban board (runtime and web UI).
+# Images are built and checked by images.yml.
+#
+# Safety: read-only token, no secrets, nothing pushed or published, every job bounded.
+name: portable-tooling
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  core:
+    name: core tests (Python ${{ matrix.python }}, core only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      # setuptools: the T1 boundary harness builds its scratch environments with the running
+      # interpreter's setuptools, which Python 3.12 no longer bundles.
+      - name: Install the core only
+        run: python -m pip install -e './packages/tooling[test]' wheel setuptools
+      - name: Check that the extension is not installed
+        run: |
+          python - <<'PY'
+          import importlib.metadata as metadata, importlib.util as util, sys
+          providers = list(metadata.entry_points(group="kp_agent_tooling.tools"))
+          spec = util.find_spec("kp_agent_tooling_ops")
+          print("kp_agent_tooling_ops:", spec, "tool providers:", providers)
+          sys.exit(1 if spec is not None or providers else 0)
+          PY
+      - name: Core tests
+        run: python -m pytest tests -q
+      - name: Core wheel
+        run: python -m pip wheel --no-deps --wheel-dir dist ./packages/tooling
+
+  extension:
+    name: extension tests (core + extensions/ops)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the core and the extension
+        run: python -m pip install -e './packages/tooling[test]' -e './extensions/ops[test]'
+      - name: Extension tests
+        run: python -m pytest extensions/ops/tests -q
+
+  kanban:
+    name: Kanban (typecheck, vitest, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/kanban
+    env:
+      HUSKY: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # The board refuses a storage or temporary root reached through a symlink.
+      - name: Use a physical temporary directory
+        run: |
+          mkdir -p "$RUNNER_TEMP/kanban-tmp"
+          echo "TMPDIR=$(realpath "$RUNNER_TEMP/kanban-tmp")" >> "$GITHUB_ENV"
+      - name: Install
+        run: npm ci
+      - name: Install the web UI
+        run: npm ci --prefix web-ui
+      - name: Typecheck
+        run: npm run typecheck
+      # vitest.config.ts runs test/integration after every other file, one file at a time.
+      - name: Tests (full vitest suite)
+        run: npm test
+      # Ends with scripts/verify-no-telemetry-build.mjs. The inherited OTEL settings and
+      # the sentinel endpoint must not reach the emitted assets.
+      - name: Build (with the no-telemetry verification)
+        env:
+          OTEL_TELEMETRY_ENABLED: 'true'
+          OTEL_EXPORTER_OTLP_ENDPOINT: https://telemetry-sentinel.invalid
+        run: npm run build
+
+  kanban-web-ui:
+    name: Kanban web UI tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: apps/kanban
+    env:
+      HUSKY: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Use a physical temporary directory
+        run: |
+          mkdir -p "$RUNNER_TEMP/kanban-tmp"
+          echo "TMPDIR=$(realpath "$RUNNER_TEMP/kanban-tmp")" >> "$GITHUB_ENV"
+      # The web UI imports runtime contract modules (and their dependencies) from ../src.
+      - name: Install
+        run: npm ci
+      - name: Install the web UI
+        run: npm ci --prefix web-ui
+      - name: Web UI tests
+        run: npm --prefix web-ui run test

@@ -1,0 +1,4152 @@
+{
+ "captures": {
+  "ChildRolloutCapture": {
+   "batch_limit": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "row exceeds the event batch limit",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "row exceeds the event batch limit (launch_binding.py:676)"
+     }
+    ]
+   },
+   "complete_page": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-2"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-232-part-0",
+        "role": "user",
+        "text": "h\u00e9llo \u2603"
+       },
+       {
+        "event_id": "byte-316-part-0",
+        "role": "assistant",
+        "text": "r\u00e9ponse"
+       },
+       {
+        "event_id": "byte-316-part-1",
+        "role": "assistant",
+        "text": "deux"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:564:65b007e7a97d1d7b1fb8b91fc033394379d22d98741e494b7d7b083150c105e8"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-564-part-0",
+        "role": "user",
+        "text": "later"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:564:643:6763077aa6e7f86aed588c103eb8927f195974d4f7542347a10e592f687ee8bb"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "65b007e7a97d1d7b1fb8b91fc033394379d22d98741e494b7d7b083150c105e8",
+        "ino": "<ino>",
+        "offset": 564,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 564,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 3, \"offset\": 564, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 3,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 564,
+         "omission_count": 1,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "complete page"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "65b007e7a97d1d7b1fb8b91fc033394379d22d98741e494b7d7b083150c105e8",
+        "ino": "<ino>",
+        "offset": 564,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 564,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 3, \"offset\": 564, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [],
+       "pages": [
+        {
+         "incomplete_tail": false,
+         "offset": 564,
+         "state": "idle"
+        }
+       ],
+       "status": "not_due"
+      },
+      "step": "nothing new"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "6763077aa6e7f86aed588c103eb8927f195974d4f7542347a10e592f687ee8bb",
+        "ino": "<ino>",
+        "offset": 643,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 564,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 3, \"offset\": 564, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 643,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-2\", \"job_id\": \"job-2\", \"event_count\": 1, \"offset\": 643, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-2"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-2",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-2",
+         "offset": 643,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "appended row"
+     }
+    ]
+   },
+   "foreign_first_row": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout does not start with this child session metadata",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "first row is another session (launch_binding.py:664)"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout does not start with this child session metadata",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "first row is not session metadata (launch_binding.py:664)"
+     }
+    ]
+   },
+   "metadata_changed": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout session metadata changed",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "later session_meta disagrees (launch_binding.py:667)"
+     }
+    ]
+   },
+   "omissions": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-1048941-part-0",
+        "role": "user",
+        "text": "kept"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:1048941:1049093:ef763b6783ea964a39c3da4a3d020f8df60c27217591c154b77e8efe1d9027c1"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "ef763b6783ea964a39c3da4a3d020f8df60c27217591c154b77e8efe1d9027c1",
+        "ino": "<ino>",
+        "offset": 1049093,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 1048941,
+        "payload": "{\"state\": \"omitted\", \"offset\": 1048941, \"omission_count\": 3, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 1049093,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 1049093, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "has_more": true,
+         "offset": 1048941,
+         "omission_count": 3,
+         "state": "omitted"
+        },
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 1049093,
+         "omission_count": 1,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "omitted and kept rows"
+     }
+    ]
+   },
+   "oversized_first_row": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout does not start with this child session metadata",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "oversized first row (launch_binding.py:655)"
+     }
+    ]
+   },
+   "paging": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-2"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-3"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-232-part-0",
+        "role": "user",
+        "text": "event 0 \u00e9"
+       },
+       {
+        "event_id": "byte-316-part-0",
+        "role": "user",
+        "text": "event 1 \u00e9"
+       },
+       {
+        "event_id": "byte-400-part-0",
+        "role": "user",
+        "text": "event 2 \u00e9"
+       },
+       {
+        "event_id": "byte-484-part-0",
+        "role": "user",
+        "text": "event 3 \u00e9"
+       },
+       {
+        "event_id": "byte-568-part-0",
+        "role": "user",
+        "text": "event 4 \u00e9"
+       },
+       {
+        "event_id": "byte-652-part-0",
+        "role": "user",
+        "text": "event 5 \u00e9"
+       },
+       {
+        "event_id": "byte-736-part-0",
+        "role": "user",
+        "text": "event 6 \u00e9"
+       },
+       {
+        "event_id": "byte-820-part-0",
+        "role": "user",
+        "text": "event 7 \u00e9"
+       },
+       {
+        "event_id": "byte-904-part-0",
+        "role": "user",
+        "text": "event 8 \u00e9"
+       },
+       {
+        "event_id": "byte-988-part-0",
+        "role": "user",
+        "text": "event 9 \u00e9"
+       },
+       {
+        "event_id": "byte-1072-part-0",
+        "role": "user",
+        "text": "event 10 \u00e9"
+       },
+       {
+        "event_id": "byte-1157-part-0",
+        "role": "user",
+        "text": "event 11 \u00e9"
+       },
+       {
+        "event_id": "byte-1242-part-0",
+        "role": "user",
+        "text": "event 12 \u00e9"
+       },
+       {
+        "event_id": "byte-1327-part-0",
+        "role": "user",
+        "text": "event 13 \u00e9"
+       },
+       {
+        "event_id": "byte-1412-part-0",
+        "role": "user",
+        "text": "event 14 \u00e9"
+       },
+       {
+        "event_id": "byte-1497-part-0",
+        "role": "user",
+        "text": "event 15 \u00e9"
+       },
+       {
+        "event_id": "byte-1582-part-0",
+        "role": "user",
+        "text": "event 16 \u00e9"
+       },
+       {
+        "event_id": "byte-1667-part-0",
+        "role": "user",
+        "text": "event 17 \u00e9"
+       },
+       {
+        "event_id": "byte-1752-part-0",
+        "role": "user",
+        "text": "event 18 \u00e9"
+       },
+       {
+        "event_id": "byte-1837-part-0",
+        "role": "user",
+        "text": "event 19 \u00e9"
+       },
+       {
+        "event_id": "byte-1922-part-0",
+        "role": "user",
+        "text": "event 20 \u00e9"
+       },
+       {
+        "event_id": "byte-2007-part-0",
+        "role": "user",
+        "text": "event 21 \u00e9"
+       },
+       {
+        "event_id": "byte-2092-part-0",
+        "role": "user",
+        "text": "event 22 \u00e9"
+       },
+       {
+        "event_id": "byte-2177-part-0",
+        "role": "user",
+        "text": "event 23 \u00e9"
+       },
+       {
+        "event_id": "byte-2262-part-0",
+        "role": "user",
+        "text": "event 24 \u00e9"
+       },
+       {
+        "event_id": "byte-2347-part-0",
+        "role": "user",
+        "text": "event 25 \u00e9"
+       },
+       {
+        "event_id": "byte-2432-part-0",
+        "role": "user",
+        "text": "event 26 \u00e9"
+       },
+       {
+        "event_id": "byte-2517-part-0",
+        "role": "user",
+        "text": "event 27 \u00e9"
+       },
+       {
+        "event_id": "byte-2602-part-0",
+        "role": "user",
+        "text": "event 28 \u00e9"
+       },
+       {
+        "event_id": "byte-2687-part-0",
+        "role": "user",
+        "text": "event 29 \u00e9"
+       },
+       {
+        "event_id": "byte-2772-part-0",
+        "role": "user",
+        "text": "event 30 \u00e9"
+       },
+       {
+        "event_id": "byte-2857-part-0",
+        "role": "user",
+        "text": "event 31 \u00e9"
+       },
+       {
+        "event_id": "byte-2942-part-0",
+        "role": "user",
+        "text": "event 32 \u00e9"
+       },
+       {
+        "event_id": "byte-3027-part-0",
+        "role": "user",
+        "text": "event 33 \u00e9"
+       },
+       {
+        "event_id": "byte-3112-part-0",
+        "role": "user",
+        "text": "event 34 \u00e9"
+       },
+       {
+        "event_id": "byte-3197-part-0",
+        "role": "user",
+        "text": "event 35 \u00e9"
+       },
+       {
+        "event_id": "byte-3282-part-0",
+        "role": "user",
+        "text": "event 36 \u00e9"
+       },
+       {
+        "event_id": "byte-3367-part-0",
+        "role": "user",
+        "text": "event 37 \u00e9"
+       },
+       {
+        "event_id": "byte-3452-part-0",
+        "role": "user",
+        "text": "event 38 \u00e9"
+       },
+       {
+        "event_id": "byte-3537-part-0",
+        "role": "user",
+        "text": "event 39 \u00e9"
+       },
+       {
+        "event_id": "byte-3622-part-0",
+        "role": "user",
+        "text": "event 40 \u00e9"
+       },
+       {
+        "event_id": "byte-3707-part-0",
+        "role": "user",
+        "text": "event 41 \u00e9"
+       },
+       {
+        "event_id": "byte-3792-part-0",
+        "role": "user",
+        "text": "event 42 \u00e9"
+       },
+       {
+        "event_id": "byte-3877-part-0",
+        "role": "user",
+        "text": "event 43 \u00e9"
+       },
+       {
+        "event_id": "byte-3962-part-0",
+        "role": "user",
+        "text": "event 44 \u00e9"
+       },
+       {
+        "event_id": "byte-4047-part-0",
+        "role": "user",
+        "text": "event 45 \u00e9"
+       },
+       {
+        "event_id": "byte-4132-part-0",
+        "role": "user",
+        "text": "event 46 \u00e9"
+       },
+       {
+        "event_id": "byte-4217-part-0",
+        "role": "user",
+        "text": "event 47 \u00e9"
+       },
+       {
+        "event_id": "byte-4302-part-0",
+        "role": "user",
+        "text": "event 48 \u00e9"
+       },
+       {
+        "event_id": "byte-4387-part-0",
+        "role": "user",
+        "text": "event 49 \u00e9"
+       },
+       {
+        "event_id": "byte-4472-part-0",
+        "role": "user",
+        "text": "event 50 \u00e9"
+       },
+       {
+        "event_id": "byte-4557-part-0",
+        "role": "user",
+        "text": "event 51 \u00e9"
+       },
+       {
+        "event_id": "byte-4642-part-0",
+        "role": "user",
+        "text": "event 52 \u00e9"
+       },
+       {
+        "event_id": "byte-4727-part-0",
+        "role": "user",
+        "text": "event 53 \u00e9"
+       },
+       {
+        "event_id": "byte-4812-part-0",
+        "role": "user",
+        "text": "event 54 \u00e9"
+       },
+       {
+        "event_id": "byte-4897-part-0",
+        "role": "user",
+        "text": "event 55 \u00e9"
+       },
+       {
+        "event_id": "byte-4982-part-0",
+        "role": "user",
+        "text": "event 56 \u00e9"
+       },
+       {
+        "event_id": "byte-5067-part-0",
+        "role": "user",
+        "text": "event 57 \u00e9"
+       },
+       {
+        "event_id": "byte-5152-part-0",
+        "role": "user",
+        "text": "event 58 \u00e9"
+       },
+       {
+        "event_id": "byte-5237-part-0",
+        "role": "user",
+        "text": "event 59 \u00e9"
+       },
+       {
+        "event_id": "byte-5322-part-0",
+        "role": "user",
+        "text": "event 60 \u00e9"
+       },
+       {
+        "event_id": "byte-5407-part-0",
+        "role": "user",
+        "text": "event 61 \u00e9"
+       },
+       {
+        "event_id": "byte-5492-part-0",
+        "role": "user",
+        "text": "event 62 \u00e9"
+       },
+       {
+        "event_id": "byte-5577-part-0",
+        "role": "user",
+        "text": "event 63 \u00e9"
+       },
+       {
+        "event_id": "byte-5662-part-0",
+        "role": "user",
+        "text": "event 64 \u00e9"
+       },
+       {
+        "event_id": "byte-5747-part-0",
+        "role": "user",
+        "text": "event 65 \u00e9"
+       },
+       {
+        "event_id": "byte-5832-part-0",
+        "role": "user",
+        "text": "event 66 \u00e9"
+       },
+       {
+        "event_id": "byte-5917-part-0",
+        "role": "user",
+        "text": "event 67 \u00e9"
+       },
+       {
+        "event_id": "byte-6002-part-0",
+        "role": "user",
+        "text": "event 68 \u00e9"
+       },
+       {
+        "event_id": "byte-6087-part-0",
+        "role": "user",
+        "text": "event 69 \u00e9"
+       },
+       {
+        "event_id": "byte-6172-part-0",
+        "role": "user",
+        "text": "event 70 \u00e9"
+       },
+       {
+        "event_id": "byte-6257-part-0",
+        "role": "user",
+        "text": "event 71 \u00e9"
+       },
+       {
+        "event_id": "byte-6342-part-0",
+        "role": "user",
+        "text": "event 72 \u00e9"
+       },
+       {
+        "event_id": "byte-6427-part-0",
+        "role": "user",
+        "text": "event 73 \u00e9"
+       },
+       {
+        "event_id": "byte-6512-part-0",
+        "role": "user",
+        "text": "event 74 \u00e9"
+       },
+       {
+        "event_id": "byte-6597-part-0",
+        "role": "user",
+        "text": "event 75 \u00e9"
+       },
+       {
+        "event_id": "byte-6682-part-0",
+        "role": "user",
+        "text": "event 76 \u00e9"
+       },
+       {
+        "event_id": "byte-6767-part-0",
+        "role": "user",
+        "text": "event 77 \u00e9"
+       },
+       {
+        "event_id": "byte-6852-part-0",
+        "role": "user",
+        "text": "event 78 \u00e9"
+       },
+       {
+        "event_id": "byte-6937-part-0",
+        "role": "user",
+        "text": "event 79 \u00e9"
+       },
+       {
+        "event_id": "byte-7022-part-0",
+        "role": "user",
+        "text": "event 80 \u00e9"
+       },
+       {
+        "event_id": "byte-7107-part-0",
+        "role": "user",
+        "text": "event 81 \u00e9"
+       },
+       {
+        "event_id": "byte-7192-part-0",
+        "role": "user",
+        "text": "event 82 \u00e9"
+       },
+       {
+        "event_id": "byte-7277-part-0",
+        "role": "user",
+        "text": "event 83 \u00e9"
+       },
+       {
+        "event_id": "byte-7362-part-0",
+        "role": "user",
+        "text": "event 84 \u00e9"
+       },
+       {
+        "event_id": "byte-7447-part-0",
+        "role": "user",
+        "text": "event 85 \u00e9"
+       },
+       {
+        "event_id": "byte-7532-part-0",
+        "role": "user",
+        "text": "event 86 \u00e9"
+       },
+       {
+        "event_id": "byte-7617-part-0",
+        "role": "user",
+        "text": "event 87 \u00e9"
+       },
+       {
+        "event_id": "byte-7702-part-0",
+        "role": "user",
+        "text": "event 88 \u00e9"
+       },
+       {
+        "event_id": "byte-7787-part-0",
+        "role": "user",
+        "text": "event 89 \u00e9"
+       },
+       {
+        "event_id": "byte-7872-part-0",
+        "role": "user",
+        "text": "event 90 \u00e9"
+       },
+       {
+        "event_id": "byte-7957-part-0",
+        "role": "user",
+        "text": "event 91 \u00e9"
+       },
+       {
+        "event_id": "byte-8042-part-0",
+        "role": "user",
+        "text": "event 92 \u00e9"
+       },
+       {
+        "event_id": "byte-8127-part-0",
+        "role": "user",
+        "text": "event 93 \u00e9"
+       },
+       {
+        "event_id": "byte-8212-part-0",
+        "role": "user",
+        "text": "event 94 \u00e9"
+       },
+       {
+        "event_id": "byte-8297-part-0",
+        "role": "user",
+        "text": "event 95 \u00e9"
+       },
+       {
+        "event_id": "byte-8382-part-0",
+        "role": "user",
+        "text": "event 96 \u00e9"
+       },
+       {
+        "event_id": "byte-8467-part-0",
+        "role": "user",
+        "text": "event 97 \u00e9"
+       },
+       {
+        "event_id": "byte-8552-part-0",
+        "role": "user",
+        "text": "event 98 \u00e9"
+       },
+       {
+        "event_id": "byte-8637-part-0",
+        "role": "user",
+        "text": "event 99 \u00e9"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:8722:ea92afa053f67f70ff3f8cab4dabc6eebf399dc5a7b573e9938851a3a0b0fd91"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-8722-part-0",
+        "role": "user",
+        "text": "event 100 \u00e9"
+       },
+       {
+        "event_id": "byte-8808-part-0",
+        "role": "user",
+        "text": "event 101 \u00e9"
+       },
+       {
+        "event_id": "byte-8894-part-0",
+        "role": "user",
+        "text": "event 102 \u00e9"
+       },
+       {
+        "event_id": "byte-8980-part-0",
+        "role": "user",
+        "text": "event 103 \u00e9"
+       },
+       {
+        "event_id": "byte-9066-part-0",
+        "role": "user",
+        "text": "event 104 \u00e9"
+       },
+       {
+        "event_id": "byte-9152-part-0",
+        "role": "user",
+        "text": "event 105 \u00e9"
+       },
+       {
+        "event_id": "byte-9238-part-0",
+        "role": "user",
+        "text": "event 106 \u00e9"
+       },
+       {
+        "event_id": "byte-9324-part-0",
+        "role": "user",
+        "text": "event 107 \u00e9"
+       },
+       {
+        "event_id": "byte-9410-part-0",
+        "role": "user",
+        "text": "event 108 \u00e9"
+       },
+       {
+        "event_id": "byte-9496-part-0",
+        "role": "user",
+        "text": "event 109 \u00e9"
+       },
+       {
+        "event_id": "byte-9582-part-0",
+        "role": "user",
+        "text": "event 110 \u00e9"
+       },
+       {
+        "event_id": "byte-9668-part-0",
+        "role": "user",
+        "text": "event 111 \u00e9"
+       },
+       {
+        "event_id": "byte-9754-part-0",
+        "role": "user",
+        "text": "event 112 \u00e9"
+       },
+       {
+        "event_id": "byte-9840-part-0",
+        "role": "user",
+        "text": "event 113 \u00e9"
+       },
+       {
+        "event_id": "byte-9926-part-0",
+        "role": "user",
+        "text": "event 114 \u00e9"
+       },
+       {
+        "event_id": "byte-10012-part-0",
+        "role": "user",
+        "text": "event 115 \u00e9"
+       },
+       {
+        "event_id": "byte-10098-part-0",
+        "role": "user",
+        "text": "event 116 \u00e9"
+       },
+       {
+        "event_id": "byte-10184-part-0",
+        "role": "user",
+        "text": "event 117 \u00e9"
+       },
+       {
+        "event_id": "byte-10270-part-0",
+        "role": "user",
+        "text": "event 118 \u00e9"
+       },
+       {
+        "event_id": "byte-10356-part-0",
+        "role": "user",
+        "text": "event 119 \u00e9"
+       },
+       {
+        "event_id": "byte-10442-part-0",
+        "role": "user",
+        "text": "event 120 \u00e9"
+       },
+       {
+        "event_id": "byte-10528-part-0",
+        "role": "user",
+        "text": "event 121 \u00e9"
+       },
+       {
+        "event_id": "byte-10614-part-0",
+        "role": "user",
+        "text": "event 122 \u00e9"
+       },
+       {
+        "event_id": "byte-10700-part-0",
+        "role": "user",
+        "text": "event 123 \u00e9"
+       },
+       {
+        "event_id": "byte-10786-part-0",
+        "role": "user",
+        "text": "event 124 \u00e9"
+       },
+       {
+        "event_id": "byte-10872-part-0",
+        "role": "user",
+        "text": "event 125 \u00e9"
+       },
+       {
+        "event_id": "byte-10958-part-0",
+        "role": "user",
+        "text": "event 126 \u00e9"
+       },
+       {
+        "event_id": "byte-11044-part-0",
+        "role": "user",
+        "text": "event 127 \u00e9"
+       },
+       {
+        "event_id": "byte-11130-part-0",
+        "role": "user",
+        "text": "event 128 \u00e9"
+       },
+       {
+        "event_id": "byte-11216-part-0",
+        "role": "user",
+        "text": "event 129 \u00e9"
+       },
+       {
+        "event_id": "byte-11302-part-0",
+        "role": "user",
+        "text": "event 130 \u00e9"
+       },
+       {
+        "event_id": "byte-11388-part-0",
+        "role": "user",
+        "text": "event 131 \u00e9"
+       },
+       {
+        "event_id": "byte-11474-part-0",
+        "role": "user",
+        "text": "event 132 \u00e9"
+       },
+       {
+        "event_id": "byte-11560-part-0",
+        "role": "user",
+        "text": "event 133 \u00e9"
+       },
+       {
+        "event_id": "byte-11646-part-0",
+        "role": "user",
+        "text": "event 134 \u00e9"
+       },
+       {
+        "event_id": "byte-11732-part-0",
+        "role": "user",
+        "text": "event 135 \u00e9"
+       },
+       {
+        "event_id": "byte-11818-part-0",
+        "role": "user",
+        "text": "event 136 \u00e9"
+       },
+       {
+        "event_id": "byte-11904-part-0",
+        "role": "user",
+        "text": "event 137 \u00e9"
+       },
+       {
+        "event_id": "byte-11990-part-0",
+        "role": "user",
+        "text": "event 138 \u00e9"
+       },
+       {
+        "event_id": "byte-12076-part-0",
+        "role": "user",
+        "text": "event 139 \u00e9"
+       },
+       {
+        "event_id": "byte-12162-part-0",
+        "role": "user",
+        "text": "event 140 \u00e9"
+       },
+       {
+        "event_id": "byte-12248-part-0",
+        "role": "user",
+        "text": "event 141 \u00e9"
+       },
+       {
+        "event_id": "byte-12334-part-0",
+        "role": "user",
+        "text": "event 142 \u00e9"
+       },
+       {
+        "event_id": "byte-12420-part-0",
+        "role": "user",
+        "text": "event 143 \u00e9"
+       },
+       {
+        "event_id": "byte-12506-part-0",
+        "role": "user",
+        "text": "event 144 \u00e9"
+       },
+       {
+        "event_id": "byte-12592-part-0",
+        "role": "user",
+        "text": "event 145 \u00e9"
+       },
+       {
+        "event_id": "byte-12678-part-0",
+        "role": "user",
+        "text": "event 146 \u00e9"
+       },
+       {
+        "event_id": "byte-12764-part-0",
+        "role": "user",
+        "text": "event 147 \u00e9"
+       },
+       {
+        "event_id": "byte-12850-part-0",
+        "role": "user",
+        "text": "event 148 \u00e9"
+       },
+       {
+        "event_id": "byte-12936-part-0",
+        "role": "user",
+        "text": "event 149 \u00e9"
+       },
+       {
+        "event_id": "byte-13022-part-0",
+        "role": "user",
+        "text": "event 150 \u00e9"
+       },
+       {
+        "event_id": "byte-13108-part-0",
+        "role": "user",
+        "text": "event 151 \u00e9"
+       },
+       {
+        "event_id": "byte-13194-part-0",
+        "role": "user",
+        "text": "event 152 \u00e9"
+       },
+       {
+        "event_id": "byte-13280-part-0",
+        "role": "user",
+        "text": "event 153 \u00e9"
+       },
+       {
+        "event_id": "byte-13366-part-0",
+        "role": "user",
+        "text": "event 154 \u00e9"
+       },
+       {
+        "event_id": "byte-13452-part-0",
+        "role": "user",
+        "text": "event 155 \u00e9"
+       },
+       {
+        "event_id": "byte-13538-part-0",
+        "role": "user",
+        "text": "event 156 \u00e9"
+       },
+       {
+        "event_id": "byte-13624-part-0",
+        "role": "user",
+        "text": "event 157 \u00e9"
+       },
+       {
+        "event_id": "byte-13710-part-0",
+        "role": "user",
+        "text": "event 158 \u00e9"
+       },
+       {
+        "event_id": "byte-13796-part-0",
+        "role": "user",
+        "text": "event 159 \u00e9"
+       },
+       {
+        "event_id": "byte-13882-part-0",
+        "role": "user",
+        "text": "event 160 \u00e9"
+       },
+       {
+        "event_id": "byte-13968-part-0",
+        "role": "user",
+        "text": "event 161 \u00e9"
+       },
+       {
+        "event_id": "byte-14054-part-0",
+        "role": "user",
+        "text": "event 162 \u00e9"
+       },
+       {
+        "event_id": "byte-14140-part-0",
+        "role": "user",
+        "text": "event 163 \u00e9"
+       },
+       {
+        "event_id": "byte-14226-part-0",
+        "role": "user",
+        "text": "event 164 \u00e9"
+       },
+       {
+        "event_id": "byte-14312-part-0",
+        "role": "user",
+        "text": "event 165 \u00e9"
+       },
+       {
+        "event_id": "byte-14398-part-0",
+        "role": "user",
+        "text": "event 166 \u00e9"
+       },
+       {
+        "event_id": "byte-14484-part-0",
+        "role": "user",
+        "text": "event 167 \u00e9"
+       },
+       {
+        "event_id": "byte-14570-part-0",
+        "role": "user",
+        "text": "event 168 \u00e9"
+       },
+       {
+        "event_id": "byte-14656-part-0",
+        "role": "user",
+        "text": "event 169 \u00e9"
+       },
+       {
+        "event_id": "byte-14742-part-0",
+        "role": "user",
+        "text": "event 170 \u00e9"
+       },
+       {
+        "event_id": "byte-14828-part-0",
+        "role": "user",
+        "text": "event 171 \u00e9"
+       },
+       {
+        "event_id": "byte-14914-part-0",
+        "role": "user",
+        "text": "event 172 \u00e9"
+       },
+       {
+        "event_id": "byte-15000-part-0",
+        "role": "user",
+        "text": "event 173 \u00e9"
+       },
+       {
+        "event_id": "byte-15086-part-0",
+        "role": "user",
+        "text": "event 174 \u00e9"
+       },
+       {
+        "event_id": "byte-15172-part-0",
+        "role": "user",
+        "text": "event 175 \u00e9"
+       },
+       {
+        "event_id": "byte-15258-part-0",
+        "role": "user",
+        "text": "event 176 \u00e9"
+       },
+       {
+        "event_id": "byte-15344-part-0",
+        "role": "user",
+        "text": "event 177 \u00e9"
+       },
+       {
+        "event_id": "byte-15430-part-0",
+        "role": "user",
+        "text": "event 178 \u00e9"
+       },
+       {
+        "event_id": "byte-15516-part-0",
+        "role": "user",
+        "text": "event 179 \u00e9"
+       },
+       {
+        "event_id": "byte-15602-part-0",
+        "role": "user",
+        "text": "event 180 \u00e9"
+       },
+       {
+        "event_id": "byte-15688-part-0",
+        "role": "user",
+        "text": "event 181 \u00e9"
+       },
+       {
+        "event_id": "byte-15774-part-0",
+        "role": "user",
+        "text": "event 182 \u00e9"
+       },
+       {
+        "event_id": "byte-15860-part-0",
+        "role": "user",
+        "text": "event 183 \u00e9"
+       },
+       {
+        "event_id": "byte-15946-part-0",
+        "role": "user",
+        "text": "event 184 \u00e9"
+       },
+       {
+        "event_id": "byte-16032-part-0",
+        "role": "user",
+        "text": "event 185 \u00e9"
+       },
+       {
+        "event_id": "byte-16118-part-0",
+        "role": "user",
+        "text": "event 186 \u00e9"
+       },
+       {
+        "event_id": "byte-16204-part-0",
+        "role": "user",
+        "text": "event 187 \u00e9"
+       },
+       {
+        "event_id": "byte-16290-part-0",
+        "role": "user",
+        "text": "event 188 \u00e9"
+       },
+       {
+        "event_id": "byte-16376-part-0",
+        "role": "user",
+        "text": "event 189 \u00e9"
+       },
+       {
+        "event_id": "byte-16462-part-0",
+        "role": "user",
+        "text": "event 190 \u00e9"
+       },
+       {
+        "event_id": "byte-16548-part-0",
+        "role": "user",
+        "text": "event 191 \u00e9"
+       },
+       {
+        "event_id": "byte-16634-part-0",
+        "role": "user",
+        "text": "event 192 \u00e9"
+       },
+       {
+        "event_id": "byte-16720-part-0",
+        "role": "user",
+        "text": "event 193 \u00e9"
+       },
+       {
+        "event_id": "byte-16806-part-0",
+        "role": "user",
+        "text": "event 194 \u00e9"
+       },
+       {
+        "event_id": "byte-16892-part-0",
+        "role": "user",
+        "text": "event 195 \u00e9"
+       },
+       {
+        "event_id": "byte-16978-part-0",
+        "role": "user",
+        "text": "event 196 \u00e9"
+       },
+       {
+        "event_id": "byte-17064-part-0",
+        "role": "user",
+        "text": "event 197 \u00e9"
+       },
+       {
+        "event_id": "byte-17150-part-0",
+        "role": "user",
+        "text": "event 198 \u00e9"
+       },
+       {
+        "event_id": "byte-17236-part-0",
+        "role": "user",
+        "text": "event 199 \u00e9"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:8722:17322:a9e7c589e62b2b236126aa34b050e25d5901e033fdae7376425fa0f1415e2785"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-17322-part-0",
+        "role": "user",
+        "text": "event 200 \u00e9"
+       },
+       {
+        "event_id": "byte-17408-part-0",
+        "role": "user",
+        "text": "event 201 \u00e9"
+       },
+       {
+        "event_id": "byte-17494-part-0",
+        "role": "user",
+        "text": "event 202 \u00e9"
+       },
+       {
+        "event_id": "byte-17580-part-0",
+        "role": "user",
+        "text": "event 203 \u00e9"
+       },
+       {
+        "event_id": "byte-17666-part-0",
+        "role": "user",
+        "text": "event 204 \u00e9"
+       },
+       {
+        "event_id": "byte-17752-part-0",
+        "role": "user",
+        "text": "event 205 \u00e9"
+       },
+       {
+        "event_id": "byte-17838-part-0",
+        "role": "user",
+        "text": "event 206 \u00e9"
+       },
+       {
+        "event_id": "byte-17924-part-0",
+        "role": "user",
+        "text": "event 207 \u00e9"
+       },
+       {
+        "event_id": "byte-18010-part-0",
+        "role": "user",
+        "text": "event 208 \u00e9"
+       },
+       {
+        "event_id": "byte-18096-part-0",
+        "role": "user",
+        "text": "event 209 \u00e9"
+       },
+       {
+        "event_id": "byte-18182-part-0",
+        "role": "user",
+        "text": "event 210 \u00e9"
+       },
+       {
+        "event_id": "byte-18268-part-0",
+        "role": "user",
+        "text": "event 211 \u00e9"
+       },
+       {
+        "event_id": "byte-18354-part-0",
+        "role": "user",
+        "text": "event 212 \u00e9"
+       },
+       {
+        "event_id": "byte-18440-part-0",
+        "role": "user",
+        "text": "event 213 \u00e9"
+       },
+       {
+        "event_id": "byte-18526-part-0",
+        "role": "user",
+        "text": "event 214 \u00e9"
+       },
+       {
+        "event_id": "byte-18612-part-0",
+        "role": "user",
+        "text": "event 215 \u00e9"
+       },
+       {
+        "event_id": "byte-18698-part-0",
+        "role": "user",
+        "text": "event 216 \u00e9"
+       },
+       {
+        "event_id": "byte-18784-part-0",
+        "role": "user",
+        "text": "event 217 \u00e9"
+       },
+       {
+        "event_id": "byte-18870-part-0",
+        "role": "user",
+        "text": "event 218 \u00e9"
+       },
+       {
+        "event_id": "byte-18956-part-0",
+        "role": "user",
+        "text": "event 219 \u00e9"
+       },
+       {
+        "event_id": "byte-19042-part-0",
+        "role": "user",
+        "text": "event 220 \u00e9"
+       },
+       {
+        "event_id": "byte-19128-part-0",
+        "role": "user",
+        "text": "event 221 \u00e9"
+       },
+       {
+        "event_id": "byte-19214-part-0",
+        "role": "user",
+        "text": "event 222 \u00e9"
+       },
+       {
+        "event_id": "byte-19300-part-0",
+        "role": "user",
+        "text": "event 223 \u00e9"
+       },
+       {
+        "event_id": "byte-19386-part-0",
+        "role": "user",
+        "text": "event 224 \u00e9"
+       },
+       {
+        "event_id": "byte-19472-part-0",
+        "role": "user",
+        "text": "event 225 \u00e9"
+       },
+       {
+        "event_id": "byte-19558-part-0",
+        "role": "user",
+        "text": "event 226 \u00e9"
+       },
+       {
+        "event_id": "byte-19644-part-0",
+        "role": "user",
+        "text": "event 227 \u00e9"
+       },
+       {
+        "event_id": "byte-19730-part-0",
+        "role": "user",
+        "text": "event 228 \u00e9"
+       },
+       {
+        "event_id": "byte-19816-part-0",
+        "role": "user",
+        "text": "event 229 \u00e9"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:17322:19902:b94e4cd6f4d234a97150437c72ebc640fe37f34610fd36bb20fe7ee517632779"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "b94e4cd6f4d234a97150437c72ebc640fe37f34610fd36bb20fe7ee517632779",
+        "ino": "<ino>",
+        "offset": 19902,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 8722,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 100, \"offset\": 8722, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 17322,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-2\", \"job_id\": \"job-2\", \"event_count\": 100, \"offset\": 17322, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 19902,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-3\", \"job_id\": \"job-3\", \"event_count\": 30, \"offset\": 19902, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1",
+        "episode-2",
+        "episode-3"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 100,
+         "has_more": true,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 8722,
+         "omission_count": 0,
+         "state": "captured"
+        },
+        {
+         "episode_id": "episode-2",
+         "event_count": 100,
+         "has_more": true,
+         "indexed": false,
+         "job_id": "job-2",
+         "offset": 17322,
+         "omission_count": 0,
+         "state": "captured"
+        },
+        {
+         "episode_id": "episode-3",
+         "event_count": 30,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-3",
+         "offset": 19902,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "three pages in one capture"
+     }
+    ]
+   },
+   "partial_trailing_line": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-2"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-232-part-0",
+        "role": "user",
+        "text": "first"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:311:1bb3a1720dd2ec33d8f00c26ba3c2371ca8cb8fd09c401da698b61b0de2d6822"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-311-part-0",
+        "role": "assistant",
+        "text": "completed"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:311:389:125749d02cf42c01fe35a24920b5b597a75a82367ff20d56cf20f894327215b4"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "1bb3a1720dd2ec33d8f00c26ba3c2371ca8cb8fd09c401da698b61b0de2d6822",
+        "ino": "<ino>",
+        "offset": 311,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 311,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 311, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": true,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 311,
+         "omission_count": 0,
+         "state": "captured"
+        },
+        {
+         "incomplete_tail": true,
+         "offset": 311,
+         "state": "idle"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "page stops before the partial line"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "125749d02cf42c01fe35a24920b5b597a75a82367ff20d56cf20f894327215b4",
+        "ino": "<ino>",
+        "offset": 389,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 311,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 311, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 389,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-2\", \"job_id\": \"job-2\", \"event_count\": 1, \"offset\": 389, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-2"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-2",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-2",
+         "offset": 389,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "the completed line is captured"
+     }
+    ]
+   },
+   "pending_changed": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"end\": 386, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:386:1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "simulated store outage after the pending mark",
+      "raised": "RuntimeError",
+      "receipts": [],
+      "step": "store outage after the pending mark"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"end\": 386, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:386:1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "pending source changed",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "pending source changed (launch_binding.py:650)"
+     }
+    ]
+   },
+   "pending_rewritten": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"end\": 386, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:386:1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "simulated store outage after the pending mark",
+      "raised": "RuntimeError",
+      "receipts": [],
+      "step": "store outage after the pending mark"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"end\": 386, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:386:1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "pending source rewritten",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "pending source rewritten (launch_binding.py:690)"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"end\": 386, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:386:1de216f9915087b533888ffa9e609a311d8262b2cbf51e9be3e5300c3d2ad6b4\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "pending source rewritten",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "still refused"
+     }
+    ]
+   },
+   "prefix_change": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-232-part-0",
+        "role": "user",
+        "text": "aaaa"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:310:39670a359e59977678379bee53078a0ff8830fb50638a9b0b5d65f30560634aa"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "39670a359e59977678379bee53078a0ff8830fb50638a9b0b5d65f30560634aa",
+        "ino": "<ino>",
+        "offset": 310,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 310,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 310, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 310,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "first page"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "39670a359e59977678379bee53078a0ff8830fb50638a9b0b5d65f30560634aa",
+        "ino": "<ino>",
+        "offset": 310,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "consumed source prefix rewritten",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [
+       {
+        "end_offset": 310,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 310, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "step": "consumed source prefix rewritten (launch_binding.py:644)"
+     }
+    ]
+   },
+   "replaced_during_read": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "source replaced during capture",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "source replaced during capture (launch_binding.py:684)"
+     }
+    ]
+   },
+   "truncated_during_read": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-232-part-0",
+        "role": "user",
+        "text": "one"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:309:7b9cacdf5f102e7ed6de65657421aa843dabe8d90a95a01d5572dbd57f068cb3"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "7b9cacdf5f102e7ed6de65657421aa843dabe8d90a95a01d5572dbd57f068cb3",
+        "ino": "<ino>",
+        "offset": 309,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 309,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 309, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 309,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "first page"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "7b9cacdf5f102e7ed6de65657421aa843dabe8d90a95a01d5572dbd57f068cb3",
+        "ino": "<ino>",
+        "offset": 309,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "session source truncated",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [
+       {
+        "end_offset": 309,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 309, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "step": "session source truncated (launch_binding.py:640)"
+     }
+    ]
+   }
+  },
+  "RolloutCapture": {
+   "batch_limit": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "row exceeds the event batch limit",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "row exceeds the event batch limit (launch_binding.py:676)"
+     }
+    ]
+   },
+   "complete_page": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-2"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-116-part-0",
+        "role": "user",
+        "text": "h\u00e9llo \u2603"
+       },
+       {
+        "event_id": "byte-200-part-0",
+        "role": "assistant",
+        "text": "r\u00e9ponse"
+       },
+       {
+        "event_id": "byte-200-part-1",
+        "role": "assistant",
+        "text": "deux"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:448:e3d484297ad9d33fea3fa7b48dea0164996f377cfc83d6af74ed5f5e26fd7ea8"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-448-part-0",
+        "role": "user",
+        "text": "later"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:448:527:811b23c70984d3345f6f54b22113993fed195462570e38fd7e68685bea8fe74c"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3d484297ad9d33fea3fa7b48dea0164996f377cfc83d6af74ed5f5e26fd7ea8",
+        "ino": "<ino>",
+        "offset": 448,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 448,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 3, \"offset\": 448, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 3,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 448,
+         "omission_count": 1,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "complete page"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3d484297ad9d33fea3fa7b48dea0164996f377cfc83d6af74ed5f5e26fd7ea8",
+        "ino": "<ino>",
+        "offset": 448,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 448,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 3, \"offset\": 448, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [],
+       "pages": [
+        {
+         "incomplete_tail": false,
+         "offset": 448,
+         "state": "idle"
+        }
+       ],
+       "status": "not_due"
+      },
+      "step": "nothing new"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "811b23c70984d3345f6f54b22113993fed195462570e38fd7e68685bea8fe74c",
+        "ino": "<ino>",
+        "offset": 527,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 448,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 3, \"offset\": 448, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 527,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-2\", \"job_id\": \"job-2\", \"event_count\": 1, \"offset\": 527, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-2"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-2",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-2",
+         "offset": 527,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "appended row"
+     }
+    ]
+   },
+   "foreign_first_row": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout does not start with this session metadata",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "first row is another session (launch_binding.py:664)"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout does not start with this session metadata",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "first row is not session metadata (launch_binding.py:664)"
+     }
+    ]
+   },
+   "metadata_changed": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout session metadata changed",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "later session_meta disagrees (launch_binding.py:667)"
+     }
+    ]
+   },
+   "omissions": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-1048825-part-0",
+        "role": "user",
+        "text": "kept"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:1048825:1048977:48cd7fbb733346df359039962cbbf7265b299199ab368dbdf0c4aeee3781f468"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "48cd7fbb733346df359039962cbbf7265b299199ab368dbdf0c4aeee3781f468",
+        "ino": "<ino>",
+        "offset": 1048977,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 1048825,
+        "payload": "{\"state\": \"omitted\", \"offset\": 1048825, \"omission_count\": 3, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 1048977,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 1048977, \"omission_count\": 1, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "has_more": true,
+         "offset": 1048825,
+         "omission_count": 3,
+         "state": "omitted"
+        },
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 1048977,
+         "omission_count": 1,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "omitted and kept rows"
+     }
+    ]
+   },
+   "oversized_first_row": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "rollout does not start with this session metadata",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "oversized first row (launch_binding.py:655)"
+     }
+    ]
+   },
+   "paging": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-2"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-3"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-116-part-0",
+        "role": "user",
+        "text": "event 0 \u00e9"
+       },
+       {
+        "event_id": "byte-200-part-0",
+        "role": "user",
+        "text": "event 1 \u00e9"
+       },
+       {
+        "event_id": "byte-284-part-0",
+        "role": "user",
+        "text": "event 2 \u00e9"
+       },
+       {
+        "event_id": "byte-368-part-0",
+        "role": "user",
+        "text": "event 3 \u00e9"
+       },
+       {
+        "event_id": "byte-452-part-0",
+        "role": "user",
+        "text": "event 4 \u00e9"
+       },
+       {
+        "event_id": "byte-536-part-0",
+        "role": "user",
+        "text": "event 5 \u00e9"
+       },
+       {
+        "event_id": "byte-620-part-0",
+        "role": "user",
+        "text": "event 6 \u00e9"
+       },
+       {
+        "event_id": "byte-704-part-0",
+        "role": "user",
+        "text": "event 7 \u00e9"
+       },
+       {
+        "event_id": "byte-788-part-0",
+        "role": "user",
+        "text": "event 8 \u00e9"
+       },
+       {
+        "event_id": "byte-872-part-0",
+        "role": "user",
+        "text": "event 9 \u00e9"
+       },
+       {
+        "event_id": "byte-956-part-0",
+        "role": "user",
+        "text": "event 10 \u00e9"
+       },
+       {
+        "event_id": "byte-1041-part-0",
+        "role": "user",
+        "text": "event 11 \u00e9"
+       },
+       {
+        "event_id": "byte-1126-part-0",
+        "role": "user",
+        "text": "event 12 \u00e9"
+       },
+       {
+        "event_id": "byte-1211-part-0",
+        "role": "user",
+        "text": "event 13 \u00e9"
+       },
+       {
+        "event_id": "byte-1296-part-0",
+        "role": "user",
+        "text": "event 14 \u00e9"
+       },
+       {
+        "event_id": "byte-1381-part-0",
+        "role": "user",
+        "text": "event 15 \u00e9"
+       },
+       {
+        "event_id": "byte-1466-part-0",
+        "role": "user",
+        "text": "event 16 \u00e9"
+       },
+       {
+        "event_id": "byte-1551-part-0",
+        "role": "user",
+        "text": "event 17 \u00e9"
+       },
+       {
+        "event_id": "byte-1636-part-0",
+        "role": "user",
+        "text": "event 18 \u00e9"
+       },
+       {
+        "event_id": "byte-1721-part-0",
+        "role": "user",
+        "text": "event 19 \u00e9"
+       },
+       {
+        "event_id": "byte-1806-part-0",
+        "role": "user",
+        "text": "event 20 \u00e9"
+       },
+       {
+        "event_id": "byte-1891-part-0",
+        "role": "user",
+        "text": "event 21 \u00e9"
+       },
+       {
+        "event_id": "byte-1976-part-0",
+        "role": "user",
+        "text": "event 22 \u00e9"
+       },
+       {
+        "event_id": "byte-2061-part-0",
+        "role": "user",
+        "text": "event 23 \u00e9"
+       },
+       {
+        "event_id": "byte-2146-part-0",
+        "role": "user",
+        "text": "event 24 \u00e9"
+       },
+       {
+        "event_id": "byte-2231-part-0",
+        "role": "user",
+        "text": "event 25 \u00e9"
+       },
+       {
+        "event_id": "byte-2316-part-0",
+        "role": "user",
+        "text": "event 26 \u00e9"
+       },
+       {
+        "event_id": "byte-2401-part-0",
+        "role": "user",
+        "text": "event 27 \u00e9"
+       },
+       {
+        "event_id": "byte-2486-part-0",
+        "role": "user",
+        "text": "event 28 \u00e9"
+       },
+       {
+        "event_id": "byte-2571-part-0",
+        "role": "user",
+        "text": "event 29 \u00e9"
+       },
+       {
+        "event_id": "byte-2656-part-0",
+        "role": "user",
+        "text": "event 30 \u00e9"
+       },
+       {
+        "event_id": "byte-2741-part-0",
+        "role": "user",
+        "text": "event 31 \u00e9"
+       },
+       {
+        "event_id": "byte-2826-part-0",
+        "role": "user",
+        "text": "event 32 \u00e9"
+       },
+       {
+        "event_id": "byte-2911-part-0",
+        "role": "user",
+        "text": "event 33 \u00e9"
+       },
+       {
+        "event_id": "byte-2996-part-0",
+        "role": "user",
+        "text": "event 34 \u00e9"
+       },
+       {
+        "event_id": "byte-3081-part-0",
+        "role": "user",
+        "text": "event 35 \u00e9"
+       },
+       {
+        "event_id": "byte-3166-part-0",
+        "role": "user",
+        "text": "event 36 \u00e9"
+       },
+       {
+        "event_id": "byte-3251-part-0",
+        "role": "user",
+        "text": "event 37 \u00e9"
+       },
+       {
+        "event_id": "byte-3336-part-0",
+        "role": "user",
+        "text": "event 38 \u00e9"
+       },
+       {
+        "event_id": "byte-3421-part-0",
+        "role": "user",
+        "text": "event 39 \u00e9"
+       },
+       {
+        "event_id": "byte-3506-part-0",
+        "role": "user",
+        "text": "event 40 \u00e9"
+       },
+       {
+        "event_id": "byte-3591-part-0",
+        "role": "user",
+        "text": "event 41 \u00e9"
+       },
+       {
+        "event_id": "byte-3676-part-0",
+        "role": "user",
+        "text": "event 42 \u00e9"
+       },
+       {
+        "event_id": "byte-3761-part-0",
+        "role": "user",
+        "text": "event 43 \u00e9"
+       },
+       {
+        "event_id": "byte-3846-part-0",
+        "role": "user",
+        "text": "event 44 \u00e9"
+       },
+       {
+        "event_id": "byte-3931-part-0",
+        "role": "user",
+        "text": "event 45 \u00e9"
+       },
+       {
+        "event_id": "byte-4016-part-0",
+        "role": "user",
+        "text": "event 46 \u00e9"
+       },
+       {
+        "event_id": "byte-4101-part-0",
+        "role": "user",
+        "text": "event 47 \u00e9"
+       },
+       {
+        "event_id": "byte-4186-part-0",
+        "role": "user",
+        "text": "event 48 \u00e9"
+       },
+       {
+        "event_id": "byte-4271-part-0",
+        "role": "user",
+        "text": "event 49 \u00e9"
+       },
+       {
+        "event_id": "byte-4356-part-0",
+        "role": "user",
+        "text": "event 50 \u00e9"
+       },
+       {
+        "event_id": "byte-4441-part-0",
+        "role": "user",
+        "text": "event 51 \u00e9"
+       },
+       {
+        "event_id": "byte-4526-part-0",
+        "role": "user",
+        "text": "event 52 \u00e9"
+       },
+       {
+        "event_id": "byte-4611-part-0",
+        "role": "user",
+        "text": "event 53 \u00e9"
+       },
+       {
+        "event_id": "byte-4696-part-0",
+        "role": "user",
+        "text": "event 54 \u00e9"
+       },
+       {
+        "event_id": "byte-4781-part-0",
+        "role": "user",
+        "text": "event 55 \u00e9"
+       },
+       {
+        "event_id": "byte-4866-part-0",
+        "role": "user",
+        "text": "event 56 \u00e9"
+       },
+       {
+        "event_id": "byte-4951-part-0",
+        "role": "user",
+        "text": "event 57 \u00e9"
+       },
+       {
+        "event_id": "byte-5036-part-0",
+        "role": "user",
+        "text": "event 58 \u00e9"
+       },
+       {
+        "event_id": "byte-5121-part-0",
+        "role": "user",
+        "text": "event 59 \u00e9"
+       },
+       {
+        "event_id": "byte-5206-part-0",
+        "role": "user",
+        "text": "event 60 \u00e9"
+       },
+       {
+        "event_id": "byte-5291-part-0",
+        "role": "user",
+        "text": "event 61 \u00e9"
+       },
+       {
+        "event_id": "byte-5376-part-0",
+        "role": "user",
+        "text": "event 62 \u00e9"
+       },
+       {
+        "event_id": "byte-5461-part-0",
+        "role": "user",
+        "text": "event 63 \u00e9"
+       },
+       {
+        "event_id": "byte-5546-part-0",
+        "role": "user",
+        "text": "event 64 \u00e9"
+       },
+       {
+        "event_id": "byte-5631-part-0",
+        "role": "user",
+        "text": "event 65 \u00e9"
+       },
+       {
+        "event_id": "byte-5716-part-0",
+        "role": "user",
+        "text": "event 66 \u00e9"
+       },
+       {
+        "event_id": "byte-5801-part-0",
+        "role": "user",
+        "text": "event 67 \u00e9"
+       },
+       {
+        "event_id": "byte-5886-part-0",
+        "role": "user",
+        "text": "event 68 \u00e9"
+       },
+       {
+        "event_id": "byte-5971-part-0",
+        "role": "user",
+        "text": "event 69 \u00e9"
+       },
+       {
+        "event_id": "byte-6056-part-0",
+        "role": "user",
+        "text": "event 70 \u00e9"
+       },
+       {
+        "event_id": "byte-6141-part-0",
+        "role": "user",
+        "text": "event 71 \u00e9"
+       },
+       {
+        "event_id": "byte-6226-part-0",
+        "role": "user",
+        "text": "event 72 \u00e9"
+       },
+       {
+        "event_id": "byte-6311-part-0",
+        "role": "user",
+        "text": "event 73 \u00e9"
+       },
+       {
+        "event_id": "byte-6396-part-0",
+        "role": "user",
+        "text": "event 74 \u00e9"
+       },
+       {
+        "event_id": "byte-6481-part-0",
+        "role": "user",
+        "text": "event 75 \u00e9"
+       },
+       {
+        "event_id": "byte-6566-part-0",
+        "role": "user",
+        "text": "event 76 \u00e9"
+       },
+       {
+        "event_id": "byte-6651-part-0",
+        "role": "user",
+        "text": "event 77 \u00e9"
+       },
+       {
+        "event_id": "byte-6736-part-0",
+        "role": "user",
+        "text": "event 78 \u00e9"
+       },
+       {
+        "event_id": "byte-6821-part-0",
+        "role": "user",
+        "text": "event 79 \u00e9"
+       },
+       {
+        "event_id": "byte-6906-part-0",
+        "role": "user",
+        "text": "event 80 \u00e9"
+       },
+       {
+        "event_id": "byte-6991-part-0",
+        "role": "user",
+        "text": "event 81 \u00e9"
+       },
+       {
+        "event_id": "byte-7076-part-0",
+        "role": "user",
+        "text": "event 82 \u00e9"
+       },
+       {
+        "event_id": "byte-7161-part-0",
+        "role": "user",
+        "text": "event 83 \u00e9"
+       },
+       {
+        "event_id": "byte-7246-part-0",
+        "role": "user",
+        "text": "event 84 \u00e9"
+       },
+       {
+        "event_id": "byte-7331-part-0",
+        "role": "user",
+        "text": "event 85 \u00e9"
+       },
+       {
+        "event_id": "byte-7416-part-0",
+        "role": "user",
+        "text": "event 86 \u00e9"
+       },
+       {
+        "event_id": "byte-7501-part-0",
+        "role": "user",
+        "text": "event 87 \u00e9"
+       },
+       {
+        "event_id": "byte-7586-part-0",
+        "role": "user",
+        "text": "event 88 \u00e9"
+       },
+       {
+        "event_id": "byte-7671-part-0",
+        "role": "user",
+        "text": "event 89 \u00e9"
+       },
+       {
+        "event_id": "byte-7756-part-0",
+        "role": "user",
+        "text": "event 90 \u00e9"
+       },
+       {
+        "event_id": "byte-7841-part-0",
+        "role": "user",
+        "text": "event 91 \u00e9"
+       },
+       {
+        "event_id": "byte-7926-part-0",
+        "role": "user",
+        "text": "event 92 \u00e9"
+       },
+       {
+        "event_id": "byte-8011-part-0",
+        "role": "user",
+        "text": "event 93 \u00e9"
+       },
+       {
+        "event_id": "byte-8096-part-0",
+        "role": "user",
+        "text": "event 94 \u00e9"
+       },
+       {
+        "event_id": "byte-8181-part-0",
+        "role": "user",
+        "text": "event 95 \u00e9"
+       },
+       {
+        "event_id": "byte-8266-part-0",
+        "role": "user",
+        "text": "event 96 \u00e9"
+       },
+       {
+        "event_id": "byte-8351-part-0",
+        "role": "user",
+        "text": "event 97 \u00e9"
+       },
+       {
+        "event_id": "byte-8436-part-0",
+        "role": "user",
+        "text": "event 98 \u00e9"
+       },
+       {
+        "event_id": "byte-8521-part-0",
+        "role": "user",
+        "text": "event 99 \u00e9"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:8606:2ce9bb3b9637c2bfe9eb846fc67832d6c81d3c09f8c1e2642e11e8b7ef5c3b38"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-8606-part-0",
+        "role": "user",
+        "text": "event 100 \u00e9"
+       },
+       {
+        "event_id": "byte-8692-part-0",
+        "role": "user",
+        "text": "event 101 \u00e9"
+       },
+       {
+        "event_id": "byte-8778-part-0",
+        "role": "user",
+        "text": "event 102 \u00e9"
+       },
+       {
+        "event_id": "byte-8864-part-0",
+        "role": "user",
+        "text": "event 103 \u00e9"
+       },
+       {
+        "event_id": "byte-8950-part-0",
+        "role": "user",
+        "text": "event 104 \u00e9"
+       },
+       {
+        "event_id": "byte-9036-part-0",
+        "role": "user",
+        "text": "event 105 \u00e9"
+       },
+       {
+        "event_id": "byte-9122-part-0",
+        "role": "user",
+        "text": "event 106 \u00e9"
+       },
+       {
+        "event_id": "byte-9208-part-0",
+        "role": "user",
+        "text": "event 107 \u00e9"
+       },
+       {
+        "event_id": "byte-9294-part-0",
+        "role": "user",
+        "text": "event 108 \u00e9"
+       },
+       {
+        "event_id": "byte-9380-part-0",
+        "role": "user",
+        "text": "event 109 \u00e9"
+       },
+       {
+        "event_id": "byte-9466-part-0",
+        "role": "user",
+        "text": "event 110 \u00e9"
+       },
+       {
+        "event_id": "byte-9552-part-0",
+        "role": "user",
+        "text": "event 111 \u00e9"
+       },
+       {
+        "event_id": "byte-9638-part-0",
+        "role": "user",
+        "text": "event 112 \u00e9"
+       },
+       {
+        "event_id": "byte-9724-part-0",
+        "role": "user",
+        "text": "event 113 \u00e9"
+       },
+       {
+        "event_id": "byte-9810-part-0",
+        "role": "user",
+        "text": "event 114 \u00e9"
+       },
+       {
+        "event_id": "byte-9896-part-0",
+        "role": "user",
+        "text": "event 115 \u00e9"
+       },
+       {
+        "event_id": "byte-9982-part-0",
+        "role": "user",
+        "text": "event 116 \u00e9"
+       },
+       {
+        "event_id": "byte-10068-part-0",
+        "role": "user",
+        "text": "event 117 \u00e9"
+       },
+       {
+        "event_id": "byte-10154-part-0",
+        "role": "user",
+        "text": "event 118 \u00e9"
+       },
+       {
+        "event_id": "byte-10240-part-0",
+        "role": "user",
+        "text": "event 119 \u00e9"
+       },
+       {
+        "event_id": "byte-10326-part-0",
+        "role": "user",
+        "text": "event 120 \u00e9"
+       },
+       {
+        "event_id": "byte-10412-part-0",
+        "role": "user",
+        "text": "event 121 \u00e9"
+       },
+       {
+        "event_id": "byte-10498-part-0",
+        "role": "user",
+        "text": "event 122 \u00e9"
+       },
+       {
+        "event_id": "byte-10584-part-0",
+        "role": "user",
+        "text": "event 123 \u00e9"
+       },
+       {
+        "event_id": "byte-10670-part-0",
+        "role": "user",
+        "text": "event 124 \u00e9"
+       },
+       {
+        "event_id": "byte-10756-part-0",
+        "role": "user",
+        "text": "event 125 \u00e9"
+       },
+       {
+        "event_id": "byte-10842-part-0",
+        "role": "user",
+        "text": "event 126 \u00e9"
+       },
+       {
+        "event_id": "byte-10928-part-0",
+        "role": "user",
+        "text": "event 127 \u00e9"
+       },
+       {
+        "event_id": "byte-11014-part-0",
+        "role": "user",
+        "text": "event 128 \u00e9"
+       },
+       {
+        "event_id": "byte-11100-part-0",
+        "role": "user",
+        "text": "event 129 \u00e9"
+       },
+       {
+        "event_id": "byte-11186-part-0",
+        "role": "user",
+        "text": "event 130 \u00e9"
+       },
+       {
+        "event_id": "byte-11272-part-0",
+        "role": "user",
+        "text": "event 131 \u00e9"
+       },
+       {
+        "event_id": "byte-11358-part-0",
+        "role": "user",
+        "text": "event 132 \u00e9"
+       },
+       {
+        "event_id": "byte-11444-part-0",
+        "role": "user",
+        "text": "event 133 \u00e9"
+       },
+       {
+        "event_id": "byte-11530-part-0",
+        "role": "user",
+        "text": "event 134 \u00e9"
+       },
+       {
+        "event_id": "byte-11616-part-0",
+        "role": "user",
+        "text": "event 135 \u00e9"
+       },
+       {
+        "event_id": "byte-11702-part-0",
+        "role": "user",
+        "text": "event 136 \u00e9"
+       },
+       {
+        "event_id": "byte-11788-part-0",
+        "role": "user",
+        "text": "event 137 \u00e9"
+       },
+       {
+        "event_id": "byte-11874-part-0",
+        "role": "user",
+        "text": "event 138 \u00e9"
+       },
+       {
+        "event_id": "byte-11960-part-0",
+        "role": "user",
+        "text": "event 139 \u00e9"
+       },
+       {
+        "event_id": "byte-12046-part-0",
+        "role": "user",
+        "text": "event 140 \u00e9"
+       },
+       {
+        "event_id": "byte-12132-part-0",
+        "role": "user",
+        "text": "event 141 \u00e9"
+       },
+       {
+        "event_id": "byte-12218-part-0",
+        "role": "user",
+        "text": "event 142 \u00e9"
+       },
+       {
+        "event_id": "byte-12304-part-0",
+        "role": "user",
+        "text": "event 143 \u00e9"
+       },
+       {
+        "event_id": "byte-12390-part-0",
+        "role": "user",
+        "text": "event 144 \u00e9"
+       },
+       {
+        "event_id": "byte-12476-part-0",
+        "role": "user",
+        "text": "event 145 \u00e9"
+       },
+       {
+        "event_id": "byte-12562-part-0",
+        "role": "user",
+        "text": "event 146 \u00e9"
+       },
+       {
+        "event_id": "byte-12648-part-0",
+        "role": "user",
+        "text": "event 147 \u00e9"
+       },
+       {
+        "event_id": "byte-12734-part-0",
+        "role": "user",
+        "text": "event 148 \u00e9"
+       },
+       {
+        "event_id": "byte-12820-part-0",
+        "role": "user",
+        "text": "event 149 \u00e9"
+       },
+       {
+        "event_id": "byte-12906-part-0",
+        "role": "user",
+        "text": "event 150 \u00e9"
+       },
+       {
+        "event_id": "byte-12992-part-0",
+        "role": "user",
+        "text": "event 151 \u00e9"
+       },
+       {
+        "event_id": "byte-13078-part-0",
+        "role": "user",
+        "text": "event 152 \u00e9"
+       },
+       {
+        "event_id": "byte-13164-part-0",
+        "role": "user",
+        "text": "event 153 \u00e9"
+       },
+       {
+        "event_id": "byte-13250-part-0",
+        "role": "user",
+        "text": "event 154 \u00e9"
+       },
+       {
+        "event_id": "byte-13336-part-0",
+        "role": "user",
+        "text": "event 155 \u00e9"
+       },
+       {
+        "event_id": "byte-13422-part-0",
+        "role": "user",
+        "text": "event 156 \u00e9"
+       },
+       {
+        "event_id": "byte-13508-part-0",
+        "role": "user",
+        "text": "event 157 \u00e9"
+       },
+       {
+        "event_id": "byte-13594-part-0",
+        "role": "user",
+        "text": "event 158 \u00e9"
+       },
+       {
+        "event_id": "byte-13680-part-0",
+        "role": "user",
+        "text": "event 159 \u00e9"
+       },
+       {
+        "event_id": "byte-13766-part-0",
+        "role": "user",
+        "text": "event 160 \u00e9"
+       },
+       {
+        "event_id": "byte-13852-part-0",
+        "role": "user",
+        "text": "event 161 \u00e9"
+       },
+       {
+        "event_id": "byte-13938-part-0",
+        "role": "user",
+        "text": "event 162 \u00e9"
+       },
+       {
+        "event_id": "byte-14024-part-0",
+        "role": "user",
+        "text": "event 163 \u00e9"
+       },
+       {
+        "event_id": "byte-14110-part-0",
+        "role": "user",
+        "text": "event 164 \u00e9"
+       },
+       {
+        "event_id": "byte-14196-part-0",
+        "role": "user",
+        "text": "event 165 \u00e9"
+       },
+       {
+        "event_id": "byte-14282-part-0",
+        "role": "user",
+        "text": "event 166 \u00e9"
+       },
+       {
+        "event_id": "byte-14368-part-0",
+        "role": "user",
+        "text": "event 167 \u00e9"
+       },
+       {
+        "event_id": "byte-14454-part-0",
+        "role": "user",
+        "text": "event 168 \u00e9"
+       },
+       {
+        "event_id": "byte-14540-part-0",
+        "role": "user",
+        "text": "event 169 \u00e9"
+       },
+       {
+        "event_id": "byte-14626-part-0",
+        "role": "user",
+        "text": "event 170 \u00e9"
+       },
+       {
+        "event_id": "byte-14712-part-0",
+        "role": "user",
+        "text": "event 171 \u00e9"
+       },
+       {
+        "event_id": "byte-14798-part-0",
+        "role": "user",
+        "text": "event 172 \u00e9"
+       },
+       {
+        "event_id": "byte-14884-part-0",
+        "role": "user",
+        "text": "event 173 \u00e9"
+       },
+       {
+        "event_id": "byte-14970-part-0",
+        "role": "user",
+        "text": "event 174 \u00e9"
+       },
+       {
+        "event_id": "byte-15056-part-0",
+        "role": "user",
+        "text": "event 175 \u00e9"
+       },
+       {
+        "event_id": "byte-15142-part-0",
+        "role": "user",
+        "text": "event 176 \u00e9"
+       },
+       {
+        "event_id": "byte-15228-part-0",
+        "role": "user",
+        "text": "event 177 \u00e9"
+       },
+       {
+        "event_id": "byte-15314-part-0",
+        "role": "user",
+        "text": "event 178 \u00e9"
+       },
+       {
+        "event_id": "byte-15400-part-0",
+        "role": "user",
+        "text": "event 179 \u00e9"
+       },
+       {
+        "event_id": "byte-15486-part-0",
+        "role": "user",
+        "text": "event 180 \u00e9"
+       },
+       {
+        "event_id": "byte-15572-part-0",
+        "role": "user",
+        "text": "event 181 \u00e9"
+       },
+       {
+        "event_id": "byte-15658-part-0",
+        "role": "user",
+        "text": "event 182 \u00e9"
+       },
+       {
+        "event_id": "byte-15744-part-0",
+        "role": "user",
+        "text": "event 183 \u00e9"
+       },
+       {
+        "event_id": "byte-15830-part-0",
+        "role": "user",
+        "text": "event 184 \u00e9"
+       },
+       {
+        "event_id": "byte-15916-part-0",
+        "role": "user",
+        "text": "event 185 \u00e9"
+       },
+       {
+        "event_id": "byte-16002-part-0",
+        "role": "user",
+        "text": "event 186 \u00e9"
+       },
+       {
+        "event_id": "byte-16088-part-0",
+        "role": "user",
+        "text": "event 187 \u00e9"
+       },
+       {
+        "event_id": "byte-16174-part-0",
+        "role": "user",
+        "text": "event 188 \u00e9"
+       },
+       {
+        "event_id": "byte-16260-part-0",
+        "role": "user",
+        "text": "event 189 \u00e9"
+       },
+       {
+        "event_id": "byte-16346-part-0",
+        "role": "user",
+        "text": "event 190 \u00e9"
+       },
+       {
+        "event_id": "byte-16432-part-0",
+        "role": "user",
+        "text": "event 191 \u00e9"
+       },
+       {
+        "event_id": "byte-16518-part-0",
+        "role": "user",
+        "text": "event 192 \u00e9"
+       },
+       {
+        "event_id": "byte-16604-part-0",
+        "role": "user",
+        "text": "event 193 \u00e9"
+       },
+       {
+        "event_id": "byte-16690-part-0",
+        "role": "user",
+        "text": "event 194 \u00e9"
+       },
+       {
+        "event_id": "byte-16776-part-0",
+        "role": "user",
+        "text": "event 195 \u00e9"
+       },
+       {
+        "event_id": "byte-16862-part-0",
+        "role": "user",
+        "text": "event 196 \u00e9"
+       },
+       {
+        "event_id": "byte-16948-part-0",
+        "role": "user",
+        "text": "event 197 \u00e9"
+       },
+       {
+        "event_id": "byte-17034-part-0",
+        "role": "user",
+        "text": "event 198 \u00e9"
+       },
+       {
+        "event_id": "byte-17120-part-0",
+        "role": "user",
+        "text": "event 199 \u00e9"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:8606:17206:ace1f2b41c114c0c0c34d1ecacedc77d317ebe7e01b6ded4e85d07fa5fd99106"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-17206-part-0",
+        "role": "user",
+        "text": "event 200 \u00e9"
+       },
+       {
+        "event_id": "byte-17292-part-0",
+        "role": "user",
+        "text": "event 201 \u00e9"
+       },
+       {
+        "event_id": "byte-17378-part-0",
+        "role": "user",
+        "text": "event 202 \u00e9"
+       },
+       {
+        "event_id": "byte-17464-part-0",
+        "role": "user",
+        "text": "event 203 \u00e9"
+       },
+       {
+        "event_id": "byte-17550-part-0",
+        "role": "user",
+        "text": "event 204 \u00e9"
+       },
+       {
+        "event_id": "byte-17636-part-0",
+        "role": "user",
+        "text": "event 205 \u00e9"
+       },
+       {
+        "event_id": "byte-17722-part-0",
+        "role": "user",
+        "text": "event 206 \u00e9"
+       },
+       {
+        "event_id": "byte-17808-part-0",
+        "role": "user",
+        "text": "event 207 \u00e9"
+       },
+       {
+        "event_id": "byte-17894-part-0",
+        "role": "user",
+        "text": "event 208 \u00e9"
+       },
+       {
+        "event_id": "byte-17980-part-0",
+        "role": "user",
+        "text": "event 209 \u00e9"
+       },
+       {
+        "event_id": "byte-18066-part-0",
+        "role": "user",
+        "text": "event 210 \u00e9"
+       },
+       {
+        "event_id": "byte-18152-part-0",
+        "role": "user",
+        "text": "event 211 \u00e9"
+       },
+       {
+        "event_id": "byte-18238-part-0",
+        "role": "user",
+        "text": "event 212 \u00e9"
+       },
+       {
+        "event_id": "byte-18324-part-0",
+        "role": "user",
+        "text": "event 213 \u00e9"
+       },
+       {
+        "event_id": "byte-18410-part-0",
+        "role": "user",
+        "text": "event 214 \u00e9"
+       },
+       {
+        "event_id": "byte-18496-part-0",
+        "role": "user",
+        "text": "event 215 \u00e9"
+       },
+       {
+        "event_id": "byte-18582-part-0",
+        "role": "user",
+        "text": "event 216 \u00e9"
+       },
+       {
+        "event_id": "byte-18668-part-0",
+        "role": "user",
+        "text": "event 217 \u00e9"
+       },
+       {
+        "event_id": "byte-18754-part-0",
+        "role": "user",
+        "text": "event 218 \u00e9"
+       },
+       {
+        "event_id": "byte-18840-part-0",
+        "role": "user",
+        "text": "event 219 \u00e9"
+       },
+       {
+        "event_id": "byte-18926-part-0",
+        "role": "user",
+        "text": "event 220 \u00e9"
+       },
+       {
+        "event_id": "byte-19012-part-0",
+        "role": "user",
+        "text": "event 221 \u00e9"
+       },
+       {
+        "event_id": "byte-19098-part-0",
+        "role": "user",
+        "text": "event 222 \u00e9"
+       },
+       {
+        "event_id": "byte-19184-part-0",
+        "role": "user",
+        "text": "event 223 \u00e9"
+       },
+       {
+        "event_id": "byte-19270-part-0",
+        "role": "user",
+        "text": "event 224 \u00e9"
+       },
+       {
+        "event_id": "byte-19356-part-0",
+        "role": "user",
+        "text": "event 225 \u00e9"
+       },
+       {
+        "event_id": "byte-19442-part-0",
+        "role": "user",
+        "text": "event 226 \u00e9"
+       },
+       {
+        "event_id": "byte-19528-part-0",
+        "role": "user",
+        "text": "event 227 \u00e9"
+       },
+       {
+        "event_id": "byte-19614-part-0",
+        "role": "user",
+        "text": "event 228 \u00e9"
+       },
+       {
+        "event_id": "byte-19700-part-0",
+        "role": "user",
+        "text": "event 229 \u00e9"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:17206:19786:e7d8aee60c809b25fe9adff955a389ef024dba123564bca70ddcad7189a7c74e"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e7d8aee60c809b25fe9adff955a389ef024dba123564bca70ddcad7189a7c74e",
+        "ino": "<ino>",
+        "offset": 19786,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 8606,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 100, \"offset\": 8606, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 17206,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-2\", \"job_id\": \"job-2\", \"event_count\": 100, \"offset\": 17206, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 19786,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-3\", \"job_id\": \"job-3\", \"event_count\": 30, \"offset\": 19786, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1",
+        "episode-2",
+        "episode-3"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 100,
+         "has_more": true,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 8606,
+         "omission_count": 0,
+         "state": "captured"
+        },
+        {
+         "episode_id": "episode-2",
+         "event_count": 100,
+         "has_more": true,
+         "indexed": false,
+         "job_id": "job-2",
+         "offset": 17206,
+         "omission_count": 0,
+         "state": "captured"
+        },
+        {
+         "episode_id": "episode-3",
+         "event_count": 30,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-3",
+         "offset": 19786,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "three pages in one capture"
+     }
+    ]
+   },
+   "partial_trailing_line": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     },
+     {
+      "episode_ids": [
+       "episode-2"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-116-part-0",
+        "role": "user",
+        "text": "first"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:195:5c14d4670726cac7ca14e01ff000d920cd4ddce4a4c6e5aff603d02c28abe25f"
+     },
+     {
+      "events": [
+       {
+        "event_id": "byte-195-part-0",
+        "role": "assistant",
+        "text": "completed"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:195:273:ff18f872fd0443b5d1f33b6d7e218dfed39b7e09f1aa40e839aaa5a0ae7d2cb8"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "5c14d4670726cac7ca14e01ff000d920cd4ddce4a4c6e5aff603d02c28abe25f",
+        "ino": "<ino>",
+        "offset": 195,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 195,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 195, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": true,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 195,
+         "omission_count": 0,
+         "state": "captured"
+        },
+        {
+         "incomplete_tail": true,
+         "offset": 195,
+         "state": "idle"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "page stops before the partial line"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "ff18f872fd0443b5d1f33b6d7e218dfed39b7e09f1aa40e839aaa5a0ae7d2cb8",
+        "ino": "<ino>",
+        "offset": 273,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 195,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 195, \"omission_count\": 0, \"indexed\": false, \"has_more\": true}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       },
+       {
+        "end_offset": 273,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-2\", \"job_id\": \"job-2\", \"event_count\": 1, \"offset\": 273, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-2"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-2",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-2",
+         "offset": 273,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "the completed line is captured"
+     }
+    ]
+   },
+   "pending_changed": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"end\": 270, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:270:e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "simulated store outage after the pending mark",
+      "raised": "RuntimeError",
+      "receipts": [],
+      "step": "store outage after the pending mark"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"end\": 270, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:270:e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "pending source changed",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "pending source changed (launch_binding.py:650)"
+     }
+    ]
+   },
+   "pending_rewritten": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"end\": 270, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:270:e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "simulated store outage after the pending mark",
+      "raised": "RuntimeError",
+      "receipts": [],
+      "step": "store outage after the pending mark"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"end\": 270, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:270:e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "pending source rewritten",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "pending source rewritten (launch_binding.py:690)"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": "{\"digest\": \"e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"end\": 270, \"source_ref\": \"codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:270:e1b96e0dab8f5f7ec290573ccf0fa8f242fa4ff556c61e514231938bc7772603\", \"start\": 0}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "pending source rewritten",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "still refused"
+     }
+    ]
+   },
+   "prefix_change": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-116-part-0",
+        "role": "user",
+        "text": "aaaa"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:194:1fe7dba39eb314dd04b6f8182f9c317abee2d74175e86f4b37ee757662537052"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "1fe7dba39eb314dd04b6f8182f9c317abee2d74175e86f4b37ee757662537052",
+        "ino": "<ino>",
+        "offset": 194,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 194,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 194, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 194,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "first page"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "1fe7dba39eb314dd04b6f8182f9c317abee2d74175e86f4b37ee757662537052",
+        "ino": "<ino>",
+        "offset": 194,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "consumed source prefix rewritten",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [
+       {
+        "end_offset": 194,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 194, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "step": "consumed source prefix rewritten (launch_binding.py:644)"
+     }
+    ]
+   },
+   "replaced_during_read": {
+    "jobs": [],
+    "sealed": [],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ino": "<ino>",
+        "offset": 0,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "source replaced during capture",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [],
+      "step": "source replaced during capture (launch_binding.py:684)"
+     }
+    ]
+   },
+   "truncated_during_read": {
+    "jobs": [
+     {
+      "episode_ids": [
+       "episode-1"
+      ],
+      "reason": "batch",
+      "session": "019a0000-0000-7000-8000-00000000bbbb"
+     }
+    ],
+    "sealed": [
+     {
+      "events": [
+       {
+        "event_id": "byte-116-part-0",
+        "role": "user",
+        "text": "one"
+       }
+      ],
+      "session": "019a0000-0000-7000-8000-00000000bbbb",
+      "source_ref": "codex-rollout:019a0000-0000-7000-8000-00000000bbbb:<dev>:<ino>:0:193:746e948a6110ef9a59ab5aa3ea16bb703af6f899bfb9eda88ff5f3482ef772f9"
+     }
+    ],
+    "steps": [
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "746e948a6110ef9a59ab5aa3ea16bb703af6f899bfb9eda88ff5f3482ef772f9",
+        "ino": "<ino>",
+        "offset": 193,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "receipts": [
+       {
+        "end_offset": 193,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 193, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "result": {
+       "episodes": [
+        "episode-1"
+       ],
+       "pages": [
+        {
+         "episode_id": "episode-1",
+         "event_count": 1,
+         "has_more": false,
+         "indexed": false,
+         "job_id": "job-1",
+         "offset": 193,
+         "omission_count": 0,
+         "state": "captured"
+        }
+       ],
+       "status": "captured"
+      },
+      "step": "first page"
+     },
+     {
+      "cursor": [
+       {
+        "binding": "desk:binding-\u00e9",
+        "dev": "<dev>",
+        "digest": "746e948a6110ef9a59ab5aa3ea16bb703af6f899bfb9eda88ff5f3482ef772f9",
+        "ino": "<ino>",
+        "offset": 193,
+        "path": "<root>/rollout-2026.jsonl",
+        "pending": null,
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "message": "session source truncated",
+      "raised": "RolloutCaptureConflict",
+      "receipts": [
+       {
+        "end_offset": 193,
+        "payload": "{\"state\": \"captured\", \"episode_id\": \"episode-1\", \"job_id\": \"job-1\", \"event_count\": 1, \"offset\": 193, \"omission_count\": 0, \"indexed\": false, \"has_more\": false}",
+        "session": "019a0000-0000-7000-8000-00000000bbbb"
+       }
+      ],
+      "step": "session source truncated (launch_binding.py:640)"
+     }
+    ]
+   }
+  }
+ }
+}

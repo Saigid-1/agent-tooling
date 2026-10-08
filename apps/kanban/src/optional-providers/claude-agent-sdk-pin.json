@@ -1,0 +1,57 @@
+{
+	"$comment": "The Claude Agent SDK and its provider adapter are never bundled into the board (scripts/build.mjs). `install` is the package list the board's install action (runtime.installClaudeAgentSdk) fetches, only on the user's acknowledged request: the entry with userVersion at the version the user chooses (default: its pinned version), every other entry at its pinned version. A later item can add packages (for example @clinebot/*) to this list without changing the action, its notice flow or its /state install path. `packages` pins version and integrity; every entry must equal apps/kanban/package-lock.json, and the build refuses a drift.",
+	"schema": "kanban.optional-package-pin.v1",
+	"sdk": "@anthropic-ai/claude-agent-sdk",
+	"provider": "ai-sdk-provider-claude-code",
+	"install": [
+		{
+			"name": "@anthropic-ai/claude-agent-sdk",
+			"userVersion": true
+		},
+		{
+			"name": "ai-sdk-provider-claude-code"
+		}
+	],
+	"packages": {
+		"@anthropic-ai/claude-agent-sdk": {
+			"version": "0.2.128",
+			"integrity": "sha512-KI7H9bocPahGDrrQGME5Eh5a4RTqGrN1fQ69uLs6Ik4icXBZXouCx4Ecum450jMVy58myeh9ahYYLlpDAbQXPA=="
+		},
+		"@anthropic-ai/claude-agent-sdk-darwin-arm64": {
+			"version": "0.2.128",
+			"integrity": "sha512-RAzmB1ls+GWA/YiyfZLWdFYmj3md5emk7mCEeiKSKl2UN4i+tDWy2m/hjIvMFIzBqJJeGmZZSMnf3S0sL/GbhQ=="
+		},
+		"@anthropic-ai/claude-agent-sdk-darwin-x64": {
+			"version": "0.2.128",
+			"integrity": "sha512-dDPJHxUhL2sgIB8Q2AnBi4xsApImeW0zf1nbL7gBNSc9RWhGoGQAbPm0KaQ7/03jdom30z1VT5VMhQ5KeEYOIw=="
+		},
+		"@anthropic-ai/claude-agent-sdk-linux-arm64": {
+			"version": "0.2.128",
+			"integrity": "sha512-+GbB33eJSlZUWs84nsibY2nyAFQT96WYLGCteVn62Vv6ZK90NrZsm7lwurjw7oYNnvpzXorhZ2/XpQnWvOK6aQ=="
+		},
+		"@anthropic-ai/claude-agent-sdk-linux-arm64-musl": {
+			"version": "0.2.128",
+			"integrity": "sha512-ZCZEg42St0SCMMZFCvEtkF1LBFMYBxJRXzRno+12vOYYhC6R0l8jPjlgA2ZkN2Lb+TCEOO3fjeWJdZLL/NDM4w=="
+		},
+		"@anthropic-ai/claude-agent-sdk-linux-x64": {
+			"version": "0.2.128",
+			"integrity": "sha512-aBBXD6OLN/lq9S1p+BNjuEml0lYIoHunFdzFl49B0fsxEAnz1RfJDrpSNpIUAaL5FMZIaFvLqXtbFRy41N2fxg=="
+		},
+		"@anthropic-ai/claude-agent-sdk-linux-x64-musl": {
+			"version": "0.2.128",
+			"integrity": "sha512-sUSJEtvEt2iiMvgUuBGmBJjLhwHxDKOxVBSsXZaY46KAv3ZwLtLuc5xv2XFHId1B5+nMh7b7mr+HAiBmbMUODA=="
+		},
+		"@anthropic-ai/claude-agent-sdk-win32-arm64": {
+			"version": "0.2.128",
+			"integrity": "sha512-9Ao2J5KgfkfKxUZK3dbQEGonPYcbUyn7Cn7ykZuP91FN/5ux3Tz90YRJW6UtZdWHoDkmFF0FS8P/jiZuyWPLfw=="
+		},
+		"@anthropic-ai/claude-agent-sdk-win32-x64": {
+			"version": "0.2.128",
+			"integrity": "sha512-7oxPkgjw1vPZbx6+Qwt9mGouqfpRz5jDcuQ37koayzMdTVzmgCsKAqqbJSpOQfkFGv6gTjcrLWBlk3oapZfBYA=="
+		},
+		"ai-sdk-provider-claude-code": {
+			"version": "3.4.4",
+			"integrity": "sha512-iHcup5SHh4Tul1RIi9J+bnpngen8WX66yC3lsz1YlbtwAmRhUEzZUuGKzmFGIN8Pmx9uQrerGfLJdbFxIxKkyw=="
+		}
+	}
+}

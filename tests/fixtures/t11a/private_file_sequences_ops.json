@@ -1,0 +1,70 @@
+{
+ "helpers": {
+  "knowledge_publish_cli._write": {
+   "existing file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ]
+    ],
+    "outcome": {
+     "error": "FileExistsError: [Errno 17] File exists: '<case>/private/record.json'"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      49,
+      "206aa088265e99bf463d5ffe3dd6376c7069aaaefee6a9e03c4c5e170bcceee3"
+     ]
+    ]
+   },
+   "new file": {
+    "events": [
+     [
+      "open",
+      "<case>/private/record.json",
+      null,
+      "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC"
+     ],
+     [
+      "open",
+      "<fd>",
+      "w",
+      "O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC"
+     ],
+     [
+      "os.fsync",
+      "<fd>"
+     ]
+    ],
+    "outcome": {
+     "value": "bf5c8a2c955b1781472551f7f929e0dc2fdc88cdedcba28331ed341979c0b332"
+    },
+    "tree": [
+     [
+      "<case>/private",
+      "dir",
+      "0o700"
+     ],
+     [
+      "<case>/private/record.json",
+      "file",
+      "0o600",
+      44,
+      "bf5c8a2c955b1781472551f7f929e0dc2fdc88cdedcba28331ed341979c0b332"
+     ]
+    ]
+   }
+  }
+ }
+}

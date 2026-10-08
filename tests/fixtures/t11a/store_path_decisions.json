@@ -1,0 +1,1587 @@
+{
+ "container.operator_store_paths": {
+  "config_template|''": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'//state/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/config/t\\n.json'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/config/x.json'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/state'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/ (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/../state/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/../state/x (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/./memory/../registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/./memory/../registry (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state//registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state//registry (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/a/../../etc'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/state/memory'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/memory (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/memory/'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/memory/ (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/memory/../..'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/state/memory/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/memory/x (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/memory/x\\x00'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/memory/x\u0000 (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/memory/x\\x01y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/memory/x\u0001y (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/memoryx'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/memoryx (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/registry (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/registry/roster.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/registry/roster.json (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/registry\\x1f'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/registry\u001f (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/x\\n'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/x\n (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/x\\ty'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/x\ty (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/x\\u2028y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/x\u2028y (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/x\\x01y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/x\u0001y (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/x\\x7f'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/x\u007f (required: a path under /config)"
+   ]
+  },
+  "config_template|'/state/x\\x85y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json config_template /state/x\u0085y (required: a path under /config)"
+   ]
+  },
+  "config_template|'/statefoo/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'/st\u00e9te/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'\\x01'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|'relative/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|3": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|None": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|['/state/x']": {
+   "refuse": false,
+   "text": []
+  },
+  "config_template|{'path': '/state/x'}": {
+   "refuse": false,
+   "text": []
+  },
+  "other|''": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'//state/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/config/t\\n.json'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/config/x.json'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/../state/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/./memory/../registry'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state//registry'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/a/../../etc'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memory'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memory/'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memory/../..'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memory/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/memoryx'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/registry'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/registry/roster.json'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/registry\\x1f'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/x\\n'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/x\\ty'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/x\\u2028y'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/x\\x01y'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/x\\x7f'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/state/x\\x85y'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/statefoo/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'/st\u00e9te/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'\\x01'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|'relative/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "other|3": {
+   "refuse": false,
+   "text": []
+  },
+  "other|None": {
+   "refuse": false,
+   "text": []
+  },
+  "other|['/state/x']": {
+   "refuse": false,
+   "text": []
+  },
+  "other|{'path': '/state/x'}": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|''": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'/'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path / (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'//state/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path //state/x (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/config/t\\n.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /config/t\n.json (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/config/x.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /config/x.json (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/state'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/state/'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/ (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/state/../state/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/../state/x (required: /state/memory/x)"
+   ]
+  },
+  "roster_path|'/state/./memory/../registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/./memory/../registry (required: /state/memory/registry)"
+   ]
+  },
+  "roster_path|'/state//registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state//registry (required: /state/memory/registry)"
+   ]
+  },
+  "roster_path|'/state/a/../../etc'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/a/../../etc (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/state/memory'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'/state/memory/'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'/state/memory/../..'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/memory/../.. (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/state/memory/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'/state/memoryx'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/memoryx (required: /state/memory/memoryx)"
+   ]
+  },
+  "roster_path|'/state/registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/registry (required: /state/memory/registry)"
+   ]
+  },
+  "roster_path|'/state/registry/roster.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/registry/roster.json (required: /state/memory/registry/roster.json)"
+   ]
+  },
+  "roster_path|'/state/registry\\x1f'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/registry\u001f (required: /state/memory/registry\u001f)"
+   ]
+  },
+  "roster_path|'/state/x\\n'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/x\n (required: /state/memory/x\n)"
+   ]
+  },
+  "roster_path|'/state/x\\ty'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/x\ty (required: /state/memory/x\ty)"
+   ]
+  },
+  "roster_path|'/state/x\\u2028y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/x\u2028y (required: /state/memory/x\u2028y)"
+   ]
+  },
+  "roster_path|'/state/x\\x01y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/x\u0001y (required: /state/memory/x\u0001y)"
+   ]
+  },
+  "roster_path|'/state/x\\x7f'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/x\u007f (required: /state/memory/x\u007f)"
+   ]
+  },
+  "roster_path|'/state/x\\x85y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /state/x\u0085y (required: /state/memory/x\u0085y)"
+   ]
+  },
+  "roster_path|'/statefoo/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /statefoo/x (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'/st\u00e9te/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json roster_path /st\u00e9te/x (required: a path under /state/memory)"
+   ]
+  },
+  "roster_path|'\\x01'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|'relative/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|3": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|None": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|['/state/x']": {
+   "refuse": false,
+   "text": []
+  },
+  "roster_path|{'path': '/state/x'}": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|''": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'/'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root / (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'//state/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root //state/x (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/config/t\\n.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /config/t\n.json (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/config/x.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /config/x.json (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/state'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/state/'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/ (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/state/../state/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/../state/x (required: /state/memory/x)"
+   ]
+  },
+  "state_root|'/state/./memory/../registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/./memory/../registry (required: /state/memory/registry)"
+   ]
+  },
+  "state_root|'/state//registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state//registry (required: /state/memory/registry)"
+   ]
+  },
+  "state_root|'/state/a/../../etc'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/a/../../etc (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/state/memory'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'/state/memory/'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'/state/memory/../..'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/memory/../.. (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/state/memory/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'/state/memoryx'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/memoryx (required: /state/memory/memoryx)"
+   ]
+  },
+  "state_root|'/state/registry'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/registry (required: /state/memory/registry)"
+   ]
+  },
+  "state_root|'/state/registry/roster.json'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/registry/roster.json (required: /state/memory/registry/roster.json)"
+   ]
+  },
+  "state_root|'/state/registry\\x1f'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/registry\u001f (required: /state/memory/registry\u001f)"
+   ]
+  },
+  "state_root|'/state/x\\n'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/x\n (required: /state/memory/x\n)"
+   ]
+  },
+  "state_root|'/state/x\\ty'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/x\ty (required: /state/memory/x\ty)"
+   ]
+  },
+  "state_root|'/state/x\\u2028y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/x\u2028y (required: /state/memory/x\u2028y)"
+   ]
+  },
+  "state_root|'/state/x\\x01y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/x\u0001y (required: /state/memory/x\u0001y)"
+   ]
+  },
+  "state_root|'/state/x\\x7f'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/x\u007f (required: /state/memory/x\u007f)"
+   ]
+  },
+  "state_root|'/state/x\\x85y'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /state/x\u0085y (required: /state/memory/x\u0085y)"
+   ]
+  },
+  "state_root|'/statefoo/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /statefoo/x (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'/st\u00e9te/x'": {
+   "refuse": true,
+   "text": [
+    "<root>/config/op.json state_root /st\u00e9te/x (required: a path under /state/memory)"
+   ]
+  },
+  "state_root|'\\x01'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|'relative/x'": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|3": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|None": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|['/state/x']": {
+   "refuse": false,
+   "text": []
+  },
+  "state_root|{'path': '/state/x'}": {
+   "refuse": false,
+   "text": []
+  }
+ },
+ "runtime_install.operator_store_paths": {
+  "config_template|''": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'//state/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/config/t\\n.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/config/x.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/../state/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/../state/x",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/./memory/../registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/./memory/../registry",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state//registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state//registry",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/a/../../etc'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/memory'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/memory",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/memory/'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/memory/",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/memory/../..'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/memory/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/memory/x",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/memoryx'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/memoryx",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/registry",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/registry/roster.json'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/registry/roster.json",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/registry\\x1f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/x\\n'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/x\\ty'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/x\\u2028y'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/x\u2028y",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/state/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/x\\x7f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/state/x\\x85y'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "config_template",
+     "path": "/state/x\u0085y",
+     "required": "a path under /config"
+    }
+   ]
+  },
+  "config_template|'/statefoo/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'/st\u00e9te/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'\\x01'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|'relative/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|3": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|None": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|['/state/x']": {
+   "refuse": false,
+   "rows": []
+  },
+  "config_template|{'path': '/state/x'}": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|''": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'//state/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/config/t\\n.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/config/x.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/../state/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/./memory/../registry'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state//registry'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/a/../../etc'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memory'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memory/'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memory/../..'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memory/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/memoryx'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/registry'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/registry/roster.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/registry\\x1f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/x\\n'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/x\\ty'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/x\\u2028y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/x\\x7f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/state/x\\x85y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/statefoo/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'/st\u00e9te/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'\\x01'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|'relative/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|3": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|None": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|['/state/x']": {
+   "refuse": false,
+   "rows": []
+  },
+  "other|{'path': '/state/x'}": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|''": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'//state/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "//state/x",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/config/t\\n.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/config/x.json'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/config/x.json",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/state'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/state/'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/state/../state/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/../state/x",
+     "required": "/state/memory/x"
+    }
+   ]
+  },
+  "roster_path|'/state/./memory/../registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/./memory/../registry",
+     "required": "/state/memory/registry"
+    }
+   ]
+  },
+  "roster_path|'/state//registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state//registry",
+     "required": "/state/memory/registry"
+    }
+   ]
+  },
+  "roster_path|'/state/a/../../etc'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/a/../../etc",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/state/memory'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/memory/'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/memory/../..'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/memory/../..",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/state/memory/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/memoryx'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/memoryx",
+     "required": "/state/memory/memoryx"
+    }
+   ]
+  },
+  "roster_path|'/state/registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/registry",
+     "required": "/state/memory/registry"
+    }
+   ]
+  },
+  "roster_path|'/state/registry/roster.json'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/registry/roster.json",
+     "required": "/state/memory/registry/roster.json"
+    }
+   ]
+  },
+  "roster_path|'/state/registry\\x1f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/x\\n'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/x\\ty'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/x\\u2028y'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/x\u2028y",
+     "required": "/state/memory/x\u2028y"
+    }
+   ]
+  },
+  "roster_path|'/state/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/x\\x7f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'/state/x\\x85y'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/state/x\u0085y",
+     "required": "/state/memory/x\u0085y"
+    }
+   ]
+  },
+  "roster_path|'/statefoo/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/statefoo/x",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'/st\u00e9te/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "roster_path",
+     "path": "/st\u00e9te/x",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "roster_path|'\\x01'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|'relative/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|3": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|None": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|['/state/x']": {
+   "refuse": false,
+   "rows": []
+  },
+  "roster_path|{'path': '/state/x'}": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|''": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'//state/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "//state/x",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/config/t\\n.json'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/config/x.json'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/config/x.json",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/state'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/state/'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/state/../state/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/../state/x",
+     "required": "/state/memory/x"
+    }
+   ]
+  },
+  "state_root|'/state/./memory/../registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/./memory/../registry",
+     "required": "/state/memory/registry"
+    }
+   ]
+  },
+  "state_root|'/state//registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state//registry",
+     "required": "/state/memory/registry"
+    }
+   ]
+  },
+  "state_root|'/state/a/../../etc'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/a/../../etc",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/state/memory'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/memory/'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/memory/../..'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/memory/../..",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/state/memory/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/memory/x\\x00'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/memory/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/memoryx'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/memoryx",
+     "required": "/state/memory/memoryx"
+    }
+   ]
+  },
+  "state_root|'/state/registry'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/registry",
+     "required": "/state/memory/registry"
+    }
+   ]
+  },
+  "state_root|'/state/registry/roster.json'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/registry/roster.json",
+     "required": "/state/memory/registry/roster.json"
+    }
+   ]
+  },
+  "state_root|'/state/registry\\x1f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/x\\n'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/x\\ty'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/x\\u2028y'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/x\u2028y",
+     "required": "/state/memory/x\u2028y"
+    }
+   ]
+  },
+  "state_root|'/state/x\\x01y'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/x\\x7f'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'/state/x\\x85y'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/state/x\u0085y",
+     "required": "/state/memory/x\u0085y"
+    }
+   ]
+  },
+  "state_root|'/statefoo/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/statefoo/x",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'/st\u00e9te/x'": {
+   "refuse": true,
+   "rows": [
+    {
+     "file": "config/op.json",
+     "key": "state_root",
+     "path": "/st\u00e9te/x",
+     "required": "a path under /state/memory"
+    }
+   ]
+  },
+  "state_root|'\\x01'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|'relative/x'": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|3": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|None": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|['/state/x']": {
+   "refuse": false,
+   "rows": []
+  },
+  "state_root|{'path': '/state/x'}": {
+   "refuse": false,
+   "rows": []
+  }
+ }
+}

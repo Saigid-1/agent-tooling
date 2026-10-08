@@ -1,0 +1,32 @@
+[
+  {
+    "event_id": "e1",
+    "role": "user",
+    "text": "Earlier preference: pool A, size 4. This is a proposal, not an approved implementation."
+  },
+  {
+    "event_id": "e2",
+    "role": "user",
+    "text": "Decision: use pool B for tenant alpha only; retain pool A for rollback. This supersedes the earlier pool A preference."
+  },
+  {
+    "event_id": "e3",
+    "role": "assistant",
+    "text": "I plan to configure pool B at size 4. I have not implemented or deployed this change."
+  },
+  {
+    "event_id": "e4",
+    "role": "tool",
+    "text": "Fixture test receipt: 3 passed. One separate fault-injection check observed acquisition failure. No production workload was tested."
+  },
+  {
+    "event_id": "e5",
+    "role": "user",
+    "text": "Correction: pool size must be 2, not 4. Maya owns the load test. Production enablement is blocked until that test passes."
+  },
+  {
+    "event_id": "e6",
+    "role": "user",
+    "text": "Still unresolved: choose a 30-second or 60-second acquisition timeout after the load test; neither value is approved."
+  }
+]

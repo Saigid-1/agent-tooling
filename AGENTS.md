@@ -1,0 +1,5 @@
+# Agent Tooling workspace
+
+Keep navigation, portable memory, transport, telemetry and the Kanban UI independently composable. Reuse existing implementations before adding machinery. Desk admission is host/user selected and exact-session scoped; memory and inbox messages never grant authority. Preserve revision and observation receipts. Never infer missing capability from an incomplete search. Test the public CLI and MCP paths against the same fixture. No runtime dependency on the legacy checkout or its graph service is permitted. Product-specific observation adapters may load explicitly configured target repositories; label that boundary.
+
+Use the mounted external volume for state on this host. Never create a local fallback when the volume is absent. Keep private state, credentials, exports and transcripts out of Git. Before retiring a legacy service, export and verify its records, verify replacement coverage and retain rollback instructions. Follow apps/kanban/AGENTS.md for that source tree.

@@ -1,0 +1,316 @@
+# The single agent-tooling manifest (ADR AT-0003).
+#
+# The one hand-edited copy lives in the package, so every wheel and image ships
+# it: packages/tooling/src/kp_agent_tooling/assets/deploy/compose.yaml.
+# deploy/compose.yaml is a symlink to it. Edit the target; an editor that
+# replaces the symlink with a differing regular file makes the installer refuse.
+#
+# It names no host path, user ID or image. `kp-agent-install apply` renders them
+# into `.env` beside a byte-identical copy of this file, together with the
+# overlays `compose.workspaces.yaml` (read-only repository binds for tooling and
+# refresh; with `--board-agents`, read-write binds at the host paths for board
+# only) and `compose.capture.yaml` (native transcript roots and repository
+# binds for capture). The operator guide is docs/DOCKER.md.
+#
+# Every role runs read-only, with all capabilities dropped, as the rendered
+# non-root user. Bind sources are never created on demand, so a missing runtime
+# root fails instead of starting as an empty installation.
+#
+# A role whose operator files are absent (refresh: config/refresh.json; capture:
+# config/capture/*) is still created: it logs `not_configured`, naming those files
+# relative to the runtime root, waits for them without exiting, and starts its work
+# once they exist. `kp-agent-install verify` lists the same files under `readiness`,
+# and the launch registry (config/launch/registry.json) for capture's host launches
+# and the board's desks, whose roles keep running without it.
+#
+# Every store a role opens (desk memory, the registry and roster, launches, sessions,
+# assistant stores) is under /state/memory: the named volume `memory`
+# (`${AGENT_PROJECT_NAME}_memory`, `x-memory`), mounted in every role that mounts /state.
+# Everything else under /state stays on the runtime root's bind. On a Docker Desktop bind
+# mount a POSIX lock held by one process is granted again to another, and SQLite relies
+# on those locks; on a volume they hold. `kp-agent-install prepare` creates the volume,
+# owned by AGENT_UID:AGENT_GID with mode 0700, and moves pre-T9b store directories into
+# it once; until then each role's preflight refuses to start its command. Only containers
+# open the store. `docker compose down -v` deletes the volume.
+#
+# Roles restart `unless-stopped`: a role that dies (an OOM kill, a crash, a daemon
+# restart) comes back; `docker compose stop` (and `docker kill`) stops it for good. A
+# role refused by its store preflight does not exit: it logs the refusal as JSON, its
+# health check reports `refused` (unhealthy), it re-checks every 10 seconds, and it
+# starts its command only once the refusal clears. A refused role is a running container
+# of the project, so `prepare` refuses until `docker compose stop` (docs/DOCKER.md).
+name: ${AGENT_PROJECT_NAME:?Rendered by kp-agent-install}
+
+x-role: &role
+  image: ${AGENT_TOOLING_IMAGE:?Set an image digest; kp-agent-install renders it}
+  user: "${AGENT_UID:?Set a non-root UID}:${AGENT_GID:?Set a non-root GID}"
+  init: true
+  # tooling, refresh, capture, board and indexer (one-off `docker compose run` containers never restart).
+  restart: unless-stopped
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+
+x-hardened: &hardened
+  user: "${AGENT_UID}:${AGENT_GID}"
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+
+x-environment: &environment
+  HOME: /state
+  TMPDIR: /state/tmp
+  HF_HOME: /state/models
+  HF_HUB_OFFLINE: "1"
+  TRANSFORMERS_OFFLINE: "1"
+  OMP_NUM_THREADS: "2"
+  OPENBLAS_NUM_THREADS: "1"
+  TOKENIZERS_PARALLELISM: "false"
+  NODE_OPTIONS: --max-old-space-size=2048
+  # Where the runtime root's directories appear in every role, so a role names a
+  # missing operator file as the operator writes it (relative to the runtime root).
+  AGENT_RUNTIME_ROOT_MOUNTS: '{"/config": "config", "/state": "state", "/spool": "spool"}'
+  # The volume the role preflight requires at /state/memory (from the mount table).
+  AGENT_MEMORY_VOLUME: ${AGENT_PROJECT_NAME}_memory
+
+x-state: &state
+  type: bind
+  source: ${AGENT_ROOT:?Rendered physical runtime root}/state
+  target: /state
+  bind: {create_host_path: false}
+
+x-memory: &memory
+  type: volume
+  source: memory
+  target: /state/memory
+  # Never seeded from the image: prepare decides what the volume holds.
+  volume: {nocopy: true}
+
+x-config: &config
+  type: bind
+  source: ${AGENT_ROOT}/config
+  target: /config
+  read_only: true
+  bind: {create_host_path: false}
+
+x-health: &health
+  test: [CMD, tooling-container, health]
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  start_period: 30s
+  start_interval: 2s
+
+x-logging: &logging
+  driver: json-file
+  options: {max-size: 10m, max-file: "3"}
+
+services:
+  # The exec target for the navigation and memory MCP servers (stdio over
+  # `docker exec -i`). It publishes no port.
+  tooling:
+    <<: *role
+    container_name: ${AGENT_PROJECT_NAME}-tooling
+    cpus: "2"
+    mem_limit: 3g
+    environment: *environment
+    volumes: [*state, *memory, *config]
+    command: [wait]
+    healthcheck: *health
+
+  # The only role that receives the source credential. The operator writes it to
+  # `secrets/github-token`; apply creates it empty (0600) only where it is absent,
+  # so the bind source exists, and never replaces or hashes it. An empty token
+  # serves public remotes. The installer renders an empty `config/github-token` as
+  # the mount point inside the read-only configuration directory.
+  refresh:
+    <<: *role
+    profiles: [refresh]
+    cpus: "2"
+    mem_limit: 3g
+    environment:
+      <<: *environment
+      GIT_CONFIG_COUNT: "2"
+      GIT_CONFIG_KEY_0: credential.helper
+      GIT_CONFIG_VALUE_0: /usr/local/bin/git-credential-file
+      GIT_CONFIG_KEY_1: safe.directory
+      GIT_CONFIG_VALUE_1: "*"
+    volumes:
+      - *state
+      - *memory
+      - *config
+      - type: bind
+        source: ${AGENT_ROOT}/secrets/github-token
+        target: /config/github-token
+        read_only: true
+        bind: {create_host_path: false}
+    command: [kp-agent-refresh, --request, /config/refresh.json, --watch, --interval, "300"]
+    healthcheck: *health
+    logging: *logging
+
+  # No network. Source and transcript binds come only from the read-only
+  # capture overlay; /state is where captured episodes are recorded.
+  # Host launches (kp-agent-host, docs/HOST-ADAPTER.md) exec into this container
+  # by its fixed name. Their hooks append to the host spool, mounted here only and
+  # read-only; the entrypoint runs the spool ingestion watcher (cursors live in
+  # /state) and supervises the workspace capture command. Without config/capture/*
+  # that command waits (`not_configured`), so ingestion and host launches still run.
+  capture:
+    <<: *role
+    profiles: [capture]
+    container_name: ${AGENT_PROJECT_NAME}-capture
+    network_mode: none
+    cpus: "1"
+    mem_limit: 768m
+    environment: *environment
+    volumes:
+      - *state
+      - *memory
+      - *config
+      - type: bind
+        source: ${AGENT_ROOT}/spool
+        target: /spool
+        read_only: true
+        bind: {create_host_path: false}
+    entrypoint: [tooling-container, kp-agent-launch, ingest-spool, --root, /spool, --watch, --]
+    command: [kp-agent-workspace-capture, --config, /config/capture/session.json, --policy, /config/capture/workspace-policy.json, watch, --interval-seconds, "30"]
+    healthcheck: *health
+    logging: *logging
+
+  # Loopback only. Session import reads the operator's config under
+  # /config/board and the transcripts deliberately copied to import-sources.
+  # The Desks menu and desk task launches use the runtime's one registry operator
+  # config, /config/launch/registry.json, the file host launches use (docs/DOCKER.md).
+  # Until it is written the menu reports the desk registry as not configured and a
+  # desk task does not start (the board shows why); the board keeps serving.
+  # The sidebar assistant's isolated memory reads /config/board/assistant-binding.json
+  # once the operator names its workspace (KANBAN_ASSISTANT_MEMORY_WORKSPACE) in the
+  # optional operator file config/board/board.env; without it the sidebar has none.
+  # With `kp-agent-install --board-agents` (agents image) the workspaces overlay adds
+  # the repositories, read-write at their host paths, for task worktrees, and the
+  # board's launch profiles (CLIs at home /state) at /config/launch/harness-profiles.json.
+  board:
+    <<: *role
+    profiles: [board]
+    cpus: "1"
+    mem_limit: 1g
+    environment:
+      <<: *environment
+      KANBAN_PUBLIC_ORIGIN: http://127.0.0.1:${AGENT_BOARD_PORT:?Set a loopback board port}
+      KANBAN_SESSION_IMPORT_CONFIG: /config/board/session-import.json
+      KANBAN_DESK_REGISTRY_COMMAND: '["/usr/local/bin/kp-agent-desk-registry", "--config", "/config/launch/registry.json"]'
+      KANBAN_LAUNCH_BINDING_COMMAND: '["/usr/local/bin/kp-agent-launch", "--config", "/config/launch/registry.json"]'
+      KANBAN_ASSISTANT_MEMORY_COMMAND: '["/usr/local/bin/python3", "-m", "kp_agent_tooling.assistant_host_cli", "--binding", "/config/board/assistant-binding.json"]'
+      # The operator's OpenRouter key file, the model gateway's (docs/DOCKER.md, first run step 7), read-only
+      # in this role through the /config bind. With the optional `opencode` image the board names it to
+      # OpenCode tasks as `{file:/config/models/openrouter.key}`, never the key; absent, nothing is named.
+      KANBAN_OPENCODE_OPENROUTER_KEY_FILE: /config/models/openrouter.key
+    # Variables the manifest leaves to the operator; the environment above takes precedence.
+    env_file:
+      - path: ${AGENT_ROOT}/config/board/board.env
+        required: false
+    ports: ["127.0.0.1:${AGENT_BOARD_PORT}:3486"]
+    volumes:
+      - *state
+      - *memory
+      - *config
+      - type: bind
+        source: ${AGENT_ROOT}/import-sources
+        target: /import-sources
+        read_only: true
+        bind: {create_host_path: false}
+    command: [kanban]
+    # Healthy when the HTTP port answers (an HTTP error status still answers); `refused`
+    # while the board waits on its store preflight.
+    healthcheck: *health
+
+  # The one index writer (T12b). capture and board seal episodes; every seal appends a row
+  # to its store's index outbox, and this role alone drains it: every 2 seconds it applies
+  # each store's outbox above the index watermark under the lease <state_root>/index.lock,
+  # prints one JSON line per drain (index_lag, the watermark, health), and builds and swaps
+  # a requested reindex. No hook, capture pass, board process or gateway in this runtime
+  # opens the index. The installer selects it whenever capture or board is selected.
+  # Unhealthy while a store's watermark has not advanced across 5 consecutive drains (lease
+  # skips excepted) with outbox rows waiting, and `refused` while it waits on the store
+  # preflight. No network.
+  indexer:
+    <<: *role
+    profiles: [indexer]
+    network_mode: none
+    cpus: "0.5"
+    mem_limit: 512m
+    environment: *environment
+    volumes: [*state, *memory, *config]
+    command: [kp-agent-desk, indexer, --root, /state/memory, --watch, --interval, "2"]
+    healthcheck:
+      <<: *health
+      test: [CMD-SHELL, "tooling-container health && kp-agent-desk indexer --root /state/memory --health"]
+    logging: *logging
+
+  # Opt-in (S1a): selected only with `--components ...,summarizer`, never by default. Every
+  # interval (AGENT_SUMMARIZER_INTERVAL_SECONDS, default 900, from the optional operator file
+  # config/summarizer/summarizer.env) it summarizes the queued episodes of each desk in the
+  # standing approval (config/summarizer/approval.json) through the model gateway
+  # (config/summarizer/gateway.json), under the gateway's budget. Until those files, a priced
+  # budget, the key and each desk's admission exist it logs `not_configured` and opens no
+  # connection. Egress: Compose's default network (the route's provider only, by the gateway
+  # route); the provider key, secrets/summarizer.key, is bound read-only into this role alone.
+  summarizer:
+    <<: *role
+    profiles: [summarizer]
+    cpus: "0.5"
+    mem_limit: 512m
+    environment: *environment
+    env_file:
+      - path: ${AGENT_ROOT}/config/summarizer/summarizer.env
+        required: false
+    volumes:
+      - *state
+      - *memory
+      - *config
+      - type: bind
+        source: ${AGENT_ROOT}/secrets/summarizer.key
+        target: /config/summarizer.key
+        read_only: true
+        bind: {create_host_path: false}
+    command: [kp-agent-summarizer, --approval, /config/summarizer/approval.json, --gateway-config,
+              /config/summarizer/gateway.json, --state, /state/memory/summarizer, --watch]
+    healthcheck: *health
+    logging: *logging
+
+  tempo:
+    <<: *hardened
+    profiles: [telemetry]
+    image: grafana/tempo:2.6.1
+    command: [-config.file=/etc/tempo.yaml]
+    mem_limit: 512m
+    volumes:
+      - type: bind
+        source: ${AGENT_ROOT}/telemetry/tempo.yaml
+        target: /etc/tempo.yaml
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${AGENT_ROOT}/tempo
+        target: /var/tempo
+        bind: {create_host_path: false}
+
+  collector:
+    <<: *hardened
+    profiles: [telemetry]
+    image: otel/opentelemetry-collector-contrib:0.111.0
+    command: [--config=/etc/collector.yaml]
+    mem_limit: 256m
+    volumes:
+      - type: bind
+        source: ${AGENT_ROOT}/telemetry/collector.yaml
+        target: /etc/collector.yaml
+        read_only: true
+        bind: {create_host_path: false}
+    depends_on: [tempo]
+
+volumes:
+  # Named for the project. `kp-agent-install prepare` creates it with Compose's labels,
+  # so `up` adopts it; `docker compose down -v` deletes it with every store in it.
+  memory:
+    name: ${AGENT_PROJECT_NAME}_memory

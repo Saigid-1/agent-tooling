@@ -1,0 +1,19 @@
+# Independent image trial
+
+Use the exact image IDs and implementation revision recorded for the trial (the record is kept with the operator's records, not published). This is an isolated acceptance trial, not a live deployment cutover. It is bound to those recorded images and the Compose file of that time; the current manifest is rendered by `kp-agent-install` (see [DOCKER.md](DOCKER.md)).
+
+## Reviewer instructions
+
+Create a fresh private trial root on the operator's explicitly selected physical storage. Use fresh fixture repositories, catalogs, sessions and message IDs. Fixture approvals authorize only your synthetic trial. Do not use production catalogs, session admissions, credentials or conversation histories. Do not change global hooks or registrations, restart live services, or send content to a model provider.
+
+Read `docs/INDEPENDENT-IMAGE-ACCEPTANCE.md`, `docs/PORTABLE-KNOWLEDGE.md` and the public package schemas. Use the Compose file of the recorded implementation revision with a unique project name and unused loopback port. Mount your fixture repositories explicitly. Keep the native board passcode gate enabled. Preserve independent tooling, board and telemetry state directories. The implementing team's private receipts are comparison material after your trial, not substitute evidence.
+
+1. Verify the tooling and board image IDs, source labels, installed package build declaration and absence of `kp_ops`/`kp_core` from the general Python runtime. Optional observation adapters for the legacy platform require an explicitly configured target runtime and are outside this fixture trial.
+2. Create committed Python and TypeScript fixtures with one cross-file call each. Exercise source search/read/manifest, real Serena inspection, TypeScript context and SCIP. Check blob/revision coordinates and distinguish static references from observed calls. Dirty tracked source must not be presented as committed evidence.
+3. Use a reviewed fixture knowledge catalog, existing withdrawal ledger and a bounded corpus. Publish a new generation with `kp-agent-knowledge-publish`. Verify receipt-last completion, exact committed bytes, idempotent vector reuse, retained but non-current superseded chunks, tenant refusal, and unresolved references remaining unresolved. Activation requires an explicit new runtime config and worker restart. Compare public CLI and native MCP responses.
+4. Test memory before admission, after one exact-session admission, and after restart. A same-desk successor may recover scoped evidence; another tenant or role must not inherit access. Preserve citations and omission reporting. Historical claims and inbox messages grant no admission.
+5. Through the authenticated browser API, publish a synthetic inbox message, verify its exact recipient, restart only your board, verify replay, then explicitly acknowledge it. Changed payload under the same message ID must be refused. Do not dispatch a real agent or treat delivery as acknowledgement.
+6. Emit one synthetic span through the independent runtime, collector and Tempo. Retrieve its exact trace ID, restart only your Tempo, and retrieve it again. This proves the transport/retention path, not instrumentation coverage of any product application.
+7. Report every requirement as passed, failed or unverified with command/response hashes, image identity and source revision. Report fixture mistakes separately from product defects. Record timing if measured; do not infer token or model cost.
+
+The historical archive restore has a separate operator-only receipt because it contains private data. It preserves old transcript history without assigning it to desks. Final live-source delta capture, current-generation activation, same-host-session CLI/MCP parity and rollback readiness remain quiet-window cutover gates.

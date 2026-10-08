@@ -1,0 +1,8 @@
+{
+  "schema_version": "ops.desk-memory.local.v1",
+  "state_root": "/state/memory/REPLACE_WITH_DESK",
+  "catalog_path": "/config/memory/catalog.json",
+  "workspace_root": "/config/memory",
+  "provider_instance": "REPLACE_WITH_PROVIDER_INSTANCE",
+  "provider_session_id": "REPLACE_WITH_EXACT_ADMITTED_SESSION_ID"
+}

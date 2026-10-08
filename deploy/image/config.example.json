@@ -1,0 +1,11 @@
+{
+  "schema_version": "ops.agent-tooling.v1",
+  "repos": {"product": {"path": "/workspace/repo", "revision": "REPLACE_WITH_FULL_COMMIT"}},
+  "snapshot_registry": "/state/snapshots",
+  "navigation_registry_path": "/state/search",
+  "enabled_tools": [
+    "tooling.identity", "navigation.source", "navigation.paths", "navigation.search",
+    "navigation.manifest", "navigation.search_page", "navigation.imports",
+    "navigation.dependencies", "delivery.read"
+  ]
+}

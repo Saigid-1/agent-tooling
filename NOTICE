@@ -1,0 +1,244 @@
+agent-tooling
+=============
+
+Copyright 2026 Andrew Wedding and the agent-tooling contributors
+
+This repository is licensed under the GNU Affero General Public License,
+version 3 only (SPDX: AGPL-3.0-only), except apps/kanban. The licence text is
+in LICENSE. apps/kanban, a fork of Cline Kanban, is licensed under the Apache
+License, Version 2.0, including this repository's own changes to it; see
+section 1 and apps/kanban/NOTICE.
+
+This file names the third-party components present in this source tree or in
+the container images built from deploy/Dockerfile, with the licence each one
+declares. Every component stays under its own licence; nothing here changes or
+replaces those terms. Each licence below was read on 2026-10-04 from the source
+named beside it: the npm registry, PyPI, the component's own repository, or the
+lockfile committed here.
+
+
+1. Third-party source in this tree
+----------------------------------
+
+Cline Kanban (apps/kanban)
+  Licence      Apache-2.0, for the upstream work and for this repository's
+               own changes to it (every file under apps/kanban that it
+               modified or added), as apps/kanban/NOTICE states. The
+               upstream LICENSE is kept unchanged at apps/kanban/LICENSE (its
+               Git blob is identical to upstream's), and
+               apps/kanban/package.json keeps "license": "Apache-2.0".
+               Everything outside apps/kanban is AGPL-3.0-only.
+  Upstream     https://github.com/cline/kanban
+  Fork point   upstream commit abd4912c27ce6b7f18b5a8106c145fd838e90cc4
+               (2026-09-04). A public GitHub API read confirms that the commit
+               exists in cline/kanban and is on upstream main.
+  Notices      Upstream ships no NOTICE file, and the upstream source files in
+               this tree carry no per-file licence headers. The fork keeps
+               every notice the upstream files carry.
+  Changes      apps/kanban/NOTICE carries the Apache-2.0 section 4(b) change
+               notice. It points to apps/kanban/docs/ops-local-delta-manifest.md,
+               which lists every file this repository modified, added or
+               removed relative to the fork point and describes the changes.
+  Dependencies The board's npm dependencies are pinned, each with its declared
+               licence, in apps/kanban/package-lock.json,
+               apps/kanban/web-ui/package-lock.json and
+               apps/kanban/packages/desktop/package-lock.json. Declared
+               licences that are not a plain permissive SPDX identifier:
+                 @anthropic-ai/claude-agent-sdk 0.2.128   "SEE LICENSE IN README.md"
+                   (reached through @clinebot/llms and ai-sdk-provider-claude-code)
+                 @anthropic-ai/claude-agent-sdk-<platform> 0.2.128
+                                                          "SEE LICENSE IN LICENSE.md"
+                 @clinebot/core, @clinebot/llms, @clinebot/shared 0.0.38
+                                                          no licence field
+                 posthog-js 1.357.1                       "SEE LICENSE IN LICENSE"
+                 dompurify 3.4.13                         (MPL-2.0 OR Apache-2.0)
+                 lightningcss 1.31.1 (build tool)         MPL-2.0
+  claude-agent-sdk
+               @anthropic-ai/claude-agent-sdk is not redistributed in any
+               published image. Users obtain it themselves, under Anthropic's
+               terms, through the board's user-initiated install action.
+  @clinebot    Measured on 2026-10-04: @clinebot/core, @clinebot/shared and
+               @clinebot/llms 0.0.38 declare no licence field, in the npm
+               registry or in apps/kanban/package-lock.json. The repository
+               they declare, https://github.com/cline/sdk-wip, answers 404
+               publicly (github.com and the GitHub API). @clinebot/agents
+               0.0.38, which declares the same repository, declares Apache-2.0.
+               The project owner's reading, recorded beside that measurement:
+               the packages are Cline's, whose Kanban is Apache-2.0
+               (https://github.com/cline/kanban/blob/main/LICENSE), so the
+               board build keeps bundling them. The packages themselves state
+               no licence grant.
+
+
+2. Components in the container images
+-------------------------------------
+
+deploy/Dockerfile builds the targets runtime, product, agents, opencode, ops
+and acceptance (test-only).
+
+Base images
+  python:3.12-slim-bookworm   CPython (PSF-2.0) on Debian 12 "bookworm". Each
+                              Debian package keeps its own licence, recorded in
+                              the image under /usr/share/doc/<package>/copyright.
+  node:22-bookworm-slim       Only Node.js (MIT, with the third-party licences
+                              listed in Node's own LICENSE) and its bundled npm
+                              (Artistic-2.0) are copied into the images.
+
+Debian packages installed by the Dockerfile
+  git                         GPL-2.0-only (git's COPYING). Debian's copyright
+                              file in the image lists the licences of the
+                              parts git includes.
+  ca-certificates             MPL-2.0 for the certificate data and
+                              GPL-2.0-or-later for the Debian packaging and
+                              scripts (Debian's copyright file, bookworm
+                              version 20230311+deb12u1)
+
+Source of the Debian packages
+  The corresponding source of every Debian package in the images, including the
+  packages of the python:3.12-slim-bookworm base, is in Debian's source archive.
+  For the version installed in a given image (`dpkg-query -W` inside it), the
+  source is at https://sources.debian.org/src/<source-package>/<version>/ and,
+  for every version Debian has published, at
+  https://snapshot.debian.org/package/<source-package>/<version>/.
+  deploy/Dockerfile installs git and ca-certificates from Debian 12 "bookworm"
+  at build time and does not pin their versions. On 2026-10-04 bookworm carries:
+    git 1:2.39.5-0+deb12u3
+      https://sources.debian.org/src/git/1:2.39.5-0+deb12u3/
+      https://snapshot.debian.org/package/git/1%3A2.39.5-0%2Bdeb12u3/
+    ca-certificates 20230311+deb12u1
+      https://sources.debian.org/src/ca-certificates/20230311+deb12u1/
+      https://snapshot.debian.org/package/ca-certificates/20230311%2Bdeb12u1/
+  An image built on another date may carry another bookworm version; its
+  `dpkg-query -W` output names it.
+
+kp-agent-tooling runtime dependencies (packages/tooling/runtime.lock; PyPI)
+  annotated-types 0.8.0                    MIT
+  anyio 4.15.1                             MIT
+  attrs 26.1.0                             MIT
+  certifi 2026.7.22                        MPL-2.0
+  cffi 2.1.1                               MIT-0
+  click 8.5.0                              BSD-3-Clause
+  cryptography 50.0.1                      Apache-2.0 OR BSD-3-Clause
+  h11 0.16.0                               MIT
+  httpcore 1.0.9                           BSD-3-Clause
+  httpx 0.28.1                             BSD-3-Clause
+  httpx-sse 0.4.3                          MIT
+  idna 3.20                                BSD-3-Clause
+  jsonschema 4.26.0                        MIT
+  jsonschema-specifications 2025.9.1       MIT
+  mcp 1.28.1                               MIT
+  pycparser 3.0                            BSD-3-Clause
+  pydantic 2.13.5                          MIT
+  pydantic-settings 2.15.0                 MIT
+  pydantic_core 2.46.5                     MIT
+  PyJWT 2.14.0                             MIT
+  python-dotenv 1.2.3                      BSD-3-Clause
+  python-multipart 0.0.32                  Apache-2.0
+  PyYAML 6.0.3                             MIT
+  referencing 0.37.0                       MIT
+  rpds-py 2026.6.3                         MIT
+  sse-starlette 3.4.11                     BSD-3-Clause
+  starlette 1.6.0                          BSD-3-Clause
+  typing-inspection 0.4.4                  MIT
+  typing_extensions 4.16.0                 PSF-2.0
+  uvicorn 0.53.0                           BSD-3-Clause
+
+Serena (product, agents, ops and acceptance images)
+  serena-agent from https://github.com/oraios/serena at commit
+  c6fbd1c5932df2494ffa0020af5a9fbe80b82143, installed with its dependencies in
+  its own virtual environment at /opt/serena.
+  Licence at that commit: GPL-3.0-or-later for the serena-agent package as a
+  whole; its SolidLSP component (src/solidlsp/) is MIT. Read on 2026-10-04 from
+  the repository's LICENSE and pyproject.toml ("license = GPL-3.0-or-later") at
+  that commit. The LICENSE names commit
+  74c38a65f03fc0764d7ee4b3016ef6a07572ed64 (tag mit-final) as the last
+  MIT-licensed commit; the pinned commit is 71 commits after it.
+  Source: the corresponding source for the serena-agent package installed in
+  the images is https://github.com/oraios/serena at commit
+  c6fbd1c5932df2494ffa0020af5a9fbe80b82143
+  (https://github.com/oraios/serena/tree/c6fbd1c5932df2494ffa0020af5a9fbe80b82143).
+  The dependencies installed with it in /opt/serena keep their own licences.
+
+SCIP indexers and the compiler toolchain
+(deploy/image/toolchain/package.json and package-lock.json; npm registry)
+  The SCIP protocol, https://github.com/sourcegraph/scip   Apache-2.0
+  @sourcegraph/scip-typescript 0.4.0                       Apache-2.0
+  @sourcegraph/scip-python 0.6.6                           MIT
+  protobufjs 8.8.0                                         BSD-3-Clause
+  pyright 1.1.403                                          MIT
+  typescript 5.9.3                                         Apache-2.0
+  typescript-language-server 5.1.3                         Apache-2.0
+  Their transitive dependencies declare MIT, ISC, Apache-2.0, BSD-3-Clause or
+  (BSD-3-Clause AND Apache-2.0), as the lockfile records.
+
+Local embeddings (PyPI)
+  torch 2.8.0 (CPU wheel)                  BSD-3-Clause
+  sentence-transformers 5.1.0              Apache-2.0
+  transformers 4.56.2                      Apache-2.0
+  Their transitive dependencies are resolved at image build time and are not
+  pinned in this tree. No model weights are in any image: HF_HOME is under
+  /state, and a model the operator downloads keeps its own licence.
+
+OpenTelemetry (PyPI)
+  opentelemetry-sdk 1.44.0                 Apache-2.0
+  opentelemetry-exporter-otlp-proto-http 1.44.0
+                                           Apache-2.0
+  Both are in the product-based images and are the `telemetry` extra of both
+  Python packages in this tree.
+
+The Kanban board
+  The product-based images carry the board's build output (apps/kanban/dist,
+  which bundles the dependencies the board imports; see section 1) and
+  node-pty 1.2.0-beta.11 (MIT).
+  @anthropic-ai/claude-agent-sdk is not redistributed in any published image:
+  the board's build leaves it and ai-sdk-provider-claude-code out, and the
+  board installs them only at the user's acknowledged request
+  (docs/HARNESSES.md).
+
+Test runner (acceptance image only; never a production image)
+  pytest                                   MIT
+
+Agent CLIs (agents image only)
+(deploy/image/agents/package.json and package-lock.json; npm registry)
+  @openai/codex 0.159.2
+    Licence field: "Apache-2.0". Its platform packages (aliases of
+    @openai/codex at 0.159.2-<platform>) also declare Apache-2.0.
+  @anthropic-ai/claude-code 2.1.280
+    Licence field: "SEE LICENSE IN README.md". Its platform binary packages
+    (@anthropic-ai/claude-code-<platform> 2.1.280) declare
+    "SEE LICENSE IN LICENSE.md". These are Anthropic's own terms, not an
+    OSI-approved licence. They are in the package's README.md and LICENSE.md
+    and are not reproduced here. Whether the agents image is published with
+    this CLI is a decision recorded in docs/work/PUBLIC-READINESS-AUDIT.md.
+
+OpenCode CLI (opencode image only)
+(deploy/image/opencode/package.json and package-lock.json; npm registry)
+  opencode-ai 1.18.34
+    Licence field: "MIT" (npm registry, read 2026-10-06). The upstream
+    repository's LICENSE at tag v1.18.34 is the MIT License, "Copyright (c)
+    2025 opencode": https://github.com/anomalyco/opencode/blob/v1.18.34/LICENSE
+    (the repository moved from https://github.com/sst/opencode, which
+    redirects there; both serve the same file at that tag).
+  opencode-linux-* 1.18.34
+    The platform binary packages that opencode-ai installs: the one for the
+    image's Linux architecture carries the opencode binary. The lockfile lists
+    six Linux variants (opencode-linux-arm64, opencode-linux-arm64-musl,
+    opencode-linux-x64, opencode-linux-x64-baseline, opencode-linux-x64-musl,
+    opencode-linux-x64-baseline-musl); the darwin and windows variants are
+    never installed in an image. Their npm metadata carries no licence field,
+    and their packages carry no licence file. Their licence basis is the
+    upstream repository's MIT LICENSE at tag v1.18.34, by the maintainer's
+    decision of 2026-10-06.
+  The image carries that LICENSE text at /usr/local/share/doc/opencode/LICENSE,
+  copied from deploy/image/opencode/LICENSE, which is byte-identical to the
+  file at the tag.
+
+
+3. Sidecar images referenced by deploy/compose.yaml
+---------------------------------------------------
+
+The telemetry profile pulls these images from their publishers. No image built
+from this repository contains them.
+  grafana/tempo:2.6.1                           Grafana Tempo, AGPL-3.0
+  otel/opentelemetry-collector-contrib:0.111.0  OpenTelemetry Collector
+                                                Contrib, Apache-2.0

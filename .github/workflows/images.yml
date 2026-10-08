@@ -1,0 +1,121 @@
+# Builds the runtime, product, agents, opencode and ops targets of deploy/Dockerfile for the
+# runner's architecture and checks them: the image contract (tests/image), the
+# installer's empty-root run (tests/install), the host adapter in real containers
+# (tests/host) and the product/ops split
+# (deploy/ci/check_ops_variant.py). Runs on pull requests that touch what goes into
+# an image or its contract tests, and on every push to main.
+#
+# Safety: read-only token, no secrets, no registry login; images stay on the runner
+# and are never pushed or published; the job is bounded.
+name: images
+on:
+  pull_request:
+    paths:
+      - 'deploy/**'
+      - 'packages/**'
+      - 'extensions/**'
+      - 'apps/kanban/**'
+      - 'tests/image/**'
+      - 'tests/install/**'
+      - 'tests/host/**'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  image:
+    name: images (runtime, product, agents, opencode, ops) and image contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      AGENT_TOOLING_TEST_IMAGE: agent-tooling-ci:product
+      AGENT_TOOLING_TEST_IMAGE_RUNTIME: agent-tooling-ci:runtime
+      AGENT_TOOLING_TEST_IMAGE_AGENTS: agent-tooling-ci:agents
+      # The optional OpenCode target (O3); its pinned version is tests/image/opencode_pin.py.
+      AGENT_TOOLING_TEST_IMAGE_OPENCODE: agent-tooling-ci:opencode
+      AGENT_TOOLING_TEST_IMAGE_OPS: agent-tooling-ci:ops
+      # product built without SOURCE_REVISION: the identity test's negative case (T7a P4).
+      AGENT_TOOLING_TEST_IMAGE_UNREVISIONED: agent-tooling-ci:product-unrevisioned
+      # The agent CLI versions pinned by deploy/Dockerfile and deploy/image/agents.
+      AGENT_TOOLING_TEST_CLAUDE_VERSION: '2.1.280'
+      AGENT_TOOLING_TEST_CODEX_VERSION: '0.159.2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Free disk space for the image builds
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # pytest and the kp-agent-install console script for tests/install.
+      - name: Install the test environment
+        run: python -m pip install -e './packages/tooling[test]'
+      # D0f F4 (tests/install/test_d0f_f4_sdk_install_runtime_image.py): the test's stand-in
+      # registry serves @anthropic-ai/claude-agent-sdk and its adapter, with their dependency
+      # closure, exactly as published, read from npm's cache by the board lockfile's integrity.
+      # The board's own locked install on the runner fills that cache; its node_modules are
+      # not used by anything here (the images build the board inside Docker).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fill npm's cache with the board's locked packages (D0f F4 registry)
+        run: npm --prefix apps/kanban ci --ignore-scripts --no-audit --no-fund
+      - name: Source revision and a physical temporary directory
+        run: |
+          revision="$(git rev-parse HEAD)"
+          echo "SOURCE_REVISION=$revision" >> "$GITHUB_ENV"
+          echo "AGENT_TOOLING_TEST_SOURCE_REVISION=$revision" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/image-tmp"
+          echo "TMPDIR=$(realpath "$RUNNER_TEMP/image-tmp")" >> "$GITHUB_ENV"
+      # P5 of the image contract: product is at most 150 MB larger than the `full` image it
+      # replaced (the retired tooling Dockerfile's `full` target). The suite's
+      # default reference, 2.33 GB, was measured on arm64 with the containerd image store.
+      # Its instrument (Engine API /images/json Size) depends on the architecture and the
+      # image store, so the reference is that same `full`, built for linux/amd64 and
+      # measured with the same instrument on each store (2026-09-30):
+      #   overlay2 (Docker 28, the runner's store): full 1870430732, product 1926442624
+      #   containerd snapshotter (Docker 29+):      full 2634926252, product 2684932755
+      - name: Size reference for this runner's architecture and image store
+        run: |
+          platform="$(docker info --format '{{.Architecture}}/{{.Driver}}')"
+          case "$platform" in
+            x86_64/overlay2) bytes=1870430732 ;;
+            x86_64/overlayfs) bytes=2634926252 ;;
+            *) echo "::error::no measured size reference for $platform; measure the full image there first"
+               exit 1 ;;
+          esac
+          echo "size reference for $platform: $bytes bytes"
+          echo "AGENT_TOOLING_TEST_REFERENCE_BYTES=$bytes" >> "$GITHUB_ENV"
+      - name: Build runtime, product, agents, opencode and ops
+        id: build
+        run: |
+          docker version --format 'docker {{.Server.Version}} {{.Server.Os}}/{{.Server.Arch}}'
+          docker build -f deploy/Dockerfile --target runtime \
+            --build-arg SOURCE_REVISION="$SOURCE_REVISION" -t "$AGENT_TOOLING_TEST_IMAGE_RUNTIME" .
+          docker build -f deploy/Dockerfile --target product \
+            --build-arg SOURCE_REVISION="$SOURCE_REVISION" -t "$AGENT_TOOLING_TEST_IMAGE" .
+          docker build -f deploy/Dockerfile --target agents \
+            --build-arg SOURCE_REVISION="$SOURCE_REVISION" -t "$AGENT_TOOLING_TEST_IMAGE_AGENTS" .
+          docker build -f deploy/Dockerfile --target opencode \
+            --build-arg SOURCE_REVISION="$SOURCE_REVISION" -t "$AGENT_TOOLING_TEST_IMAGE_OPENCODE" .
+          docker build -f deploy/Dockerfile --target ops \
+            --build-arg SOURCE_REVISION="$SOURCE_REVISION" -t "$AGENT_TOOLING_TEST_IMAGE_OPS" .
+          docker build -f deploy/Dockerfile --target product -t "$AGENT_TOOLING_TEST_IMAGE_UNREVISIONED" .
+          docker image ls agent-tooling-ci
+          df -h /
+      - name: Image contract (tests/image)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python -m pytest tests/image -m image -q -rfE --ignore=tests/image/test_d0b_r7_pushed_digests_image.py
+      - name: Installer empty-root contract (tests/install)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python -m pytest tests/install -m image -q -rfE
+      - name: Host adapter in real containers (tests/host)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python -m pytest tests/host -m image -q -rfE
+      - name: ops variant check (product without, ops with the extension)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python deploy/ci/check_ops_variant.py

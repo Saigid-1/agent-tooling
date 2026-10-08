@@ -1,0 +1,9 @@
+{
+  "name": "agent-tooling-agents",
+  "private": true,
+  "description": "Opt-in agent CLIs for the agents image target, pinned exactly.",
+  "dependencies": {
+    "@anthropic-ai/claude-code": "2.1.280",
+    "@openai/codex": "0.159.2"
+  }
+}

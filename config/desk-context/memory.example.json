@@ -1,0 +1,31 @@
+{
+  "schema_version": "workspace-memory-fixture/v1",
+  "bindings": {
+    "binding:5b7bfb3a38922713141a62006fb7b770e436a30eed056e29b6a41d44fe52c296": [
+      {
+        "note_key": "demo-note:implementation:1",
+        "text": "Implementation desk: reuse existing boundaries and keep the first demo dependency-light.",
+        "content_digest": "05bdc301bb8e2c3167279bbea22c42e27a5f111fb7c6458bc5a261de9a06a996",
+        "trust_class": "desk_authored_fact",
+        "provenance": {
+          "author": "implementation-desk",
+          "source": "reviewed-demo-fixture",
+          "reviewed_at": "2026-09-21T00:00:00Z"
+        }
+      }
+    ],
+    "binding:888862c55bd8e8e902828a81a4991f86cf6955ffc3e91dbfc2587b42c6b89415": [
+      {
+        "note_key": "demo-note:verification:1",
+        "text": "Verification desk: reproduce duplicate dispatch and uncertain timeout scenarios before accepting launch behavior.",
+        "content_digest": "cf490c0edf30f302c45ccecb40faba289c0138bd73d63006e7148d1d1498626b",
+        "trust_class": "desk_authored_fact",
+        "provenance": {
+          "author": "verification-desk",
+          "source": "reviewed-demo-fixture",
+          "reviewed_at": "2026-09-21T00:00:00Z"
+        }
+      }
+    ]
+  }
+}

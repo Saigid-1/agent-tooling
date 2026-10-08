@@ -1,0 +1,79 @@
+#!/usr/local/bin/python
+"""Board command: the Kanban server built into this image.
+
+`kanban ARGS...` runs `node /app/dist/cli.js ARGS...`. Without arguments it serves
+all container interfaces on port 3486 and opens no browser. The passcode gate is
+left enabled. Board state lives under KANBAN_STORAGE_ROOT and TMPDIR in /state.
+"""
+import json
+import os
+from pathlib import Path
+import sys
+
+SERVER = ['/usr/local/bin/node', '/app/dist/cli.js']
+DEFAULT_ARGS = ['--host', '0.0.0.0', '--port', '3486', '--no-open']
+STATE = Path('/state')
+REGISTRY_ENV = 'KANBAN_DESK_REGISTRY_COMMAND'
+REGISTRY_EXECUTABLE = '/usr/local/bin/kp-agent-desk-registry'
+
+
+def mounted(path):
+    """True when path is a mount point, i.e. operator-provided storage."""
+    try:
+        with open('/proc/self/mountinfo') as table:
+            return any(line.split()[4] == str(path) for line in table)
+    except OSError:
+        return os.path.ismount(path)
+
+
+def prepare_state():
+    # Create the board's directories only inside a mounted /state. An unmounted
+    # /state never becomes a silent fallback in the container's own filesystem.
+    if not mounted(STATE):
+        return
+    for name in ('KANBAN_STORAGE_ROOT', 'TMPDIR'):
+        value = os.environ.get(name, '')
+        if value and os.path.isabs(value) and STATE in Path(value).parents:
+            try:
+                Path(value).mkdir(mode=0o700, parents=True, exist_ok=True)
+            except OSError as error:
+                print(f'kanban: cannot create {name} under /state: {error.strerror}', file=sys.stderr)
+
+
+def registry_config(argv):
+    for index, item in enumerate(argv):
+        if item == '--config' and index + 1 < len(argv):
+            return argv[index + 1]
+        if item.startswith('--config='):
+            return item.split('=', 1)[1]
+    return None
+
+
+def drop_unconfigured_registry():
+    # The in-image desk registry needs an operator-supplied `--config <path>`.
+    # Without one the board reports the registry as unconfigured instead of
+    # invoking a command that can only fail. A named config that is not written
+    # yet (the compose board role names /config/launch/registry.json) is kept:
+    # the board checks for it on every Desks menu request, so writing it later
+    # needs no board restart.
+    try:
+        argv = json.loads(os.environ.get(REGISTRY_ENV) or 'null')
+    except ValueError:
+        return  # The board refuses a malformed operator value itself.
+    if not isinstance(argv, list) or argv[:1] != [REGISTRY_EXECUTABLE]:
+        return
+    config = registry_config(argv)
+    if not isinstance(config, str) or not os.path.isabs(config):
+        del os.environ[REGISTRY_ENV]
+
+
+def main():
+    args = sys.argv[1:] or DEFAULT_ARGS
+    os.environ.setdefault('NODE_ENV', 'production')
+    prepare_state()
+    drop_unconfigured_registry()
+    os.execv(SERVER[0], SERVER + args)
+
+
+if __name__ == '__main__':
+    main()
